@@ -11,7 +11,11 @@ Faker>=24.0
 Jinja2>=3.1
 anthropic>=1.9      # AI layer; the platform runs fully without a key
 
-# Optional, each unlocks one extra export format and is degraded gracefully
+# Optional. Each unlocks one extra export format and is degraded gracefully
 # with a typed error if absent.
 # pyarrow>=15.0     # Parquet export
 # openpyxl>=3.1     # Excel export
+
+# Optional, hosting only. PythonAnywhere's free tier serves WSGI and this app
+# speaks ASGI, so that one host needs a bridge. See docs/05-FREE-HOSTING.md.
+# a2wsgi>=1.10

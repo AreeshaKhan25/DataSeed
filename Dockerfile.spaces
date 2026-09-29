@@ -1,0 +1,41 @@
+# Hugging Face Spaces image.
+#
+# Spaces are free, need no card, and run a persistent container rather than
+# serverless functions. That last point matters here: this platform keeps its
+# projects, fitted models and generated tables in memory, so anything that
+# spins up a fresh process per request would lose state between clicks.
+#
+# Differences from the main Dockerfile:
+#   * listens on 7860, which is the port Spaces routes to
+#   * no Node stage, because the compiled frontend is committed in web/
+#   * runs as uid 1000, which is the user Spaces provides
+
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    HOST=0.0.0.0 \
+    PORT=7860
+
+RUN useradd --create-home --uid 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:$PATH"
+WORKDIR /home/user/app
+
+COPY --chown=user requirements.txt ./
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+COPY --chown=user api/ ./api/
+COPY --chown=user scripts/ ./scripts/
+COPY --chown=user web/ ./web/
+COPY --chown=user data/ ./data/
+
+# The demo data and fixtures are committed, so this only runs if they are
+# somehow absent. Cheap, and it means a fresh Space is never empty.
+RUN python -c "import pathlib,sys; sys.exit(0 if pathlib.Path('data/demo/customers.csv').exists() else 1)" \
+    || python scripts/make_demo_data.py
+
+EXPOSE 7860
+
+CMD ["sh", "-c", "exec uvicorn api.main:app --host 0.0.0.0 --port ${PORT}"]
