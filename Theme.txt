@@ -1,0 +1,7 @@
+Complete platform 
+Realistic privacy safe tabular relational and document data generated on demand.
+Synthetic data generation platform
+
+2 ways to produce synthetic data 
+Tstr approach 
+Relational multi relationship table build

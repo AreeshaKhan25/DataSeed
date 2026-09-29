@@ -1,0 +1,901 @@
+transaction_id,account_id,tx_date,description,direction,amount
+700000,88006,2025-06-01,Payroll deposit,debit,61.47
+700001,88002,2025-06-01,Lakeside Gym,debit,79.64
+700002,88006,2025-06-01,Metro Transit,debit,25.9
+700003,88009,2025-06-01,Metro Transit,credit,613.29
+700004,88006,2025-06-01,Payroll deposit,debit,60.88
+700005,88007,2025-06-01,Northbank Fuel,debit,1.99
+700006,88004,2025-06-01,Greenleaf Market,debit,24.81
+700007,88006,2025-06-01,Orchard Pharmacy,debit,24.45
+700008,88005,2025-06-01,Northbank Fuel,debit,85.38
+700009,88006,2025-06-01,Northbank Fuel,debit,18.65
+700010,88003,2025-06-01,Summit Insurance,debit,27.63
+700011,88003,2025-06-01,Payroll deposit,debit,16.39
+700012,88008,2025-06-01,Blue Fig Cafe,debit,54.22
+700013,88002,2025-06-02,Northbank Fuel,debit,9.58
+700014,88011,2025-06-02,Orchard Pharmacy,debit,85.41
+700015,88005,2025-06-02,Cloudhost Ltd,debit,42.48
+700016,88009,2025-06-03,Payroll deposit,debit,38.84
+700017,88001,2025-06-03,Blue Fig Cafe,credit,399.24
+700018,88002,2025-06-04,Summit Insurance,debit,111.89
+700019,88002,2025-06-04,Cloudhost Ltd,debit,2.82
+700020,88011,2025-06-04,Payroll deposit,credit,1296.98
+700021,88009,2025-06-04,Northbank Fuel,debit,87.49
+700022,88006,2025-06-04,Summit Insurance,debit,16.31
+700023,88012,2025-06-04,Blue Fig Cafe,debit,33.81
+700024,88006,2025-06-04,Northbank Fuel,debit,75.26
+700025,88007,2025-06-05,Blue Fig Cafe,credit,412.79
+700026,88008,2025-06-05,Northbank Fuel,debit,46.15
+700027,88002,2025-06-05,Northbank Fuel,debit,79.54
+700028,88007,2025-06-05,Northbank Fuel,credit,1795.71
+700029,88004,2025-06-05,Blue Fig Cafe,debit,28.79
+700030,88009,2025-06-05,Blue Fig Cafe,debit,9.91
+700031,88011,2025-06-05,Greenleaf Market,credit,1513.83
+700032,88008,2025-06-05,Payroll deposit,debit,28.63
+700033,88007,2025-06-05,Payroll deposit,credit,1207.81
+700034,88012,2025-06-06,Orchard Pharmacy,credit,448.96
+700035,88001,2025-06-06,Lakeside Gym,debit,10.5
+700036,88007,2025-06-06,Cloudhost Ltd,credit,918.76
+700037,88006,2025-06-06,Summit Insurance,debit,11.61
+700038,88005,2025-06-06,Lakeside Gym,debit,41.39
+700039,88010,2025-06-06,Orchard Pharmacy,debit,56.42
+700040,88006,2025-06-07,Blue Fig Cafe,credit,2221.22
+700041,88007,2025-06-07,Greenleaf Market,credit,349.31
+700042,88008,2025-06-07,Orchard Pharmacy,credit,898.66
+700043,88004,2025-06-07,Orchard Pharmacy,debit,38.08
+700044,88001,2025-06-07,Lakeside Gym,debit,14.04
+700045,88002,2025-06-07,Riverside Utilities,debit,29.1
+700046,88004,2025-06-07,Riverside Utilities,debit,35.53
+700047,88001,2025-06-07,Summit Insurance,credit,329.91
+700048,88007,2025-06-07,Metro Transit,debit,39.64
+700049,88002,2025-06-08,Orchard Pharmacy,debit,57.22
+700050,88007,2025-06-08,Greenleaf Market,credit,240.85
+700051,88010,2025-06-08,Cloudhost Ltd,debit,152.98
+700052,88007,2025-06-08,Summit Insurance,credit,1435.86
+700053,88005,2025-06-08,Summit Insurance,debit,31.82
+700054,88008,2025-06-08,Orchard Pharmacy,credit,1175.41
+700055,88007,2025-06-08,Cloudhost Ltd,debit,102.96
+700056,88005,2025-06-08,Lakeside Gym,credit,1050.5
+700057,88008,2025-06-08,Orchard Pharmacy,debit,63.47
+700058,88009,2025-06-08,Orchard Pharmacy,credit,1206.13
+700059,88009,2025-06-09,Summit Insurance,credit,1117.45
+700060,88006,2025-06-09,Summit Insurance,debit,35.45
+700061,88006,2025-06-09,Summit Insurance,debit,7.25
+700062,88006,2025-06-09,Summit Insurance,debit,49.52
+700063,88006,2025-06-09,Riverside Utilities,debit,25.73
+700064,88003,2025-06-09,Orchard Pharmacy,debit,13.71
+700065,88005,2025-06-09,Summit Insurance,debit,103.99
+700066,88012,2025-06-09,Metro Transit,debit,9.65
+700067,88001,2025-06-10,Orchard Pharmacy,credit,943.63
+700068,88010,2025-06-10,Summit Insurance,credit,1599.37
+700069,88006,2025-06-10,Riverside Utilities,debit,23.15
+700070,88008,2025-06-10,Orchard Pharmacy,credit,617.98
+700071,88007,2025-06-10,Cloudhost Ltd,debit,40.71
+700072,88011,2025-06-10,Riverside Utilities,debit,14.97
+700073,88003,2025-06-10,Summit Insurance,credit,881.17
+700074,88010,2025-06-11,Payroll deposit,debit,109.7
+700075,88006,2025-06-11,Orchard Pharmacy,debit,44.31
+700076,88003,2025-06-11,Payroll deposit,debit,75.07
+700077,88012,2025-06-11,Greenleaf Market,debit,65.96
+700078,88004,2025-06-11,Metro Transit,credit,1093.57
+700079,88004,2025-06-11,Northbank Fuel,debit,60.69
+700080,88011,2025-06-11,Payroll deposit,debit,22.38
+700081,88010,2025-06-11,Lakeside Gym,debit,12.63
+700082,88007,2025-06-11,Blue Fig Cafe,debit,24.42
+700083,88006,2025-06-11,Orchard Pharmacy,credit,1041.79
+700084,88008,2025-06-12,Metro Transit,debit,19.17
+700085,88009,2025-06-12,Greenleaf Market,debit,37.0
+700086,88002,2025-06-12,Riverside Utilities,debit,14.11
+700087,88011,2025-06-12,Greenleaf Market,debit,3.53
+700088,88007,2025-06-12,Lakeside Gym,credit,584.47
+700089,88001,2025-06-13,Northbank Fuel,debit,52.36
+700090,88007,2025-06-13,Greenleaf Market,debit,89.32
+700091,88006,2025-06-13,Blue Fig Cafe,debit,56.74
+700092,88007,2025-06-13,Summit Insurance,debit,29.43
+700093,88007,2025-06-13,Riverside Utilities,debit,61.96
+700094,88011,2025-06-14,Lakeside Gym,debit,29.45
+700095,88004,2025-06-14,Orchard Pharmacy,debit,13.31
+700096,88007,2025-06-14,Blue Fig Cafe,debit,47.22
+700097,88003,2025-06-14,Greenleaf Market,debit,21.29
+700098,88007,2025-06-14,Northbank Fuel,debit,21.29
+700099,88001,2025-06-15,Northbank Fuel,debit,58.76
+700100,88007,2025-06-15,Cloudhost Ltd,credit,774.61
+700101,88002,2025-06-15,Payroll deposit,debit,21.58
+700102,88012,2025-06-15,Lakeside Gym,credit,932.08
+700103,88011,2025-06-15,Riverside Utilities,debit,47.66
+700104,88011,2025-06-15,Payroll deposit,credit,459.57
+700105,88006,2025-06-15,Summit Insurance,debit,17.86
+700106,88001,2025-06-15,Riverside Utilities,credit,1067.72
+700107,88003,2025-06-15,Summit Insurance,debit,15.57
+700108,88010,2025-06-15,Northbank Fuel,debit,11.02
+700109,88003,2025-06-16,Lakeside Gym,debit,41.65
+700110,88005,2025-06-16,Lakeside Gym,debit,286.74
+700111,88009,2025-06-16,Payroll deposit,credit,729.87
+700112,88004,2025-06-16,Greenleaf Market,debit,34.82
+700113,88002,2025-06-16,Payroll deposit,debit,94.5
+700114,88005,2025-06-16,Northbank Fuel,debit,332.57
+700115,88006,2025-06-16,Metro Transit,debit,14.15
+700116,88010,2025-06-16,Northbank Fuel,debit,54.04
+700117,88006,2025-06-16,Metro Transit,credit,724.03
+700118,88010,2025-06-16,Summit Insurance,debit,55.77
+700119,88001,2025-06-16,Orchard Pharmacy,debit,64.85
+700120,88012,2025-06-16,Orchard Pharmacy,debit,63.35
+700121,88012,2025-06-17,Metro Transit,debit,176.16
+700122,88003,2025-06-17,Blue Fig Cafe,debit,68.14
+700123,88006,2025-06-17,Northbank Fuel,debit,89.89
+700124,88002,2025-06-17,Northbank Fuel,debit,40.82
+700125,88002,2025-06-17,Cloudhost Ltd,debit,26.38
+700126,88012,2025-06-17,Blue Fig Cafe,debit,41.58
+700127,88008,2025-06-17,Riverside Utilities,debit,135.87
+700128,88007,2025-06-17,Payroll deposit,debit,28.02
+700129,88009,2025-06-17,Orchard Pharmacy,debit,17.56
+700130,88007,2025-06-17,Lakeside Gym,debit,44.47
+700131,88010,2025-06-17,Metro Transit,debit,71.12
+700132,88003,2025-06-18,Cloudhost Ltd,credit,584.34
+700133,88005,2025-06-18,Payroll deposit,debit,46.6
+700134,88009,2025-06-18,Orchard Pharmacy,debit,60.05
+700135,88011,2025-06-19,Northbank Fuel,debit,88.02
+700136,88006,2025-06-19,Payroll deposit,credit,1409.87
+700137,88010,2025-06-19,Cloudhost Ltd,credit,1071.24
+700138,88008,2025-06-19,Blue Fig Cafe,debit,58.84
+700139,88007,2025-06-19,Northbank Fuel,debit,93.88
+700140,88003,2025-06-19,Payroll deposit,debit,7.07
+700141,88007,2025-06-19,Riverside Utilities,credit,243.48
+700142,88005,2025-06-20,Payroll deposit,debit,20.3
+700143,88004,2025-06-20,Orchard Pharmacy,debit,143.48
+700144,88005,2025-06-20,Northbank Fuel,debit,33.01
+700145,88006,2025-06-20,Cloudhost Ltd,credit,574.1
+700146,88006,2025-06-20,Riverside Utilities,credit,1640.81
+700147,88008,2025-06-20,Lakeside Gym,debit,54.23
+700148,88010,2025-06-20,Payroll deposit,debit,7.49
+700149,88008,2025-06-20,Cloudhost Ltd,debit,47.57
+700150,88003,2025-06-21,Summit Insurance,credit,852.62
+700151,88001,2025-06-21,Orchard Pharmacy,debit,21.64
+700152,88006,2025-06-21,Lakeside Gym,debit,39.06
+700153,88012,2025-06-21,Blue Fig Cafe,debit,8.28
+700154,88008,2025-06-22,Blue Fig Cafe,credit,2061.08
+700155,88003,2025-06-22,Orchard Pharmacy,debit,177.85
+700156,88007,2025-06-22,Cloudhost Ltd,credit,817.69
+700157,88004,2025-06-23,Northbank Fuel,debit,26.65
+700158,88004,2025-06-23,Lakeside Gym,debit,25.36
+700159,88002,2025-06-23,Metro Transit,debit,30.49
+700160,88006,2025-06-23,Lakeside Gym,debit,52.95
+700161,88001,2025-06-23,Greenleaf Market,debit,20.49
+700162,88001,2025-06-23,Metro Transit,debit,31.07
+700163,88009,2025-06-23,Blue Fig Cafe,debit,72.82
+700164,88003,2025-06-24,Blue Fig Cafe,debit,73.54
+700165,88012,2025-06-24,Cloudhost Ltd,debit,53.48
+700166,88001,2025-06-25,Summit Insurance,debit,121.47
+700167,88003,2025-06-25,Summit Insurance,debit,104.63
+700168,88012,2025-06-25,Metro Transit,debit,7.3
+700169,88006,2025-06-25,Lakeside Gym,debit,30.79
+700170,88003,2025-06-25,Riverside Utilities,debit,35.24
+700171,88010,2025-06-25,Metro Transit,credit,1082.82
+700172,88009,2025-06-25,Orchard Pharmacy,debit,39.64
+700173,88001,2025-06-25,Metro Transit,debit,81.87
+700174,88011,2025-06-25,Summit Insurance,credit,1809.58
+700175,88003,2025-06-25,Riverside Utilities,debit,53.83
+700176,88009,2025-06-25,Lakeside Gym,debit,38.63
+700177,88003,2025-06-26,Blue Fig Cafe,debit,67.68
+700178,88011,2025-06-26,Metro Transit,debit,188.59
+700179,88012,2025-06-26,Riverside Utilities,debit,53.77
+700180,88002,2025-06-26,Greenleaf Market,debit,11.61
+700181,88011,2025-06-26,Lakeside Gym,debit,12.75
+700182,88006,2025-06-26,Payroll deposit,debit,135.01
+700183,88004,2025-06-26,Northbank Fuel,debit,56.18
+700184,88009,2025-06-27,Orchard Pharmacy,debit,35.99
+700185,88008,2025-06-27,Summit Insurance,debit,40.57
+700186,88009,2025-06-27,Metro Transit,credit,894.73
+700187,88011,2025-06-27,Orchard Pharmacy,credit,1117.99
+700188,88007,2025-06-27,Greenleaf Market,debit,74.77
+700189,88009,2025-06-27,Blue Fig Cafe,debit,4.58
+700190,88002,2025-06-27,Lakeside Gym,debit,120.46
+700191,88004,2025-06-28,Blue Fig Cafe,credit,919.23
+700192,88012,2025-06-28,Northbank Fuel,debit,33.23
+700193,88011,2025-06-28,Metro Transit,debit,36.88
+700194,88001,2025-06-28,Orchard Pharmacy,debit,27.55
+700195,88001,2025-06-28,Summit Insurance,debit,53.15
+700196,88002,2025-06-28,Lakeside Gym,debit,111.7
+700197,88007,2025-06-28,Riverside Utilities,debit,34.94
+700198,88012,2025-06-28,Blue Fig Cafe,debit,66.34
+700199,88004,2025-06-28,Lakeside Gym,debit,26.33
+700200,88009,2025-06-28,Northbank Fuel,debit,24.99
+700201,88008,2025-06-29,Summit Insurance,debit,24.34
+700202,88005,2025-06-29,Lakeside Gym,credit,540.63
+700203,88007,2025-06-30,Payroll deposit,debit,30.71
+700204,88012,2025-06-30,Lakeside Gym,credit,653.61
+700205,88003,2025-06-30,Payroll deposit,debit,67.63
+700206,88012,2025-06-30,Riverside Utilities,credit,2122.49
+700207,88009,2025-06-30,Blue Fig Cafe,credit,960.13
+700208,88009,2025-06-30,Northbank Fuel,debit,17.77
+700209,88005,2025-07-01,Lakeside Gym,debit,140.05
+700210,88011,2025-07-01,Blue Fig Cafe,debit,83.66
+700211,88004,2025-07-01,Greenleaf Market,debit,13.37
+700212,88012,2025-07-01,Payroll deposit,debit,29.68
+700213,88007,2025-07-01,Payroll deposit,debit,14.9
+700214,88004,2025-07-01,Metro Transit,debit,13.07
+700215,88008,2025-07-01,Summit Insurance,debit,15.71
+700216,88006,2025-07-01,Lakeside Gym,debit,298.64
+700217,88001,2025-07-01,Payroll deposit,debit,26.66
+700218,88011,2025-07-01,Lakeside Gym,debit,347.77
+700219,88008,2025-07-01,Greenleaf Market,credit,670.26
+700220,88005,2025-07-01,Cloudhost Ltd,debit,56.9
+700221,88006,2025-07-01,Cloudhost Ltd,debit,26.15
+700222,88005,2025-07-02,Metro Transit,credit,722.98
+700223,88011,2025-07-02,Payroll deposit,debit,24.82
+700224,88002,2025-07-02,Northbank Fuel,debit,69.36
+700225,88010,2025-07-02,Northbank Fuel,debit,33.19
+700226,88012,2025-07-02,Cloudhost Ltd,debit,56.14
+700227,88006,2025-07-02,Orchard Pharmacy,credit,1471.49
+700228,88002,2025-07-02,Cloudhost Ltd,debit,51.73
+700229,88004,2025-07-02,Orchard Pharmacy,debit,24.39
+700230,88009,2025-07-02,Blue Fig Cafe,debit,27.28
+700231,88007,2025-07-02,Summit Insurance,debit,17.0
+700232,88002,2025-07-03,Blue Fig Cafe,debit,36.85
+700233,88007,2025-07-03,Orchard Pharmacy,credit,802.91
+700234,88012,2025-07-03,Cloudhost Ltd,debit,31.73
+700235,88011,2025-07-03,Metro Transit,debit,48.71
+700236,88011,2025-07-03,Greenleaf Market,debit,74.59
+700237,88009,2025-07-03,Northbank Fuel,debit,46.3
+700238,88009,2025-07-03,Lakeside Gym,debit,18.12
+700239,88009,2025-07-03,Metro Transit,credit,1356.57
+700240,88007,2025-07-03,Riverside Utilities,credit,736.52
+700241,88006,2025-07-03,Orchard Pharmacy,debit,76.32
+700242,88011,2025-07-03,Metro Transit,debit,17.54
+700243,88012,2025-07-03,Summit Insurance,debit,58.71
+700244,88007,2025-07-04,Northbank Fuel,debit,62.14
+700245,88001,2025-07-04,Riverside Utilities,credit,1352.69
+700246,88012,2025-07-04,Lakeside Gym,debit,13.28
+700247,88012,2025-07-04,Metro Transit,credit,1186.19
+700248,88005,2025-07-04,Greenleaf Market,debit,74.41
+700249,88008,2025-07-04,Cloudhost Ltd,credit,2078.14
+700250,88002,2025-07-04,Riverside Utilities,debit,41.22
+700251,88008,2025-07-04,Cloudhost Ltd,debit,4.33
+700252,88009,2025-07-04,Orchard Pharmacy,credit,917.09
+700253,88001,2025-07-04,Payroll deposit,credit,577.89
+700254,88003,2025-07-04,Cloudhost Ltd,debit,17.03
+700255,88009,2025-07-04,Payroll deposit,credit,827.44
+700256,88002,2025-07-04,Riverside Utilities,debit,10.91
+700257,88008,2025-07-05,Blue Fig Cafe,debit,43.64
+700258,88001,2025-07-05,Payroll deposit,credit,1888.32
+700259,88009,2025-07-05,Metro Transit,debit,13.93
+700260,88007,2025-07-05,Greenleaf Market,debit,28.67
+700261,88001,2025-07-05,Summit Insurance,debit,27.06
+700262,88012,2025-07-05,Northbank Fuel,debit,50.09
+700263,88001,2025-07-06,Northbank Fuel,debit,29.98
+700264,88007,2025-07-06,Summit Insurance,credit,1352.5
+700265,88004,2025-07-06,Metro Transit,debit,14.19
+700266,88004,2025-07-06,Metro Transit,debit,109.18
+700267,88010,2025-07-06,Lakeside Gym,debit,28.89
+700268,88011,2025-07-06,Lakeside Gym,credit,585.12
+700269,88011,2025-07-06,Blue Fig Cafe,credit,473.12
+700270,88002,2025-07-06,Cloudhost Ltd,debit,15.31
+700271,88008,2025-07-06,Blue Fig Cafe,debit,171.59
+700272,88001,2025-07-06,Northbank Fuel,credit,759.91
+700273,88003,2025-07-07,Blue Fig Cafe,debit,19.9
+700274,88001,2025-07-07,Blue Fig Cafe,debit,6.72
+700275,88010,2025-07-07,Blue Fig Cafe,debit,130.64
+700276,88011,2025-07-07,Cloudhost Ltd,debit,95.87
+700277,88009,2025-07-07,Northbank Fuel,debit,34.5
+700278,88007,2025-07-07,Payroll deposit,credit,1667.14
+700279,88003,2025-07-07,Cloudhost Ltd,credit,1552.44
+700280,88001,2025-07-07,Greenleaf Market,debit,39.37
+700281,88009,2025-07-08,Riverside Utilities,debit,7.27
+700282,88012,2025-07-08,Orchard Pharmacy,debit,13.08
+700283,88008,2025-07-08,Lakeside Gym,debit,19.44
+700284,88003,2025-07-08,Payroll deposit,debit,75.6
+700285,88005,2025-07-08,Northbank Fuel,debit,157.65
+700286,88005,2025-07-08,Northbank Fuel,debit,6.74
+700287,88002,2025-07-09,Metro Transit,debit,38.31
+700288,88012,2025-07-09,Payroll deposit,credit,810.29
+700289,88009,2025-07-09,Orchard Pharmacy,debit,19.97
+700290,88012,2025-07-09,Northbank Fuel,debit,73.72
+700291,88005,2025-07-09,Orchard Pharmacy,debit,26.68
+700292,88012,2025-07-09,Northbank Fuel,debit,65.08
+700293,88003,2025-07-09,Riverside Utilities,debit,143.02
+700294,88009,2025-07-09,Greenleaf Market,debit,15.04
+700295,88005,2025-07-09,Orchard Pharmacy,debit,53.24
+700296,88012,2025-07-09,Orchard Pharmacy,credit,885.43
+700297,88012,2025-07-09,Northbank Fuel,debit,78.92
+700298,88001,2025-07-09,Blue Fig Cafe,debit,46.19
+700299,88011,2025-07-10,Lakeside Gym,debit,35.12
+700300,88003,2025-07-10,Payroll deposit,debit,40.42
+700301,88003,2025-07-11,Metro Transit,debit,17.25
+700302,88006,2025-07-11,Lakeside Gym,debit,21.34
+700303,88007,2025-07-11,Riverside Utilities,debit,62.37
+700304,88012,2025-07-11,Riverside Utilities,credit,1115.54
+700305,88012,2025-07-11,Cloudhost Ltd,debit,15.76
+700306,88009,2025-07-11,Northbank Fuel,credit,336.15
+700307,88012,2025-07-11,Riverside Utilities,debit,40.77
+700308,88007,2025-07-11,Northbank Fuel,debit,13.89
+700309,88010,2025-07-11,Northbank Fuel,debit,334.82
+700310,88003,2025-07-11,Metro Transit,credit,1091.81
+700311,88011,2025-07-11,Cloudhost Ltd,credit,1017.05
+700312,88006,2025-07-12,Cloudhost Ltd,debit,108.49
+700313,88009,2025-07-12,Payroll deposit,debit,102.93
+700314,88001,2025-07-12,Cloudhost Ltd,debit,14.26
+700315,88002,2025-07-12,Northbank Fuel,debit,38.08
+700316,88009,2025-07-12,Blue Fig Cafe,credit,1155.33
+700317,88012,2025-07-12,Metro Transit,debit,30.62
+700318,88006,2025-07-12,Metro Transit,debit,23.28
+700319,88012,2025-07-12,Northbank Fuel,debit,15.14
+700320,88008,2025-07-12,Lakeside Gym,debit,63.35
+700321,88002,2025-07-13,Lakeside Gym,debit,36.97
+700322,88011,2025-07-13,Payroll deposit,debit,90.6
+700323,88001,2025-07-13,Lakeside Gym,debit,152.75
+700324,88011,2025-07-13,Greenleaf Market,debit,10.47
+700325,88003,2025-07-13,Northbank Fuel,debit,46.78
+700326,88011,2025-07-14,Lakeside Gym,credit,1503.2
+700327,88010,2025-07-14,Orchard Pharmacy,debit,55.19
+700328,88005,2025-07-14,Cloudhost Ltd,debit,31.27
+700329,88006,2025-07-14,Blue Fig Cafe,credit,583.42
+700330,88012,2025-07-14,Riverside Utilities,credit,750.86
+700331,88006,2025-07-14,Orchard Pharmacy,debit,20.95
+700332,88004,2025-07-14,Blue Fig Cafe,debit,12.64
+700333,88011,2025-07-14,Blue Fig Cafe,debit,20.04
+700334,88007,2025-07-14,Payroll deposit,credit,814.36
+700335,88004,2025-07-14,Northbank Fuel,debit,92.09
+700336,88007,2025-07-15,Northbank Fuel,credit,796.96
+700337,88005,2025-07-15,Payroll deposit,debit,28.31
+700338,88002,2025-07-15,Metro Transit,debit,25.22
+700339,88001,2025-07-16,Greenleaf Market,debit,21.71
+700340,88001,2025-07-16,Summit Insurance,debit,78.6
+700341,88008,2025-07-16,Metro Transit,debit,19.26
+700342,88011,2025-07-16,Summit Insurance,debit,26.01
+700343,88006,2025-07-16,Summit Insurance,debit,50.3
+700344,88003,2025-07-16,Metro Transit,debit,69.68
+700345,88012,2025-07-16,Payroll deposit,debit,21.2
+700346,88001,2025-07-16,Summit Insurance,debit,6.46
+700347,88010,2025-07-16,Greenleaf Market,debit,2.97
+700348,88012,2025-07-17,Cloudhost Ltd,debit,56.53
+700349,88012,2025-07-17,Northbank Fuel,debit,264.29
+700350,88008,2025-07-17,Riverside Utilities,debit,29.46
+700351,88011,2025-07-17,Orchard Pharmacy,debit,35.86
+700352,88009,2025-07-17,Lakeside Gym,debit,10.02
+700353,88011,2025-07-17,Lakeside Gym,credit,2253.35
+700354,88006,2025-07-17,Northbank Fuel,debit,29.36
+700355,88011,2025-07-18,Metro Transit,debit,24.6
+700356,88008,2025-07-18,Cloudhost Ltd,debit,101.51
+700357,88008,2025-07-18,Greenleaf Market,debit,30.06
+700358,88002,2025-07-18,Payroll deposit,credit,313.3
+700359,88002,2025-07-18,Northbank Fuel,debit,28.28
+700360,88003,2025-07-18,Greenleaf Market,debit,21.64
+700361,88012,2025-07-19,Payroll deposit,credit,717.34
+700362,88010,2025-07-19,Payroll deposit,debit,10.48
+700363,88011,2025-07-19,Metro Transit,debit,92.82
+700364,88009,2025-07-19,Cloudhost Ltd,debit,62.24
+700365,88007,2025-07-19,Metro Transit,debit,49.51
+700366,88008,2025-07-19,Greenleaf Market,debit,27.89
+700367,88009,2025-07-19,Riverside Utilities,debit,37.3
+700368,88009,2025-07-19,Metro Transit,debit,39.28
+700369,88001,2025-07-20,Lakeside Gym,credit,625.53
+700370,88003,2025-07-20,Summit Insurance,debit,173.22
+700371,88002,2025-07-20,Northbank Fuel,debit,36.18
+700372,88007,2025-07-20,Metro Transit,debit,55.01
+700373,88002,2025-07-20,Cloudhost Ltd,debit,30.31
+700374,88009,2025-07-20,Riverside Utilities,debit,35.96
+700375,88009,2025-07-20,Greenleaf Market,debit,70.65
+700376,88011,2025-07-20,Summit Insurance,credit,1346.94
+700377,88003,2025-07-20,Lakeside Gym,debit,64.53
+700378,88010,2025-07-20,Metro Transit,debit,204.38
+700379,88008,2025-07-21,Greenleaf Market,debit,10.93
+700380,88003,2025-07-21,Orchard Pharmacy,debit,93.77
+700381,88007,2025-07-21,Cloudhost Ltd,debit,14.7
+700382,88006,2025-07-21,Riverside Utilities,debit,13.84
+700383,88011,2025-07-21,Cloudhost Ltd,credit,1626.42
+700384,88012,2025-07-22,Cloudhost Ltd,debit,40.86
+700385,88004,2025-07-22,Orchard Pharmacy,debit,107.27
+700386,88004,2025-07-22,Lakeside Gym,debit,8.52
+700387,88005,2025-07-22,Blue Fig Cafe,debit,22.48
+700388,88005,2025-07-22,Metro Transit,debit,96.54
+700389,88006,2025-07-22,Summit Insurance,credit,566.28
+700390,88012,2025-07-22,Riverside Utilities,credit,1400.82
+700391,88004,2025-07-22,Metro Transit,debit,63.36
+700392,88012,2025-07-22,Northbank Fuel,debit,37.18
+700393,88005,2025-07-22,Cloudhost Ltd,debit,65.47
+700394,88010,2025-07-23,Summit Insurance,credit,1924.5
+700395,88011,2025-07-23,Riverside Utilities,debit,25.51
+700396,88009,2025-07-23,Blue Fig Cafe,debit,48.38
+700397,88002,2025-07-23,Riverside Utilities,debit,35.99
+700398,88001,2025-07-23,Lakeside Gym,debit,59.88
+700399,88007,2025-07-23,Northbank Fuel,debit,67.63
+700400,88008,2025-07-23,Cloudhost Ltd,credit,579.27
+700401,88008,2025-07-23,Greenleaf Market,debit,10.1
+700402,88007,2025-07-23,Lakeside Gym,debit,28.13
+700403,88007,2025-07-24,Orchard Pharmacy,debit,15.69
+700404,88009,2025-07-24,Blue Fig Cafe,debit,6.09
+700405,88011,2025-07-24,Riverside Utilities,debit,25.8
+700406,88002,2025-07-24,Northbank Fuel,credit,987.9
+700407,88003,2025-07-24,Metro Transit,credit,1258.94
+700408,88007,2025-07-24,Metro Transit,debit,18.03
+700409,88003,2025-07-24,Orchard Pharmacy,credit,784.4
+700410,88009,2025-07-24,Metro Transit,credit,940.04
+700411,88003,2025-07-25,Blue Fig Cafe,debit,32.04
+700412,88006,2025-07-25,Greenleaf Market,debit,35.64
+700413,88009,2025-07-25,Riverside Utilities,credit,246.28
+700414,88009,2025-07-25,Summit Insurance,credit,892.19
+700415,88005,2025-07-25,Riverside Utilities,debit,6.39
+700416,88009,2025-07-25,Lakeside Gym,debit,29.27
+700417,88007,2025-07-25,Orchard Pharmacy,debit,52.79
+700418,88006,2025-07-25,Northbank Fuel,debit,9.24
+700419,88007,2025-07-26,Orchard Pharmacy,debit,15.37
+700420,88007,2025-07-26,Northbank Fuel,debit,14.42
+700421,88001,2025-07-26,Orchard Pharmacy,debit,44.04
+700422,88012,2025-07-26,Summit Insurance,debit,28.28
+700423,88002,2025-07-26,Metro Transit,debit,26.64
+700424,88005,2025-07-26,Riverside Utilities,debit,25.65
+700425,88007,2025-07-26,Lakeside Gym,debit,16.92
+700426,88006,2025-07-26,Northbank Fuel,debit,10.74
+700427,88003,2025-07-26,Cloudhost Ltd,credit,634.79
+700428,88003,2025-07-26,Lakeside Gym,credit,748.47
+700429,88003,2025-07-26,Northbank Fuel,debit,36.77
+700430,88010,2025-07-27,Metro Transit,credit,382.51
+700431,88003,2025-07-27,Orchard Pharmacy,debit,159.51
+700432,88011,2025-07-27,Payroll deposit,debit,20.91
+700433,88012,2025-07-27,Blue Fig Cafe,credit,831.86
+700434,88001,2025-07-27,Northbank Fuel,debit,47.33
+700435,88007,2025-07-27,Blue Fig Cafe,debit,395.46
+700436,88005,2025-07-27,Northbank Fuel,credit,724.63
+700437,88012,2025-07-27,Riverside Utilities,debit,46.77
+700438,88005,2025-07-27,Orchard Pharmacy,debit,138.47
+700439,88009,2025-07-27,Blue Fig Cafe,debit,3.8
+700440,88001,2025-07-27,Metro Transit,credit,555.67
+700441,88003,2025-07-27,Cloudhost Ltd,debit,28.41
+700442,88007,2025-07-27,Orchard Pharmacy,debit,10.32
+700443,88012,2025-07-28,Greenleaf Market,credit,2096.13
+700444,88006,2025-07-28,Payroll deposit,debit,9.87
+700445,88008,2025-07-28,Riverside Utilities,debit,122.68
+700446,88006,2025-07-28,Greenleaf Market,credit,1043.22
+700447,88003,2025-07-28,Orchard Pharmacy,debit,10.85
+700448,88010,2025-07-29,Metro Transit,debit,147.89
+700449,88010,2025-07-29,Lakeside Gym,debit,211.26
+700450,88004,2025-07-29,Lakeside Gym,credit,1345.45
+700451,88006,2025-07-29,Greenleaf Market,debit,44.18
+700452,88007,2025-07-29,Blue Fig Cafe,debit,32.08
+700453,88007,2025-07-29,Orchard Pharmacy,debit,45.99
+700454,88011,2025-07-29,Orchard Pharmacy,debit,20.25
+700455,88002,2025-07-30,Riverside Utilities,debit,18.19
+700456,88008,2025-07-30,Metro Transit,debit,42.34
+700457,88007,2025-07-30,Summit Insurance,debit,27.2
+700458,88011,2025-07-30,Northbank Fuel,credit,2050.83
+700459,88004,2025-07-30,Lakeside Gym,credit,861.94
+700460,88005,2025-07-30,Payroll deposit,debit,21.87
+700461,88008,2025-07-31,Blue Fig Cafe,credit,1434.04
+700462,88007,2025-07-31,Orchard Pharmacy,debit,48.18
+700463,88002,2025-07-31,Summit Insurance,credit,1023.5
+700464,88011,2025-07-31,Lakeside Gym,debit,42.26
+700465,88012,2025-07-31,Northbank Fuel,credit,1571.63
+700466,88005,2025-08-01,Greenleaf Market,debit,51.79
+700467,88009,2025-08-01,Northbank Fuel,debit,19.1
+700468,88002,2025-08-01,Payroll deposit,credit,703.11
+700469,88001,2025-08-01,Riverside Utilities,debit,72.74
+700470,88010,2025-08-01,Riverside Utilities,debit,53.3
+700471,88011,2025-08-01,Cloudhost Ltd,debit,19.2
+700472,88006,2025-08-01,Metro Transit,debit,24.81
+700473,88005,2025-08-02,Greenleaf Market,debit,14.59
+700474,88006,2025-08-02,Lakeside Gym,debit,55.35
+700475,88005,2025-08-02,Blue Fig Cafe,credit,1065.26
+700476,88012,2025-08-02,Blue Fig Cafe,credit,1081.08
+700477,88009,2025-08-02,Greenleaf Market,debit,17.18
+700478,88008,2025-08-02,Payroll deposit,debit,4.47
+700479,88003,2025-08-02,Cloudhost Ltd,debit,72.82
+700480,88001,2025-08-02,Greenleaf Market,credit,1336.47
+700481,88008,2025-08-03,Orchard Pharmacy,debit,14.07
+700482,88011,2025-08-03,Blue Fig Cafe,debit,55.0
+700483,88004,2025-08-03,Blue Fig Cafe,debit,33.81
+700484,88002,2025-08-03,Northbank Fuel,debit,34.25
+700485,88003,2025-08-03,Northbank Fuel,debit,35.36
+700486,88007,2025-08-03,Metro Transit,debit,14.1
+700487,88012,2025-08-04,Summit Insurance,debit,53.99
+700488,88007,2025-08-04,Northbank Fuel,debit,88.06
+700489,88001,2025-08-04,Northbank Fuel,debit,37.29
+700490,88006,2025-08-04,Northbank Fuel,debit,46.75
+700491,88009,2025-08-04,Payroll deposit,debit,36.85
+700492,88012,2025-08-04,Metro Transit,credit,857.53
+700493,88008,2025-08-04,Northbank Fuel,debit,66.81
+700494,88001,2025-08-04,Northbank Fuel,debit,47.19
+700495,88007,2025-08-04,Greenleaf Market,credit,1198.01
+700496,88008,2025-08-05,Riverside Utilities,debit,24.78
+700497,88002,2025-08-05,Summit Insurance,debit,122.84
+700498,88007,2025-08-05,Metro Transit,debit,18.18
+700499,88008,2025-08-05,Lakeside Gym,debit,44.54
+700500,88011,2025-08-05,Northbank Fuel,credit,1382.17
+700501,88003,2025-08-05,Summit Insurance,debit,72.24
+700502,88007,2025-08-05,Metro Transit,debit,20.77
+700503,88002,2025-08-06,Cloudhost Ltd,debit,56.0
+700504,88009,2025-08-06,Payroll deposit,credit,565.68
+700505,88003,2025-08-06,Metro Transit,debit,49.16
+700506,88008,2025-08-06,Cloudhost Ltd,debit,11.67
+700507,88004,2025-08-06,Orchard Pharmacy,debit,19.64
+700508,88001,2025-08-06,Payroll deposit,debit,164.14
+700509,88001,2025-08-06,Metro Transit,debit,16.32
+700510,88001,2025-08-06,Greenleaf Market,credit,378.69
+700511,88001,2025-08-06,Orchard Pharmacy,debit,21.36
+700512,88009,2025-08-07,Metro Transit,debit,59.14
+700513,88001,2025-08-07,Metro Transit,debit,22.42
+700514,88003,2025-08-07,Northbank Fuel,credit,1758.49
+700515,88009,2025-08-07,Blue Fig Cafe,credit,662.14
+700516,88008,2025-08-08,Greenleaf Market,debit,8.87
+700517,88003,2025-08-08,Summit Insurance,debit,48.52
+700518,88011,2025-08-08,Northbank Fuel,credit,1999.96
+700519,88012,2025-08-09,Cloudhost Ltd,credit,775.69
+700520,88004,2025-08-09,Lakeside Gym,debit,13.91
+700521,88007,2025-08-09,Orchard Pharmacy,credit,1091.5
+700522,88002,2025-08-09,Blue Fig Cafe,credit,1597.2
+700523,88001,2025-08-09,Cloudhost Ltd,debit,41.04
+700524,88005,2025-08-09,Summit Insurance,debit,67.26
+700525,88007,2025-08-09,Lakeside Gym,debit,122.09
+700526,88008,2025-08-10,Greenleaf Market,credit,1077.58
+700527,88012,2025-08-10,Cloudhost Ltd,debit,75.55
+700528,88007,2025-08-10,Lakeside Gym,debit,44.21
+700529,88009,2025-08-10,Summit Insurance,debit,21.02
+700530,88011,2025-08-10,Greenleaf Market,debit,7.68
+700531,88012,2025-08-10,Cloudhost Ltd,debit,13.63
+700532,88008,2025-08-11,Payroll deposit,debit,51.13
+700533,88008,2025-08-11,Orchard Pharmacy,debit,8.57
+700534,88005,2025-08-11,Riverside Utilities,debit,32.02
+700535,88012,2025-08-11,Metro Transit,debit,13.55
+700536,88006,2025-08-11,Orchard Pharmacy,debit,43.54
+700537,88006,2025-08-11,Blue Fig Cafe,debit,5.34
+700538,88005,2025-08-11,Northbank Fuel,debit,45.94
+700539,88009,2025-08-12,Lakeside Gym,debit,27.3
+700540,88012,2025-08-12,Orchard Pharmacy,debit,34.37
+700541,88004,2025-08-12,Payroll deposit,debit,69.69
+700542,88001,2025-08-12,Summit Insurance,debit,122.88
+700543,88007,2025-08-12,Cloudhost Ltd,debit,43.72
+700544,88005,2025-08-12,Lakeside Gym,debit,23.51
+700545,88010,2025-08-12,Payroll deposit,debit,54.87
+700546,88008,2025-08-12,Riverside Utilities,debit,21.24
+700547,88009,2025-08-12,Northbank Fuel,debit,98.78
+700548,88011,2025-08-13,Riverside Utilities,credit,1941.95
+700549,88004,2025-08-13,Orchard Pharmacy,credit,1042.22
+700550,88001,2025-08-13,Blue Fig Cafe,debit,58.54
+700551,88001,2025-08-13,Blue Fig Cafe,debit,34.95
+700552,88003,2025-08-13,Northbank Fuel,debit,21.7
+700553,88003,2025-08-13,Greenleaf Market,debit,10.47
+700554,88008,2025-08-14,Payroll deposit,debit,16.68
+700555,88002,2025-08-14,Cloudhost Ltd,debit,109.56
+700556,88001,2025-08-14,Cloudhost Ltd,credit,889.26
+700557,88010,2025-08-14,Summit Insurance,debit,79.81
+700558,88002,2025-08-14,Riverside Utilities,debit,44.81
+700559,88006,2025-08-14,Northbank Fuel,debit,7.74
+700560,88004,2025-08-14,Metro Transit,debit,35.73
+700561,88001,2025-08-14,Payroll deposit,debit,25.95
+700562,88002,2025-08-14,Riverside Utilities,credit,1457.71
+700563,88001,2025-08-14,Greenleaf Market,debit,11.63
+700564,88011,2025-08-14,Summit Insurance,debit,43.38
+700565,88010,2025-08-14,Metro Transit,credit,705.51
+700566,88010,2025-08-14,Metro Transit,debit,50.54
+700567,88006,2025-08-14,Payroll deposit,debit,15.27
+700568,88001,2025-08-15,Greenleaf Market,debit,76.97
+700569,88008,2025-08-15,Lakeside Gym,debit,24.6
+700570,88011,2025-08-15,Payroll deposit,debit,11.89
+700571,88002,2025-08-15,Metro Transit,credit,1414.59
+700572,88005,2025-08-15,Riverside Utilities,debit,8.22
+700573,88011,2025-08-15,Cloudhost Ltd,debit,90.96
+700574,88006,2025-08-15,Cloudhost Ltd,debit,7.69
+700575,88012,2025-08-16,Greenleaf Market,debit,77.87
+700576,88008,2025-08-16,Northbank Fuel,debit,7.27
+700577,88011,2025-08-16,Lakeside Gym,debit,130.08
+700578,88001,2025-08-16,Metro Transit,credit,742.39
+700579,88005,2025-08-16,Blue Fig Cafe,debit,23.1
+700580,88005,2025-08-17,Orchard Pharmacy,debit,21.7
+700581,88006,2025-08-17,Greenleaf Market,debit,6.55
+700582,88011,2025-08-17,Payroll deposit,debit,20.41
+700583,88009,2025-08-17,Northbank Fuel,debit,5.85
+700584,88009,2025-08-17,Orchard Pharmacy,debit,7.66
+700585,88004,2025-08-18,Summit Insurance,debit,57.42
+700586,88005,2025-08-18,Summit Insurance,debit,8.47
+700587,88007,2025-08-18,Summit Insurance,debit,12.68
+700588,88011,2025-08-18,Northbank Fuel,debit,177.54
+700589,88001,2025-08-18,Cloudhost Ltd,debit,126.23
+700590,88011,2025-08-18,Orchard Pharmacy,credit,1286.84
+700591,88009,2025-08-18,Summit Insurance,debit,125.6
+700592,88003,2025-08-19,Northbank Fuel,debit,11.39
+700593,88010,2025-08-19,Riverside Utilities,debit,242.43
+700594,88011,2025-08-19,Blue Fig Cafe,debit,6.21
+700595,88001,2025-08-19,Greenleaf Market,credit,1138.89
+700596,88009,2025-08-19,Riverside Utilities,debit,6.28
+700597,88004,2025-08-20,Summit Insurance,debit,5.98
+700598,88007,2025-08-20,Summit Insurance,debit,53.82
+700599,88002,2025-08-20,Northbank Fuel,credit,776.08
+700600,88001,2025-08-20,Blue Fig Cafe,debit,16.27
+700601,88003,2025-08-20,Blue Fig Cafe,debit,10.34
+700602,88008,2025-08-20,Payroll deposit,debit,35.41
+700603,88008,2025-08-20,Payroll deposit,credit,1076.22
+700604,88004,2025-08-21,Riverside Utilities,credit,849.13
+700605,88002,2025-08-21,Riverside Utilities,debit,15.72
+700606,88001,2025-08-21,Lakeside Gym,credit,907.89
+700607,88008,2025-08-21,Blue Fig Cafe,debit,38.25
+700608,88008,2025-08-21,Northbank Fuel,debit,17.85
+700609,88005,2025-08-21,Orchard Pharmacy,debit,30.29
+700610,88001,2025-08-21,Cloudhost Ltd,debit,83.68
+700611,88011,2025-08-21,Riverside Utilities,debit,70.24
+700612,88005,2025-08-21,Blue Fig Cafe,debit,5.37
+700613,88008,2025-08-21,Riverside Utilities,debit,54.77
+700614,88008,2025-08-21,Blue Fig Cafe,debit,9.27
+700615,88012,2025-08-22,Metro Transit,debit,46.68
+700616,88008,2025-08-22,Greenleaf Market,debit,62.34
+700617,88004,2025-08-22,Riverside Utilities,debit,122.06
+700618,88007,2025-08-22,Greenleaf Market,debit,69.71
+700619,88009,2025-08-22,Cloudhost Ltd,debit,85.99
+700620,88005,2025-08-22,Riverside Utilities,debit,28.76
+700621,88007,2025-08-22,Northbank Fuel,credit,1154.25
+700622,88006,2025-08-22,Summit Insurance,debit,425.02
+700623,88004,2025-08-23,Greenleaf Market,credit,1507.5
+700624,88009,2025-08-23,Northbank Fuel,debit,103.21
+700625,88010,2025-08-23,Northbank Fuel,debit,4.33
+700626,88009,2025-08-23,Greenleaf Market,debit,14.8
+700627,88002,2025-08-23,Summit Insurance,credit,1135.34
+700628,88012,2025-08-23,Riverside Utilities,debit,90.36
+700629,88006,2025-08-23,Riverside Utilities,debit,288.47
+700630,88002,2025-08-23,Greenleaf Market,debit,67.84
+700631,88007,2025-08-23,Riverside Utilities,debit,16.99
+700632,88007,2025-08-23,Cloudhost Ltd,credit,2851.49
+700633,88002,2025-08-23,Lakeside Gym,debit,117.22
+700634,88007,2025-08-23,Greenleaf Market,credit,2086.11
+700635,88007,2025-08-24,Metro Transit,debit,41.81
+700636,88001,2025-08-24,Lakeside Gym,credit,1872.76
+700637,88009,2025-08-24,Greenleaf Market,debit,48.91
+700638,88001,2025-08-24,Blue Fig Cafe,debit,21.19
+700639,88001,2025-08-24,Lakeside Gym,debit,23.66
+700640,88011,2025-08-24,Lakeside Gym,debit,35.36
+700641,88006,2025-08-24,Blue Fig Cafe,debit,55.34
+700642,88010,2025-08-24,Lakeside Gym,debit,12.81
+700643,88008,2025-08-24,Summit Insurance,debit,58.92
+700644,88012,2025-08-24,Northbank Fuel,debit,32.77
+700645,88010,2025-08-25,Lakeside Gym,debit,19.02
+700646,88003,2025-08-25,Lakeside Gym,debit,40.83
+700647,88006,2025-08-25,Cloudhost Ltd,debit,102.57
+700648,88011,2025-08-26,Metro Transit,debit,103.62
+700649,88004,2025-08-26,Greenleaf Market,debit,261.38
+700650,88006,2025-08-26,Lakeside Gym,credit,469.86
+700651,88007,2025-08-26,Orchard Pharmacy,debit,23.91
+700652,88009,2025-08-26,Metro Transit,debit,25.48
+700653,88012,2025-08-26,Greenleaf Market,debit,27.41
+700654,88002,2025-08-26,Riverside Utilities,debit,21.96
+700655,88008,2025-08-27,Payroll deposit,credit,783.34
+700656,88012,2025-08-27,Blue Fig Cafe,debit,86.18
+700657,88011,2025-08-27,Blue Fig Cafe,debit,35.94
+700658,88007,2025-08-27,Lakeside Gym,debit,65.29
+700659,88006,2025-08-27,Payroll deposit,debit,30.54
+700660,88009,2025-08-27,Blue Fig Cafe,debit,28.32
+700661,88008,2025-08-27,Greenleaf Market,debit,50.92
+700662,88004,2025-08-28,Cloudhost Ltd,debit,85.7
+700663,88001,2025-08-28,Riverside Utilities,debit,75.5
+700664,88009,2025-08-28,Orchard Pharmacy,debit,73.45
+700665,88001,2025-08-28,Blue Fig Cafe,debit,12.64
+700666,88006,2025-08-28,Metro Transit,debit,36.46
+700667,88012,2025-08-28,Lakeside Gym,debit,38.8
+700668,88002,2025-08-28,Metro Transit,debit,33.86
+700669,88009,2025-08-28,Payroll deposit,debit,145.0
+700670,88006,2025-08-28,Riverside Utilities,debit,17.64
+700671,88005,2025-08-28,Cloudhost Ltd,credit,1610.35
+700672,88007,2025-08-28,Cloudhost Ltd,debit,11.97
+700673,88005,2025-08-29,Payroll deposit,debit,56.47
+700674,88006,2025-08-29,Northbank Fuel,debit,10.24
+700675,88001,2025-08-29,Payroll deposit,debit,256.58
+700676,88007,2025-08-30,Lakeside Gym,debit,257.79
+700677,88001,2025-08-30,Greenleaf Market,debit,33.27
+700678,88007,2025-08-30,Lakeside Gym,debit,32.52
+700679,88004,2025-08-30,Greenleaf Market,debit,12.46
+700680,88006,2025-08-30,Riverside Utilities,credit,435.62
+700681,88011,2025-08-30,Metro Transit,debit,35.23
+700682,88010,2025-08-30,Riverside Utilities,debit,85.42
+700683,88008,2025-08-30,Blue Fig Cafe,credit,717.8
+700684,88007,2025-08-30,Northbank Fuel,debit,38.29
+700685,88003,2025-08-31,Greenleaf Market,debit,66.54
+700686,88007,2025-08-31,Blue Fig Cafe,credit,1002.91
+700687,88012,2025-09-01,Orchard Pharmacy,debit,73.25
+700688,88002,2025-09-01,Summit Insurance,debit,34.05
+700689,88006,2025-09-01,Orchard Pharmacy,debit,25.32
+700690,88012,2025-09-01,Orchard Pharmacy,credit,726.31
+700691,88003,2025-09-01,Blue Fig Cafe,debit,94.9
+700692,88004,2025-09-01,Orchard Pharmacy,debit,14.54
+700693,88004,2025-09-02,Metro Transit,debit,23.59
+700694,88008,2025-09-02,Lakeside Gym,debit,41.44
+700695,88004,2025-09-02,Lakeside Gym,debit,31.64
+700696,88001,2025-09-02,Metro Transit,debit,180.39
+700697,88008,2025-09-02,Blue Fig Cafe,credit,495.61
+700698,88001,2025-09-02,Summit Insurance,debit,39.31
+700699,88008,2025-09-02,Riverside Utilities,debit,38.91
+700700,88009,2025-09-02,Lakeside Gym,debit,22.98
+700701,88005,2025-09-03,Summit Insurance,credit,1455.16
+700702,88010,2025-09-03,Summit Insurance,credit,1368.51
+700703,88011,2025-09-03,Lakeside Gym,debit,79.71
+700704,88007,2025-09-03,Riverside Utilities,debit,24.4
+700705,88006,2025-09-03,Lakeside Gym,debit,11.3
+700706,88005,2025-09-03,Greenleaf Market,debit,14.22
+700707,88001,2025-09-03,Riverside Utilities,debit,32.51
+700708,88008,2025-09-03,Payroll deposit,debit,65.34
+700709,88002,2025-09-03,Riverside Utilities,credit,1181.16
+700710,88011,2025-09-04,Cloudhost Ltd,debit,65.11
+700711,88010,2025-09-04,Lakeside Gym,debit,11.59
+700712,88012,2025-09-04,Cloudhost Ltd,debit,22.74
+700713,88010,2025-09-04,Payroll deposit,debit,15.1
+700714,88006,2025-09-04,Metro Transit,credit,1265.38
+700715,88009,2025-09-04,Lakeside Gym,debit,32.66
+700716,88009,2025-09-04,Payroll deposit,debit,307.04
+700717,88002,2025-09-04,Greenleaf Market,debit,28.52
+700718,88008,2025-09-05,Northbank Fuel,debit,17.73
+700719,88009,2025-09-05,Payroll deposit,debit,14.34
+700720,88004,2025-09-05,Orchard Pharmacy,debit,11.67
+700721,88002,2025-09-05,Orchard Pharmacy,debit,47.47
+700722,88008,2025-09-05,Blue Fig Cafe,debit,51.74
+700723,88008,2025-09-05,Payroll deposit,debit,7.07
+700724,88012,2025-09-05,Blue Fig Cafe,debit,8.99
+700725,88006,2025-09-05,Northbank Fuel,debit,39.6
+700726,88008,2025-09-05,Northbank Fuel,credit,408.93
+700727,88009,2025-09-05,Riverside Utilities,debit,39.25
+700728,88010,2025-09-06,Northbank Fuel,credit,595.98
+700729,88010,2025-09-06,Cloudhost Ltd,debit,21.53
+700730,88009,2025-09-06,Orchard Pharmacy,debit,83.46
+700731,88008,2025-09-06,Riverside Utilities,debit,30.23
+700732,88007,2025-09-06,Summit Insurance,credit,1036.35
+700733,88010,2025-09-06,Metro Transit,debit,50.93
+700734,88010,2025-09-06,Metro Transit,debit,47.11
+700735,88006,2025-09-06,Orchard Pharmacy,debit,55.54
+700736,88005,2025-09-06,Lakeside Gym,credit,601.77
+700737,88012,2025-09-06,Metro Transit,debit,68.77
+700738,88001,2025-09-06,Orchard Pharmacy,debit,9.12
+700739,88003,2025-09-07,Cloudhost Ltd,debit,13.93
+700740,88009,2025-09-07,Metro Transit,credit,673.56
+700741,88011,2025-09-07,Metro Transit,debit,22.65
+700742,88004,2025-09-07,Metro Transit,debit,60.12
+700743,88008,2025-09-07,Blue Fig Cafe,debit,29.09
+700744,88011,2025-09-07,Payroll deposit,debit,66.75
+700745,88006,2025-09-08,Summit Insurance,debit,38.66
+700746,88003,2025-09-08,Orchard Pharmacy,debit,46.43
+700747,88007,2025-09-08,Lakeside Gym,debit,79.6
+700748,88009,2025-09-08,Blue Fig Cafe,credit,923.12
+700749,88009,2025-09-08,Blue Fig Cafe,debit,20.07
+700750,88009,2025-09-09,Riverside Utilities,debit,45.66
+700751,88011,2025-09-09,Payroll deposit,debit,2.72
+700752,88002,2025-09-09,Payroll deposit,debit,70.39
+700753,88003,2025-09-09,Metro Transit,debit,51.62
+700754,88001,2025-09-09,Metro Transit,debit,17.23
+700755,88001,2025-09-09,Northbank Fuel,debit,7.28
+700756,88011,2025-09-09,Lakeside Gym,debit,26.66
+700757,88010,2025-09-09,Metro Transit,credit,731.52
+700758,88004,2025-09-09,Northbank Fuel,debit,178.48
+700759,88011,2025-09-09,Riverside Utilities,debit,93.36
+700760,88011,2025-09-09,Lakeside Gym,debit,22.99
+700761,88010,2025-09-09,Blue Fig Cafe,debit,46.4
+700762,88001,2025-09-09,Northbank Fuel,debit,30.73
+700763,88006,2025-09-09,Blue Fig Cafe,debit,39.23
+700764,88004,2025-09-09,Lakeside Gym,debit,70.62
+700765,88004,2025-09-10,Summit Insurance,debit,49.32
+700766,88003,2025-09-10,Metro Transit,debit,47.86
+700767,88001,2025-09-10,Summit Insurance,debit,41.56
+700768,88001,2025-09-10,Riverside Utilities,debit,287.55
+700769,88009,2025-09-10,Blue Fig Cafe,debit,37.01
+700770,88003,2025-09-11,Metro Transit,debit,58.54
+700771,88001,2025-09-11,Riverside Utilities,debit,30.24
+700772,88012,2025-09-11,Greenleaf Market,debit,28.06
+700773,88007,2025-09-11,Northbank Fuel,debit,7.57
+700774,88001,2025-09-11,Cloudhost Ltd,debit,36.62
+700775,88010,2025-09-12,Greenleaf Market,debit,130.98
+700776,88009,2025-09-12,Riverside Utilities,debit,9.45
+700777,88005,2025-09-12,Summit Insurance,credit,558.73
+700778,88007,2025-09-12,Northbank Fuel,debit,6.29
+700779,88005,2025-09-12,Payroll deposit,credit,2128.08
+700780,88005,2025-09-12,Riverside Utilities,credit,1216.19
+700781,88005,2025-09-12,Cloudhost Ltd,debit,27.65
+700782,88006,2025-09-12,Lakeside Gym,credit,1801.82
+700783,88010,2025-09-13,Riverside Utilities,debit,18.48
+700784,88003,2025-09-13,Payroll deposit,credit,831.45
+700785,88009,2025-09-13,Summit Insurance,debit,50.65
+700786,88004,2025-09-13,Summit Insurance,debit,27.76
+700787,88009,2025-09-13,Northbank Fuel,debit,51.81
+700788,88006,2025-09-13,Orchard Pharmacy,debit,14.3
+700789,88008,2025-09-14,Cloudhost Ltd,debit,7.85
+700790,88012,2025-09-14,Northbank Fuel,debit,18.95
+700791,88005,2025-09-14,Northbank Fuel,debit,21.1
+700792,88005,2025-09-14,Cloudhost Ltd,credit,900.62
+700793,88007,2025-09-14,Riverside Utilities,credit,1571.04
+700794,88005,2025-09-14,Cloudhost Ltd,debit,12.2
+700795,88006,2025-09-14,Blue Fig Cafe,debit,50.42
+700796,88007,2025-09-14,Lakeside Gym,debit,42.94
+700797,88011,2025-09-15,Blue Fig Cafe,debit,20.1
+700798,88009,2025-09-15,Summit Insurance,debit,57.59
+700799,88009,2025-09-15,Blue Fig Cafe,debit,63.62
+700800,88001,2025-09-15,Riverside Utilities,debit,47.26
+700801,88011,2025-09-15,Northbank Fuel,credit,1732.6
+700802,88012,2025-09-15,Riverside Utilities,debit,51.44
+700803,88007,2025-09-15,Riverside Utilities,debit,119.13
+700804,88011,2025-09-16,Orchard Pharmacy,debit,311.51
+700805,88011,2025-09-16,Orchard Pharmacy,debit,48.01
+700806,88012,2025-09-16,Northbank Fuel,debit,19.05
+700807,88003,2025-09-16,Cloudhost Ltd,debit,5.55
+700808,88005,2025-09-16,Greenleaf Market,debit,5.04
+700809,88004,2025-09-16,Metro Transit,debit,21.18
+700810,88007,2025-09-16,Metro Transit,credit,304.1
+700811,88011,2025-09-16,Riverside Utilities,credit,1248.75
+700812,88003,2025-09-16,Cloudhost Ltd,debit,87.18
+700813,88012,2025-09-16,Northbank Fuel,credit,993.81
+700814,88005,2025-09-17,Lakeside Gym,debit,22.61
+700815,88010,2025-09-17,Greenleaf Market,debit,68.61
+700816,88003,2025-09-17,Lakeside Gym,credit,295.05
+700817,88008,2025-09-17,Blue Fig Cafe,debit,19.02
+700818,88001,2025-09-17,Northbank Fuel,debit,214.34
+700819,88009,2025-09-17,Cloudhost Ltd,debit,10.61
+700820,88004,2025-09-17,Orchard Pharmacy,debit,27.04
+700821,88004,2025-09-17,Northbank Fuel,debit,9.65
+700822,88004,2025-09-18,Blue Fig Cafe,debit,49.98
+700823,88009,2025-09-18,Cloudhost Ltd,debit,32.77
+700824,88003,2025-09-18,Cloudhost Ltd,debit,20.56
+700825,88002,2025-09-18,Metro Transit,debit,74.29
+700826,88012,2025-09-18,Blue Fig Cafe,debit,28.45
+700827,88003,2025-09-18,Blue Fig Cafe,debit,65.39
+700828,88011,2025-09-18,Lakeside Gym,debit,35.56
+700829,88008,2025-09-18,Cloudhost Ltd,debit,42.02
+700830,88005,2025-09-19,Blue Fig Cafe,debit,26.1
+700831,88004,2025-09-19,Metro Transit,debit,17.07
+700832,88009,2025-09-19,Metro Transit,debit,44.45
+700833,88008,2025-09-19,Orchard Pharmacy,debit,88.84
+700834,88003,2025-09-19,Metro Transit,debit,192.55
+700835,88002,2025-09-19,Lakeside Gym,debit,21.17
+700836,88005,2025-09-19,Cloudhost Ltd,credit,891.17
+700837,88005,2025-09-20,Greenleaf Market,debit,17.85
+700838,88001,2025-09-20,Greenleaf Market,credit,954.3
+700839,88004,2025-09-20,Metro Transit,credit,898.62
+700840,88005,2025-09-20,Payroll deposit,debit,155.05
+700841,88001,2025-09-20,Metro Transit,credit,774.14
+700842,88003,2025-09-20,Orchard Pharmacy,debit,10.64
+700843,88010,2025-09-20,Northbank Fuel,debit,18.74
+700844,88011,2025-09-20,Metro Transit,debit,19.47
+700845,88001,2025-09-21,Greenleaf Market,debit,28.58
+700846,88001,2025-09-21,Riverside Utilities,debit,73.77
+700847,88002,2025-09-21,Metro Transit,credit,2645.33
+700848,88002,2025-09-21,Blue Fig Cafe,debit,35.68
+700849,88012,2025-09-21,Lakeside Gym,credit,1123.53
+700850,88007,2025-09-21,Orchard Pharmacy,debit,46.68
+700851,88004,2025-09-22,Blue Fig Cafe,debit,104.66
+700852,88001,2025-09-22,Greenleaf Market,debit,30.26
+700853,88005,2025-09-22,Northbank Fuel,debit,87.38
+700854,88001,2025-09-22,Payroll deposit,credit,408.03
+700855,88007,2025-09-22,Cloudhost Ltd,debit,20.5
+700856,88009,2025-09-22,Orchard Pharmacy,debit,50.06
+700857,88006,2025-09-22,Cloudhost Ltd,credit,811.63
+700858,88001,2025-09-22,Northbank Fuel,debit,51.33
+700859,88009,2025-09-22,Blue Fig Cafe,debit,74.41
+700860,88011,2025-09-23,Summit Insurance,debit,51.49
+700861,88002,2025-09-23,Payroll deposit,debit,18.38
+700862,88011,2025-09-23,Northbank Fuel,debit,59.68
+700863,88008,2025-09-23,Greenleaf Market,debit,24.12
+700864,88010,2025-09-23,Payroll deposit,debit,41.94
+700865,88008,2025-09-23,Payroll deposit,debit,26.58
+700866,88010,2025-09-24,Orchard Pharmacy,debit,38.41
+700867,88001,2025-09-24,Cloudhost Ltd,debit,44.52
+700868,88006,2025-09-24,Riverside Utilities,debit,61.69
+700869,88004,2025-09-24,Blue Fig Cafe,debit,26.24
+700870,88008,2025-09-24,Cloudhost Ltd,debit,9.18
+700871,88008,2025-09-24,Northbank Fuel,debit,58.25
+700872,88012,2025-09-24,Lakeside Gym,debit,20.6
+700873,88009,2025-09-24,Summit Insurance,credit,754.46
+700874,88002,2025-09-24,Cloudhost Ltd,debit,8.87
+700875,88010,2025-09-24,Payroll deposit,debit,24.55
+700876,88012,2025-09-25,Metro Transit,credit,539.35
+700877,88005,2025-09-25,Orchard Pharmacy,debit,91.38
+700878,88009,2025-09-25,Blue Fig Cafe,debit,59.72
+700879,88007,2025-09-25,Greenleaf Market,debit,59.16
+700880,88007,2025-09-25,Orchard Pharmacy,debit,54.31
+700881,88010,2025-09-25,Blue Fig Cafe,debit,63.54
+700882,88007,2025-09-25,Greenleaf Market,debit,154.97
+700883,88009,2025-09-26,Payroll deposit,debit,37.98
+700884,88010,2025-09-26,Lakeside Gym,debit,38.05
+700885,88001,2025-09-26,Lakeside Gym,debit,21.39
+700886,88009,2025-09-27,Cloudhost Ltd,debit,28.97
+700887,88005,2025-09-27,Orchard Pharmacy,debit,29.31
+700888,88005,2025-09-27,Summit Insurance,debit,57.02
+700889,88001,2025-09-27,Riverside Utilities,credit,1725.85
+700890,88003,2025-09-27,Metro Transit,debit,46.98
+700891,88004,2025-09-27,Greenleaf Market,debit,23.57
+700892,88007,2025-09-27,Lakeside Gym,credit,2233.51
+700893,88007,2025-09-27,Payroll deposit,credit,744.29
+700894,88011,2025-09-28,Payroll deposit,debit,11.51
+700895,88003,2025-09-28,Summit Insurance,debit,29.0
+700896,88010,2025-09-28,Riverside Utilities,debit,112.75
+700897,88004,2025-09-28,Orchard Pharmacy,credit,1533.62
+700898,88006,2025-09-28,Greenleaf Market,credit,556.81
+700899,88002,2025-09-28,Payroll deposit,debit,42.23

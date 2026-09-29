@@ -1,0 +1,27 @@
+# Secrets — never commit. .env holds live API keys.
+.env
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+frontend/tsconfig.tsbuildinfo
+
+# Local tooling, not part of the project
+.claude/
+.agents/
+skills-lock.json
+
+# Generated at runtime
+data/out/
+data/ai_cache/
+*.log
+
+# NOTE: web/ is intentionally committed. It is the built frontend, so a judge
+# can clone and run with Python alone — no Node toolchain required. Rebuild it
+# with `npm --prefix frontend run build`.

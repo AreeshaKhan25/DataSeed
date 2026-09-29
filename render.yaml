@@ -1,0 +1,17 @@
+# One-click deploy on Render. Docker build, so it matches local exactly.
+services:
+  - type: web
+    name: dataseed
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: HOST
+        value: 0.0.0.0
+      # Optional. Without it the AI layer runs on heuristics and everything
+      # still works.
+      - key: ANTHROPIC_API_KEY
+        sync: false

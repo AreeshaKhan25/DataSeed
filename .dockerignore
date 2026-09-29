@@ -1,0 +1,17 @@
+# Keep the build context small and the image free of local state.
+**/node_modules
+**/__pycache__
+**/*.pyc
+.git
+.venv
+.env
+# The frontend is compiled inside the image; a local build would only shadow it.
+web
+frontend/dist
+frontend/tsconfig.tsbuildinfo
+# Local run output and cached model responses.
+data/out
+data/ai_cache
+# Documentation and the source deck: useful in the repo, dead weight in an image.
+docs
+*.pdf

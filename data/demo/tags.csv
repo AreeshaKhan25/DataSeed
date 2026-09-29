@@ -1,0 +1,11 @@
+tag_id,tag_name,tag_group
+500,newsletter,behaviour
+501,high-value,lifecycle
+502,churn-risk,lifecycle
+503,beta-tester,lifecycle
+504,referrer,behaviour
+505,mobile-first,behaviour
+506,enterprise,lifecycle
+507,seasonal,lifecycle
+508,support-heavy,behaviour
+509,advocate,behaviour

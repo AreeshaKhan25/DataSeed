@@ -1,0 +1,19 @@
+services:
+  dataseed:
+    build: .
+    image: dataseed
+    ports:
+      - "8000:8000"
+    environment:
+      # Optional. Without it the AI layer runs on deterministic heuristics and
+      # every feature still works — see README.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      PORT: 8000
+    volumes:
+      # Persist the AI response cache across restarts so a demo never waits on
+      # a cold call.
+      - dataseed-cache:/app/data/ai_cache
+    restart: unless-stopped
+
+volumes:
+  dataseed-cache:

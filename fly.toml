@@ -1,0 +1,30 @@
+# fly.io deploy. `fly launch --no-deploy` then `fly deploy`.
+app = "dataseed"
+primary_region = "lhr"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "8000"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "25s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/health"
+    timeout = "5s"
+
+[[vm]]
+  # The copula fit and the trust report are memory-hungry on large tables.
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1

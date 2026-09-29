@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Statement {{ st.account_number }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F4E79;
+    --ink: #1A1C1F;
+    --muted: #646464;
+    --rule: #E4E9F0;
+    --credit: #15803D;
+    --debit: #C0392B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px; background: #F2F5F9;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink);
+  }
+  .page {
+    max-width: 820px; margin: 0 auto; background: #fff;
+    border: 1px solid var(--rule); border-radius: 16px; padding: 44px 48px;
+    box-shadow: 0 1px 3px rgba(16,24,40,.06), 0 12px 32px rgba(16,24,40,.06);
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; }
+  h1 {
+    font-family: "Space Grotesk", sans-serif; font-size: 26px;
+    letter-spacing: -.4px; margin: 0; color: var(--navy);
+  }
+  .sub { font-family: "Space Mono", monospace; font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .period { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .period b { color: var(--ink); font-family: "Space Mono", monospace; font-weight: 400; }
+
+  .summary { display: flex; gap: 14px; margin: 32px 0 26px; }
+  .stat {
+    flex: 1; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px;
+  }
+  .stat .k {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--muted);
+  }
+  .stat .v {
+    font-family: "Space Grotesk", sans-serif; font-size: 20px; margin-top: 6px;
+  }
+  .stat .v.credit { color: var(--credit); }
+  .stat .v.debit { color: var(--debit); }
+  .stat .v.close { color: var(--navy); }
+
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--muted);
+    text-align: left; padding: 0 0 10px; border-bottom: 1px solid var(--rule);
+  }
+  thead th.r, tbody td.r { text-align: right; }
+  tbody td { padding: 11px 0; border-bottom: 1px solid #F1F4F8; font-size: 13.5px; }
+  tbody td.n { font-family: "Space Mono", monospace; font-size: 13px; }
+  tbody td.credit { color: var(--credit); }
+  tbody td.debit { color: var(--debit); }
+  tbody td.bal { font-weight: 700; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  footer {
+    margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(21,128,61,.10); color: var(--credit);
+    padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+  }
+  .badge.bad { background: rgba(192,57,43,.10); color: var(--debit); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { border: none; box-shadow: none; border-radius: 0; max-width: none; }
+    footer .badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>Account statement</h1>
+      <div class="sub">{{ st.account_number }} &middot; {{ st.holder }}</div>
+    </div>
+    <div class="period">
+      <b>{{ st.period_start.strftime(region.date_format) }}</b> to
+      <b>{{ st.period_end.strftime(region.date_format) }}</b><br>
+      {{ region.name }} &middot; {{ region.currency }}
+    </div>
+  </header>
+
+  <div class="summary">
+    <div class="stat">
+      <div class="k">Opening</div>
+      <div class="v">{{ money(st.opening_balance, region) }}</div>
+    </div>
+    <div class="stat">
+      <div class="k">Paid in</div>
+      <div class="v credit">{{ money(st.total_credits, region) }}</div>
+    </div>
+    <div class="stat">
+      <div class="k">Paid out</div>
+      <div class="v debit">{{ money(st.total_debits, region) }}</div>
+    </div>
+    <div class="stat">
+      <div class="k">Closing</div>
+      <div class="v close">{{ money(st.closing_balance, region) }}</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th class="r">Paid out</th>
+        <th class="r">Paid in</th>
+        <th class="r">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in st.transactions %}
+      <tr>
+        <td class="n">{{ t.date.strftime(region.date_format) }}</td>
+        <td>{{ t.description }}</td>
+        <td class="r n debit">{% if t.debit %}{{ money(t.debit, region) }}{% endif %}</td>
+        <td class="r n credit">{% if t.credit %}{{ money(t.credit, region) }}{% endif %}</td>
+        <td class="r n bal">{{ money(t.balance, region) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <footer>
+    <span>{{ st.transactions | length }} transactions. Running balance computed from the opening balance.</span>
+    {% if st.reconciles() %}
+      <span class="badge"><span class="dot"></span>Balances reconciled</span>
+    {% else %}
+      <span class="badge bad"><span class="dot"></span>Reconciliation failed</span>
+    {% endif %}
+  </footer>
+</div>
+</body>
+</html>

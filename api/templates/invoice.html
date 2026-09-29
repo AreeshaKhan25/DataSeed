@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invoice {{ inv.number }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F4E79;
+    --navy-dark: #163A5C;
+    --ink: #1A1C1F;
+    --muted: #646464;
+    --rule: #E4E9F0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px;
+    background: #F2F5F9;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    color: var(--ink);
+  }
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 44px 48px;
+    box-shadow: 0 1px 3px rgba(16,24,40,.06), 0 12px 32px rgba(16,24,40,.06);
+  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; }
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px; letter-spacing: -.5px; margin: 0; color: var(--navy);
+  }
+  .num { font-family: "Space Mono", monospace; font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .dates { text-align: right; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .dates b { color: var(--ink); font-family: "Space Mono", monospace; font-weight: 400; }
+
+  .parties { display: flex; gap: 48px; margin: 36px 0 28px; }
+  .party { flex: 1; }
+  .label {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .party .name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .party .addr { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  thead th {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--muted);
+    text-align: left; padding: 0 0 10px; border-bottom: 1px solid var(--rule);
+  }
+  thead th.r, tbody td.r { text-align: right; }
+  tbody td {
+    padding: 13px 0; border-bottom: 1px solid #F1F4F8; font-size: 14px;
+  }
+  tbody td.r, tbody td.n { font-family: "Space Mono", monospace; font-size: 13px; }
+
+  .totals { margin-left: auto; width: 290px; margin-top: 22px; }
+  .totals div {
+    display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px;
+  }
+  .totals .v { font-family: "Space Mono", monospace; }
+  .totals .sub { color: var(--muted); }
+  .totals .grand {
+    border-top: 2px solid var(--navy); margin-top: 8px; padding-top: 14px;
+    font-weight: 700; font-size: 18px; color: var(--navy);
+  }
+  .grand .v { font-family: "Space Grotesk", sans-serif; }
+
+  footer {
+    margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(21,128,61,.10); color: #15803D;
+    padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+  }
+  .badge.bad { background: rgba(192,57,43,.10); color: #C0392B; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { border: none; box-shadow: none; border-radius: 0; max-width: none; }
+    footer .badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>INVOICE</h1>
+      <div class="num">#{{ inv.number }}</div>
+    </div>
+    <div class="dates">
+      Issued <b>{{ inv.issued.strftime(region.date_format) }}</b><br>
+      Due <b>{{ inv.due.strftime(region.date_format) }}</b><br>
+      {{ region.name }} &middot; {{ region.currency }}
+    </div>
+  </header>
+
+  <div class="parties">
+    <div class="party">
+      <div class="label">Billed to</div>
+      <div class="name">{{ inv.bill_to_name }}</div>
+      <div class="addr">
+        {% for line in inv.bill_to_address %}{{ line }}<br>{% endfor %}
+      </div>
+    </div>
+    <div class="party">
+      <div class="label">From</div>
+      <div class="name">{{ inv.from_name }}</div>
+      <div class="addr">
+        {% for line in inv.from_address %}{{ line }}<br>{% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="r">Qty</th>
+        <th class="r">Price</th>
+        <th class="r">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in inv.lines %}
+      <tr>
+        <td>{{ line.description }}</td>
+        <td class="r n">{{ line.quantity }}</td>
+        <td class="r n">{{ money(line.unit_price, region) }}</td>
+        <td class="r n">{{ money(line.amount, region) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div class="sub"><span>Subtotal</span><span class="v">{{ money(inv.subtotal, region) }}</span></div>
+    <div class="sub">
+      <span>{{ region.tax_label }} {{ (region.tax_rate * 100) | round(2) | int }}%</span>
+      <span class="v">{{ money(inv.tax, region) }}</span>
+    </div>
+    <div class="grand"><span>Total</span><span class="v">{{ money(inv.total, region) }}</span></div>
+  </div>
+
+  <footer>
+    <span>
+      Payment due within 30 days.
+      {% if inv.source_order_id is not none %}
+        Generated from order {{ inv.source_order_id }}.
+      {% endif %}
+    </span>
+    {% if inv.reconciles() %}
+      <span class="badge"><span class="dot"></span>Totals reconciled</span>
+    {% else %}
+      <span class="badge bad"><span class="dot"></span>Reconciliation failed</span>
+    {% endif %}
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python scripts/make_demo_data.py
+      # 200 checks: engine guarantees, every API route, the AI layer with no
+      # credential set, and the Mistral adapter driven without a network call.
+      - run: python scripts/smoke_test.py
+      - run: python scripts/api_test.py
+      - run: python scripts/ai_test.py
+      - run: python scripts/provider_test.py
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npx tsc -b --pretty false
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t dataseed .
+      - name: the container serves a healthy app
+        run: |
+          docker run -d --name dataseed -p 8000:8000 dataseed
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:8000/api/health; then break; fi
+            sleep 2
+          done
+          curl -sf http://127.0.0.1:8000/api/health
+          curl -sf -X POST http://127.0.0.1:8000/api/projects/demo > /dev/null
+          curl -sf http://127.0.0.1:8000/ | grep -q "<div id=\"root\">"
+          docker rm -f dataseed
