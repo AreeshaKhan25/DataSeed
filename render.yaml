@@ -1,21 +1,26 @@
 # Render blueprint.
 #
 # Native Python rather than Docker: the built frontend is committed in web/, so
-# the image never needs a Node toolchain, and a plain pip install is far less
-# likely to fail on a first deploy than a multi stage build. The Dockerfile is
-# still there for anyone who wants a container.
+# nothing needs a Node toolchain at deploy time, and a plain pip install is far
+# less likely to fail on a first deploy than a multi stage image build. The
+# Dockerfile is still there for anyone who wants a container.
+#
+# Demo data, test fixtures and the compiled frontend are all committed, so the
+# build step is only the dependency install.
 services:
   - type: web
     name: dataseed
     runtime: python
     plan: free
-    region: frankfurt
-    buildCommand: |
-      pip install -r requirements.txt
-      python scripts/make_demo_data.py
-      python scripts/make_test_fixtures.py
+    region: oregon
+    branch: main
+    buildCommand: pip install -r requirements.txt
     startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
+    # Connecting through the GitHub provider gives auto deploy on push. A
+    # service created from a public repository URL has no webhook, so use the
+    # deploy hook in .github/workflows/deploy.yml instead.
+    autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.7"

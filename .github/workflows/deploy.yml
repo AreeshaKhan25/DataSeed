@@ -1,0 +1,74 @@
+name: deploy
+
+# Redeploys the live service on every push to main, but only after the test
+# suites pass. A green build is the gate: a push that breaks the engine should
+# never reach production.
+#
+# This workflow is only needed when the Render service was created from a PUBLIC
+# GIT REPOSITORY, which has no webhook of its own. If the service is connected
+# through the GitHub provider instead, Render deploys on push by itself and this
+# file can be deleted.
+#
+# Setup, once:
+#   1. Render dashboard -> your service -> Settings -> Deploy Hook -> copy the URL
+#   2. GitHub repo -> Settings -> Secrets and variables -> Actions -> New secret
+#      Name:  RENDER_DEPLOY_HOOK
+#      Value: the URL from step 1
+#
+# Without that secret the job is skipped, so the workflow is harmless until it
+# is configured.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python tests/test_engine.py
+      - run: python tests/test_api.py
+      - run: python tests/test_fixtures.py
+      - run: python tests/test_e2e_upload.py
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    # Skips cleanly rather than failing when the hook has not been set up yet.
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Trigger the Render deploy
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "RENDER_DEPLOY_HOOK is not set, so there is nothing to deploy to."
+            echo "See the comment at the top of this file to configure it."
+            exit 0
+          fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$HOOK")
+          echo "Render responded $code"
+          # Render answers 200 with a JSON body, or 201 when it queues a deploy.
+          [ "$code" = "200" ] || [ "$code" = "201" ]
+
+      - name: Wait for the service to answer
+        if: ${{ env.LIVE_URL != '' }}
+        env:
+          LIVE_URL: ${{ vars.LIVE_URL }}
+        run: |
+          for i in $(seq 1 40); do
+            if curl -sf "$LIVE_URL/api/health" > /dev/null; then
+              echo "Live and healthy."
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "The service did not become healthy in ten minutes."
+          exit 1
