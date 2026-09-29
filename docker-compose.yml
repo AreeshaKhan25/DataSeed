@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     environment:
       # Optional. Without it the AI layer runs on deterministic heuristics and
-      # every feature still works — see README.
+      # every feature still works, see README.
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       PORT: 8000
     volumes:

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge AI | Enterprise Synthetic Data Engine</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#c9beff",
+            "surface-tint": "#5f43d4",
+            "primary": "#431fb8",
+            "on-primary-fixed": "#1b0063",
+            "primary-container": "#5b3fd0",
+            "on-primary-container": "#d6ccff",
+            "surface-dim": "#dbd9e0",
+            "tertiary-fixed": "#ffdf90",
+            "background": "#faf8ff",
+            "surface-container-highest": "#e3e1e8",
+            "secondary-container": "#e5dff7",
+            "surface-container": "#efedf4",
+            "on-surface-variant": "#484554",
+            "tertiary-fixed-dim": "#e9c254",
+            "surface-variant": "#e3e1e8",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#474457",
+            "on-tertiary-container": "#503d00",
+            "surface-container-low": "#f4f3fa",
+            "inverse-on-surface": "#f2f0f7",
+            "primary-fixed": "#e6deff",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#e5dff7",
+            "on-primary-fixed-variant": "#4725bc",
+            "tertiary": "#755b00",
+            "surface-bright": "#faf8ff",
+            "on-surface": "#1a1b20",
+            "secondary": "#5f5c70",
+            "on-tertiary": "#ffffff",
+            "on-background": "#1a1b20",
+            "tertiary-container": "#cca73c",
+            "on-secondary-fixed": "#1c192a",
+            "secondary-fixed-dim": "#c9c3da",
+            "surface": "#faf8ff",
+            "outline": "#797586",
+            "on-tertiary-fixed-variant": "#584400",
+            "outline-variant": "#c9c4d7",
+            "surface-container-high": "#e9e7ee",
+            "inverse-primary": "#c9beff",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#656276",
+            "inverse-surface": "#2f3035",
+            "on-tertiary-fixed": "#241a00",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "title-card": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "code-schema": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "title-card": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-default": ["15px", { "lineHeight": "22px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-mesh-gradient {
+      background: linear-gradient(145deg, #e9dfff 0%, #f4e8f7 42%, #f8d9f0 78%, #fff0e3 100%);
+    }
+    .bento-card-glow {
+      box-shadow: 0 16px 36px -8px rgba(91, 63, 208, 0.12), 0 2px 10px -2px rgba(27, 23, 64, 0.04);
+    }
+    .subtle-pulse {
+      animation: pulseGlow 5s ease-in-out infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { opacity: 0.45; transform: scale(1); }
+      100% { opacity: 0.7; transform: scale(1.04); }
+    }
+  </style>
+</head>
+<body class="bg-background font-body-default text-on-surface antialiased overflow-x-hidden min-h-screen">
+<main class="min-h-screen w-full flex flex-col lg:flex-row">
+<!-- LEFT PANEL: Brand, Generative Value Proposition & Glass Bento Showcase -->
+<div class="relative w-full lg:w-1/2 min-h-screen custom-mesh-gradient flex flex-col justify-between p-space-lg lg:p-space-2xl overflow-hidden border-b lg:border-b-0 lg:border-r border-outline-variant/40">
+<!-- Ambient Atmospheric Light Spheres -->
+<div class="absolute -top-24 -left-20 w-96 h-96 bg-primary-fixed rounded-full blur-3xl pointer-events-none subtle-pulse"></div>
+<div class="absolute top-1/2 -right-24 w-80 h-80 bg-[#fce7f3] rounded-full blur-3xl pointer-events-none subtle-pulse"></div>
+<!-- Top Brand Anchor -->
+<header class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-space-sm group cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-md transition-transform duration-200 group-hover:scale-105">
+<span class="material-symbols-outlined text-[24px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight leading-none">SynthForge</span>
+<span class="font-label-ui text-[10px] text-secondary tracking-wider font-semibold uppercase">Enterprise Engine</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/40 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-[#22a06b] animate-ping"></span>
+<span class="font-label-ui text-body-sm text-secondary font-medium">SOC-2 Type II Certified</span>
+</div>
+</header>
+<!-- Center Hero & Frosted Bento Matrix Card -->
+<div class="relative z-10 my-auto py-space-xl max-w-xl mx-auto lg:mx-0">
+<!-- AI Badge Indicator -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-container shadow-xs mb-space-lg border border-tertiary-fixed-dim/40">
+<span class="font-label-ui text-[12px] font-bold tracking-wide">✦ AI-POWERED SYNTHETIC DATA</span>
+</div>
+<!-- Headline & Subtext -->
+<h1 class="font-headline-lg lg:text-[44px] lg:leading-[52px] font-bold text-[#1b1740] tracking-tight mb-space-md">
+          Generate the data you need, without the risk.
+        </h1>
+<p class="font-body-default text-body-default text-secondary text-base lg:text-[17px] leading-relaxed mb-space-xl max-w-lg">
+          Spin up compliant datasets with mathematical guarantees in seconds. Zero production leaks, differential privacy intact, and 100% statistically valid.
+        </p>
+<!-- Floating Glassmorphic Bento Card Preview -->
+<div class="relative rounded-[22px] bg-surface-container-lowest/85 backdrop-blur-xl border border-white/80 p-space-lg bento-card-glow transition-all duration-300 hover:shadow-2xl">
+<!-- Floating Status Pill attached to upper right -->
+<div class="absolute -top-3.5 right-6 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-primary-container text-on-primary text-xs font-semibold shadow-sm tracking-wide">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+<span>HIPAA & GDPR Compliant</span>
+</div>
+<!-- Card Header Cluster -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#22a06b]"></span>
+<span class="font-label-ui text-label-ui text-[#1b1740]">Stream: patient_records_v4</span>
+</div>
+<div class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#ecfdf5] border border-[#a7f3d0] text-[#065f46] font-label-ui text-[11px] font-semibold">
+              Privacy: 100% synthetic
+            </div>
+</div>
+<!-- Mini Synth Data Schema Table -->
+<div class="overflow-hidden rounded-xl border border-outline-variant/30 bg-surface-container-lowest">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/30">
+<th class="py-2.5 px-3 font-label-ui text-[11px] text-secondary font-semibold uppercase tracking-wider">User_ID</th>
+<th class="py-2.5 px-3 font-label-ui text-[11px] text-secondary font-semibold uppercase tracking-wider">Masked_Email</th>
+<th class="py-2.5 px-3 font-label-ui text-[11px] text-secondary font-semibold uppercase tracking-wider text-right">Synthetic_Score</th>
+<th class="py-2.5 px-3 font-label-ui text-[11px] text-secondary font-semibold uppercase tracking-wider text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-code-schema text-[12px]">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3 text-primary font-medium">USR-9842</td>
+<td class="py-2.5 px-3 text-secondary">a***@domain.dev</td>
+<td class="py-2.5 px-3 text-right text-on-surface font-semibold">99.4%</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e0f2fe] text-[#0369a1]">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3 text-primary font-medium">USR-4321</td>
+<td class="py-2.5 px-3 text-secondary">t***@fincloud.io</td>
+<td class="py-2.5 px-3 text-right text-on-surface font-semibold">98.9%</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e0f2fe] text-[#0369a1]">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-2.5 px-3 text-primary font-medium">USR-7109</td>
+<td class="py-2.5 px-3 text-secondary">k***@healthnet.org</td>
+<td class="py-2.5 px-3 text-right text-on-surface font-semibold">99.8%</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e0f2fe] text-[#0369a1]">Verified</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bottom Bento Meta Indicators -->
+<div class="mt-space-md flex items-center justify-between text-secondary font-label-ui text-body-sm">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified">verified</span>
+              Differential Privacy (ε = 0.05)
+            </span>
+<span class="flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_awesome">auto_awesome</span>
+              GAN + Diffusion Model
+            </span>
+</div>
+</div>
+</div>
+<!-- Left Panel Bottom Trust & Metric Stat -->
+<footer class="relative z-10 pt-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-outline-variant/30 text-secondary">
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-[#5b3fd0] text-white flex items-center justify-center font-bold text-xs">SF</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-[#22a06b] text-white flex items-center justify-center font-bold text-xs">NX</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-[#cca73c] text-white flex items-center justify-center font-bold text-xs">AI</div>
+</div>
+<span class="font-label-ui text-body-sm text-[#1b1740] font-semibold">
+            2.4M+ compliant rows generated today
+          </span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary">
+          Trusted by <strong class="text-on-surface font-semibold">850+</strong> engineering teams
+        </div>
+</footer>
+</div>
+<!-- RIGHT PANEL: Precision Authentication Interface -->
+<div class="w-full lg:w-1/2 min-h-screen bg-surface-container-lowest flex flex-col justify-between p-space-md sm:p-space-lg lg:p-space-2xl">
+<!-- Top Utility / Quick Actions -->
+<div class="w-full flex justify-between items-center max-w-[440px] mx-auto pt-2">
+<span class="font-label-ui text-body-sm text-secondary font-medium">SynthForge Cloud Platform</span>
+<a class="inline-flex items-center gap-1 font-label-ui text-body-sm text-secondary hover:text-primary transition-colors" href="#help">
+<span class="material-symbols-outlined text-[16px]" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+<!-- Core Authentication Card Container -->
+<div class="w-full max-w-[440px] mx-auto py-space-md my-auto">
+<!-- Segmented Pill Switcher (Sign In vs Create Account) -->
+<div class="p-1 rounded-full bg-surface-container-low border border-outline-variant/40 flex items-center mb-space-xl">
+<button class="w-1/2 py-2 text-center rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui shadow-sm transition-all duration-150 active:scale-95" type="button">
+            Sign in
+          </button>
+<button class="w-1/2 py-2 text-center rounded-full text-secondary hover:text-on-surface font-label-ui text-label-ui transition-all duration-150 active:scale-95" type="button">
+            Create account
+          </button>
+</div>
+<!-- Header Group -->
+<div class="mb-space-lg text-left">
+<h2 class="font-headline-lg text-[30px] leading-[38px] font-bold text-[#1b1740] tracking-tight">
+            Welcome back
+          </h2>
+<p class="font-body-default text-body-default text-secondary mt-1">
+            Enter your credentials to access your SynthForge workspace.
+          </p>
+</div>
+<!-- Social SSO Buttons -->
+<div class="space-y-space-sm mb-space-lg">
+<!-- Google Button -->
+<button class="w-full h-11 px-4 rounded-[12px] border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low text-on-surface font-label-ui text-label-ui flex items-center justify-center gap-3 transition-colors duration-150 active:scale-95 shadow-xs" type="button">
+<svg class="w-4 h-4" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Continue with Google</span>
+</button>
+<!-- GitHub Button -->
+<button class="w-full h-11 px-4 rounded-[12px] border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low text-on-surface font-label-ui text-label-ui flex items-center justify-center gap-3 transition-colors duration-150 active:scale-95 shadow-xs" type="button">
+<svg class="w-4 h-4 fill-current text-on-surface" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+<span>Continue with GitHub</span>
+</button>
+</div>
+<!-- Divider with Text -->
+<div class="relative flex items-center justify-center my-space-lg">
+<div class="w-full border-t border-outline-variant/40"></div>
+<span class="absolute px-3 bg-surface-container-lowest text-secondary font-label-ui text-body-sm">
+            or continue with email
+          </span>
+</div>
+<!-- Interactive Form -->
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Email Input Field -->
+<div>
+<label class="block font-label-ui text-label-ui text-on-surface mb-1.5" for="work-email">
+              Work Email
+            </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span>
+</div>
+<input class="w-full h-11 pl-10 pr-4 rounded-[12px] bg-surface-container-lowest border border-outline-variant/60 text-on-surface placeholder:text-outline font-body-default text-body-default focus:border-primary-container focus:ring-2 focus:ring-primary-fixed focus:outline-none transition-all duration-150" id="work-email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input Field -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block font-label-ui text-label-ui text-on-surface" for="user-password">
+                Password
+              </label>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+</div>
+<input class="w-full h-11 pl-10 pr-10 rounded-[12px] bg-surface-container-lowest border border-outline-variant/60 text-on-surface placeholder:text-outline font-body-default text-body-default focus:border-primary-container focus:ring-2 focus:ring-primary-fixed focus:outline-none transition-all duration-150" id="user-password" placeholder="••••••••••••" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-secondary hover:text-on-surface transition-colors" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility" id="eye-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Utilities Row: Remember Me & Forgot Password -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input class="w-4 h-4 rounded-[5px] border-outline-variant text-primary-container focus:ring-primary-fixed focus:ring-offset-0 transition-colors" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-secondary">Remember me for 30 days</span>
+</label>
+<a class="font-label-ui text-body-sm font-semibold text-primary-container hover:text-primary transition-colors" href="#forgot">
+              Forgot password?
+            </a>
+</div>
+<!-- Primary Submit CTA Pill Button -->
+<div class="pt-2">
+<button class="w-full h-12 rounded-full bg-primary-container hover:bg-primary text-on-primary font-label-ui text-label-ui font-semibold flex items-center justify-center gap-2 transition-all duration-150 active:scale-95 shadow-md shadow-primary-container/20" type="submit">
+<span>Sign in to SynthForge</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Enterprise SSO Link -->
+<div class="mt-space-lg text-center">
+<p class="font-body-sm text-body-sm text-secondary">
+            Need enterprise SSO? 
+            <a class="font-semibold text-primary-container hover:underline ml-1" href="#contact-sales">Contact sales</a>
+</p>
+</div>
+</div>
+<!-- Legal / Compliance Footer Text under Card -->
+<div class="w-full max-w-[440px] mx-auto text-center pt-space-md border-t border-surface-container">
+<p class="font-body-sm text-body-sm text-secondary text-xs">
+          By signing in, you agree to SynthForge's 
+          <a class="underline hover:text-on-surface transition-colors" href="#terms">Terms of Service</a> 
+          and 
+          <a class="underline hover:text-on-surface transition-colors" href="#privacy">Privacy Policy</a>.
+        </p>
+<p class="font-body-sm text-[11px] text-outline mt-1.5">
+          © 2024 SynthForge AI Inc. All rights reserved.
+        </p>
+</div>
+</div>
+</main>
+<!-- Lightweight Script for Password Visibility Toggle -->
+<script>
+    const togglePasswordBtn = document.getElementById('toggle-password');
+    const passwordInput = document.getElementById('user-password');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    if (togglePasswordBtn && passwordInput && eyeIcon) {
+      togglePasswordBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+      });
+    }
+  </script>
+</body></html>

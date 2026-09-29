@@ -9,7 +9,7 @@ import { Banner, Button, Card, EmptyState, PageTitle, Toggle } from "../componen
 const DESCRIPTIONS: Record<string, string> = {
   csv: "One CSV per table, zipped with the schema and trust report",
   json: "Every table plus the full trust report in one document",
-  sql: "Postgres dump: DDL, data, then foreign keys — restores in any order",
+  sql: "Postgres dump: DDL, data, then foreign keys, restores in any order",
   parquet: "Columnar files, zipped. Smallest on disk",
   excel: "One workbook, one sheet per table",
 };
@@ -111,12 +111,9 @@ export function ExportScreen() {
                     {f.label}
                   </span>
                   {chosen === f.id && (
-                    <motion.span
-                      layoutId="fmt-check"
-                      className="flex h-4 w-4 items-center justify-center rounded-full bg-navy text-white"
-                    >
+                    <span className="flex h-4 w-4 items-center justify-center rounded-full bg-navy text-white">
                       <IconCheck size={10} />
-                    </motion.span>
+                    </span>
                   )}
                 </div>
                 <div className="mt-1 text-[11.5px] leading-snug text-ink-mute">

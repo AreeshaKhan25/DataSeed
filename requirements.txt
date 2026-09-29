@@ -1,4 +1,4 @@
-# Core — everything the platform needs to run.
+# Core, everything the platform needs to run.
 fastapi>=0.110
 uvicorn[standard]>=0.27
 pydantic>=2.6
@@ -11,7 +11,7 @@ Faker>=24.0
 Jinja2>=3.1
 anthropic>=1.9      # AI layer; the platform runs fully without a key
 
-# Optional — each unlocks one extra export format and is degraded gracefully
+# Optional, each unlocks one extra export format and is degraded gracefully
 # with a typed error if absent.
 # pyarrow>=15.0     # Parquet export
 # openpyxl>=3.1     # Excel export

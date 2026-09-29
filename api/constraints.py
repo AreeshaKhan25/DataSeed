@@ -1,4 +1,4 @@
-"""Business rules — the third input the platform accepts.
+"""Business rules, the third input the platform accepts.
 
 A schema says what shape the data has. A business rule says what makes a row
 *valid*: an order cannot ship before it was placed, a quantity is never
@@ -107,6 +107,17 @@ def _violation_mask(frame: pd.DataFrame, c: Constraint) -> pd.Series:
             return empty
         return (values.notna() & ~ok).fillna(False)
 
+    if c.kind == "offset":
+        base = p.get("base_column")
+        if not base or base not in frame.columns:
+            return empty
+        target = pd.to_datetime(frame[c.column], errors="coerce")
+        anchor = pd.to_datetime(frame[base], errors="coerce")
+        both = target.notna() & anchor.notna()
+        gap = (target - anchor).dt.days
+        low, high = float(p.get("min_gap", 0)), float(p.get("max_gap", 0))
+        return (both & ((gap < low) | (gap > high))).fillna(False)
+
     if c.kind == "unique":
         return frame[c.column].duplicated(keep="first") & frame[c.column].notna()
 
@@ -167,7 +178,7 @@ def _repair(
             expected = frame.eval(str(p["expression"]))
         except Exception:  # noqa: BLE001
             return frame, 0, "expression could not be evaluated"
-        frame.loc[mask, c.column] = pd.Series(expected, index=frame.index)[mask].round(2)
+        frame.loc[mask, c.column] = pd.Series(expected, index=frame.index)[mask]
         return frame, count, "recomputed from its inputs"
 
     if c.kind == "comparison":
@@ -225,6 +236,18 @@ def _repair(
             ]
         return frame, count, "redrawn from unused values"
 
+    if c.kind == "offset":
+        base = p["base_column"]
+        anchor = pd.to_datetime(frame[base], errors="coerce")
+        values = np.array(p.get("gap_values") or [0], dtype=float)
+        probs = np.array(p.get("gap_probs") or [1.0], dtype=float)
+        probs = probs / probs.sum()
+        drawn = rng.choice(values, size=count, p=probs)
+        rebuilt = anchor[mask] + pd.to_timedelta(drawn, unit="D")
+        # Keep the original null pattern: a row with no anchor stays empty.
+        frame.loc[mask, c.column] = rebuilt
+        return frame, count, "rebuilt from its anchor date"
+
     if c.kind == "conditional":
         if p.get("then_null", True):
             frame.loc[mask, c.column] = None
@@ -238,6 +261,20 @@ def _repair(
     # regex has no general repair: a pattern says what is valid, never how to
     # construct it. Those rows are dropped and counted.
     return frame, 0, ""
+
+
+# Lower runs first. See the note in apply_constraints.
+_REPAIR_ORDER: dict[str, int] = {
+    "not_null": 10,
+    "conditional": 20,
+    "enum": 30,
+    "range": 40,
+    "regex": 45,
+    "offset": 60,        # derived from another column, so after presence
+    "comparison": 70,
+    "computed": 80,      # derived from several columns, so after their repairs
+    "unique": 90,        # last: every other repair can create a duplicate
+}
 
 
 def active_constraints(
@@ -271,6 +308,12 @@ def apply_constraints(
     results: list[ConstraintResult] = []
     active = active_constraints(constraints, null_override)
     relevant = [c for c in active if c.table == table.name]
+    # Order matters, because one repair can undo another. Presence is settled
+    # first (which value is even there), then the domain, then anything derived
+    # from another column. Filling a missing date from the column's own
+    # distribution and *then* deriving it from its anchor is correct; doing it
+    # the other way round leaves a value unrelated to the row it sits in.
+    relevant.sort(key=lambda c: _REPAIR_ORDER.get(c.kind, 50))
     if not relevant or frame.empty:
         return frame, results
 
@@ -299,7 +342,7 @@ def apply_constraints(
 
 
 # --------------------------------------------------------------------------
-# Inference — business rules learned from the sample
+# Inference, business rules learned from the sample
 # --------------------------------------------------------------------------
 
 def infer_constraints(frames: dict[str, pd.DataFrame], schema: SchemaIR) -> list[Constraint]:
@@ -412,6 +455,115 @@ def infer_constraints(frames: dict[str, pd.DataFrame], schema: SchemaIR) -> list
                     description=f"{target} equals {found_expr}",
                     params={"expression": found_expr, "tolerance": 0.005},
                 ))
+
+        # A date that sits a short, consistent distance after another one:
+        # "shipped 1 to 5 days after ordered". The copula reproduces each date's
+        # own spread and their rank correlation, but not a tight offset, so the
+        # gap comes out hundreds of days wide. Capturing the observed gap turns
+        # the second date into something derived from the first.
+        date_cols = [
+            c.name for c in table.columns
+            if c.dtype in ("date", "datetime") and c.name in frame.columns
+        ]
+        for base in date_cols:
+            for target in date_cols:
+                if target == base:
+                    continue
+                a = pd.to_datetime(frame[base], errors="coerce")
+                b = pd.to_datetime(frame[target], errors="coerce")
+                both = a.notna() & b.notna()
+                if both.sum() < 30:
+                    continue
+                gap = (b[both] - a[both]).dt.days
+                if (gap < 0).any():
+                    continue                      # not a forward offset
+                span = float(gap.max() - gap.min())
+                own_span = float((a[both].max() - a[both].min()).days or 1)
+                # Only when the gap is tight relative to the column's own range,
+                # otherwise the two dates are simply independent.
+                if span > 60 or span > own_span * 0.25:
+                    continue
+                counts = gap.value_counts(normalize=True).sort_index()
+                found.append(Constraint(
+                    table=table.name, kind="offset", column=target,
+                    source="inferred",
+                    description=(
+                        f"{target} falls {int(gap.min())} to {int(gap.max())} "
+                        f"days after {base}"
+                    ),
+                    params={
+                        "base_column": base,
+                        "min_gap": int(gap.min()), "max_gap": int(gap.max()),
+                        "gap_values": [int(v) for v in counts.index],
+                        "gap_probs": [float(v) for v in counts.to_numpy()],
+                    },
+                ))
+
+        # Conditional presence: a column that is null exactly when another
+        # column takes a given value. A copula fits each column separately, so
+        # it scatters those nulls at random and the link is lost. Every single
+        # column can still look right while the rows as a whole are trivially
+        # identifiable, which is what the detection score exists to catch.
+        categorical_cols = [
+            c.name for c in table.columns
+            if c.name in frame.columns
+            and c.semantic not in ("primary_key", "foreign_key")
+            and frame[c.name].dropna().nunique() <= 20
+            and frame[c.name].dropna().nunique() >= 2
+        ]
+        for when_col in categorical_cols:
+            for target in table.columns:
+                if target.name == when_col or target.name not in frame.columns:
+                    continue
+                if target.semantic in ("primary_key", "foreign_key"):
+                    continue
+                null_mask = frame[target.name].isna()
+                # Needs both states present, or there is nothing to condition on.
+                if not (0.02 < null_mask.mean() < 0.98):
+                    continue
+
+                for value in frame[when_col].dropna().unique():
+                    hit = frame[when_col].astype(str) == str(value)
+                    if hit.sum() < 20:
+                        continue
+                    if null_mask[hit].all() and not null_mask[~hit].any():
+                        # Exact both ways: null under this value, never otherwise.
+                        found.append(Constraint(
+                            table=table.name, kind="conditional", column=target.name,
+                            source="inferred",
+                            description=(
+                                f"{target.name} is empty when {when_col} is {value}"
+                            ),
+                            params={
+                                "when_column": when_col, "when_operator": "==",
+                                "when_value": str(value), "then_null": True,
+                            },
+                        ))
+                    elif null_mask[hit].all():
+                        found.append(Constraint(
+                            table=table.name, kind="conditional", column=target.name,
+                            source="inferred",
+                            description=(
+                                f"{target.name} is empty when {when_col} is {value}"
+                            ),
+                            params={
+                                "when_column": when_col, "when_operator": "==",
+                                "when_value": str(value), "then_null": True,
+                            },
+                        ))
+                    elif not null_mask[hit].any() and null_mask.mean() > 0.05:
+                        # Always present under this value, while missing elsewhere.
+                        found.append(Constraint(
+                            table=table.name, kind="conditional", column=target.name,
+                            source="inferred",
+                            description=(
+                                f"{target.name} is always present when {when_col} is {value}"
+                            ),
+                            params={
+                                "when_column": when_col, "when_operator": "==",
+                                "when_value": str(value), "then_null": False,
+                            },
+                        ))
 
         # Date ordering between every pair of date columns that never inverts.
         date_columns = [

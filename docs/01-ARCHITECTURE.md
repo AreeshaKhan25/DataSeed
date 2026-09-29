@@ -1,8 +1,8 @@
-# Architecture — Synthetic Data Platform
+# Architecture, Synthetic Data Platform
 
 ## 0. Design principle
 **One schema, one seed, one pipeline.** Tabular, relational and document generation are not three
-products — they are three *exits* from the same pipeline. Say this on stage; build it this way.
+products, they are three *exits* from the same pipeline. Say this on stage; build it this way.
 
 ```
 Ingest → Profile → Schema IR → [AI enrich] → Plan → Generate → Constrain → Reconcile → Validate → Export
@@ -15,7 +15,7 @@ Get this right and the rest is mechanical.
 
 ---
 
-## 1. Schema IR — the spine of the system
+## 1. Schema IR, the spine of the system
 
 ```python
 class Column(BaseModel):
@@ -59,7 +59,7 @@ class SchemaIR(BaseModel):
 ## 2. Engines
 
 ### 2.1 Tabular engine (default path: Gaussian Copula)
-Fast, deterministic, no GPU, never fails. This is your workhorse — **make it the default**.
+Fast, deterministic, no GPU, never fails. This is your workhorse, **make it the default**.
 
 **Fit**
 1. Per column, build a CDF `F`:
@@ -73,7 +73,7 @@ Fast, deterministic, no GPU, never fails. This is your workhorse — **make it t
 **Sample**
 4. `z ~ N(0, Sigma)` → `u = CDF_normal(z)` → `x = F_inverse(u)`
 
-**Gotchas that will bite you — handle each explicitly**
+**Gotchas that will bite you, handle each explicitly**
 - constant columns → bypass the copula, emit the constant
 - single-category columns → same
 - all-null columns → emit nulls
@@ -84,10 +84,10 @@ Fast, deterministic, no GPU, never fails. This is your workhorse — **make it t
 **Optional "advanced" path:** CTGAN / TVAE via SDV. Slow, flaky, needs torch.
 Ship it behind a toggle labelled *Advanced (slower)*. **Do not put it on the demo path.**
 
-### 2.2 Relational engine — two-pass
+### 2.2 Relational engine, two-pass
 The single most important algorithm in the project.
 
-**Pass 1 — top-down generation**
+**Pass 1, top-down generation**
 1. Build a directed graph: edge `parent -> child` for each FK.
 2. Detect cycles. Break at a `nullable=True` FK (set those to NULL on pass 1, fill them later).
 3. Topological sort.
@@ -99,7 +99,7 @@ The single most important algorithm in the project.
    - `N:N` → build a junction table by sampling `(a_id, b_id)` pairs matched to both degree
      distributions, then **dedupe on the pair** and top up to the target count
 
-**Pass 2 — bottom-up reconciliation**
+**Pass 2, bottom-up reconciliation**
 6. Walk the topological order *in reverse*. Recompute every `DerivedField` from the actual children:
    `orders.total = SUM(order_items.qty * order_items.unit_price)`,
    `orders.item_count = COUNT(order_items)`.
@@ -109,8 +109,8 @@ hoped for. **Parent aggregates are computed, never generated.** Put this on a sl
 
 ### 2.1b Conditional generation (implemented)
 A single copula has one covariance matrix for the whole table, so it can only express relationships
-that hold globally. When a categorical column genuinely partitions the data — premium customers
-behave differently from standard ones — the global fit averages those groups together and the
+that hold globally. When a categorical column genuinely partitions the data, premium customers
+behave differently from standard ones, the global fit averages those groups together and the
 dependence washes out.
 
 The fix is a **mixture**: one copula per group, with the group drawn first.
@@ -131,13 +131,13 @@ The fix is a **mixture**: one copula per group, with the group drawn first.
 - **Primary keys.** Each group's sampler starts its own counter, so keys must be reassigned
   after concatenation or they collide.
 - **PII fingerprints.** A group only sees its own rows, so its collision guard would only know
-  its own values — and could emit a real name belonging to a different group. Every sub-model
+  its own values, and could emit a real name belonging to a different group. Every sub-model
   gets the whole table's fingerprints.
 
 **Measured on the demo data: utility 74.3 → 98.6, fidelity 96.2 → 97.2, detection AUC 0.53 → 0.47.**
 
 **Report it honestly.** The conditioning column and the best utility target can land on the same
-column, because both are driven by the same underlying fact — that column explains the table. The
+column, because both are driven by the same underlying fact, that column explains the table. The
 headline score then partly reflects the modelling choice. The report therefore discloses
 `conditioned_on` and also scores an *independent* target the generator was not conditioned on
 (on the demo: 98.6 on `segment`, 71.1 on `churned`). A number a reviewer cannot check is worth less
@@ -154,7 +154,7 @@ SchemaIR (invoice header + line items) → generate relationally → reconcile t
 
 - **Invoices:** header + lines; tax computed from a region rule table (VAT / GST / sales tax), never by an LLM.
 - **Bank statements:** sort transactions by date, then compute `balance[i] = balance[i-1] + credit - debit`
-  in a single pass. **Never let a model produce the running balance** — it will drift within ten rows.
+  in a single pass. **Never let a model produce the running balance**, it will drift within ten rows.
 - **Query-style generation** ("last 90 days, balance over $500"): parse the natural-language query with
   the LLM into a strict `FilterSpec` (date range, predicates, counts), then apply it as a deterministic
   *constraint* on the generator. **The LLM plans; code executes.**
@@ -162,14 +162,14 @@ SchemaIR (invoice header + line items) → generate relationally → reconcile t
 
 ---
 
-## 3. Constraint engine — repair, then reject
+## 3. Constraint engine, repair, then reject
 Applied after sampling, before validation.
 
 Types: `range`, `regex`, `enum`, `unique`, `cross-column` (`ship_date >= order_date`),
 `computed` (`amount = qty * price`), `conditional` (`if status='cancelled' then paid_at is null`).
 
-**Strategy — the order matters**
-1. **Repair deterministically** — clamp to range, recompute computed fields, swap out-of-order dates,
+**Strategy, the order matters**
+1. **Repair deterministically**, clamp to range, recompute computed fields, swap out-of-order dates,
    redraw duplicate unique values from the unused pool.
 2. **Reject and resample** only what cannot be repaired, with `max_attempts = 5` per row.
 3. After 5 attempts, drop the row, count it, and surface the count in the validation report.
@@ -179,7 +179,7 @@ Types: `range`, `regex`, `enum`, `unique`, `cross-column` (`ship_date >= order_d
 
 ---
 
-## 4. AI layer — 4 scoped jobs, never in the critical path
+## 4. AI layer, 4 scoped jobs, never in the critical path
 
 | # | Job | Model | Input | Output (strict schema) | Fallback on failure |
 |---|---|---|---|---|---|
@@ -193,31 +193,31 @@ Types: `range`, `regex`, `enum`, `unique`, `cross-column` (`ship_date >= order_d
 > pipeline continues. **An LLM never writes a value into the output dataset without validation.**
 
 Jobs 1 and 2 output *proposals shown in the UI for the user to accept or edit*. Human-in-the-loop means
-a wrong AI guess is a UX moment, not a crash. Cache all AI results by `sha256(schema)` — the demo must
+a wrong AI guess is a UX moment, not a crash. Cache all AI results by `sha256(schema)`, the demo must
 never wait on a cold call.
 
 ---
 
-## 5. Validation layer — the Trust Report (your winning feature)
+## 5. Validation layer, the Trust Report (your winning feature)
 
-Four scores, 0–100, plus a hard gate.
+Four scores, 0 100, plus a hard gate.
 
-### A. Integrity — hard gate, must be 100
+### A. Integrity, hard gate, must be 100
 - FK orphans = 0
 - PK uniqueness = 100%
 - Constraint violations = 0
 - Type and nullability conformance = 100%
 
-**If integrity is below 100, export is blocked.** Show that blocked state on stage — an enforced gate
+**If integrity is below 100, export is blocked.** Show that blocked state on stage, an enforced gate
 reads as engineering maturity.
 
-### B. Fidelity — does it look like the real thing?
-- Numeric: Kolmogorov–Smirnov statistic per column, `score = 1 - KS`
+### B. Fidelity, does it look like the real thing?
+- Numeric: Kolmogorov Smirnov statistic per column, `score = 1 - KS`
 - Categorical: Total Variation Distance per column, `score = 1 - TVD`
 - Correlation: `1 - mean(abs(corr_real - corr_synth))` across the matrix
 - Visual: overlaid real vs synthetic histograms per column
 
-### C. Utility — TSTR, the headline number
+### C. Utility, TSTR, the headline number
 ```
 1. split real into train_real (70%) and holdout_real (30%)
 2. fit the generator on train_real ONLY      <- never on the holdout, or every metric leaks
@@ -227,19 +227,19 @@ reads as engineering maturity.
 5. score both on holdout_real (AUC / F1, or R2 / RMSE)
 6. UTILITY = min(1.0, TSTR / TRTR) * 100
 ```
-Above 90 is excellent. 75–90 is good. Below 60 means the generator is under-fitting.
+Above 90 is excellent. 75 90 is good. Below 60 means the generator is under-fitting.
 
 ### D. Privacy
-- Exact-match leakage: synthetic rows identical to a real row must be 0 — drop and resample
+- Exact-match leakage: synthetic rows identical to a real row must be 0, drop and resample
 - **DCR** (Distance to Closest Record): 5th percentile of synth→real nearest-neighbour distance,
   compared against the real→real baseline. `DCR_synth < DCR_baseline` means memorisation.
 - Membership-inference proxy: attacker AUC should sit near 0.5
 - k-anonymity across the quasi-identifier set
 - Optional **DP-lite**: Laplace noise on the fitted marginals and covariance, with the epsilon budget
-  shown in the UI. Label it honestly — "differential noise on fitted statistics, epsilon reported",
+  shown in the UI. Label it honestly, "differential noise on fitted statistics, epsilon reported",
   not "differentially private".
 
-### E. Detection AUC — the best single demo number
+### E. Detection AUC, the best single demo number
 Train a classifier to tell real from synthetic. **AUC near 0.50 means indistinguishable.**
 One number, instantly legible from the back of the room.
 
@@ -257,14 +257,14 @@ One number, instantly legible from the back of the room.
 | Frontend | **Next.js 15 (App Router) + TypeScript + Tailwind + shadcn/ui** | Stitch exports HTML/CSS that ports to Tailwind cleanly |
 | Tables | **TanStack Table** (virtualized) | 100k-row preview without dying |
 | Charts | **Recharts** | Trust Report visuals |
-| ER graph | **React Flow** | The editable relationship canvas — biggest visual win per hour spent |
-| AI | **Claude API** — `claude-opus-5` for inference, `claude-sonnet-5-5` for bulk | |
+| ER graph | **React Flow** | The editable relationship canvas, biggest visual win per hour spent |
+| AI | **Claude API**, `claude-opus-5` for inference, `claude-sonnet-5-5` for bulk | |
 | Repo | pnpm monorepo: `apps/web`, `apps/api`, `packages/shared-types` | TS types generated from OpenAPI means zero drift |
 | Run | `docker compose up` | One command, or you lose 40 minutes on demo day |
 
 ---
 
-## 7. API surface — write this contract before any code
+## 7. API surface, write this contract before any code
 
 ```
 POST   /projects                          -> {id}
@@ -295,7 +295,7 @@ Never mix them.
    `random.` and `np.random.` calls with a CI grep. Test: *same seed produces byte-identical output.*
 3. **Invariants as code.** `validate_integrity(dataset, schema)` runs after **every** generation and
    raises on failure. Export is gated on it, so a violation is impossible to ignore.
-4. **Golden fixtures.** Three seeded schemas — `northwind-lite` (relational), `bank` (documents),
+4. **Golden fixtures.** Three seeded schemas, `northwind-lite` (relational), `bank` (documents),
    `healthcare` (PII and edge cases). Snapshot-test row counts, orphans = 0, violations = 0, reproducibility.
 5. **Property tests** (Hypothesis) on the constraint engine: random schemas in, invariants hold out.
 6. **Hard caps everywhere.** Preview ≤ 100 rows. Generation ≤ 1M rows. Repair ≤ 5 attempts.

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge AI - Create Project (Step 1 of 4)</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f2f0f7",
+            "on-primary-container": "#d6ccff",
+            "surface": "#faf8ff",
+            "secondary-fixed": "#e5dff7",
+            "primary-fixed-dim": "#c9beff",
+            "inverse-primary": "#c9beff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#4725bc",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e3e1e8",
+            "primary": "#431fb8",
+            "primary-fixed": "#e6deff",
+            "on-tertiary-fixed-variant": "#584400",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#474457",
+            "surface-container-high": "#e9e7ee",
+            "surface-dim": "#dbd9e0",
+            "on-secondary-fixed": "#1c192a",
+            "on-surface-variant": "#484554",
+            "surface-container": "#efedf4",
+            "on-primary-fixed": "#1b0063",
+            "on-background": "#1a1b20",
+            "error": "#ba1a1a",
+            "secondary-container": "#e5dff7",
+            "surface-container-highest": "#e3e1e8",
+            "outline-variant": "#c9c4d7",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f3fa",
+            "on-surface": "#1a1b20",
+            "secondary": "#5f5c70",
+            "secondary-fixed-dim": "#c9c3da",
+            "tertiary-container": "#cca73c",
+            "on-tertiary-container": "#503d00",
+            "primary-container": "#5b3fd0",
+            "inverse-surface": "#2f3035",
+            "on-tertiary-fixed": "#241a00",
+            "background": "#faf8ff",
+            "tertiary": "#755b00",
+            "surface-bright": "#faf8ff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#5f43d4",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdf90",
+            "on-secondary": "#ffffff",
+            "outline": "#797586",
+            "tertiary-fixed-dim": "#e9c254",
+            "on-secondary-container": "#656276"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "body-default": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "title-card": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "code-schema": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body-default": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Ambient Glow background wash */
+    .ambient-glow {
+      background: radial-gradient(circle at 50% 15%, rgba(230, 222, 255, 0.45) 0%, rgba(248, 217, 240, 0.25) 40%, rgba(250, 248, 255, 0) 75%);
+    }
+
+    /* Subtle custom card shadow adhering to Level 1 */
+    .bento-card-shadow {
+      box-shadow: 0 4px 20px -2px rgba(91, 63, 208, 0.04), 0 2px 6px -1px rgba(27, 23, 64, 0.02);
+    }
+    .bento-card-active {
+      box-shadow: 0 12px 32px -4px rgba(91, 63, 208, 0.08), 0 4px 12px -2px rgba(27, 23, 64, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-default antialiased min-h-screen flex flex-row selection:bg-secondary-container selection:text-primary">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR COMPONENT (Shared SideNavBar Implementation)                -->
+<!-- ========================================================================= -->
+<aside class="docked h-full w-60 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline z-30 flex flex-col justify-between p-space-md">
+<!-- Top Header & Brand -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm px-space-xs pt-1">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-card text-title-card font-bold text-primary dark:text-inverse-primary leading-tight">SynthForge AI</span>
+<span class="font-body-sm text-body-sm text-secondary">Enterprise Engine</span>
+</div>
+</div>
+<!-- Navigation Tabs (Exact 8 labels & icons from JSON) -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Projects (Active state: exact match with page context) -->
+<a class="flex items-center gap-space-sm bg-secondary-container dark:bg-secondary text-primary dark:text-inverse-primary rounded-full px-space-md py-space-sm font-semibold hover:bg-surface-container-low dark:hover:bg-surface-container transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">folder</span>
+<span>Projects</span>
+</a>
+<!-- Tabular -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">table_chart</span>
+<span>Tabular</span>
+</a>
+<!-- Relational -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span>Relational</span>
+</a>
+<!-- Documents -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span>Documents</span>
+</a>
+<!-- Validation -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Validation</span>
+</a>
+<!-- Exports -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">cloud_download</span>
+<span>Exports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low dark:hover:bg-surface-container hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-95 transition-transform duration-100 font-label-ui text-label-ui" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Actions: PRO AI Card & Footer Links -->
+<div class="flex flex-col gap-space-md pt-space-sm">
+<!-- AI Assistant Card -->
+<div class="p-space-md rounded-[1.25rem] bg-gradient-to-br from-primary-fixed to-surface-container-lowest border border-outline-variant/60 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-ui text-label-ui text-primary font-bold">AI Assistant</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed uppercase tracking-wider">PRO</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-3 leading-snug">Generate relational schemas & synthetic rules with prompt logic.</p>
+<button class="w-full py-1.5 px-space-md rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui hover:bg-primary transition-colors text-center active:scale-95 duration-100 shadow-sm" type="button">
+          Prompt Engine
+        </button>
+</div>
+<!-- Footer Tab Links (JSON specified) -->
+<div class="flex flex-col gap-1 border-t border-outline-variant/40 pt-space-sm">
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-1.5 font-normal hover:bg-surface-container-low hover:text-on-surface font-label-ui text-label-ui transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">auto_stories</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm text-secondary dark:text-secondary-fixed rounded-full px-space-md py-1.5 font-normal hover:bg-surface-container-low hover:text-on-surface font-label-ui text-label-ui transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+<span>Account</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE & TOP BAR CONTAINER                                        -->
+<!-- ========================================================================= -->
+<div class="flex-1 ml-60 flex flex-col min-h-screen">
+<!-- ======================================================================= -->
+<!-- TOP NAV BAR (Shared TopNavBar Implementation)                           -->
+<!-- ======================================================================= -->
+<header class="h-16 flex items-center justify-between px-gutter w-full docked full-width top bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm sticky top-0 z-20">
+<!-- Left side: Breadcrumb Trail & Search Bar (search_bar: on_left) -->
+<div class="flex items-center gap-space-lg">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="hidden lg:flex items-center gap-2 font-label-ui text-label-ui text-secondary">
+<a class="hover:text-primary transition-colors" href="#">Projects</a>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-primary transition-colors">New project</span>
+<span class="text-outline-variant">/</span>
+<span class="font-semibold text-primary dark:text-inverse-primary">Step 1: Source</span>
+</nav>
+<div class="h-4 w-px bg-outline-variant/60 hidden lg:block"></div>
+<!-- Global Search Bar (on_left) -->
+<div class="relative w-80">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="w-full h-9 pl-9 pr-4 rounded-full bg-surface-container-low border border-outline-variant/60 font-body-sm text-body-sm text-on-surface placeholder:text-secondary/70 focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-all" placeholder="Search schemas, generators, docs... ⌘K" type="text"/>
+</div>
+</div>
+<!-- Right side: Trailing Primary Action & Icons & User Avatar -->
+<div class="flex items-center gap-space-md">
+<!-- Primary Trailing Action: "Generate Data" -->
+<button class="h-9 px-space-lg rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui hover:bg-primary transition-colors active:scale-95 shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Generate Data</span>
+</button>
+<div class="h-5 w-px bg-outline-variant/60"></div>
+<!-- Trailing Icon Actions -->
+<button aria-label="Notifications" class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors relative" type="button">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</button>
+<button aria-label="Help" class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<img alt="User workspace profile avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A polished, modern portrait photo of a corporate female AI specialist smiling warmly in soft studio lighting. High-key light-mode aesthetic with clean lavender and white background tones matching the enterprise SaaS platform palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ-I5CvmpnthnuZMzlynlBEwxhHII1nnGz4TWgecuIpw7dCtCwbSEiv_N6Z4291-5QrW7zzm-ON5_WBfdasJikIeDIV7bbed4ir_bnMA0tLxYZvzpjDMhIs8WuniHUqxUVE1OzzVKVETRopJ26zjPlNgI14VUW7oK5x6PxQGxg5WBSH1Spa2iqMfHU2sH4MVLEJZFp0Ye1DTZqt0YouIE6IqDSgKPpkRqmA6txaa-mX9w0JJnvmpFahw"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="font-label-ui text-[12px] font-bold text-on-surface leading-tight">Areesha K.</span>
+<span class="font-body-sm text-[11px] text-secondary leading-none">Senior Engineer</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================================= -->
+<!-- MAIN CONTENT CANVAS (~900px centered container)                       -->
+<!-- ======================================================================= -->
+<main class="flex-1 ambient-glow py-space-xl px-gutter flex flex-col items-center">
+<div class="w-full max-w-[920px] flex flex-col gap-space-xl">
+<!-- STEPPER COMPONENT: 4 Steps Horizontal -->
+<section aria-label="Wizard Steps" class="w-full px-space-md">
+<div class="flex items-center justify-between relative">
+<!-- Background connecting line -->
+<div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-[2px] bg-outline-variant/40 -z-0"></div>
+<!-- Step 1: Source (Active) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui flex items-center justify-center shadow-md ring-4 ring-primary-fixed">
+                1
+              </div>
+<span class="font-label-ui text-label-ui text-primary font-bold tracking-tight">Source</span>
+</div>
+<!-- Step 2: Schema (Pending) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-surface-container-lowest text-secondary border border-outline-variant font-label-ui text-label-ui flex items-center justify-center">
+                2
+              </div>
+<span class="font-label-ui text-label-ui text-secondary font-medium">Schema</span>
+</div>
+<!-- Step 3: Configure (Pending) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-surface-container-lowest text-secondary border border-outline-variant font-label-ui text-label-ui flex items-center justify-center">
+                3
+              </div>
+<span class="font-label-ui text-label-ui text-secondary font-medium">Configure</span>
+</div>
+<!-- Step 4: Generate (Pending) -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-surface-container-lowest text-secondary border border-outline-variant font-label-ui text-label-ui flex items-center justify-center">
+                4
+              </div>
+<span class="font-label-ui text-label-ui text-secondary font-medium">Generate</span>
+</div>
+</div>
+</section>
+<!-- MAIN WIZARD CARD: Radius 20px, White, 1px Border #ECE8F7, 32px Padding -->
+<div class="w-full bg-surface-container-lowest rounded-[20px] border border-[#ECE8F7] bento-card-shadow p-space-xl flex flex-col gap-space-xl">
+<!-- Card Header -->
+<div class="flex flex-col gap-1 border-b border-outline-variant/30 pb-space-lg">
+<h1 class="font-headline-md text-headline-md text-on-surface">How do you want to start?</h1>
+<p class="font-body-default text-body-default text-secondary">Select an ingestion archetype or define constraints from scratch.</p>
+</div>
+<!-- THREE INGESTION ARCHETYPE CARDS -->
+<div aria-label="Ingestion Source Archetypes" class="grid grid-cols-1 md:grid-cols-3 gap-space-md" role="radiogroup">
+<!-- Card 1: Upload a sample dataset (SELECTED STATE) -->
+<div aria-checked="true" class="relative rounded-[18px] p-space-lg bg-[#FAF8FF] border-2 border-primary-container bento-card-active flex flex-col justify-between cursor-pointer transition-all duration-150" role="radio" tabindex="0">
+<!-- Selected Checkmark Badge -->
+<div class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col gap-3 pr-4">
+<!-- 40px Lavender Icon Square -->
+<div class="w-10 h-10 rounded-[12px] bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">dataset</span>
+</div>
+<div>
+<h3 class="font-title-card text-[16px] font-bold text-on-surface mb-1">Upload a sample dataset</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-snug">Infer schema, distributions, and noise directly from existing records.</p>
+</div>
+</div>
+</div>
+<!-- Card 2: Upload a schema file (DEFAULT UNSELECTED) -->
+<div aria-checked="false" class="relative rounded-[18px] p-space-lg bg-surface-container-lowest border border-[#ECE8F7] hover:border-outline-variant hover:bg-surface transition-all duration-150 flex flex-col justify-between cursor-pointer" role="radio" tabindex="0">
+<div class="flex flex-col gap-3">
+<!-- 40px Lavender Icon Square -->
+<div class="w-10 h-10 rounded-[12px] bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">schema</span>
+</div>
+<div>
+<h3 class="font-title-card text-[16px] font-bold text-on-surface mb-1">Upload a schema file</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-snug">Import tables, foreign keys, and column types without real data.</p>
+</div>
+</div>
+</div>
+<!-- Card 3: Describe it in plain English (DEFAULT UNSELECTED + AI BADGE) -->
+<div aria-checked="false" class="relative rounded-[18px] p-space-lg bg-surface-container-lowest border border-[#ECE8F7] hover:border-outline-variant hover:bg-surface transition-all duration-150 flex flex-col justify-between cursor-pointer group" role="radio" tabindex="0">
+<!-- AI Feature Badge: #FFD666 pill -->
+<div class="absolute top-3.5 right-3.5 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FFD666] text-[#1B1740] font-label-ui text-[11px] font-extrabold uppercase tracking-wide shadow-xs">
+<span>✦ AI</span>
+</div>
+<div class="flex flex-col gap-3 pr-4">
+<!-- 40px Lavender Icon Square -->
+<div class="w-10 h-10 rounded-[12px] bg-surface-container flex items-center justify-center text-secondary group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+</div>
+<div>
+<h3 class="font-title-card text-[16px] font-bold text-on-surface mb-1">Describe it in plain English</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-snug">Generate full synthetic relational entities using conversational prompts.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PROJECT CONFIGURATION & UPLOAD SECTION -->
+<div class="flex flex-col gap-space-lg pt-space-xs">
+<!-- Input Grid: Project Name & Data Type Pills -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg items-end">
+<!-- Project Name Field -->
+<div class="flex flex-col gap-2">
+<label class="font-label-ui text-label-ui text-on-surface flex items-center gap-1" for="projectName">
+<span>Project name</span>
+<span class="text-primary">*</span>
+</label>
+<input class="h-11 px-4 rounded-[12px] bg-surface-container-lowest border border-[#ECE8F7] font-body-default text-body-default text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary-fixed transition-all" id="projectName" type="text" value="Customer Onboarding Risk Synthetics"/>
+</div>
+<!-- Data Type Segmented Pill Control -->
+<div class="flex flex-col gap-2">
+<label class="font-label-ui text-label-ui text-on-surface">Data modality</label>
+<div class="h-11 p-1 bg-surface rounded-full border border-[#ECE8F7] flex items-center justify-between">
+<!-- Tabular (Selected) -->
+<button class="flex-1 h-full rounded-full bg-primary-container text-white font-label-ui text-label-ui flex items-center justify-center gap-1.5 shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">grid_on</span>
+<span>Tabular</span>
+</button>
+<!-- Relational -->
+<button class="flex-1 h-full rounded-full text-secondary hover:text-on-surface font-label-ui text-label-ui flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>Relational</span>
+</button>
+<!-- Documents -->
+<button class="flex-1 h-full rounded-full text-secondary hover:text-on-surface font-label-ui text-label-ui flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">article</span>
+<span>Documents</span>
+</button>
+</div>
+</div>
+</div>
+<!-- TWO-COLUMN BOTTOM SETUP: Drag & Drop + Business Rules -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg pt-1">
+<!-- Left Column: Large Dashed Drag-and-Drop Zone -->
+<div class="flex flex-col gap-2">
+<label class="font-label-ui text-label-ui text-on-surface">Sample dataset payload</label>
+<div class="h-[210px] rounded-[16px] border-2 border-dashed border-[#D6CEF8] bg-[#FAF9FE] p-space-md flex flex-col items-center justify-center text-center cursor-pointer hover:bg-secondary-container/20 transition-colors group">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary-container mb-2 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">cloud_upload</span>
+</div>
+<h4 class="font-title-card text-[15px] font-semibold text-on-surface mb-0.5">
+                    Drop CSV, JSON, or SQL here or <span class="text-primary-container underline decoration-primary-container/40 underline-offset-2">browse</span>
+</h4>
+<p class="font-body-sm text-[12px] text-secondary mb-3">Supports up to 250MB per file</p>
+<!-- File-type code chips -->
+<div class="flex flex-wrap items-center justify-center gap-1.5 font-code-schema text-[11px]">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-secondary">.CSV</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-secondary">.JSON</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-secondary">.SQL</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-secondary">.PARQUET</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-secondary">.AVRO</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Business Rules Textarea -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-ui text-label-ui text-on-surface" for="businessRules">Business rules (optional)</label>
+<span class="font-body-sm text-[11px] text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span>Preserves statistical parity</span>
+</span>
+</div>
+<textarea class="w-full h-[210px] p-3.5 rounded-[12px] bg-surface-container-lowest border border-[#ECE8F7] font-body-sm text-body-sm text-on-surface placeholder:text-secondary/60 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary-fixed resize-none leading-relaxed transition-all" id="businessRules" placeholder="e.g. Balance must be positive, signup date after 2024, foreign key cascade from user_id to transaction_ledger" rows="7"></textarea>
+</div>
+</div>
+</div>
+<!-- WIZARD ACTION FOOTER -->
+<div class="border-t border-[#ECE8F7] pt-space-lg flex items-center justify-between">
+<!-- Left Side: Cancel button -->
+<button class="px-space-lg py-2 rounded-full text-secondary hover:text-on-surface hover:bg-secondary-container/50 font-label-ui text-label-ui transition-colors" type="button">
+              Cancel
+            </button>
+<!-- Right Side: Step counter status + Primary Continue Pill -->
+<div class="flex items-center gap-space-lg">
+<span class="font-body-sm text-body-sm text-secondary hidden sm:inline">
+                Step 1 of 4 • <span class="text-on-surface font-medium">Source ingestion</span>
+</span>
+<button class="h-11 px-space-xl rounded-full bg-primary-container text-on-primary hover:bg-primary font-label-ui text-label-ui flex items-center gap-2 shadow-md hover:shadow-lg active:scale-95 transition-all" type="button">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================================= -->
+<!-- GLOBAL FOOTER (Shared Footer Implementation)                           -->
+<!-- ======================================================================= -->
+<footer class="docked full-width bottom bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center py-space-md px-gutter max-w-7xl mx-auto w-full gap-4">
+<div class="flex items-center gap-3">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary text-[16px]">SynthForge</span>
+<span class="font-body-sm text-body-sm text-secondary">© 2024 SynthForge AI Inc. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-space-lg flex-wrap font-label-ui text-label-ui text-secondary dark:text-secondary-fixed">
+<a class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">Terms of Service</a>
+<a class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">Security</a>
+<a class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">Status</a>
+<a class="hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

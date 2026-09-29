@@ -1,7 +1,7 @@
 # Frontend
 
 React 19-era stack: Vite + TypeScript + Tailwind + Framer Motion. No router and no
-data-fetching library — a nine-screen single-page tool does not need either, and each
+data-fetching library, a nine-screen single-page tool does not need either, and each
 one is a dependency plus a build step.
 
 ```bash
@@ -25,7 +25,7 @@ npm run build   # emits into ../web, which FastAPI serves at /
 ```
 src/
   lib/api.ts       typed client; every backend error carries a remedy
-  lib/motion.ts    one motion vocabulary — durations and springs live here
+  lib/motion.ts one motion vocabulary, durations and springs live here
   lib/store.tsx    small context store; screen, project, schema, report, job
   components/      Dock, DataTable, Icons, ui primitives
   screens/         one file per dock destination

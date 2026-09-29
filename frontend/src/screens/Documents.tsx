@@ -19,10 +19,10 @@ import {
 type Kind = "invoice" | "statement";
 
 const TEMPLATES: { kind: Kind; region: string; label: string; note: string }[] = [
-  { kind: "invoice", region: "EU", label: "Invoice — EU", note: "VAT 20%" },
-  { kind: "invoice", region: "UK", label: "Invoice — UK", note: "VAT 20%" },
-  { kind: "invoice", region: "US", label: "Invoice — US", note: "Sales tax 8.75%" },
-  { kind: "invoice", region: "IN", label: "Invoice — India", note: "GST 18%" },
+  { kind: "invoice", region: "EU", label: "Invoice, EU", note: "VAT 20%" },
+  { kind: "invoice", region: "UK", label: "Invoice, UK", note: "VAT 20%" },
+  { kind: "invoice", region: "US", label: "Invoice, US", note: "Sales tax 8.75%" },
+  { kind: "invoice", region: "IN", label: "Invoice, India", note: "GST 18%" },
   { kind: "statement", region: "UK", label: "Bank statement", note: "Running balance" },
 ];
 
@@ -209,7 +209,11 @@ export function Documents() {
   const [index, setIndex] = useState(0);
   const [busy, setBusy] = useState(false);
 
-  const t = TEMPLATES[template];
+  const safeTemplate = Math.min(Math.max(0, template), TEMPLATES.length - 1);
+  const t = TEMPLATES[safeTemplate] ?? TEMPLATES[0];
+
+  const safeIndex = Math.min(Math.max(0, index), Math.max(0, (docs?.length ?? 1) - 1));
+  const current = docs[safeIndex];
 
   const build = useCallback(async () => {
     if (!project) return;
@@ -245,12 +249,10 @@ export function Documents() {
     );
   }
 
-  const current = docs[index];
-
   return (
     <div className="space-y-5">
       <motion.div variants={rise} className="flex flex-wrap items-end justify-between gap-4">
-        <PageTitle sub="Documents are a rendering of the generated tables — the same data, laid out.">
+        <PageTitle sub="Documents are a rendering of the generated tables, the same data, laid out.">
           Documents
         </PageTitle>
         <div className="flex gap-2">
@@ -297,11 +299,7 @@ export function Documents() {
                             ${i === template ? "bg-navy-wash" : "hover:bg-canvas"}`}
               >
                 {i === template && (
-                  <motion.span
-                    layoutId="tpl-active"
-                    className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-navy"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                  />
+                  <span className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-navy" />
                 )}
                 <span className="flex h-[38px] w-[30px] shrink-0 flex-col justify-center gap-[3px] rounded-md border border-line bg-white px-1.5">
                   {[0, 1, 2, 3].map((n) => (
@@ -403,7 +401,7 @@ export function Documents() {
                 </p>
               )}
               <p className="mt-2 text-[11px] leading-snug text-ink-mute">
-                The request is parsed into filters, then applied by code — the model plans, it never
+                The request is parsed into filters, then applied by code, the model plans, it never
                 writes a balance.
               </p>
             </Card>

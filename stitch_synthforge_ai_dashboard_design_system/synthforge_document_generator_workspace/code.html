@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge AI - Document Generator Workspace</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus Jakarta Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#1b0063",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#755b00",
+            "error-container": "#ffdad6",
+            "on-background": "#1a1b20",
+            "primary": "#431fb8",
+            "outline": "#797586",
+            "surface": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "tertiary-container": "#cca73c",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e3e1e8",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#e9c254",
+            "inverse-surface": "#2f3035",
+            "on-surface": "#1a1b20",
+            "secondary-container": "#e5dff7",
+            "on-primary-container": "#d6ccff",
+            "on-primary-fixed-variant": "#4725bc",
+            "on-secondary-fixed-variant": "#474457",
+            "tertiary-fixed": "#ffdf90",
+            "outline-variant": "#c9c4d7",
+            "on-tertiary-fixed-variant": "#584400",
+            "surface-container-high": "#e9e7ee",
+            "secondary": "#5f5c70",
+            "surface-tint": "#5f43d4",
+            "inverse-primary": "#c9beff",
+            "inverse-on-surface": "#f2f0f7",
+            "on-tertiary-container": "#503d00",
+            "background": "#faf8ff",
+            "on-error": "#ffffff",
+            "primary-fixed": "#e6deff",
+            "secondary-fixed": "#e5dff7",
+            "on-tertiary-fixed": "#241a00",
+            "on-surface-variant": "#484554",
+            "primary-container": "#5b3fd0",
+            "primary-fixed-dim": "#c9beff",
+            "surface-container": "#efedf4",
+            "surface-container-low": "#f4f3fa",
+            "secondary-fixed-dim": "#c9c3da",
+            "surface-container-highest": "#e3e1e8",
+            "on-secondary-fixed": "#1c192a",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#656276",
+            "surface-dim": "#dbd9e0",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "title-card": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "display-hero": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+            "label-ui": ["13px", {"lineHeight": "16px", "fontWeight": "600"}],
+            "code-schema": ["13px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "title-card": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "display-hero-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-default": ["15px", {"lineHeight": "22px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .canvas-dot-grid {
+      background-color: #f3f1f8;
+      background-image: radial-gradient(#c9c4d7 0.8px, transparent 0.8px);
+      background-size: 16px 16px;
+    }
+    /* Custom clean scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c9c4d7;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #797586;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-hidden selection:bg-secondary-container selection:text-primary min-w-[1440px]">
+<!-- Topmost App Shell Wrapper -->
+<div class="flex h-screen w-full overflow-hidden">
+<!-- 1. LEFT STATIC NAVIGATION SIDEBAR (240px) -->
+<aside class="w-60 bg-surface-container-lowest border-r border-outline-variant flex flex-col justify-between shrink-0 h-full z-30 select-none">
+<!-- Logo & Navigation Tabs -->
+<div class="p-space-md flex flex-col">
+<!-- Brand Header -->
+<div class="flex items-center gap- space-sm px-space-xs py-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-[12px] bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div>
+<h1 class="font-title-card text-title-card font-bold text-primary tracking-tight">SynthForge AI</h1>
+<p class="font-label-ui text-[11px] text-secondary font-medium tracking-wide">Enterprise Engine</p>
+</div>
+</div>
+<!-- Tab Items -->
+<nav class="flex flex-col gap-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Projects -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="folder">folder</span>
+<span>Projects</span>
+</a>
+<!-- Tabular -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="table_chart">table_chart</span>
+<span>Tabular</span>
+</a>
+<!-- Relational -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="hub">hub</span>
+<span>Relational</span>
+</a>
+<!-- Documents (ACTIVE MATCH from Shared Components) -->
+<a class="flex items-center gap-space-sm bg-secondary-container text-primary rounded-full px-space-md py-space-sm font-label-ui text-label-ui font-semibold shadow-xs" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="description" data-weight="fill" style="font-variation-settings: 'FILL' 1;">description</span>
+<span>Documents</span>
+</a>
+<!-- Validation -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="verified">verified</span>
+<span>Validation</span>
+</a>
+<!-- Exports -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="cloud_download">cloud_download</span>
+<span>Exports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-label-ui text-label-ui hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[19px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Card: AI Assistant & Footer Links -->
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- AI Assistant Card -->
+<div class="p-space-md rounded-[16px] bg-gradient-to-br from-[#EDE7FF] to-[#FAF8FF] border border-[#ECE8F7] flex flex-col gap-2 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 bg-[#FFD666] text-[#1B1740] px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wide">
+<span>✦ AI</span> Assistant
+            </span>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<p class="font-body-sm text-[12px] text-secondary leading-tight">Generate schema templates or test variances with smart prompts.</p>
+<button class="w-full mt-1 bg-surface-container-lowest text-primary border border-outline-variant hover:border-primary-container font-label-ui text-[12px] py-1.5 px-3 rounded-full transition-colors flex items-center justify-center gap-1 font-semibold">
+<span>Ask Assistant</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Documentation & Account Footer Links -->
+<div class="pt-2 border-t border-outline-variant flex flex-col gap-0.5">
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-1 font-label-ui text-body-sm hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]" data-icon="auto_stories">auto_stories</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-1 font-label-ui text-body-sm hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[17px]" data-icon="manage_accounts">manage_accounts</span>
+<span>Account</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Vertical Column (Header + 3-Pane Body) -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-surface">
+<!-- TOP APP BAR (64px) -->
+<header class="h-16 bg-surface-container-lowest border-b border-outline-variant px-gutter flex items-center justify-between shrink-0 z-20">
+<!-- Left: Breadcrumb & Workspace context -->
+<div class="flex items-center gap-3">
+<div class="flex items-center text-secondary font-label-ui text-label-ui gap-2">
+<span class="hover:text-primary cursor-pointer transition-colors">Documents</span>
+<span class="text-outline text-[12px]">/</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Generator</span>
+<span class="text-outline text-[12px]">/</span>
+<span class="text-on-surface font-semibold bg-surface-container-low px-2.5 py-1 rounded-full">Invoice &amp; Statement Engine</span>
+</div>
+</div>
+<!-- Center: Search Bar (⌘K) -->
+<div class="relative w-80 max-w-sm">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full pl-10 pr-10 py-1.5 text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-secondary-container text-[13px] transition-all" placeholder="Search templates, schemas, runs (⌘K)..." type="text"/>
+<kbd class="absolute right-3 top-1/2 -translate-y-1/2 font-code-schema text-[11px] bg-surface-container-lowest border border-outline-variant px-1.5 py-0.5 rounded text-secondary font-medium">⌘K</kbd>
+</div>
+<!-- Right: Primary Action & Profile -->
+<div class="flex items-center gap-3">
+<!-- Primary Violet Pill Button -->
+<button class="bg-primary-container hover:bg-[#4A30B8] active:scale-95 text-on-primary font-label-ui text-label-ui px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm transition-all duration-150">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New project</span>
+</button>
+<!-- Trailing Notifications Action -->
+<div class="relative">
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</div>
+<!-- Help Icon -->
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" title="Help &amp; Documentation">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Divider -->
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<!-- User Avatar & Status -->
+<div class="flex items-center gap-2.5 pl-1 cursor-pointer">
+<img class="w-8 h-8 rounded-full border border-secondary-container object-cover" data-alt="A polished modern portrait photo of Areesha K., a senior synthetic data engineer in her early thirties, smiling confidently in a bright high-tech office with soft violet ambient accent lighting, wearing minimalist smart attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4COZFmwBux6SYd3lWjHLPsTt7iUIzdtO7PkJP-qBJjtZX_Tyu3d6o92EQ4OconYpOSkg3FrMLKGch-0xSCZexvCMgi2mlg4nX324LGprSk8HbLJfJHIjgY7M-UYMwvlMdr2kMNP9G8cNuQmkpOCTGbbMzrNZ-Z_iZIx4CLclPYce9rV-uBHBg0r4CaVzs6rI3QmKstPkiqKA3Kz6nvx_yYRLHjkoT1xnRUNHmTtBlKyzqdyIU11vHCQ"/>
+<div class="flex flex-col text-left">
+<span class="font-label-ui text-[13px] font-semibold text-on-surface leading-tight">Areesha K.</span>
+<span class="font-body-sm text-[11px] text-secondary leading-tight">Senior Engineer</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- THREE-PANE DOCUMENT GENERATOR WORKSPACE -->
+<div class="flex-1 flex overflow-hidden">
+<!-- 1. LEFT WORKSPACE PANEL (Dark Navy #171F3A, 220px) -->
+<aside class="w-[220px] bg-[#171F3A] text-white flex flex-col justify-between shrink-0 p-4 border-r border-[#263156] select-none z-10">
+<div class="flex flex-col gap-4">
+<!-- Header Label -->
+<div class="flex items-center justify-between pt-1">
+<span class="text-[11px] font-bold tracking-wider text-[#8F9CAE] uppercase font-label-ui">WORKSPACE</span>
+<span class="material-symbols-outlined text-[#8F9CAE] text-[16px] hover:text-white cursor-pointer" data-icon="tune">tune</span>
+</div>
+<!-- Modality Tabs -->
+<div class="flex flex-col gap-1.5">
+<span class="text-[10px] font-medium text-[#73829C] uppercase tracking-wider">Modality</span>
+<div class="flex flex-col gap-1 bg-[#10162B] p-1 rounded-xl">
+<!-- Tabular -->
+<button class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[12px] text-[#A6B4CE] hover:text-white hover:bg-[#1E2849] font-label-ui transition-colors text-left">
+<span class="material-symbols-outlined text-[16px]" data-icon="table_chart">table_chart</span>
+<span>Tabular</span>
+</button>
+<!-- Relational -->
+<button class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[12px] text-[#A6B4CE] hover:text-white hover:bg-[#1E2849] font-label-ui transition-colors text-left">
+<span class="material-symbols-outlined text-[16px]" data-icon="hub">hub</span>
+<span>Relational</span>
+</button>
+<!-- Documents (ACTIVE VIOLET PILL) -->
+<button class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[12px] font-semibold bg-primary-container text-white shadow-sm font-label-ui text-left">
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+<span>Documents</span>
+<span class="ml-auto w-1.5 h-1.5 rounded-full bg-[#FFD666]"></span>
+</button>
+</div>
+</div>
+<!-- Datasets & Templates Sub-tree -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-medium text-[#73829C] uppercase tracking-wider">Datasets &amp; Templates</span>
+<span class="text-[10px] text-[#FFD666] font-bold">4 active</span>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Invoices (Active) -->
+<div class="group flex items-center justify-between px-2.5 py-2 rounded-xl bg-[#222C4F] border border-[#3B4874] cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#C9BEFF] text-[16px]" data-icon="receipt_long">receipt_long</span>
+<div class="flex flex-col text-left">
+<span class="text-[12px] font-semibold text-white group-hover:text-[#EDE7FF]">Invoices</span>
+<span class="text-[10px] text-[#9FB0D0]">v2.4 • 50 items</span>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-[#22A06B]"></span>
+</div>
+<!-- Bank Statements -->
+<div class="group flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[#1E2849] border border-transparent hover:border-[#2D3960] cursor-pointer transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#8F9CAE] group-hover:text-white text-[16px]" data-icon="account_balance">account_balance</span>
+<div class="flex flex-col text-left">
+<span class="text-[12px] font-medium text-[#C5D0E6] group-hover:text-white">Bank Statements</span>
+<span class="text-[10px] text-[#73829C]">Retail US (Checking)</span>
+</div>
+</div>
+</div>
+<!-- Tax Forms -->
+<div class="group flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[#1E2849] border border-transparent hover:border-[#2D3960] cursor-pointer transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#8F9CAE] group-hover:text-white text-[16px]" data-icon="assignment">assignment</span>
+<div class="flex flex-col text-left">
+<span class="text-[12px] font-medium text-[#C5D0E6] group-hover:text-white">Tax Forms</span>
+<span class="text-[10px] text-[#73829C]">W-9 / 1099-NEC</span>
+</div>
+</div>
+</div>
+<!-- Receipts -->
+<div class="group flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-[#1E2849] border border-transparent hover:border-[#2D3960] cursor-pointer transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#8F9CAE] group-hover:text-white text-[16px]" data-icon="local_mall">local_mall</span>
+<div class="flex flex-col text-left">
+<span class="text-[12px] font-medium text-[#C5D0E6] group-hover:text-white">Receipts</span>
+<span class="text-[10px] text-[#73829C]">OCR Bench (Point-of-Sale)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Preset Selector -->
+<div class="flex flex-col gap-1.5 pt-1">
+<label class="text-[10px] font-medium text-[#73829C] uppercase tracking-wider">Engine Preset</label>
+<select class="bg-[#10162B] border border-[#2D3960] text-[#D4DEEE] text-[12px] rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-primary-container">
+<option>Enterprise B2B SaaS</option>
+<option>Logistics &amp; Freight Bill</option>
+<option>Medical Diagnostic Form</option>
+</select>
+</div>
+</div>
+<!-- Bottom: AI Custom Template Action -->
+<div class="pt-3 border-t border-[#263156]">
+<button class="w-full bg-[#202744] hover:bg-[#2B355A] border border-[#435284] text-[#EDE7FF] rounded-xl py-2 px-2.5 flex items-center justify-center gap-1.5 text-[12px] font-semibold transition-all">
+<span class="text-[#FFD666]">✦</span>
+<span>AI Custom Template</span>
+</button>
+</div>
+</aside>
+<!-- 2. CENTER PANE — LIVE DOCUMENT CANVAS (Canvas with dot grid) -->
+<main class="flex-1 flex flex-col h-full overflow-hidden canvas-dot-grid relative">
+<!-- Canvas Top Control Bar -->
+<div class="h-14 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant px-6 flex items-center justify-between shrink-0 z-10">
+<!-- Pill Document Switcher -->
+<div class="bg-surface-container-low p-1 rounded-full border border-outline-variant flex items-center">
+<button class="px-3.5 py-1 rounded-full text-label-ui text-[12px] font-semibold bg-surface-container-lowest text-primary shadow-xs">
+                Invoices (Active)
+              </button>
+<button class="px-3.5 py-1 rounded-full text-label-ui text-[12px] font-normal text-secondary hover:text-on-surface transition-colors">
+                Bank statements
+              </button>
+</div>
+<!-- Canvas View & Render Controls -->
+<div class="flex items-center gap-3">
+<!-- Zoom & Fit -->
+<div class="flex items-center gap-1 bg-surface-container-lowest border border-outline-variant rounded-full px-2 py-0.5 shadow-xs">
+<button class="w-7 h-7 flex items-center justify-center text-secondary hover:text-primary" title="Zoom out">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="font-code-schema text-[12px] text-on-surface px-1 font-semibold">100%</span>
+<button class="w-7 h-7 flex items-center justify-center text-secondary hover:text-primary" title="Zoom in">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+<div class="w-[1px] h-4 bg-outline-variant mx-1"></div>
+<button class="text-label-ui text-[11px] text-secondary hover:text-primary px-1.5 py-0.5 rounded">Fit Width</button>
+</div>
+<!-- AI Regenerate Realistic Textures Toggle -->
+<div class="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant rounded-full px-3 py-1 shadow-xs">
+<span class="text-[#755B00] font-bold text-[12px]">✦</span>
+<span class="font-label-ui text-[12px] text-on-surface font-medium">Photorealistic Textures</span>
+<input checked="" class="rounded-[4px] border-outline-variant text-primary-container focus:ring-secondary-container w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+<!-- Regenerate Single Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant hover:border-primary-container text-secondary hover:text-primary transition-all font-label-ui text-[12px] shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="refresh">refresh</span>
+<span>Regenerate Single</span>
+</button>
+</div>
+</div>
+<!-- Document Preview Scroll Area -->
+<div class="flex-1 overflow-y-auto p-8 flex flex-col items-center justify-start gap-6">
+<!-- High-Fidelity A4 White Paper Invoice Sheet -->
+<div class="w-[660px] bg-white rounded-[16px] border border-[#ECE8F7] p-10 flex flex-col justify-between shadow-[0_12px_32px_-4px_rgba(91,63,208,0.06),0_4px_12px_-2px_rgba(27,23,64,0.03)] relative overflow-hidden transition-transform">
+<!-- Subtle Synthetic Watermark Diagonal Ribbon -->
+<div class="absolute -right-16 top-7 rotate-45 bg-[#FAF8FF] border-y border-[#ECE8F7] px-14 py-1 text-center select-none pointer-events-none shadow-xs">
+<span class="font-code-schema text-[9px] font-bold tracking-widest text-primary/70 uppercase">SYNTHFORGE • NO PII</span>
+</div>
+<!-- Sheet Header -->
+<div class="flex flex-col gap-6">
+<!-- Top Row: Title & Invoice Meta -->
+<div class="flex justify-between items-start border-b border-[#ECE8F7] pb-6">
+<div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]" data-icon="layers">layers</span>
+</div>
+<span class="font-headline-md text-[20px] font-bold text-on-surface tracking-tight">SYNTH DATA CO.</span>
+</div>
+<p class="font-body-sm text-[12px] text-secondary mt-1">440 Synthetic Way, Suite 800<br/>San Francisco, CA 94105 • US</p>
+</div>
+<div class="text-right">
+<span class="font-code-schema text-[18px] font-bold text-primary tracking-tight">INVOICE #INV-10432</span>
+<div class="flex flex-col mt-1 font-body-sm text-[12px] text-secondary">
+<span>Date: <strong class="font-code-schema text-on-surface font-semibold">October 24, 2025</strong></span>
+<span>Payment Terms: <strong class="font-code-schema text-on-surface font-semibold">Net 30</strong></span>
+<span>Due Date: <strong class="font-code-schema text-on-surface font-semibold">November 23, 2025</strong></span>
+</div>
+</div>
+</div>
+<!-- Billed To Section -->
+<div class="grid grid-cols-2 gap-6 bg-[#FAF8FF] p-4 rounded-[12px] border border-[#ECE8F7]">
+<div>
+<span class="font-label-ui text-[11px] font-bold uppercase tracking-wider text-secondary">Billed to</span>
+<h2 class="font-title-card text-[15px] font-bold text-on-surface mt-0.5">Northwind Supplies Ltd.</h2>
+<p class="font-body-sm text-[12px] text-secondary leading-snug mt-0.5">
+                      Attn: Accounts Payable<br/>
+                      108 Industrial Pkwy<br/>
+                      Chicago, IL 60607
+                    </p>
+</div>
+<div class="text-right flex flex-col justify-end">
+<span class="font-label-ui text-[11px] font-bold uppercase tracking-wider text-secondary">Payment Method</span>
+<span class="font-code-schema text-[12px] text-on-surface font-medium mt-0.5">ACH Remittance / Direct Deposit</span>
+<span class="font-code-schema text-[11px] text-secondary">Routing: 121000358 • Acct: •••• 9418</span>
+</div>
+</div>
+<!-- Line-Item Table -->
+<div class="mt-2">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#ECE8F7] font-label-ui text-[11px] uppercase tracking-wider text-secondary">
+<th class="py-2.5 font-bold">Item Description</th>
+<th class="py-2.5 text-center font-bold">Qty</th>
+<th class="py-2.5 text-right font-bold">Rate</th>
+<th class="py-2.5 text-right font-bold">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#FAF8FF]">
+<tr class="hover:bg-[#FAF8FF]/60 transition-colors">
+<td class="py-3 font-body-sm text-[13px] text-on-surface">
+<p class="font-semibold text-on-surface">API access — Pro tier</p>
+<p class="text-[11px] text-secondary">1,000,000 synthetic records/month allocation</p>
+</td>
+<td class="py-3 text-center font-code-schema text-[12px] text-secondary">1</td>
+<td class="py-3 text-right font-code-schema text-[12px] text-on-surface">$1,100.00</td>
+<td class="py-3 text-right font-code-schema text-[12px] font-semibold text-on-surface">$1,100.00</td>
+</tr>
+<tr class="hover:bg-[#FAF8FF]/60 transition-colors">
+<td class="py-3 font-body-sm text-[13px] text-on-surface">
+<p class="font-semibold text-on-surface">Onboarding support &amp; schema mapping</p>
+<p class="text-[11px] text-secondary">Initial tabular constraint validation pipeline setup</p>
+</td>
+<td class="py-3 text-center font-code-schema text-[12px] text-secondary">1</td>
+<td class="py-3 text-right font-code-schema text-[12px] text-on-surface">$140.00</td>
+<td class="py-3 text-right font-code-schema text-[12px] font-semibold text-on-surface">$140.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals Section -->
+<div class="flex justify-end pt-2 border-t border-[#ECE8F7]">
+<div class="w-64 flex flex-col gap-1.5">
+<div class="flex justify-between font-body-sm text-[12px] text-secondary">
+<span>Subtotal:</span>
+<span class="font-code-schema text-on-surface font-semibold">$1,240.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-[12px] text-secondary">
+<span>Tax (0.00% reverse charge / exempt):</span>
+<span class="font-code-schema text-on-surface font-semibold">$0.00</span>
+</div>
+<!-- Highlighted Total -->
+<div class="mt-1 flex justify-between items-center bg-[#EDE7FF] p-2.5 rounded-[10px] border border-primary-container/20">
+<span class="font-title-card text-[14px] font-bold text-primary">Total:</span>
+<span class="font-code-schema text-[16px] font-bold text-primary">$1,240.00</span>
+</div>
+</div>
+</div>
+<!-- Realistic Micro-Details: Watermark badge, Remittance & QR Code -->
+<div class="pt-6 mt-4 border-t border-[#ECE8F7] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-[#FAF8FF] border border-[#ECE8F7] rounded-lg p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px] text-outline" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-code-schema text-[10px] text-secondary">Hash: c74f9812-syn-auth</span>
+<span class="inline-flex items-center gap-1 font-label-ui text-[10px] font-semibold text-[#22A06B] bg-[#E8F8F0] px-2 py-0.5 rounded-full mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#22A06B]"></span>
+                        SYNTHFORGE CERTIFIED SYNTHETIC • NO PII
+                      </span>
+</div>
+</div>
+<!-- Signature Line -->
+<div class="text-right flex flex-col items-end">
+<div class="w-36 border-b border-outline-variant border-dashed pb-1">
+<span class="font-serif italic text-primary/80 text-[13px]">Synth Engine AI</span>
+</div>
+<span class="font-body-sm text-[10px] text-outline mt-0.5">Authorized Automated Signature</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Page Carousel & Thumbnails Navigation -->
+<div class="bg-surface-container-lowest border border-outline-variant px-4 py-2 rounded-full shadow-xs flex items-center gap-4">
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container-low text-secondary hover:text-on-surface" title="Previous page">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex items-center gap-2 font-label-ui text-[12px] text-secondary">
+<span>Page</span>
+<input class="w-9 h-7 text-center font-code-schema text-[12px] font-semibold bg-surface-container-low border border-outline-variant rounded-md p-0 focus:outline-none focus:border-primary-container" type="text" value="1"/>
+<span>of 50</span>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-surface-container-low text-secondary hover:text-on-surface" title="Next page">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-1.5 text-secondary hover:text-primary font-label-ui text-[12px] px-2 py-1 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="file_download">file_download</span>
+<span>Download PDF preview</span>
+</button>
+</div>
+<!-- SECONDARY BANK STATEMENT INSET DOCKED CARD -->
+<div class="w-[660px] bg-white rounded-[16px] border border-[#ECE8F7] p-5 shadow-[0_4px_20px_-2px_rgba(91,63,208,0.04)] mb-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#ECE8F7]">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-[#EDE7FF] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h3 class="font-title-card text-[13px] font-bold text-on-surface">Paired Bank Statement Ledger View</h3>
+<p class="font-body-sm text-[11px] text-secondary">Associated audit checking ledger preview</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-[#22A06B] bg-[#E8F8F0] px-2.5 py-0.5 rounded-full font-label-ui">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                  Continuous balance math verified ✓
+                </span>
+</div>
+<!-- Statement Micro-Table -->
+<table class="w-full text-left border-collapse mt-3">
+<thead>
+<tr class="font-label-ui text-[10px] uppercase tracking-wider text-secondary border-b border-[#ECE8F7]">
+<th class="py-1.5">Date</th>
+<th class="py-1.5">Description</th>
+<th class="py-1.5 text-right">Debit</th>
+<th class="py-1.5 text-right">Credit</th>
+<th class="py-1.5 text-right">Balance</th>
+</tr>
+</thead>
+<tbody class="font-code-schema text-[11px] divide-y divide-[#FAF8FF]">
+<tr class="hover:bg-[#FAF8FF]">
+<td class="py-1.5 text-secondary">08-14</td>
+<td class="py-1.5 text-on-surface font-body-sm text-[12px]">Greenleaf Market</td>
+<td class="py-1.5 text-right text-error font-medium">$42.10</td>
+<td class="py-1.5 text-right text-secondary">—</td>
+<td class="py-1.5 text-right font-semibold text-on-surface">$1,204.30</td>
+</tr>
+<tr class="hover:bg-[#FAF8FF]">
+<td class="py-1.5 text-secondary">08-15</td>
+<td class="py-1.5 text-on-surface font-body-sm text-[12px]">Payroll deposit</td>
+<td class="py-1.5 text-right text-secondary">—</td>
+<td class="py-1.5 text-right text-[#22A06B] font-medium">$2,150.00</td>
+<td class="py-1.5 text-right font-semibold text-on-surface">$3,354.30</td>
+</tr>
+<tr class="hover:bg-[#FAF8FF]">
+<td class="py-1.5 text-secondary">08-17</td>
+<td class="py-1.5 text-on-surface font-body-sm text-[12px]">Riverside Utilities</td>
+<td class="py-1.5 text-right text-error font-medium">$96.40</td>
+<td class="py-1.5 text-right text-secondary">—</td>
+<td class="py-1.5 text-right font-semibold text-on-surface">$3,257.90</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- 3. RIGHT PANE (340px) — CONFIGURATION PANEL -->
+<aside class="w-[340px] bg-surface-container-lowest border-l border-outline-variant flex flex-col justify-between shrink-0 h-full overflow-y-auto select-none z-10">
+<!-- Top Configuration Header & Controls -->
+<div class="p-space-lg flex flex-col gap-4">
+<!-- Header -->
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant">
+<span class="font-label-ui text-[12px] font-bold tracking-wider text-secondary uppercase">CONFIGURATION</span>
+<button class="text-primary hover:underline font-label-ui text-[11px] font-semibold">Reset to defaults</button>
+</div>
+<!-- Region Template Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface">Region &amp; Localization</label>
+<select class="w-full bg-surface border border-outline-variant rounded-[12px] px-3 py-2 text-body-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-secondary-container">
+<option selected="">United States (USD, MM/DD/YYYY, Sales Tax)</option>
+<option>United Kingdom (GBP, DD/MM/YYYY, VAT 20%)</option>
+<option>European Union (EUR, DD.MM.YYYY, Reverse Charge)</option>
+<option>Pakistan (PKR, DD/MM/YYYY, FBR Sales Tax)</option>
+</select>
+<span class="font-body-sm text-[11px] text-secondary">Sets date format, currency symbol, and regional tax labels.</span>
+</div>
+<!-- Number of Documents Slider & Preset Chips -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-ui text-label-ui text-on-surface">Batch Volume</label>
+<span class="font-code-schema text-[12px] font-bold text-primary bg-[#EDE7FF] px-2 py-0.5 rounded-full">500 documents (Bulk mode)</span>
+</div>
+<input class="w-full accent-primary-container cursor-pointer" max="2500" min="10" type="range" value="500"/>
+<!-- Preset Chips -->
+<div class="flex items-center gap-1.5">
+<button class="flex-1 py-1 rounded-full text-label-ui text-[11px] border border-outline-variant hover:border-primary-container text-secondary hover:text-primary transition-colors">50</button>
+<button class="flex-1 py-1 rounded-full text-label-ui text-[11px] border border-outline-variant hover:border-primary-container text-secondary hover:text-primary transition-colors">100</button>
+<button class="flex-1 py-1 rounded-full text-label-ui text-[11px] bg-secondary-container text-primary font-bold border border-primary/20">500</button>
+<button class="flex-1 py-1 rounded-full text-label-ui text-[11px] border border-outline-variant hover:border-primary-container text-secondary hover:text-primary transition-colors">2500</button>
+</div>
+</div>
+<!-- Line Items Range Slider -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-ui text-label-ui text-on-surface">Line Items Distribution</label>
+<span class="font-code-schema text-[12px] font-semibold text-secondary">2 – 6 items/doc</span>
+</div>
+<input class="w-full accent-primary-container cursor-pointer" max="8" min="1" type="range" value="4"/>
+<span class="font-body-sm text-[11px] text-secondary">Stochastic variation: 1 – 8 items per doc</span>
+</div>
+<!-- Tax Rate & Auto-Calculate -->
+<div class="grid grid-cols-2 gap-3 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface">Tax Rate</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded-[12px] px-3 py-1.5 font-code-schema text-[13px] text-on-surface focus:outline-none focus:border-primary-container" type="text" value="8.25%"/>
+</div>
+</div>
+<div class="flex items-center gap-2 pb-2">
+<input checked="" class="rounded-[4px] border-outline-variant text-primary-container focus:ring-secondary-container w-4 h-4 cursor-pointer" id="autoCalc" type="checkbox"/>
+<label class="font-body-sm text-[12px] text-on-surface cursor-pointer select-none" for="autoCalc">Auto-calculate</label>
+</div>
+</div>
+<!-- Date Range Picker -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface">Generation Date Range</label>
+<div class="flex items-center bg-surface border border-outline-variant rounded-[12px] px-3 py-1.5 text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-outline text-[16px] mr-2" data-icon="calendar_month">calendar_month</span>
+<span class="font-code-schema text-[12px]">Aug 01, 2025 – Oct 31, 2025</span>
+</div>
+</div>
+<!-- AI Query Box with signature yellow "✦ AI" chip -->
+<div class="bg-[#FAF8FF] border border-[#ECE8F7] rounded-[16px] p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 bg-[#FFD666] text-[#1B1740] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+<span>✦ AI</span> Query
+                </span>
+<span class="font-body-sm text-[11px] text-secondary">Natural Language</span>
+</div>
+<textarea class="w-full bg-white border border-[#ECE8F7] rounded-[10px] p-2 text-[12px] font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container resize-none" placeholder="Describe it: last 90 days, balance over $500, realistic SaaS vendors..." rows="2"></textarea>
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] text-secondary">Prompt chip:</span>
+<button class="bg-[#EDE7FF] hover:bg-[#e1d7fd] text-primary text-[11px] font-semibold px-2 py-0.5 rounded-full transition-colors">
+                  SaaS B2B Invoices ✦
+                </button>
+</div>
+</div>
+<!-- Output Format Segmented Control -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-ui text-label-ui text-on-surface">Output Format</label>
+<div class="bg-surface-container-low p-1 rounded-full border border-outline-variant flex items-center">
+<button class="flex-1 py-1 rounded-full text-label-ui text-[12px] font-semibold bg-primary-container text-white shadow-xs">
+                  PDF
+                </button>
+<button class="flex-1 py-1 rounded-full text-label-ui text-[12px] font-normal text-secondary hover:text-on-surface transition-colors">
+                  JSON
+                </button>
+<button class="flex-1 py-1 rounded-full text-label-ui text-[12px] font-normal text-secondary hover:text-on-surface transition-colors">
+                  CSV
+                </button>
+</div>
+</div>
+<!-- Reconciliation Status Card -->
+<div class="p-3 rounded-[14px] bg-[#E8F8F0] border border-[#22A06B]/20 flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 text-[#22A06B]">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span>
+<span class="font-label-ui text-[12px] font-bold">Totals reconcile automatically ✓</span>
+</div>
+<p class="font-body-sm text-[11px] text-[#285741] leading-tight">
+                Mathematical parity guaranteed across all line items and statement ledgers.
+              </p>
+</div>
+</div>
+<!-- Bottom Actions / CTAs -->
+<div class="p-space-lg border-t border-outline-variant bg-surface-container-lowest flex flex-col gap-2 shrink-0">
+<!-- Full-width Violet Pill CTA -->
+<button class="w-full bg-primary-container hover:bg-[#4A30B8] active:scale-95 text-white font-label-ui text-label-ui py-2.5 rounded-full flex items-center justify-center gap-1.5 shadow-sm transition-all duration-150 font-semibold">
+<span>Generate &amp; export (500 docs)</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary Outlined Button -->
+<button class="w-full bg-transparent border-[1.5px] border-primary-container text-primary-container hover:bg-[#EDE7FF] active:scale-95 font-label-ui text-label-ui py-2 rounded-full flex items-center justify-center gap-1.5 transition-all duration-150 font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+<span>Test Single PDF</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,6 +1,6 @@
-# DataSeed — Synthetic Data Platform
+# DataSeed, Synthetic Data Platform
 
-Realistic, privacy-safe **tabular**, **relational** and **document** data, generated on demand —
+Realistic, privacy-safe **tabular**, **relational** and **document** data, generated on demand
 and a Trust Report that proves the output is actually usable.
 
 ## Run it with Docker (one command, nothing else installed)
@@ -37,8 +37,8 @@ Run both before the demo.
 | **Conditional** | Where a categorical column genuinely partitions the data, the generator fits one copula per group instead of averaging them together. Chosen from the data by correlation ratio, and disclosed in the report. |
 | **Relational** | Two passes. Top-down, parents first, each child drawing its row count from the real children-per-parent distribution. Then bottom-up, recomputing parent aggregates from the children that actually exist. |
 | **Documents** | Invoices and bank statements rendered from the same generated tables. Tax comes from a region rule table; running balances are computed in one pass. |
-| **Trust Report** | Integrity, Fidelity, Utility (TSTR) and Privacy — with export blocked when integrity fails. |
-| **AI layer** | Four scoped jobs — semantic typing, relationship inference, free-text synthesis, edge-case proposal — each schema-validated with a deterministic fallback. |
+| **Trust Report** | Integrity, Fidelity, Utility (TSTR) and Privacy, with export blocked when integrity fails. |
+| **AI layer** | Four scoped jobs, semantic typing, relationship inference, free-text synthesis, edge-case proposal, each schema-validated with a deterministic fallback. |
 | **Interface** | Nine screens, React + Framer Motion, served by the same process at `/`. |
 
 ## The guarantees, and where they are enforced
@@ -48,10 +48,10 @@ Each of these is a test, not a claim.
 | Guarantee | Enforced in |
 |---|---|
 | Same seed produces byte-identical output | `api/seeds.py` |
-| No synthetic row is a copy of a real one | `api/engine.py` — source values kept as one-way fingerprints |
+| No synthetic row is a copy of a real one | `api/engine.py`, source values kept as one-way fingerprints |
 | Names, emails and free text are regenerated, never resampled | `api/engine.py` |
 | Zero orphan foreign keys, zero duplicate primary keys | `api/relational.py` |
-| Parent totals equal the sum of their line items | `api/relational.py` — computed, never generated |
+| Parent totals equal the sum of their line items | `api/relational.py`, computed, never generated |
 | Invoice total = subtotal + tax | `api/documents.py` |
 | `balance[i] = balance[i-1] + credit - debit` | `api/documents.py` |
 | Export refuses to run when integrity fails | `api/main.py` |
@@ -127,7 +127,7 @@ reaches the screen.
   typed error naming the missing package; everything else still works.
 - **The AI layer is optional, and provider-agnostic.** It uses Anthropic when `ANTHROPIC_API_KEY`
   is set, Mistral when `MISTRAL_API_KEY` is, and deterministic heuristics when neither is.
-  All three go through the same schema-validated contract — Mistral is a substitute, not a
+  All three go through the same schema-validated contract, Mistral is a substitute, not a
   degraded mode. `scripts/ai_test.py` removes the key and asserts the product still works;
   `scripts/provider_test.py` proves the Mistral adapter without spending a request.
 - **AI proposals are never applied automatically.** Jobs 1 and 2 return suggestions the user

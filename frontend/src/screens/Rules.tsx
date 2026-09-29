@@ -68,15 +68,17 @@ export function Rules() {
     );
   }
 
-  const tables = Array.from(new Set(rules.map((r) => r.table)));
-  const shown = filter === "all" ? rules : rules.filter((r) => r.table === filter);
+  const safeRules = rules ?? [];
+  const safeResults = results ?? {};
+  const tables = Array.from(new Set(safeRules.map((r) => r.table)));
+  const shown = filter === "all" ? safeRules : safeRules.filter((r) => r.table === filter);
 
-  const fired = Object.entries(results).flatMap(([table, list]) =>
-    list.filter((r) => r.violations_before > 0).map((r) => ({ ...r, table })),
+  const fired = Object.entries(safeResults).flatMap(([table, list]) =>
+    (list ?? []).filter((r) => (r.violations_before ?? 0) > 0).map((r) => ({ ...r, table })),
   );
-  const totalFound = fired.reduce((n, r) => n + r.violations_before, 0);
-  const totalRepaired = fired.reduce((n, r) => n + r.repaired, 0);
-  const totalDropped = fired.reduce((n, r) => n + r.dropped, 0);
+  const totalFound = fired.reduce((n, r) => n + (r.violations_before ?? 0), 0);
+  const totalRepaired = fired.reduce((n, r) => n + (r.repaired ?? 0), 0);
+  const totalDropped = fired.reduce((n, r) => n + (r.dropped ?? 0), 0);
 
   const toggle = async (rule: Rule) => {
     const res = await run(() => api.toggleRule(project.id, rule.id, !rule.enabled));
@@ -91,7 +93,7 @@ export function Rules() {
   return (
     <div className="space-y-5">
       <motion.div variants={rise} className="flex flex-wrap items-end justify-between gap-4">
-        <PageTitle sub="What makes a row valid — the domain logic a distribution cannot express.">
+        <PageTitle sub="What makes a row valid, the domain logic a distribution cannot express.">
           Business rules
         </PageTitle>
         <div className="flex gap-2">
@@ -129,7 +131,7 @@ export function Rules() {
       {fired.length > 0 && (
         <Banner
           tone={totalDropped > 0 ? "amber" : "grass"}
-          title={`${totalFound.toLocaleString()} violations caught in the last run — ${totalRepaired.toLocaleString()} repaired${
+          title={`${totalFound.toLocaleString()} violations caught in the last run, ${totalRepaired.toLocaleString()} repaired${
             totalDropped ? `, ${totalDropped} dropped` : ", none dropped"
           }`}
           body="Statistical fitting produces rows that break domain logic. These rules catch them before the data leaves the platform."
@@ -196,7 +198,7 @@ export function Rules() {
                         </div>
                         <div className="mt-0.5 text-[11.5px] text-ink-mute">
                           {rule.table}
-                          {rule.column ? `.${rule.column}` : ""} — {KIND_HELP[rule.kind] ?? ""}
+                          {rule.column ? `.${rule.column}`: ""}, {KIND_HELP[rule.kind] ?? ""}
                         </div>
                         {outcome && outcome.violations_before > 0 && (
                           <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-lg bg-grass-wash px-2 py-1 text-[11px] font-medium text-grass">
@@ -231,7 +233,7 @@ export function Rules() {
             <ol className="space-y-2.5 text-[12px] leading-relaxed text-ink-mute">
               <li>
                 <strong className="text-ink">1. Repair.</strong> Fix deterministically where the
-                fix is unambiguous — clamp a range, recompute a total, reorder two dates.
+                fix is unambiguous, clamp a range, recompute a total, reorder two dates.
               </li>
               <li>
                 <strong className="text-ink">2. Reject.</strong> Drop only what cannot be repaired,
@@ -257,7 +259,7 @@ export function Rules() {
               <div>
                 <dt className="font-medium text-ink">Proposed by AI</dt>
                 <dd className="text-ink-mute">
-                  Domain logic the sample cannot show — proposals only, never applied automatically.
+                  Domain logic the sample cannot show, proposals only, never applied automatically.
                 </dd>
               </div>
               <div>

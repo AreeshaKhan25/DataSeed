@@ -1,4 +1,4 @@
-"""The Trust Report — proof that the generated data is actually usable.
+"""The Trust Report, proof that the generated data is actually usable.
 
 Four independent scores:
 
@@ -191,7 +191,7 @@ def fidelity_scores(
 
 
 # --------------------------------------------------------------------------
-# Utility — TSTR
+# Utility, TSTR
 # --------------------------------------------------------------------------
 
 def _candidate_targets(
@@ -602,6 +602,12 @@ def detection_auc(
 # Orchestration
 # --------------------------------------------------------------------------
 
+# Below this, a train/test split leaves too few rows for any of these metrics to
+# mean anything. A confident score computed from a handful of rows is worse than
+# declining, because the number gets quoted.
+MIN_ROWS_TO_VALIDATE = 50
+
+
 def build_trust_report(
     real: pd.DataFrame,
     table: Table,
@@ -609,14 +615,18 @@ def build_trust_report(
     *,
     target: str | None = None,
     integrity: dict[str, Any] | None = None,
+    constraints: list[Any] | None = None,
 ) -> dict[str, Any]:
     """Run every check against a generator refitted on the training split only."""
     seed = seeds.seed
     real = coerce_to_schema(real, table)
-    if len(real) < 40:
+    if len(real) < MIN_ROWS_TO_VALIDATE:
         return {
             "available": False,
-            "reason": f"Need at least 40 rows to validate; got {len(real)}.",
+            "reason": (
+                f"Need at least {MIN_ROWS_TO_VALIDATE} rows to validate; got {len(real)}. "
+                "Scores from a sample this small would not mean anything."
+            ),
         }
 
     train_real, holdout_real = train_test_split(real, test_size=0.3, random_state=seed)
@@ -627,6 +637,21 @@ def build_trust_report(
     audit_seeds = SeedFactory(seed)
     model = fit_table(table, train_real, audit_seeds)
     synth = sample_table(model, len(train_real), audit_seeds)
+
+    # Score the data as it will actually be exported. Business rules run on the
+    # real output, so a report on the raw sample measures something the user
+    # never receives: the copula fits each column independently, so a derived
+    # column like `gross = qty * price` is inconsistent until the rules repair
+    # it, and a classifier spots that instantly even when every single column
+    # looks perfect on its own.
+    rules_applied: list[str] = []
+    if constraints:
+        from .constraints import apply_constraints
+
+        synth, rule_results = apply_constraints(
+            synth, table, constraints, audit_seeds.stream("audit:rules")
+        )
+        rules_applied = [r.label for r in rule_results if r.violations_before]
 
     fidelity = fidelity_scores(train_real, synth, table, model)
     utility = utility_score(
@@ -656,6 +681,7 @@ def build_trust_report(
         "seed": seed,
         "table": table.name,
         "conditioned_on": getattr(model, "condition_column", None),
+        "rules_applied": rules_applied,
         "condition_strength": getattr(model, "condition_strength", 0.0),
         "rows_evaluated": len(train_real),
         "holdout_rows": len(holdout_real),

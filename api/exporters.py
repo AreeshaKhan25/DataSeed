@@ -14,7 +14,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from .schema import SchemaIR, frame_to_records
+from .schema import SchemaIR, Table, frame_to_records
 
 # Postgres-flavoured types. Chosen over a generic dialect because the deck
 # promises a "relational DB dump" and a restore has to actually work.
@@ -45,13 +45,52 @@ def available_formats() -> list[dict[str, Any]]:
     return formats
 
 
+def clean_frame_for_export(frame: pd.DataFrame, table: Table | None = None) -> pd.DataFrame:
+    """Format integers, dates, floats, and strings cleanly before output.
+
+    Prevents floating point artifacts (e.g. 12.0 for integer IDs), unformatted
+    timestamps, or raw string representations in exported CSV/SQL/Excel.
+    """
+    clean = frame.copy()
+    if table:
+        for col_def in table.columns:
+            col = col_def.name
+            if col not in clean.columns:
+                continue
+            if col_def.dtype == "int":
+                s = pd.to_numeric(clean[col], errors="coerce")
+                if not s.isnull().any():
+                    clean[col] = s.astype("int64")
+                else:
+                    clean[col] = s.astype("Int64")
+            elif col_def.dtype == "float":
+                clean[col] = pd.to_numeric(clean[col], errors="coerce").round(2)
+            elif col_def.dtype in ("date", "datetime"):
+                clean[col] = pd.to_datetime(clean[col], errors="coerce").dt.strftime("%Y-%m-%d %H:%M:%S").fillna("")
+            elif col_def.dtype == "bool":
+                clean[col] = clean[col].astype("boolean")
+    else:
+        for col in clean.columns:
+            if pd.api.types.is_float_dtype(clean[col]):
+                # If all non-null floats are integers, convert to int
+                non_null = clean[col].dropna()
+                if not non_null.empty and (non_null % 1 == 0).all():
+                    clean[col] = clean[col].astype("Int64")
+
+    return clean
+
+
 def _sql_literal(value: Any) -> str:
-    if value is None or (isinstance(value, float) and (np.isnan(value) or np.isinf(value))):
+    if value is None or pd.isna(value) or (isinstance(value, float) and (np.isnan(value) or np.isinf(value))):
         return "NULL"
     if isinstance(value, (bool, np.bool_)):
         return "TRUE" if value else "FALSE"
-    if isinstance(value, (int, float, np.integer, np.floating)):
-        return repr(float(value)) if isinstance(value, (float, np.floating)) else str(int(value))
+    if isinstance(value, (int, np.integer)):
+        return str(int(value))
+    if isinstance(value, (float, np.floating)):
+        if float(value).is_integer():
+            return str(int(value))
+        return repr(float(value))
     if isinstance(value, pd.Timestamp):
         return "'" + value.strftime("%Y-%m-%d %H:%M:%S") + "'"
     return "'" + str(value).replace("'", "''") + "'"
@@ -60,12 +99,7 @@ def _sql_literal(value: Any) -> str:
 def to_sql(
     frames: dict[str, pd.DataFrame], schema: SchemaIR, *, batch: int = 500
 ) -> bytes:
-    """A restorable Postgres dump: DDL, data, then constraints.
-
-    Foreign keys are added at the end rather than inline so the file restores in
-    any table order. If the referential integrity is wrong, the restore fails
-    loudly -- which is the point.
-    """
+    """A restorable Postgres dump: DDL, data, then constraints."""
     from .relational import topological_order
 
     out = io.StringIO()
@@ -202,6 +236,12 @@ def build_export(
             "Run a generation first, then export.",
         )
 
+    # Clean frames to eliminate garbage values, float IDs, or precision overflow
+    cleaned_frames = {
+        name: clean_frame_for_export(frame, schema.table(name))
+        for name, frame in frames.items()
+    }
+
     extras: dict[str, str] = {}
     if include_schema:
         extras["schema.json"] = schema.model_dump_json(indent=2)
@@ -212,16 +252,16 @@ def build_export(
     base = f"{schema.name}-{stamp}"
 
     if fmt == "csv":
-        return to_csv_zip(frames, schema, extras), "application/zip", f"{base}-csv.zip"
+        return to_csv_zip(cleaned_frames, schema, extras), "application/zip", f"{base}-csv.zip"
     if fmt == "parquet":
-        return to_parquet_zip(frames, extras), "application/zip", f"{base}-parquet.zip"
+        return to_parquet_zip(cleaned_frames, extras), "application/zip", f"{base}-parquet.zip"
     if fmt == "json":
-        return to_json(frames, schema, report), "application/json", f"{base}.json"
+        return to_json(cleaned_frames, schema, report), "application/json", f"{base}.json"
     if fmt == "sql":
-        return to_sql(frames, schema), "application/sql", f"{base}.sql"
+        return to_sql(cleaned_frames, schema), "application/sql", f"{base}.sql"
     if fmt == "excel":
         return (
-            to_excel(frames),
+            to_excel(cleaned_frames),
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             f"{base}.xlsx",
         )

@@ -1,39 +1,39 @@
-# Google Stitch Prompts v3 — short, one per screen
+# Google Stitch Prompts v3, short, one per screen
 
 ## What changed and why
 
 v2 failed for a simple reason: the prompts were 400+ words each. Stitch treats a long prompt as a
-wall to summarise, drops most of it, and stalls after a couple of screens. **These are 80–120 words
+wall to summarise, drops most of it, and stalls after a couple of screens. **These are 80 120 words
 each.** Paste the theme once, then run the screens one after another.
 
-**Design direction** — now based on `D:\arlogistics\AR_Logistics_Pakistan` (the UI you liked),
+**Design direction**, now based on `D:\arlogistics\AR_Logistics_Pakistan` (the UI you liked),
 cross-checked against current work on Dribbble.
 
 From your logistics app:
-- Light blue-grey canvas `#F2F5F9` with white cards — not another dark dashboard
+- Light blue-grey canvas `#F2F5F9` with white cards, not another dark dashboard
 - Navy `#1F4E79` as the single primary
-- **A dark floating macOS dock with colourful squircle app icons** — this is the signature. A light
+- **A dark floating macOS dock with colourful squircle app icons**, this is the signature. A light
   page with a dark dock is rare and it is what will stop this looking generated.
 - Shiny CTA with a rotating gradient border, gradient stat cards that tilt on hover
 
 From the Dribbble pass (what current data tools actually do):
-- Pale blue-grey page, pure white cards, hairline borders, very soft shadows — no heavy elevation
+- Pale blue-grey page, pure white cards, hairline borders, very soft shadows, no heavy elevation
 - Big numbers with small muted labels
 - Status as soft tinted pills at ~12% opacity, never solid blocks
 - Tables with hairline row rules, no zebra striping, numbers right-aligned
 - Charts with gradient fills under the line and rounded bar tops
 - Generous whitespace; density comes from typography, not from cramming
 
-**How to run it:** Stitch → Web project → paste Prompt 0 alone → then screens 1–10 in order, one
+**How to run it:** Stitch → Web project → paste Prompt 0 alone → then screens 1 10 in order, one
 at a time. If a screen loses the dock or turns dark, paste this reminder above it:
 `Light #F2F5F9 page, white cards, navy #1F4E79, dark floating dock at the bottom.`
 
 ---
 
-## Prompt 0 — Theme
+## Prompt 0, Theme
 
 ```
-Design a web app called "DataSeed" — a synthetic data generation platform.
+Design a web app called "DataSeed", a synthetic data generation platform.
 
 Light theme. Page background #F2F5F9. Cards are pure white, 16px radius,
 1px #E4E9F0 border, very soft shadow. Generous whitespace.
@@ -48,7 +48,7 @@ for all body text and labels. Space Mono for data, IDs, seeds and numbers.
 Navigation is NOT a sidebar. It is a dark floating dock, horizontally
 centered near the bottom of every screen: a pill with 21px radius, dark
 charcoal at 78% opacity, 1px white 12% border, 10px padding, soft drop
-shadow. Inside it sit colourful app icons — rounded squares with 22%
+shadow. Inside it sit colourful app icons, rounded squares with 22%
 radius, each a solid color from the palette above, with a white line icon
 centered. Icons magnify on hover like the macOS dock.
 
@@ -63,7 +63,7 @@ uppercase headers, numbers right-aligned in Space Mono.
 
 ---
 
-## Prompt 1 — Dashboard
+## Prompt 1, Dashboard
 
 ```
 Screen: "Projects" dashboard for DataSeed. Light #F2F5F9 page, dark floating
@@ -83,7 +83,7 @@ bars labelled Integrity, Fidelity, Utility, Privacy, and "Updated 2h ago".
 
 ---
 
-## Prompt 2 — New project / ingest
+## Prompt 2, New project / ingest
 
 ```
 Screen: "New project" for DataSeed. Light page, centered 720px column, dark
@@ -100,12 +100,12 @@ title and a description: "Connect a database", "Paste a schema",
 "Start from a template".
 
 At the bottom a horizontal stepper: Ingest, Schema, Relationships,
-Generate, Validate, Export — with Ingest active in navy.
+Generate, Validate, Export, with Ingest active in navy.
 ```
 
 ---
 
-## Prompt 3 — Schema studio
+## Prompt 3, Schema studio
 
 ```
 Screen: "Schema" for DataSeed. Light page, dark dock at the bottom.
@@ -127,10 +127,10 @@ rows have a small violet sparkle icon.
 
 ---
 
-## Prompt 4 — Relationships
+## Prompt 4, Relationships
 
 ```
-Screen: "Relationships" for DataSeed — an entity-relationship canvas. Light
+Screen: "Relationships" for DataSeed, an entity-relationship canvas. Light
 page with a faint dot grid, dark dock at the bottom.
 
 Four white node cards connected by curved navy lines: customers, orders,
@@ -150,17 +150,17 @@ per parent, and a toggle "Compute parent totals from children", switched on.
 
 ---
 
-## Prompt 5 — Workspace
+## Prompt 5, Workspace
 
 ```
-Screen: "Workspace" for DataSeed — live data generation. Light page, dark dock
+Screen: "Workspace" for DataSeed, live data generation. Light page, dark dock
 at the bottom. This is the main screen.
 
 Heading "Workspace" with "northwind_retail · seed 42" in Space Mono, and a
 green "Engine ready" pill on the right.
 
-Tabs: Tabular, Relational, Documents — Relational active.
-Below, table pills: customers, orders, order_items — orders selected.
+Tabs: Tabular, Relational, Documents, Relational active.
+Below, table pills: customers, orders, order_items, orders selected.
 
 A wide white card holding a data table. Headers in muted uppercase:
 order_id, customer_id, order_date, status, items, total. About 12 rows in
@@ -178,7 +178,7 @@ three selectable pills, "Edge cases" with four checkboxes. Then a navy
 
 ---
 
-## Prompt 6 — Trust report
+## Prompt 6, Trust report
 
 ```
 Screen: "Trust report" for DataSeed. Light page, dark dock at the bottom.
@@ -190,25 +190,25 @@ Integrity 100 green "0 orphan keys", Fidelity 96 navy "Distributions match",
 Utility 75 navy "Trained on synthetic, tested on real", Privacy 99 green
 "No record traces to a real person".
 
-A green tinted banner: "All gates passed — cleared for export" with an
+A green tinted banner: "All gates passed, cleared for export" with an
 "Export" button.
 
 Left white card "Utility": a grouped bar chart comparing "Trained on real"
-in grey and "Trained on synthetic" in navy, then three Space Mono lines —
+in grey and "Trained on synthetic" in navy, then three Space Mono lines
 TRTR 0.936, TSTR 0.827, ratio 0.884.
 
-Right white card "Privacy": three rows with meter bars — exact matches 0,
+Right white card "Privacy": three rows with meter bars, exact matches 0,
 distance to closest record 0.34, membership inference 0.51. Below,
 "Detection AUC 0.54" as a big number with the caption "0.50 means
 indistinguishable from real".
 
-Full-width white card at the bottom: "Fidelity by column" — a table of
+Full-width white card at the bottom: "Fidelity by column", a table of
 column, distance, match percentage, and a small overlaid sparkline.
 ```
 
 ---
 
-## Prompt 7 — Documents
+## Prompt 7, Documents
 
 ```
 Screen: "Documents" for DataSeed. Light page, dark dock at the bottom.
@@ -233,7 +233,7 @@ JSON, CSV; and a navy "Generate 50 documents" button.
 
 ---
 
-## Prompt 8 — Export
+## Prompt 8, Export
 
 ```
 Screen: "Export" modal for DataSeed, centered over a dimmed light page, 640px
@@ -259,7 +259,7 @@ Footer: a white "Cancel" button and a navy "Download" button.
 
 ---
 
-## Prompt 9 — Generating
+## Prompt 9, Generating
 
 ```
 Screen: generation in progress for DataSeed. Light page, dark dock at the
@@ -270,23 +270,23 @@ Space Mono.
 
 A vertical list of seven steps, each a row with a status icon, a label and
 a right-aligned Space Mono value:
-Reading schema — done, green check, 0.1s
-Fitting distributions — done, green check, 0.8s
-Generating customers — done, green check, 1,200 rows
-Generating orders — in progress, navy spinner, with a navy progress bar
+Reading schema, done, green check, 0.1s
+Fitting distributions, done, green check, 0.8s
+Generating customers, done, green check, 1,200 rows
+Generating orders, in progress, navy spinner, with a navy progress bar
 beneath and "2,914 / 4,860 rows"
-Generating order_items — pending, muted
-Reconciling totals — pending, muted
-Validating integrity — pending, muted
+Generating order_items, pending, muted
+Reconciling totals, pending, muted
+Validating integrity, pending, muted
 
 Completed steps are joined by a green vertical line, pending ones by a grey
 line. At the bottom, a white "Cancel" button and the muted note
-"Deterministic — seed 42 always produces identical output".
+"Deterministic, seed 42 always produces identical output".
 ```
 
 ---
 
-## Prompt 10 — Settings
+## Prompt 10, Settings
 
 ```
 Screen: "Settings" for DataSeed. Light page, dark dock at the bottom, content
@@ -295,13 +295,13 @@ in a 780px column.
 Heading "Settings".
 
 White cards stacked with 16px gaps, each with a title and rows:
-"Generation" — default row count, default seed, engine selector
+"Generation", default row count, default seed, engine selector
 (Copula / CTGAN), locale and currency dropdowns.
-"AI" — a masked API key field with a green "Connected" pill, a model
+"AI", a masked API key field with a green "Connected" pill, a model
 dropdown, and a toggle "Cache AI responses" switched on.
-"Privacy defaults" — three toggles: block exact matches, hash direct PII,
+"Privacy defaults", three toggles: block exact matches, hash direct PII,
 add differential noise.
-"Export" — default format pills and a toggle "Require passing trust report
+"Export", default format pills and a toggle "Require passing trust report
 before export", switched on and locked.
 
 Each card has its own small navy "Save" button in the corner.
@@ -318,7 +318,7 @@ Fonts:
 
 You already have the two hardest components written in `D:\arlogistics\AR_Logistics_Pakistan`:
 `components/ui/mac-os-dock.tsx` and `components/ui/shiny-button.tsx`, plus the dock and shiny-CTA
-CSS in `app/globals.css`. **Copy those across rather than rebuilding them** — the dock is the single
+CSS in `app/globals.css`. **Copy those across rather than rebuilding them**, the dock is the single
 most distinctive element here and it is already working code. `dashboard-stat-card.tsx` gives you
 the tilting gradient stat cards for Prompt 1 for free.
 

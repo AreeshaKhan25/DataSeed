@@ -1,4 +1,4 @@
-"""Relational generation — two passes.
+"""Relational generation, two passes.
 
 Pass 1 walks the foreign-key graph top-down: parents are generated first, then
 each child draws its row count from the empirical children-per-parent

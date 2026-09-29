@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge AI - Export Center</title>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#1a1b20",
+            "surface": "#faf8ff",
+            "on-tertiary-fixed": "#241a00",
+            "on-primary-fixed-variant": "#4725bc",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#e6deff",
+            "on-error": "#ffffff",
+            "surface-container-low": "#f4f3fa",
+            "primary-fixed-dim": "#c9beff",
+            "background": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "inverse-on-surface": "#f2f0f7",
+            "primary-container": "#5b3fd0",
+            "inverse-surface": "#2f3035",
+            "surface-container": "#efedf4",
+            "tertiary-fixed-dim": "#e9c254",
+            "surface-dim": "#dbd9e0",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#474457",
+            "surface-container-high": "#e9e7ee",
+            "tertiary": "#755b00",
+            "surface-container-highest": "#e3e1e8",
+            "on-secondary-fixed": "#1c192a",
+            "on-primary-container": "#d6ccff",
+            "error": "#ba1a1a",
+            "on-background": "#1a1b20",
+            "surface-tint": "#5f43d4",
+            "secondary-container": "#e5dff7",
+            "on-tertiary-container": "#503d00",
+            "on-secondary-container": "#656276",
+            "outline-variant": "#c9c4d7",
+            "surface-bright": "#faf8ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#e3e1e8",
+            "primary": "#431fb8",
+            "on-tertiary-fixed-variant": "#584400",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#c9beff",
+            "tertiary-container": "#cca73c",
+            "on-primary-fixed": "#1b0063",
+            "secondary": "#5f5c70",
+            "secondary-fixed-dim": "#c9c3da",
+            "secondary-fixed": "#e5dff7",
+            "on-surface-variant": "#484554",
+            "tertiary-fixed": "#ffdf90",
+            "outline": "#797586"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "gutter": "1.5rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-default": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-default": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-card": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "code-schema": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Subtle glowing atmospheric background mesh */
+    .mesh-gradient-bg {
+      background: radial-gradient(circle at 15% 10%, rgba(230, 222, 255, 0.45) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 20%, rgba(248, 217, 240, 0.35) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 90%, rgba(255, 243, 223, 0.3) 0%, transparent 50%),
+                  #faf8ff;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-default min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- SIDEBAR (240px wide, docked h-full) -->
+<aside class="w-60 fixed left-0 top-0 bottom-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col justify-between z-30 p-space-md select-none">
+<div class="flex flex-col gap-y-6">
+<!-- Logo Branding -->
+<div class="flex items-center gap-space-sm px-space-sm pt-space-xs">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-[22px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-card text-title-card font-bold text-on-surface tracking-tight leading-none">SynthForge AI</span>
+<span class="text-[11px] font-medium text-secondary mt-1 tracking-wider uppercase">Enterprise Engine</span>
+</div>
+</div>
+<!-- Navigation Tabs (Shared Components JSON SideNavBar mapped) -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-ui text-label-ui">Dashboard</span>
+</a>
+<!-- 2. Projects -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="folder">folder</span>
+<span class="font-label-ui text-label-ui">Projects</span>
+</a>
+<!-- 3. Tabular -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="table_chart">table_chart</span>
+<span class="font-label-ui text-label-ui">Tabular</span>
+</a>
+<!-- 4. Relational -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+<span class="font-label-ui text-label-ui">Relational</span>
+</a>
+<!-- 5. Documents -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-label-ui text-label-ui">Documents</span>
+</a>
+<!-- 6. Validation -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified">verified</span>
+<span class="font-label-ui text-label-ui">Validation</span>
+</a>
+<!-- 7. Exports (ACTIVE Destination) -->
+<a class="flex items-center gap-space-sm bg-secondary-container text-primary rounded-full px-space-md py-space-sm font-semibold transition-colors duration-150 shadow-sm shadow-primary/5" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="cloud_download" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+<span class="font-label-ui text-label-ui">Exports</span>
+</a>
+<!-- 8. Settings -->
+<a class="flex items-center gap-space-sm text-secondary hover:bg-surface-container-low hover:text-on-surface rounded-full px-space-md py-space-sm transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-ui text-label-ui">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Sidebar Section (AI Assistant Card + Footers) -->
+<div class="flex flex-col gap-3">
+<!-- AI Assistant Teaser Card -->
+<div class="p-3.5 bg-gradient-to-br from-primary-fixed/50 to-secondary-container/40 rounded-[1.25rem] border border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-ui text-label-ui text-primary font-bold">AI Assistant</span>
+</div>
+<span class="px-1.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold">PRO</span>
+</div>
+<p class="text-[12px] text-secondary leading-snug">Generate mock payloads &amp; schema tests in natural voice.</p>
+<button class="w-full mt-0.5 py-1.5 px-3 bg-surface-container-lowest text-primary text-xs font-semibold rounded-full border border-outline-variant/40 hover:bg-primary-fixed transition-all text-center">
+          Open Prompt Studio
+        </button>
+</div>
+<!-- Footers (Documentation, Account) -->
+<div class="flex flex-col gap-0.5 pt-2 border-t border-outline-variant/20">
+<a class="flex items-center gap-space-sm text-secondary hover:text-on-surface px-space-md py-1.5 rounded-full text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm text-secondary hover:text-on-surface px-space-md py-1.5 rounded-full text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="manage_accounts">manage_accounts</span>
+<span>Account</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS WRAPPER (Left margin 240px to accommodate fixed sidebar) -->
+<div class="ml-60 flex-1 flex flex-col min-w-0 mesh-gradient-bg">
+<!-- PERSISTENT TOP APP BAR (h-16, docked, shadow-sm, no hard borders) -->
+<header class="h-16 bg-surface-container-lowest/90 backdrop-blur-md sticky top-0 z-20 px-gutter flex items-center justify-between border-b border-outline-variant/20 shadow-sm">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<span class="text-secondary hover:text-primary transition-colors cursor-pointer">Projects</span>
+<span class="text-outline-variant">/</span>
+<span class="text-secondary hover:text-primary transition-colors cursor-pointer">Customer Signups</span>
+<span class="text-outline-variant">/</span>
+<span class="font-semibold text-primary">Exports</span>
+</div>
+<!-- Center Global Search Bar -->
+<div class="relative w-96 hidden md:block">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="search">search</span>
+</div>
+<input class="w-full pl-9 pr-14 py-2 bg-surface-container-low border border-outline-variant/30 rounded-full text-sm placeholder-secondary/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed transition-all text-on-surface" placeholder="Search datasets, schema tags, or exports..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<kbd class="px-1.5 py-0.5 text-[11px] font-code-schema bg-surface-container-lowest border border-outline-variant/40 rounded text-secondary shadow-xs">⌘K</kbd>
+</div>
+</div>
+<!-- Right Action Cluster -->
+<div class="flex items-center gap-3">
+<!-- New Project Action -->
+<button class="bg-primary text-on-primary hover:bg-primary-container px-4 py-2 rounded-full font-label-ui text-label-ui flex items-center gap-1.5 shadow-sm shadow-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New project</span>
+</button>
+<!-- Notification Bell with Active Indicator Dot -->
+<button class="relative p-2 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<!-- Help Icon -->
+<button class="p-2 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors hidden sm:block">
+<span class="material-symbols-outlined text-[22px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- User Workspace Profile Avatar -->
+<div class="flex items-center gap-2 pl-2 border-l border-outline-variant/30">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary font-semibold text-xs ring-2 ring-primary-fixed">
+            SF
+          </div>
+</div>
+</div>
+</header>
+<!-- MAIN PAGE CONTENT (Max 1440px canvas) -->
+<main class="p-gutter space-y-6 max-w-7xl w-full mx-auto pb-24">
+<!-- PAGE HEADER & AI CUE BADGE -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pt-2">
+<div class="space-y-1.5">
+<div class="flex items-center gap-2.5">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Export your data</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold tracking-wide shadow-xs">
+              ✦ AI-optimized packaging
+            </span>
+</div>
+<p class="font-body-default text-secondary max-w-2xl">
+            Package synthetic datasets, schemas, and verification reports into production-ready formats or direct high-throughput API export feeds.
+          </p>
+</div>
+<!-- Quick metadata status chip -->
+<div class="flex items-center gap-2 text-xs font-medium text-secondary bg-surface-container-lowest px-3 py-1.5 rounded-full border border-outline-variant/30 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Engine status: Operational (4 nodes idle)</span>
+</div>
+</div>
+<!-- TOP ROW: TWO-COLUMN CONFIGURATION & SUMMARY (65% / 35%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT CARD (65% width: lg:col-span-8) - 'New export' -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-[20px] border border-outline-variant/30 p-space-lg shadow-sm space-y-6">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]" data-icon="tune">tune</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card font-bold text-on-surface">New export configuration</h2>
+<p class="text-xs text-secondary">Tune output structure, formats, and synthetic validation bundling</p>
+</div>
+</div>
+<span class="text-xs font-code-schema bg-surface-container-low text-secondary px-2.5 py-1 rounded-full border border-outline-variant/30">
+              Pipeline: ready
+            </span>
+</div>
+<!-- Dataset Selection Dropdown -->
+<div class="space-y-1.5">
+<label class="block font-label-ui text-label-ui text-on-surface">Source dataset</label>
+<div class="relative">
+<select class="w-full h-11 pl-4 pr-10 bg-surface-container-lowest border border-outline-variant/40 rounded-xl text-on-surface font-medium focus:border-primary focus:ring-2 focus:ring-primary-fixed appearance-none transition-all cursor-pointer">
+<option selected="">Customer Signups (5,000 records) — Synthesized 12m ago</option>
+<option>Enterprise B2B Accounts (12,400 records)</option>
+<option>Stripe Subscriptions Mock (45,000 records)</option>
+<option>Multi-tenant Healthcare Records (HIPAA Masked)</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Format Selection Cards -->
+<div class="space-y-2.5">
+<div class="flex items-center justify-between">
+<label class="block font-label-ui text-label-ui text-on-surface">Select export format</label>
+<span class="text-[12px] text-secondary">4 production engines available</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Card 1: CSV (SELECTED) -->
+<div class="relative p-3.5 rounded-2xl border-2 border-primary bg-secondary-container/40 flex flex-col justify-between h-32 cursor-pointer transition-all duration-150 shadow-sm">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="table_chart">table_chart</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-primary font-bold block">CSV</span>
+<span class="text-[11px] text-secondary leading-tight block">Tabular spreadsheet</span>
+</div>
+</div>
+<!-- Card 2: JSON -->
+<div class="relative p-3.5 rounded-2xl border border-outline-variant/40 bg-surface-container-lowest hover:border-primary/40 hover:bg-surface-container-low flex flex-col justify-between h-32 cursor-pointer transition-all duration-150">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="data_object">data_object</span>
+</div>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface font-semibold block">JSON</span>
+<span class="text-[11px] text-secondary leading-tight block">Nested records &amp; schema</span>
+</div>
+</div>
+<!-- Card 3: SQL Dump -->
+<div class="relative p-3.5 rounded-2xl border border-outline-variant/40 bg-surface-container-lowest hover:border-primary/40 hover:bg-surface-container-low flex flex-col justify-between h-32 cursor-pointer transition-all duration-150">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="database">database</span>
+</div>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface font-semibold block">SQL Dump</span>
+<span class="text-[11px] text-secondary leading-tight block">Postgres / MySQL DDL</span>
+</div>
+</div>
+<!-- Card 4: PDF Documents -->
+<div class="relative p-3.5 rounded-2xl border border-outline-variant/40 bg-surface-container-lowest hover:border-primary/40 hover:bg-surface-container-low flex flex-col justify-between h-32 cursor-pointer transition-all duration-150">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+</div>
+</div>
+<div>
+<span class="font-label-ui text-label-ui text-on-surface font-semibold block">PDF Documents</span>
+<span class="text-[11px] text-secondary leading-tight block">Invoices &amp; statements bundle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Export Options Section -->
+<div class="space-y-3 pt-2">
+<h3 class="font-label-ui text-label-ui text-on-surface">Export options &amp; synthetic guarantees</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<!-- Toggle 1: Compression (ZIP) - ON -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low/50 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="folder_zip">folder_zip</span>
+<span class="text-sm font-medium text-on-surface">Compression (ZIP archive)</span>
+</div>
+<!-- Toggle switch pill ON -->
+<div class="w-11 h-6 bg-primary rounded-full relative p-0.5 transition-colors">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm translate-x-5 transition-transform"></div>
+</div>
+</label>
+<!-- Toggle 2: Include schema definition - ON -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low/50 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="schema">schema</span>
+<span class="text-sm font-medium text-on-surface">Include schema definition</span>
+</div>
+<!-- Toggle switch pill ON -->
+<div class="w-11 h-6 bg-primary rounded-full relative p-0.5 transition-colors">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm translate-x-5 transition-transform"></div>
+</div>
+</label>
+<!-- Toggle 3: Synthetic validation report - OFF -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low/50 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="fact_check">fact_check</span>
+<span class="text-sm font-medium text-on-surface">Synthetic validation report (PDF)</span>
+</div>
+<!-- Toggle switch pill OFF -->
+<div class="w-11 h-6 bg-surface-container-high rounded-full relative p-0.5 transition-colors">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm translate-x-0 transition-transform"></div>
+</div>
+</label>
+<!-- Toggle 4: AI data dictionary - ON -->
+<label class="flex items-center justify-between p-3 rounded-xl border border-primary/30 bg-primary-fixed/20 hover:bg-primary-fixed/30 cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold px-1.5 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed rounded-full">✦ AI</span>
+<span class="text-sm font-medium text-primary">Data dictionary &amp; mock metadata</span>
+</div>
+<!-- Toggle switch pill ON -->
+<div class="w-11 h-6 bg-primary rounded-full relative p-0.5 transition-colors">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm translate-x-5 transition-transform"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- RIGHT CARD (35% width: lg:col-span-4) - 'Export Summary' -->
+<div class="lg:col-span-4 bg-gradient-to-b from-surface-container-lowest to-surface-container-low/60 rounded-[20px] border border-outline-variant/30 p-space-lg shadow-sm flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<!-- Header -->
+<div class="flex items-center justify-between">
+<span class="font-title-card text-title-card font-bold text-on-surface">Export Summary</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-primary font-code-schema text-[11px] font-semibold">
+                ready
+              </span>
+</div>
+<!-- Dataset Stats Badge -->
+<div class="p-3.5 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-xs space-y-1.5">
+<div class="flex items-center justify-between text-xs text-secondary">
+<span>Selected Payload</span>
+<span class="font-semibold text-primary">Customer Signups</span>
+</div>
+<div class="font-bold text-base text-on-surface">
+                5,000 rows · 6 columns · ~1.2 MB
+              </div>
+</div>
+<!-- Guarantee Badges -->
+<div class="flex flex-wrap gap-2">
+<div class="px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded-full text-xs font-medium text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="archive">archive</span>
+<span>CSV (ZIP)</span>
+</div>
+<div class="px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded-full text-xs font-medium text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-emerald-600" data-icon="shield">shield</span>
+<span>Differential Noise applied</span>
+</div>
+<div class="px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded-full text-xs font-medium text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="verified_user">verified_user</span>
+<span>100% verified</span>
+</div>
+</div>
+<!-- Code Snippet Block for API export -->
+<div class="space-y-1.5 pt-1">
+<div class="flex items-center justify-between text-xs">
+<span class="font-label-ui text-label-ui text-secondary">Direct curl export stream</span>
+<button class="text-primary hover:text-primary-container flex items-center gap-1 font-semibold text-[11px] transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-3 font-code-schema text-[12px] leading-relaxed overflow-x-auto shadow-inner border border-outline/20">
+<code><span class="text-tertiary-fixed-dim">curl</span> -X GET <span class="text-emerald-300">"https://api.synthforge.ai/v1/datasets/ds_984f2/export?format=csv&amp;zip=true"</span> \
+  -H <span class="text-primary-fixed">"Authorization: Bearer sf_live_k9..."</span></code>
+</div>
+</div>
+</div>
+<!-- Bottom Action Buttons -->
+<div class="space-y-2 pt-2">
+<button class="w-full bg-primary text-on-primary hover:bg-primary-container font-semibold py-3 px-6 rounded-full flex items-center justify-center gap-2 shadow-sm shadow-primary/25 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+<span>Download dataset</span>
+</button>
+<button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary-fixed/40 font-semibold py-2.5 px-6 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="link">link</span>
+<span>Copy API link</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BELOW: 'EXPORT HISTORY' SECTION -->
+<section class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/30 p-space-lg shadow-sm space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="font-title-card text-title-card font-bold text-on-surface">Export history</h2>
+<p class="text-xs text-secondary">Archives remain downloadable for 14 days following engine compilation</p>
+</div>
+<div class="flex items-center gap-2.5">
+<!-- Search exports filter -->
+<div class="relative w-48 sm:w-60">
+<input class="w-full pl-8 pr-3 py-1.5 bg-surface-container-low border border-outline-variant/30 rounded-full text-xs placeholder-secondary/60 focus:outline-none focus:border-primary" placeholder="Filter by filename..." type="text"/>
+<div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<!-- Filter format pill dropdown -->
+<button class="px-3 py-1.5 bg-surface-container-low border border-outline-variant/30 rounded-full text-xs font-semibold text-secondary hover:text-on-surface flex items-center gap-1.5 transition-colors">
+<span>All formats</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Data Table Container (Clean rows, sticky headers, borderless) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30 text-secondary font-label-ui text-[12px] uppercase tracking-wider">
+<th class="py-3 px-4 font-semibold">File name</th>
+<th class="py-3 px-4 font-semibold">Format</th>
+<th class="py-3 px-4 font-semibold">Size</th>
+<th class="py-3 px-4 font-semibold">Created</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/15 text-sm">
+<!-- Row 1: customer_signups_v3.csv.zip -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="folder_zip">folder_zip</span>
+<span class="font-code-schema text-[13px] text-on-surface">customer_signups_v3.csv.zip</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-semibold text-xs">CSV</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">1.2 MB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">Just now</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Ready
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-primary hover:bg-primary-fixed/50 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: customer_signups_v2.json -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="data_object">data_object</span>
+<span class="font-code-schema text-[13px] text-on-surface">customer_signups_v2.json</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-semibold text-xs">JSON</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">3.4 MB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">2 hours ago</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Ready
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-primary hover:bg-primary-fixed/50 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: relational_db_dump.sql -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="database">database</span>
+<span class="font-code-schema text-[13px] text-on-surface">relational_db_dump.sql</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-semibold text-xs">SQL</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">8.9 MB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">Yesterday, 16:42</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Ready
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-primary hover:bg-primary-fixed/50 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: customer_invoices_batch_1.pdf -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3.5 px-4 font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="description">description</span>
+<span class="font-code-schema text-[13px] text-on-surface">customer_invoices_batch_1.pdf</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-semibold text-xs">PDF</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">14.1 MB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">3 days ago</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Ready
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-primary hover:bg-primary-fixed/50 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: test_sample_100.csv -->
+<tr class="hover:bg-surface-container-low/40 transition-colors opacity-70 group">
+<td class="py-3.5 px-4 font-medium text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="table_chart">table_chart</span>
+<span class="font-code-schema text-[13px] line-through text-secondary">test_sample_100.csv</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-semibold text-xs">CSV</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">48 KB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">May 12, 2025</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-secondary text-xs font-semibold">
+                    Expired
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-outline-variant cursor-not-allowed" disabled="" title="Archive expired">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete record">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: full_relational_schema.zip -->
+<tr class="hover:bg-surface-container-low/40 transition-colors opacity-70 group">
+<td class="py-3.5 px-4 font-medium text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="folder_zip">folder_zip</span>
+<span class="font-code-schema text-[13px] line-through text-secondary">full_relational_schema.zip</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-secondary font-semibold text-xs">ZIP</span>
+</td>
+<td class="py-3.5 px-4 text-secondary text-xs">22.8 MB</td>
+<td class="py-3.5 px-4 text-secondary text-xs">May 08, 2025</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-secondary text-xs font-semibold">
+                    Expired
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-full text-outline-variant cursor-not-allowed" disabled="" title="Archive expired">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</button>
+<button class="p-1.5 rounded-full text-secondary hover:text-error hover:bg-error-container/40 transition-colors" title="Delete record">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FOOTER (Shared Components JSON mapped) -->
+<footer class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-secondary">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">SynthForge AI</span>
+<span>© 2024 SynthForge AI Inc. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Status</a>
+<a class="hover:text-primary transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- FLOATING SUCCESS TOAST NOTIFICATION (Bottom Right) -->
+<div class="fixed bottom-6 right-6 z-50 animate-bounce-short">
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-4 shadow-xl shadow-primary/10 flex items-center gap-3.5 max-w-md backdrop-blur-sm">
+<div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<h4 class="font-label-ui text-label-ui text-on-surface font-semibold truncate">Export ready — customer_signups.csv</h4>
+<p class="text-xs text-secondary">1.2 MB archive generated in 1.4s</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="text-xs font-bold text-primary hover:text-primary-container px-2.5 py-1 rounded-full bg-secondary-container/60 hover:bg-secondary-container transition-all">
+          Open
+        </button>
+<button class="p-1 rounded-full text-secondary hover:text-on-surface hover:bg-surface-container transition-colors" onclick="this.closest('.fixed').style.display='none'" title="Dismiss">
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

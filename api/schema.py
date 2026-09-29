@@ -1,4 +1,4 @@
-"""Schema IR — the single object every engine reads.
+"""Schema IR, the single object every engine reads.
 
 Nothing downstream of the profiler ever touches the uploaded file again.
 """
@@ -19,18 +19,23 @@ PII = Literal["none", "quasi", "direct"]
 # Semantic detection patterns, applied to the column NAME first and then to
 # sample VALUES. Deliberately conservative: a wrong guess here is visible to the
 # user in the schema editor, but a false positive on PII is worse than a miss.
+# Order matters: the first pattern that matches wins, so the identifying
+# patterns must come before the broader geographic ones. `national_id` contains
+# "nation", and classifying a government ID as a country would drop it from
+# direct PII to quasi, which is the difference between regenerating it and
+# treating it as a low risk attribute.
 _NAME_PATTERNS: list[tuple[str, str]] = [
     (r"e?mail", "email"),
     (r"(phone|mobile|tel)", "phone"),
+    (r"(ssn|nin|national_?id|nationalid|tax_?id|passport|nhs_?number)", "national_id"),
+    (r"(iban|account_?no|account_?number|sort_?code|card_?number)", "iban"),
     (r"(first_?name|last_?name|full_?name|customer_?name|^name$)", "person_name"),
     (r"(address|street|addr)", "address"),
     (r"(city|town)", "city"),
-    (r"(country|nation)", "country"),
-    (r"(zip|postal)", "postcode"),
+    (r"(country|nationality)", "country"),
+    (r"(zip|postal|post_?code)", "postcode"),
     (r"(company|organisation|organization|employer)", "company"),
-    (r"(iban|account_?no|account_?number)", "iban"),
     (r"(sku|product_?code|item_?code)", "sku"),
-    (r"(ssn|nin|national_?id|tax_?id)", "national_id"),
     (r"(price|amount|total|balance|cost|salary|revenue|fee)", "currency"),
     (r"(url|website|link)", "url"),
     (r"(lat|latitude)", "latitude"),
@@ -133,6 +138,7 @@ Kind = Literal[
     "not_null",     # column is never missing
     "unique",       # column has no repeats
     "conditional",  # when <col> <op> <value>, then <target> is null / not null
+    "offset",       # column = another column plus an observed gap
 ]
 
 OPERATORS: dict[str, Any] = {

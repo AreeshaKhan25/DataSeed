@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Validation report — Customer Signups | SynthForge</title>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#e9e7ee",
+            "surface-tint": "#5f43d4",
+            "outline": "#797586",
+            "primary-fixed": "#e6deff",
+            "surface-container-highest": "#e3e1e8",
+            "surface-variant": "#e3e1e8",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-container": "#5b3fd0",
+            "secondary-fixed": "#e5dff7",
+            "on-surface-variant": "#484554",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "tertiary-container": "#cca73c",
+            "on-primary-fixed": "#1b0063",
+            "outline-variant": "#c9c4d7",
+            "primary": "#431fb8",
+            "on-secondary-container": "#656276",
+            "secondary": "#5f5c70",
+            "tertiary": "#755b00",
+            "on-tertiary-fixed": "#241a00",
+            "on-background": "#1a1b20",
+            "inverse-on-surface": "#f2f0f7",
+            "secondary-container": "#e5dff7",
+            "surface-container-low": "#f4f3fa",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#c9c3da",
+            "tertiary-fixed-dim": "#e9c254",
+            "surface": "#faf8ff",
+            "inverse-primary": "#c9beff",
+            "on-secondary-fixed-variant": "#474457",
+            "on-secondary-fixed": "#1c192a",
+            "on-surface": "#1a1b20",
+            "inverse-surface": "#2f3035",
+            "on-tertiary-container": "#503d00",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#4725bc",
+            "on-tertiary-fixed-variant": "#584400",
+            "surface-dim": "#dbd9e0",
+            "on-primary": "#ffffff",
+            "surface-bright": "#faf8ff",
+            "on-primary-container": "#d6ccff",
+            "surface-container": "#efedf4",
+            "tertiary-fixed": "#ffdf90",
+            "primary-fixed-dim": "#c9beff",
+            "background": "#faf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter-sm": "1rem"
+          },
+          "fontFamily": {
+            "code-schema": [
+              "JetBrains Mono"
+            ],
+            "headline-md": [
+              "Plus Jakarta Sans"
+            ],
+            "display-hero-mobile": [
+              "Plus Jakarta Sans"
+            ],
+            "label-ui": [
+              "Plus Jakarta Sans"
+            ],
+            "title-card": [
+              "Plus Jakarta Sans"
+            ],
+            "body-default": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-lg": [
+              "Plus Jakarta Sans"
+            ],
+            "body-sm": [
+              "Plus Jakarta Sans"
+            ],
+            "display-hero": [
+              "Plus Jakarta Sans"
+            ]
+          },
+          "fontSize": {
+            "code-schema": [
+              "13px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-md": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ],
+            "display-hero-mobile": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "label-ui": [
+              "13px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "600"
+              }
+            ],
+            "title-card": [
+              "18px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-default": [
+              "15px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-sm": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "display-hero": [
+              "56px",
+              {
+                "lineHeight": "64px",
+                "letterSpacing": "-0.03em",
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-bento-shadow {
+      box-shadow: 0 4px 20px -2px rgba(91, 63, 208, 0.04), 0 2px 6px -1px rgba(27, 23, 64, 0.02);
+    }
+    .custom-floating-shadow {
+      box-shadow: 0 12px 32px -4px rgba(91, 63, 208, 0.08), 0 4px 12px -2px rgba(27, 23, 64, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex selection:bg-secondary-container selection:text-primary">
+<!-- LEFT SIDEBAR: Shared Component SideNavBar (240px wide) -->
+<aside class="w-60 fixed left-0 top-0 bottom-0 bg-surface border-r border-outline-variant dark:border-outline z-30 flex flex-col justify-between p-space-md select-none">
+<!-- Top Workspace Branding & Primary Navigation -->
+<div class="flex flex-col gap-space-lg">
+<!-- Workspace Brand Anchor -->
+<div class="flex items-center gap-space-sm px-space-xs pt-space-xs">
+<div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-card text-title-card font-bold text-primary dark:text-inverse-primary leading-tight">SynthForge AI</span>
+<span class="font-body-sm text-[11px] text-secondary font-medium tracking-tight">Enterprise Engine</span>
+</div>
+</div>
+<!-- Navigation Tabs Cluster -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#dashboard">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-ui text-label-ui">Dashboard</span>
+</a>
+<!-- 2. Projects -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#projects">
+<span class="material-symbols-outlined text-[20px]" data-icon="folder">folder</span>
+<span class="font-label-ui text-label-ui">Projects</span>
+</a>
+<!-- 3. Tabular -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#tabular">
+<span class="material-symbols-outlined text-[20px]" data-icon="table_chart">table_chart</span>
+<span class="font-label-ui text-label-ui">Tabular</span>
+</a>
+<!-- 4. Relational -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#relational">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+<span class="font-label-ui text-label-ui">Relational</span>
+</a>
+<!-- 5. Documents -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#documents">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-label-ui text-label-ui">Documents</span>
+</a>
+<!-- 6. Validation (ACTIVE: Mandatory JSON Style Tokens Executed) -->
+<a aria-current="page" class="flex items-center gap-space-sm bg-secondary-container dark:bg-secondary text-primary dark:text-inverse-primary rounded-full px-space-md py-space-sm font-semibold active:scale-95 transition-transform duration-100" href="#validation">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-ui text-label-ui">Validation</span>
+</a>
+<!-- 7. Exports -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#exports">
+<span class="material-symbols-outlined text-[20px]" data-icon="cloud_download">cloud_download</span>
+<span class="font-label-ui text-label-ui">Exports</span>
+</a>
+<!-- 8. Settings -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#settings">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-ui text-label-ui">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom Utilities & AI Assistant Card -->
+<div class="flex flex-col gap-space-md pt-space-md">
+<!-- AI Assistant Pro Feature Bento Promo -->
+<div class="p-space-md rounded-[1.25rem] bg-gradient-to-br from-primary-fixed to-secondary-container border border-outline-variant/60 flex flex-col gap-space-xs relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-ui text-label-ui font-bold">AI Assistant</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#FFD666] text-on-surface font-label-ui text-[10px] font-extrabold tracking-wider">PRO</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-secondary-container leading-snug">Autonomous data repair &amp; differential compliance engine.</p>
+<button class="mt-1 text-left font-label-ui text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+          Launch Assistant
+          <span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Footer Tabs from Shared Components JSON -->
+<div class="flex flex-col gap-0.5 border-t border-outline-variant/50 pt-space-sm">
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-xs font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#documentation">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+<span class="font-body-sm text-body-sm">Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-xs font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#account">
+<span class="material-symbols-outlined text-[18px]" data-icon="manage_accounts">manage_accounts</span>
+<span class="font-body-sm text-body-sm">Account</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS AREA: Offset 240px for desktop -->
+<div class="flex-1 ml-60 flex flex-col min-h-screen">
+<!-- TOP APP BAR (Shared Components TopNavBar: 64px persistent utility) -->
+<header class="h-16 flex items-center justify-between px-gutter w-full bg-surface-container-lowest border-b border-outline-variant/70 sticky top-0 z-20 shadow-sm">
+<!-- Breadcrumb Path + Left Search -->
+<div class="flex items-center gap-space-lg">
+<nav class="flex items-center gap-2 font-label-ui text-label-ui text-secondary">
+<span class="hover:text-primary cursor-pointer transition-colors">Projects</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Customer Signups</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Validation</span>
+</nav>
+<!-- Command Palette / Search Field -->
+<div class="relative hidden lg:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[18px]" data-icon="search">search</span>
+<input class="w-72 h-9 pl-9 pr-12 rounded-full bg-surface-container-low border border-outline-variant/70 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-all" placeholder="Search schemas, metrics, run IDs..." type="text"/>
+<kbd class="absolute right-3 font-code-schema text-[11px] text-secondary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-outline-variant shadow-xs">⌘K</kbd>
+</div>
+</div>
+<!-- Right Trailing Actions & Workspace Profile Avatar -->
+<div class="flex items-center gap-space-md">
+<!-- New Project Solid Violet Pill -->
+<button class="h-9 px-space-md rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui flex items-center gap-1.5 hover:bg-primary transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>Generate Data</span>
+</button>
+<div class="h-5 w-px bg-outline-variant"></div>
+<!-- Trailing Action Icons -->
+<button aria-label="Notifications" class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary-container"></span>
+</button>
+<button aria-label="Help" class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Profile Avatar Pill -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<img class="w-8 h-8 rounded-full border border-primary-fixed object-cover" data-alt="Modern professional portrait of an AI data engineer in a bright light-mode tech office wearing a minimalist violet sweater against soft neutral studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8VHdaxhls4iWNLYagcmLGHtw71CCePtRplKmltVlMR7tJVmPh8zuavzbOFQFoxOCfR9eQ8r5Fg5XcexLFCTu72o9QmAoeW9PhrN4RZ6Jol0dtOqb6Tn6P50dYdvjYNfib1XT3aavZ08VMDoYWa-Cze6bWc1yIS447PwI5a-_eyD7MEjxt1F_YPtLY8btQiX-_BAi6_f72PZOZW1PFPaTU0RCIDvMCZs5osDEZbB_4L4T1DnPYFVeqzQ"/>
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</header>
+<!-- MAIN WORKSPACE CONTENT CANVAS -->
+<main class="flex-1 p-gutter max-w-7xl w-full mx-auto flex flex-col gap-space-lg">
+<!-- SUBTLE LUMINOUS AMBIENT GLOW WASH (Background decoration) -->
+<div class="relative">
+<div class="absolute -top-12 -left-16 w-96 h-64 bg-gradient-to-br from-primary-fixed/40 via-secondary-container/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute -top-10 right-10 w-80 h-56 bg-gradient-to-bl from-tertiary-fixed/30 via-primary-fixed/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- PAGE HEADER MODULE -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-xs">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+                Validation report — Customer Signups
+              </h1>
+<!-- Status Chip -->
+<div class="h-6 px-3 rounded-full bg-[#E8F8F0] border border-[#22A06B]/30 flex items-center gap-1.5 text-[#22A06B]">
+<span class="w-2 h-2 rounded-full bg-[#22A06B]"></span>
+<span class="font-label-ui text-[12px] font-semibold">Passed</span>
+</div>
+</div>
+<p class="font-body-default text-body-default text-secondary">
+              Generated today at 14:22 · Engine v3.4 · 5,000 synthetic records vs 5,000 reference baseline
+            </p>
+</div>
+<!-- Action Buttons Group -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<!-- Secondary Outlined Download Button -->
+<button class="h-10 px-space-lg rounded-full border border-primary-container text-primary-container font-label-ui text-label-ui flex items-center gap-2 hover:bg-secondary-container transition-colors active:scale-95 bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud_download">cloud_download</span>
+<span>Download report</span>
+</button>
+<!-- Primary Solid Violet Pill Re-run Button -->
+<button class="h-10 px-space-lg rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui flex items-center gap-2 hover:bg-primary transition-colors active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+<span>Re-run validation</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ROW 1: BENTO SCORE CARDS (4 Circular Gauge / Progress Rings) -->
+<section aria-label="Validation Core Metrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Metric Card 1: Statistical fidelity -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-lg border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-ui text-label-ui text-secondary">Statistical fidelity</span>
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="analytics">analytics</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md my-space-md">
+<!-- Circular Progress Ring SVG (96%) -->
+<div class="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-md text-[17px] font-bold text-on-surface">96%</span>
+</div>
+<div>
+<span class="font-title-card text-title-card font-bold text-on-surface block">High Fidelity</span>
+<span class="font-body-sm text-[11px] text-[#22A06B] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                Target &gt;95% met
+              </span>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-secondary leading-normal">
+            Kolmogorov-Smirnov &amp; Wasserstein parity test passed across all continuous columns.
+          </p>
+</div>
+<!-- Metric Card 2: Referential integrity -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-lg border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-ui text-label-ui text-secondary">Referential integrity</span>
+<div class="w-7 h-7 rounded-full bg-[#E8F8F0] flex items-center justify-center text-[#22A06B]">
+<span class="material-symbols-outlined text-[16px]" data-icon="account_tree">account_tree</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md my-space-md">
+<!-- Circular Progress Ring SVG (100%) -->
+<div class="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-[#22A06B]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-md text-[16px] font-bold text-on-surface">100%</span>
+</div>
+<div>
+<span class="font-title-card text-title-card font-bold text-on-surface block">Zero Orphans</span>
+<span class="font-body-sm text-[11px] text-[#22A06B] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                FK Graph Intact
+              </span>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-secondary leading-normal">
+            0 orphan foreign keys across 3 tables. Strict relational cardinality preserved.
+          </p>
+</div>
+<!-- Metric Card 3: Privacy safety -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-lg border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-ui text-label-ui text-secondary">Privacy safety</span>
+<div class="w-7 h-7 rounded-full bg-[#E8F8F0] flex items-center justify-center text-[#22A06B]">
+<span class="material-symbols-outlined text-[16px]" data-icon="shield">shield</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md my-space-md">
+<!-- Circular Progress Ring SVG (100%) -->
+<div class="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-[#22A06B]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-md text-[16px] font-bold text-on-surface">100%</span>
+</div>
+<div>
+<span class="font-title-card text-title-card font-bold text-on-surface block">Zero Leakage</span>
+<span class="font-body-sm text-[11px] text-[#22A06B] font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                ε = 0.8 guarantee
+              </span>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-secondary leading-normal">
+            0 real records detected · k-anonymity score 14.2 · Differential privacy ε = 0.8.
+          </p>
+</div>
+<!-- Metric Card 4: Edge-case coverage -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-lg border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-start justify-between">
+<span class="font-label-ui text-label-ui text-secondary">Edge-case coverage</span>
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="psychology">psychology</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md my-space-md">
+<!-- Circular Progress Ring SVG (88%) -->
+<div class="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-md text-[17px] font-bold text-on-surface">88%</span>
+</div>
+<div>
+<span class="font-title-card text-title-card font-bold text-on-surface block">Robust Tails</span>
+<span class="font-body-sm text-[11px] text-primary-container font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                Satisfactory
+              </span>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-secondary leading-normal">
+            Nulls, outliers, leap-day timestamps &amp; boundary values verified in synthetic set.
+          </p>
+</div>
+</section>
+<!-- ROW 2: STATISTICAL VISUALIZATIONS (60% Distribution Histogram + 40% Correlation Heatmap) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Left Bento Card (60% / col-span-7): Distribution comparison -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-[1.25rem] p-space-xl border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between">
+<div>
+<!-- Card Header Area -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-md border-b border-outline-variant/40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-primary-container flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="bar_chart">bar_chart</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card font-semibold text-on-surface">Distribution comparison</h2>
+<p class="font-body-sm text-body-sm text-secondary">Compare baseline reference distributions against synthetic generation</p>
+</div>
+</div>
+<!-- Column Selector Dropdown Pill -->
+<div class="relative">
+<select class="appearance-none h-9 pl-3.5 pr-8 rounded-full bg-surface-container-low border border-outline-variant/60 font-label-ui text-label-ui text-on-surface focus:outline-none focus:border-primary-container cursor-pointer">
+<option selected="">Column: Balance ($ USD)</option>
+<option>Column: User Age (Years)</option>
+<option>Column: Monthly Purchases</option>
+<option>Column: Risk Score (0-100)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-[18px] text-secondary pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Legend & Drift Metric Callout -->
+<div class="flex items-center justify-between pt-space-md pb-space-sm flex-wrap gap-2">
+<div class="flex items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed border border-secondary-fixed-dim"></span>
+<span class="font-label-ui text-[12px] text-secondary">Reference Baseline</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-label-ui text-[12px] text-primary-container font-semibold">Synthetic Forge</span>
+</div>
+</div>
+<div class="h-6 px-2.5 rounded-full bg-surface-container-low border border-outline-variant/50 flex items-center gap-1 text-[11px] font-code-schema text-secondary">
+<span>Drift index:</span>
+<span class="font-bold text-[#22A06B]">&lt; 1.4% (Optimal)</span>
+</div>
+</div>
+<!-- Overlaid Histogram Visualization Chart Canvas -->
+<div class="pt-space-md pb-space-xs">
+<div class="h-56 flex items-end justify-between gap-3 border-b border-outline-variant/40 px-2">
+<!-- Bin 1: $0-200 -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 48%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 46%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-secondary pt-2">$0-200</span>
+</div>
+<!-- Bin 2: $200-400 -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 78%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 80%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-secondary pt-2">$200-400</span>
+</div>
+<!-- Bin 3: $400-600 (Peak Distribution) -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 94%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 93%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-primary-container font-semibold pt-2">$400-600</span>
+</div>
+<!-- Bin 4: $600-800 -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 62%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 60%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-secondary pt-2">$600-800</span>
+</div>
+<!-- Bin 5: $800-1000 -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 32%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 34%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-secondary pt-2">$800-1k</span>
+</div>
+<!-- Bin 6: $1000+ (Tail) -->
+<div class="flex-1 flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-full">
+<div class="w-4 sm:w-5 bg-secondary-fixed rounded-t-sm transition-all duration-300 group-hover:opacity-80" style="height: 16%;"></div>
+<div class="w-4 sm:w-5 bg-primary-container rounded-t-sm transition-all duration-300 group-hover:brightness-110" style="height: 18%;"></div>
+</div>
+<span class="font-code-schema text-[11px] text-secondary pt-2">$1000+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/40 flex items-center justify-between text-body-sm text-secondary">
+<span class="text-xs">Wasserstein Metric Distance: <strong class="text-on-surface font-code-schema">0.012</strong> (Pass threshold &lt; 0.05)</span>
+<button class="font-label-ui text-xs text-primary font-semibold hover:underline flex items-center gap-1">
+              Inspect Raw QQ-Plot
+              <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Right Bento Card (40% / col-span-5): Correlation heatmap -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-[1.25rem] p-space-xl border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between">
+<div>
+<!-- Heatmap Header -->
+<div class="flex items-center gap-3 pb-space-md border-b border-outline-variant/40">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-primary-container flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_4x4">grid_4x4</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card font-semibold text-on-surface">Correlation heatmap</h2>
+<p class="font-body-sm text-body-sm text-secondary">Cross-feature multi-column correlation matrix</p>
+</div>
+</div>
+<!-- Heatmap Table Matrix -->
+<div class="pt-space-md overflow-x-auto">
+<table class="w-full text-center border-collapse">
+<thead>
+<tr>
+<th class="p-1.5 text-left font-label-ui text-[11px] text-secondary w-20">Features</th>
+<th class="p-1.5 font-label-ui text-[11px] text-secondary">Balance</th>
+<th class="p-1.5 font-label-ui text-[11px] text-secondary">Age</th>
+<th class="p-1.5 font-label-ui text-[11px] text-secondary">Purch.</th>
+<th class="p-1.5 font-label-ui text-[11px] text-secondary">Risk</th>
+</tr>
+</thead>
+<tbody class="font-code-schema text-[12px]">
+<!-- Row 1: Balance -->
+<tr>
+<td class="p-1.5 text-left font-label-ui text-[11px] text-on-surface font-semibold">Balance</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-xs">1.00</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#8A70E8] text-on-primary font-medium">0.74</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#C4B5FD] text-on-surface font-medium">0.42</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-surface-container-low text-secondary font-medium">-0.15</div>
+</td>
+</tr>
+<!-- Row 2: Age -->
+<tr>
+<td class="p-1.5 text-left font-label-ui text-[11px] text-on-surface font-semibold">Age</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#8A70E8] text-on-primary font-medium">0.74</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-xs">1.00</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#EDE7FF] text-primary-container font-medium">0.28</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#C4B5FD] text-on-surface font-medium">-0.32</div>
+</td>
+</tr>
+<!-- Row 3: Purchases -->
+<tr>
+<td class="p-1.5 text-left font-label-ui text-[11px] text-on-surface font-semibold">Purchases</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#C4B5FD] text-on-surface font-medium">0.42</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#EDE7FF] text-primary-container font-medium">0.28</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-xs">1.00</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-surface-container-low text-secondary font-medium">0.05</div>
+</td>
+</tr>
+<!-- Row 4: Risk Score -->
+<tr>
+<td class="p-1.5 text-left font-label-ui text-[11px] text-on-surface font-semibold">Risk Score</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-surface-container-low text-secondary font-medium">-0.15</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-[#C4B5FD] text-on-surface font-medium">-0.32</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-surface-container-low text-secondary font-medium">0.05</div>
+</td>
+<td class="p-1">
+<div class="py-2.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-xs">1.00</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/40 flex items-center justify-between text-body-sm text-secondary">
+<span class="text-xs">Spearman Rank deviation: <strong class="text-[#22A06B] font-code-schema">0.008 max</strong></span>
+<div class="flex items-center gap-1 text-[11px]">
+<span class="w-2.5 h-2.5 rounded-sm bg-surface-container-low"></span>
+<span>Neg</span>
+<span class="w-2.5 h-2.5 rounded-sm bg-[#C4B5FD] ml-1"></span>
+<span>Mid</span>
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-container ml-1"></span>
+<span>High</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ROW 3: DETAILED AUDIT & ACTIONABLE RECOMMENDATIONS (50% / 50% Two-Column Bento) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg items-stretch">
+<!-- Left Bento Card (50%): Integrity & Compliance Checks -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-xl border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between">
+<div>
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-primary-container flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="checklist">checklist</span>
+</div>
+<div>
+<h2 class="font-title-card text-title-card font-semibold text-on-surface">Integrity &amp; Compliance Checks</h2>
+<p class="font-body-sm text-body-sm text-secondary">Rule enforcement and data leakage assertions</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F8F0] text-[#22A06B] font-label-ui text-xs font-semibold">5 / 5 Active</span>
+</div>
+<!-- Checklist Items -->
+<div class="flex flex-col divide-y divide-outline-variant/30 mt-space-sm">
+<!-- Item 1: No orphan foreign keys -->
+<div class="py-3 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#22A06B] mt-0.5" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h3 class="font-label-ui text-label-ui text-on-surface">No orphan foreign keys</h3>
+<p class="font-body-sm text-[12px] text-secondary">Parent keys resolved across Customers, Invoices, and Wallets tables.</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F8F0] text-[#22A06B] font-code-schema text-[11px] font-semibold whitespace-nowrap">
+                  100.0% match
+                </span>
+</div>
+<!-- Item 2: Order totals match line items -->
+<div class="py-3 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#22A06B] mt-0.5" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h3 class="font-label-ui text-label-ui text-on-surface">Order totals match line items</h3>
+<p class="font-body-sm text-[12px] text-secondary">Zero variance detected across 4,000 synthetic transaction order records.</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F8F0] text-[#22A06B] font-label-ui text-[11px] font-semibold whitespace-nowrap">
+                  Passed
+                </span>
+</div>
+<!-- Item 3: Unique IDs & Primary Keys -->
+<div class="py-3 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#22A06B] mt-0.5" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h3 class="font-label-ui text-label-ui text-on-surface">Unique IDs &amp; Primary Keys</h3>
+<p class="font-body-sm text-[12px] text-secondary">0 collisions in 5,000 UUIDv4 primary identity registers.</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F8F0] text-[#22A06B] font-label-ui text-[11px] font-semibold whitespace-nowrap">
+                  Passed
+                </span>
+</div>
+<!-- Item 4: Email format valid 99.8% (Amber Warning) -->
+<div class="py-3 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-tertiary-container mt-0.5" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h3 class="font-label-ui text-label-ui text-on-surface">Email format valid 99.8%</h3>
+<p class="font-body-sm text-[12px] text-secondary">10 malformed domain test cases generated intentionally for boundary stress.</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#FFF7D6] text-tertiary font-code-schema text-[11px] font-semibold whitespace-nowrap">
+                  99.8% · Warning
+                </span>
+</div>
+<!-- Item 5: PII Leaks / Exact Hash Matches -->
+<div class="py-3 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-[#22A06B] mt-0.5" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<h3 class="font-label-ui text-label-ui text-on-surface">PII Leaks / Exact Hash Matches</h3>
+<p class="font-body-sm text-[12px] text-secondary">0 / 5,000 matches against source training corpus (SHA-256 cross-tested).</p>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F8F0] text-[#22A06B] font-label-ui text-[11px] font-semibold whitespace-nowrap">
+                  0 Leaks
+                </span>
+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-space-sm border-t border-outline-variant/40 flex items-center justify-between">
+<span class="font-body-sm text-xs text-secondary">Rule suite: SOC2 Type II &amp; GDPR Synthetic Spec</span>
+<button class="font-label-ui text-xs text-primary font-semibold hover:underline">Configure assertion rules →</button>
+</div>
+</div>
+<!-- Right Bento Card (50%): ✦ AI Recommendations -->
+<div class="bg-surface-container-lowest rounded-[1.25rem] p-space-xl border border-outline-variant/50 custom-bento-shadow flex flex-col justify-between relative overflow-hidden">
+<!-- Subtle generative gradient glow on top-right of AI panel -->
+<div class="absolute -top-10 -right-10 w-44 h-44 bg-gradient-to-br from-tertiary-fixed/30 to-primary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div>
+<!-- Header with Signature AI Feature Badge -->
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-fixed to-secondary-container flex items-center justify-center text-primary-container flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_fix_high">auto_fix_high</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-title-card text-title-card font-semibold text-on-surface">Automated Quality Enhancements</h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">SynthForge copilot tuning based on reference baseline variance</p>
+</div>
+</div>
+<span class="h-6 px-2.5 rounded-full bg-[#FFD666] text-on-surface font-label-ui text-[11px] font-extrabold tracking-wide flex items-center gap-1 shadow-xs">
+<span>✦</span> AI
+              </span>
+</div>
+<!-- 3 Actionable Suggestions -->
+<div class="flex flex-col gap-space-md mt-space-md">
+<!-- Suggestion 1: Calibrate Balance tail distribution -->
+<div class="p-space-md rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:border-primary-fixed transition-colors">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-label-ui text-label-ui text-on-surface font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                    Calibrate Balance tail distribution
+                  </h3>
+<p class="font-body-sm text-[12px] text-secondary leading-snug">
+                    Increase Pareto tail alpha from 1.15 to 1.22 to eliminate subtle $1,200+ outliers.
+                  </p>
+</div>
+<button class="h-8 px-space-md rounded-full border border-primary-container text-primary-container bg-surface-container-lowest font-label-ui text-xs font-semibold hover:bg-secondary-container transition-colors active:scale-95 flex-shrink-0">
+                  Apply fix
+                </button>
+</div>
+<!-- Suggestion 2: Constrain email domain entropy -->
+<div class="p-space-md rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:border-primary-fixed transition-colors">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-label-ui text-label-ui text-on-surface font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+                    Constrain email domain entropy
+                  </h3>
+<p class="font-body-sm text-[12px] text-secondary leading-snug">
+                    Cap RFC-compliant mock domain generators to primary business whitelist (@example.com, @test.org).
+                  </p>
+</div>
+<button class="h-8 px-space-md rounded-full border border-primary-container text-primary-container bg-surface-container-lowest font-label-ui text-xs font-semibold hover:bg-secondary-container transition-colors active:scale-95 flex-shrink-0">
+                  Apply fix
+                </button>
+</div>
+<!-- Suggestion 3: Enforce strict state-to-zip correlation -->
+<div class="p-space-md rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:border-primary-fixed transition-colors">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-label-ui text-label-ui text-on-surface font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                    Enforce strict state-to-zip correlation
+                  </h3>
+<p class="font-body-sm text-[12px] text-secondary leading-snug">
+                    Align US postal code prefixes with synthetic state codes to achieve 100% regional fidelity.
+                  </p>
+</div>
+<button class="h-8 px-space-md rounded-full border border-primary-container text-primary-container bg-surface-container-lowest font-label-ui text-xs font-semibold hover:bg-secondary-container transition-colors active:scale-95 flex-shrink-0">
+                  Apply fix
+                </button>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/40 flex items-center justify-between text-body-sm text-secondary">
+<span class="text-xs">Estimated fidelity boost: <strong class="text-primary-container font-code-schema">+3.2%</strong> overall</span>
+<button class="font-label-ui text-xs text-primary font-bold hover:underline">Apply All 3 Fixes →</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER: Shared Components Footer Definition Executed Verbatim -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline mt-space-2xl">
+<div class="flex flex-col md:flex-row justify-between items-center py-space-xl px-gutter max-w-7xl mx-auto w-full gap-4">
+<!-- Copyright Text -->
+<p class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed">
+          © 2024 SynthForge AI Inc. All rights reserved.
+        </p>
+<!-- Legal and Resource Links -->
+<nav aria-label="Footer Navigation" class="flex items-center gap-space-md flex-wrap justify-center">
+<a class="font-label-ui text-label-ui text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#privacy">Privacy Policy</a>
+<span class="text-outline-variant">·</span>
+<a class="font-label-ui text-label-ui text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#terms">Terms of Service</a>
+<span class="text-outline-variant">·</span>
+<a class="font-label-ui text-label-ui text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#security">Security</a>
+<span class="text-outline-variant">·</span>
+<a class="font-label-ui text-label-ui text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#status">Status</a>
+<span class="text-outline-variant">·</span>
+<a class="font-label-ui text-label-ui text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150" href="#api">API Docs</a>
+</nav>
+</div>
+</footer>
+</div>
+</body></html>

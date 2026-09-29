@@ -1,0 +1,121 @@
+shop_id,shop_name,city,tier,rating
+3000,Hayward Inc,Catherinemouth,silver,3.8
+3001,Berry-Howells,Hillshire,gold,4.3
+3002,"Palmer, Clarke and Berry",Harrisburgh,bronze,4.0
+3003,"Khan, Wilkinson and Jones",East Leon,bronze,3.7
+3004,"Reed, Griffiths and Talbot",North Mandyside,silver,3.7
+3005,Humphries Group,Lake Wayne,bronze,4.1
+3006,Thompson PLC,Port Susanmouth,gold,4.1
+3007,Pratt PLC,O'Sullivanmouth,silver,3.7
+3008,Day Ltd,East Marc,bronze,5.0
+3009,"Lee, Gray and Thomas",South Vincentshire,silver,4.1
+3010,Brown Ltd,East John,bronze,4.4
+3011,Barnes-Newman,North Gregoryshire,gold,4.0
+3012,Smith-Cox,Gardnershire,gold,5.0
+3013,Gough-Lawrence,Jaynehaven,silver,3.0
+3014,Metcalfe-Savage,Morrisview,silver,3.9
+3015,Quinn-Wilson,Smithberg,bronze,4.2
+3016,"Gould, Webb and Marshall",Abdulmouth,bronze,4.7
+3017,"Briggs, Hicks and Grant",South Clive,bronze,4.1
+3018,"Hall, Begum and Simpson",New Carolchester,bronze,3.6
+3019,Parsons Group,South Ann,bronze,4.9
+3020,Thomas-Fraser,East Phillip,bronze,4.4
+3021,Richards-Jones,Cherylview,silver,4.0
+3022,Evans LLC,East Wendy,bronze,4.0
+3023,Watts-Evans,West Jaytown,bronze,4.0
+3024,Ellis Group,Port Rachael,bronze,4.2
+3025,Parkinson Group,North Katy,silver,3.2
+3026,Stokes-Williams,Daniellestad,gold,4.2
+3027,"Harris, Pearce and Jackson",Terencechester,gold,3.8
+3028,"Shepherd, Blackburn and Faulkner",Lyndaborough,gold,4.3
+3029,Osborne Ltd,New Charlottestad,bronze,4.2
+3030,Rogers Inc,New Jacquelineshire,gold,3.6
+3031,"Butler, Bell and Harrison",Bryanfurt,bronze,4.8
+3032,"White, Williams and Hart",Lake Ashleyborough,bronze,4.5
+3033,Harrison-Hall,Christiantown,bronze,3.6
+3034,"Robinson, Davies and Patel",Hammondhaven,bronze,3.6
+3035,Payne Ltd,Port Terrystad,bronze,3.7
+3036,Jackson Ltd,Edwardschester,bronze,4.3
+3037,Morgan Ltd,Port Samuelville,silver,4.7
+3038,"Mitchell, Holmes and Shepherd",West Valeriefort,silver,3.6
+3039,"Ross, Gardner and Bates",North Helen,bronze,3.7
+3040,West-Dixon,West Kayleighborough,bronze,4.3
+3041,Tomlinson-Flynn,Patelfurt,silver,4.1
+3042,"Morris, Johnson and Clarke",Hillton,silver,4.1
+3043,"Edwards, Evans and Moore",Darrenhaven,silver,4.0
+3044,Wood-Brown,Marystad,bronze,3.9
+3045,Watson-Campbell,Taylorport,bronze,5.0
+3046,"White, Thompson and Harris",East June,bronze,4.6
+3047,Johnson LLC,North Josh,bronze,3.9
+3048,"Webster, Pritchard and Smith",Robinmouth,bronze,4.7
+3049,Todd-Smith,Lake Christopher,gold,5.0
+3050,"Evans, Clark and Wall",Stewartport,bronze,4.3
+3051,"Butler, Brennan and Davis",Port Eileen,silver,4.2
+3052,Fowler-Charlton,New Georgemouth,bronze,3.8
+3053,Cole-Howard,West Joannaburgh,bronze,4.1
+3054,Lowe-Dunn,North Debra,bronze,4.2
+3055,Ball-Ahmed,Lydiabury,bronze,4.7
+3056,Begum-Walker,East Ambershire,silver,3.6
+3057,"Lloyd, Doyle and Green",Edwardstad,silver,3.3
+3058,"Hanson, Sheppard and Fraser",East Sarah,bronze,3.8
+3059,Bell Inc,Colemanbury,bronze,4.3
+3060,Harrison-Kelly,Bethland,silver,3.1
+3061,"Ellis, Hall and Clarke",Masonton,silver,4.0
+3062,Doherty Group,Taylormouth,bronze,3.7
+3063,Booth Ltd,Jonesland,bronze,3.5
+3064,McDonald Ltd,Lake Katherine,bronze,4.1
+3065,Taylor-West,Johnsonmouth,bronze,4.7
+3066,"Daly, Harris and Lawrence",Anthonyberg,bronze,3.4
+3067,James-Potter,Gregorymouth,bronze,4.2
+3068,Wilson-Ferguson,South Ruthville,silver,4.0
+3069,White Ltd,North Brucefurt,silver,4.4
+3070,"Ward, Jennings and Smart",Allenchester,silver,4.1
+3071,"Reeves, Thomas and Garner",Martinstad,bronze,3.8
+3072,Wilson-Lane,Lindseyview,gold,4.5
+3073,"Jones, Marshall and Carroll",South Amandachester,bronze,4.3
+3074,Owens-Mason,Flynntown,bronze,3.6
+3075,Holt Group,New Janiceville,bronze,3.1
+3076,Myers Group,Ameliaville,gold,3.7
+3077,Williams-Richardson,Lake Jamie,bronze,4.2
+3078,"Edwards, Lawrence and Henderson",Lake Declan,bronze,4.5
+3079,Blake-Nixon,Elliottview,silver,3.8
+3080,Thomas Inc,West Ruth,bronze,3.9
+3081,Williams-Higgins,Wilsonburgh,bronze,3.2
+3082,"Greenwood, Hall and Jones",East Susanland,bronze,3.8
+3083,"Fletcher, Glover and Wilkins",West Joe,bronze,4.1
+3084,"Hall, Jones and Bennett",Perryshire,bronze,3.8
+3085,Ward and Sons,New Arthurtown,silver,4.0
+3086,"Taylor, Woods and Daniels",South Emilyshire,bronze,3.6
+3087,"Ball, Reed and Turner",West Kirsty,gold,3.6
+3088,"Wong, Matthews and Smith",Paulport,bronze,4.2
+3089,"Brown, Heath and Atkins",New Hayleyville,bronze,3.3
+3090,Powell Inc,Marianbury,silver,4.1
+3091,Browne Ltd,Jacksontown,silver,4.7
+3092,Turner-Lawson,New Marionbury,gold,3.8
+3093,Brown LLC,New Mohammedshire,bronze,3.8
+3094,Harvey Group,Rhodesland,gold,3.7
+3095,Kelly PLC,North Abbie,silver,3.4
+3096,Hunt-Collins,Reedmouth,bronze,3.8
+3097,Evans Inc,Lake Elainemouth,bronze,3.4
+3098,Brown Group,Lake Harry,bronze,4.0
+3099,Metcalfe-Jones,New Olivia,silver,3.8
+3100,Baker-Lee,Port Rhyschester,silver,3.5
+3101,"Lewis, Howard and Banks",West Richardberg,bronze,4.1
+3102,Wilson-Vaughan,New Gemmachester,bronze,4.6
+3103,Brown Ltd,Barnesfurt,silver,4.5
+3104,Ellis and Sons,Scottbury,bronze,3.9
+3105,Metcalfe-Mann,New Georginashire,bronze,4.0
+3106,"Mellor, Newman and Howells",Harrisfurt,bronze,3.5
+3107,"Willis, Lewis and Nixon",East Francis,bronze,3.9
+3108,Manning-Armstrong,Georginachester,bronze,4.4
+3109,"Woodward, Harris and Whittaker",East Declan,bronze,4.4
+3110,Barry Inc,West Janet,bronze,4.7
+3111,"Fox, Walsh and Greenwood",South Anthony,silver,3.3
+3112,Leonard and Sons,Lyonsshire,bronze,4.8
+3113,Shepherd-Carey,Buckleyland,bronze,4.2
+3114,Cox LLC,New Sean,silver,4.8
+3115,Lewis-Riley,Whittakerburgh,silver,4.1
+3116,Green Ltd,Morganbury,gold,4.7
+3117,"Todd, Burke and Clarke",Thorntonfurt,bronze,4.0
+3118,"Herbert, James and Powell",South Paulamouth,bronze,3.5
+3119,Jackson Group,South Deniseton,bronze,4.2

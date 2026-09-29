@@ -10,13 +10,13 @@ import {
 import { ApiError, api, type Job, type ProjectSummary, type Schema, type TrustReport } from "./api";
 import type { ScreenId } from "./nav";
 
-// One small store for the whole app. A router and a data-fetching library would
-// each be a dependency and a build step for a single-page tool with nine screens
-// and one project in flight at a time.
-
 interface Store {
   screen: ScreenId;
   go: (s: ScreenId) => void;
+
+  introActive: boolean;
+  triggerIntro: (target?: ScreenId) => void;
+  finishIntro: () => void;
 
   projects: ProjectSummary[];
   project: ProjectSummary | null;
@@ -48,7 +48,10 @@ export function useStore(): Store {
 }
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-  const [screen, setScreen] = useState<ScreenId>("projects");
+  const [screen, setScreen] = useState<ScreenId>("landing");
+  const [introActive, setIntroActive] = useState(false);
+  const [introTarget, setIntroTarget] = useState<ScreenId | null>(null);
+
   const [projects, setProjects] = useState<ProjectSummary[]>([]);
   const [project, setProject] = useState<ProjectSummary | null>(null);
   const [schema, setSchema] = useState<Schema | null>(null);
@@ -58,6 +61,19 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [aiNote, setAiNote] = useState("");
   const [booting, setBooting] = useState(true);
   const [error, setError] = useState<{ message: string; remedy?: string } | null>(null);
+
+  const triggerIntro = useCallback((target: ScreenId = "workspace") => {
+    setIntroTarget(target);
+    setIntroActive(true);
+  }, []);
+
+  const finishIntro = useCallback(() => {
+    setIntroActive(false);
+    if (introTarget) {
+      setScreen(introTarget);
+      setIntroTarget(null);
+    }
+  }, [introTarget]);
 
   /** Wrap any API call so a thrown ApiError becomes a visible remedy. */
   const run = useCallback(async <T,>(fn: () => Promise<T>): Promise<T | undefined> => {
@@ -86,7 +102,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         try {
           setReport(await api.report(id));
         } catch {
-          setReport(null); // a missing report is a normal state, not an error
+          setReport(null);
         }
       } else {
         setReport(null);
@@ -104,8 +120,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setProjects((p) => [res.project, ...p.filter((x) => x.id !== res.project.id)]);
   }, [run]);
 
-  // Boot: check AI mode, list projects, and seed the demo if the server is cold
-  // so the app is never staring at an empty screen during a demo.
   useEffect(() => {
     (async () => {
       try {
@@ -148,6 +162,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     () => ({
       screen,
       go: setScreen,
+      introActive,
+      triggerIntro,
+      finishIntro,
       projects,
       project,
       schema,
@@ -167,8 +184,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       run,
     }),
     [
-      screen, projects, project, schema, report, job, aiMode, aiNote, booting, error,
-      refreshProjects, openProject, loadDemo, run,
+      screen, introActive, triggerIntro, finishIntro, projects, project, schema, report, job,
+      aiMode, aiNote, booting, error, refreshProjects, openProject, loadDemo, run,
     ],
   );
 

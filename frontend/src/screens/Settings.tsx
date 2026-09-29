@@ -64,9 +64,9 @@ export function Settings() {
           </div>
           <dl className="space-y-2 text-[12.5px]">
             {[
-              ["Provider", ai?.provider ?? "—"],
-              ["Reasoning model", ai?.reasoning_model ?? "—"],
-              ["Bulk model", ai?.bulk_model ?? "—"],
+              ["Provider", ai?.provider ?? " "],
+              ["Reasoning model", ai?.reasoning_model ?? " "],
+              ["Bulk model", ai?.bulk_model ?? " "],
               ["Cached responses", String(ai?.cached_responses ?? 0)],
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between">
@@ -78,7 +78,7 @@ export function Settings() {
           <p className="mt-3 rounded-xl bg-canvas px-3.5 py-2.5 text-[11.5px] leading-relaxed text-ink-mute">
             {aiMode === "live"
               ? "Set. Every response is still validated against a schema before it reaches the pipeline, and falls back to heuristics on any failure."
-              : "No usable AI credential, so the platform is running on deterministic heuristics. Every feature still works — the AI layer only ever adds polish, never load-bearing behaviour. Set ANTHROPIC_API_KEY or MISTRAL_API_KEY to switch it live."}
+              : "No usable AI credential, so the platform is running on deterministic heuristics. Every feature still works, the AI layer only ever adds polish, never load-bearing behaviour. Set ANTHROPIC_API_KEY or MISTRAL_API_KEY to switch it live."}
           </p>
         </Card>
       </motion.div>

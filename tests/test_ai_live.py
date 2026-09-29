@@ -34,8 +34,8 @@ def main() -> int:
     print(f"  reasoning: {status['reasoning_model']}   bulk: {status['bulk_model']}")
 
     if not status["available"]:
-        print("\nNo AI credential configured — nothing to exercise live.")
-        print("The heuristic path is covered by scripts/ai_test.py.")
+        print("\nNo AI credential configured, nothing to exercise live.")
+        print("The heuristic path is covered by tests/test_ai_fallback.py.")
         return 0
 
     frames = {
@@ -51,7 +51,7 @@ def main() -> int:
     for stale in ai.CACHE_DIR.glob("*.json"):
         stale.unlink()
 
-    print("\nJob 1 — semantic types")
+    print("\nJob 1, semantic types")
     proposals = ai.infer_semantic_types(customers, frames["customers"])
     live = [p for p in proposals if p.get("source") == "ai"]
     check("proposals returned", len(proposals) == len(customers.columns),
@@ -68,19 +68,19 @@ def main() -> int:
     check("every proposal names a real column",
           all(customers.column(p["column"]) is not None for p in proposals))
 
-    print("\nJob 2 — relationships")
+    print("\nJob 2, relationships")
     relations = ai.infer_relationships(schema, frames)
     check("relationships proposed", len(relations) >= 2, str(len(relations)))
     pairs = {(r["child_table"], r["parent_table"]) for r in relations}
     check("orders -> customers found", ("orders", "customers") in pairs, str(sorted(pairs)))
 
-    print("\nJob 4 — edge cases")
+    print("\nJob 4, edge cases")
     cases = ai.propose_edge_cases(schema)
     check("edge cases proposed", len(cases) >= 4, str(len(cases)))
     check("each has a name and a sane rate",
           all(c.get("name") and 0 < c.get("rate", 0) <= 0.25 for c in cases))
 
-    print("\nJob 5 — business rules")
+    print("\nJob 5, business rules")
     rules = ai.propose_business_rules(schema)
     check("rules proposed", len(rules) > 0, str(len(rules)))
     check("every rule names a real table and column",

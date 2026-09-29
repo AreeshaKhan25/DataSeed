@@ -1,0 +1,215 @@
+
+=== PAGE 1 ===
+HackDataV2 · Submission
+Synthetic data 
+platform
+Realistic, privacy-safe tabular, relational and document data —
+generated on demand.
+Tabular Data Relational Structures Document Generator
+=== PAGE 2 ===
+The problem
+Real data is scarce, sensitive, and slow to get
+Privacy & compliance
+Teams can’t freely share production
+data across environments, partners, or
+the cloud.
+Limited, messy datasets
+Real datasets are small, skewed, or
+missing the edge cases engineers need to
+test against.
+Slow procurement cycles
+Getting a sanctioned data extract for a
+demo or a test suite can take weeks of
+sign-off.
+HackDataV2 · Synthetic Data Platform
+=== PAGE 3 ===
+Our approach
+Schema-aware, not random
+Ingest schema
+Infer tables, columns, types
+and keys from a sample or a
+schema file.
+Model relationships
+Learn distributions,
+correlations and foreign-key
+cardinalities across tables.
+Generate with AI
+An AI layer fills in realistic
+names, text, and edge
+cases the schema alone
+can’t describe.
+Validate & export
+Check referential integrity
+and statistical fidelity,
+then export to your format
+of choice.
+HackDataV2 · Synthetic Data Platform
+=== PAGE 4 ===
+System design
+From schema to shippable data
+Inputs
+Schema definition
+Sample dataset
+Business rules
+Generation engine
+Tabular engine
+Relational engine
+Document engine
+AI layer runs across all three
+Outputs
+CSV / JSON tables
+Relational DB dump
+PDF-style documents
+HackDataV2 · Synthetic Data Platform
+=== PAGE 5 ===
+Feature
+Tabular data generation
+Statistically faithful distributions for numeric and
+categorical columns
+Configurable row count, random seed, and null / outlier rates
+Column-level privacy controls: masking, hashing, and
+differential noise
+Sample synthetic output
+ID Name Email Signu
+p
+Bala
+nce
+10231 Maria Chen m.chen@example.
+com
+2025-
+02-11
+$482
+.10
+10232 Ahmed Raza a.raza@example.c
+om
+2025-
+03-04
+$129
+.55
+10233 Sofia Ivanova s.ivanova@exampl
+e.com
+2025-
+01-27
+$918
+.42
+HackDataV2 · Synthetic Data Platform
+=== PAGE 6 ===
+Feature
+Relational data structures
+Customers
+customer_id (PK)
+name
+email
+Orders
+order_id (PK)
+customer_id (FK)
+order_date
+Order items
+item_id (PK)
+order_id (FK)
+sku, qty
+Referential integrity maintained automatically across every generated table
+Cardinalities are configurable — 1:1, 1:N, and N:N
+Cross-table consistency: order totals reconcile with their line items
+HackDataV2 · Synthetic Data Platform
+=== PAGE 7 ===
+Feature · Document generator
+Invoices
+Realistic line items, tax rules, and totals that
+reconcile automatically
+Templated layouts per region — date formats, currency,
+tax labels
+Bulk generation for testing invoicing and reconciliation
+pipelines
+INVOICE #INV-10432
+Billed to
+Northwind Supplies Ltd.
+From
+Synth Data Co.
+Item Qty Price Amount
+API access — Pro tier 1 $1,100.0
+0
+$1,100.0
+0
+Onboarding support 1 $140.00 $140.00
+Total: $1,240.00
+HackDataV2 · Synthetic Data Platform
+=== PAGE 8 ===
+Feature · Document generator
+Bank statements & queries
+Transaction histories with realistic merchants, amounts,
+and running balances
+Structured exports (JSON / CSV) or formatted
+statement documents
+Query-style generation, e.g. “last 90 days, balance
+over $500”
+Sample statement excerpt
+Date Description Debit Credit Balanc
+e
+08-14 Greenleaf Market $42.10 $1,204.
+30
+08-15 Payroll deposit $2,150.0
+0
+$3,354.
+30
+08-17 Riverside Utilities $96.40 $3,257.
+90
+HackDataV2 · Synthetic Data Platform
+=== PAGE 9 ===
+AI layer
+Where AI does the work
+Schema understanding
+Infers column types, formats and
+relationships directly from a small
+sample, no manual mapping.
+Realistic content synthesis
+Names, addresses and free-text fields
+read naturally instead of looking
+machine-generated.
+Edge-case injection
+Proposes nulls, outliers, and rare patterns
+so test suites cover more than the
+happy path.
+HackDataV2 · Synthetic Data Platform
+=== PAGE 10 ===
+Experience
+One workspace, three data types
+Workspace
+Tabular
+Relational
+Documents
+Live
+preview
+canvas
+See
+generated
+rows
+update
+instantly
+as
+settings
+change
+on the
+right.
+Configuration
+Row count
+Random seed
+Locale & currency
+Privacy rules
+Export
+HackDataV2 · Synthetic Data Platform
+=== PAGE 11 ===
+Why it wins
+Built against the judging criteria
+Criterion How we deliver
+System design Modular engine — tabular, relational and document generators share one schema-aware pipeline
+Features Tabular, relational, and document generation (invoices, bank statements) in a single platform
+UI One workspace to configure, preview, and export — no code required
+AI AI infers schemas, synthesizes realistic content, and injects meaningful edge cases
+Problem approach Solves data scarcity and privacy constraints without ever touching real records
+HackDataV2 · Synthetic Data Platform
+=== PAGE 12 ===
+HackDataV2
+Thank you
+Synthetic Data Platform — questions, and a live demo.
+Tabular Relational Documents

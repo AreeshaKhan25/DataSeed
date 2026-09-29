@@ -1,4 +1,4 @@
-"""Synth — synthetic data platform.
+"""Synth, synthetic data platform.
 
 Loading `.env` here means every entry point gets it: the server, the test
 scripts, and anything importing the package directly. A documented `.env` that

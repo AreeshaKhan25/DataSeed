@@ -1,0 +1,27 @@
+employee_id,first_name,last_name,email,department,job_title,salary,bonus,hire_date,performance_score
+EMP-201,Alexander,Wright,alexander.w@company.com,Engineering,Senior Software Engineer,135000,12000,2021-03-15,4.8
+EMP-202,Beatrix,Hall,beatrix.h@company.com,Marketing,Content Strategist,78000,5000,2022-06-10,4.2
+EMP-203,Christopher,King,chris.k@company.com,Sales,Account Executive,92000,18500,2020-01-20,4.5
+EMP-204,Diana,Prince,diana.p@company.com,Product,Product Manager,125000,10000,2021-08-01,4.6
+EMP-205,Edward,Nygma,edward.n@company.com,Data Science,Data Scientist,130000,11500,2022-02-14,4.7
+EMP-206,Fiona,Gallagher,fiona.g@company.com,Human Resources,HR Business Partner,82000,4500,2019-11-05,4.1
+EMP-207,George,Costanza,george.c@company.com,Operations,Logistics Coordinator,68000,3000,2023-04-18,3.9
+EMP-208,Hannah,Abbott,hannah.a@company.com,Design,UX Lead Designer,118000,8500,2020-09-12,4.9
+EMP-209,Ian,Malcolm,ian.m@company.com,Engineering,Backend Developer,110000,9000,2022-09-01,4.4
+EMP-210,Julia,Roberts,julia.r@company.com,Finance,Financial Analyst,89000,6000,2021-12-01,4.3
+EMP-211,Kevin,Bacon,kevin.b@company.com,Sales,Sales Manager,115000,22000,2018-05-15,4.6
+EMP-212,Laura,Palmer,laura.p@company.com,Marketing,SEO Specialist,72000,4000,2023-01-10,4.0
+EMP-213,Michael,Scott,michael.s@company.com,Sales,Regional Director,140000,25000,2015-02-01,4.2
+EMP-214,Nancy,Wheeler,nancy.w@company.com,Engineering,Frontend Engineer,105000,8000,2022-05-20,4.5
+EMP-215,Oscar,Martinez,oscar.m@company.com,Finance,Senior Accountant,95000,7000,2017-08-14,4.7
+EMP-216,Pam,Beesly,pam.b@company.com,Operations,Office Administrator,62000,2500,2019-03-10,4.3
+EMP-217,Quentin,Tarantino,quentin.t@company.com,Marketing,Creative Director,135000,15000,2020-07-01,4.8
+EMP-218,Rosa,Diaz,rosa.d@company.com,Security,Security Lead,112000,9500,2021-04-12,4.9
+EMP-219,Stanley,Hudson,stanley.h@company.com,Sales,Senior Account Representative,88000,14000,2016-10-01,4.0
+EMP-220,Tina,Fey,tina.f@company.com,Product,Group Product Manager,150000,18000,2019-01-15,4.9
+EMP-221,Ulysses,Grant,ulysses.g@company.com,Engineering,DevOps Engineer,122000,10500,2021-11-01,4.6
+EMP-222,Valerie,Cherish,valerie.c@company.com,Human Resources,Recruiter,75000,5500,2022-10-15,4.1
+EMP-223,Walter,White,walter.w@company.com,Data Science,Lead Chemist & Analyst,145000,16000,2020-04-01,5.0
+EMP-224,Xena,Warrior,xena.w@company.com,Operations,Operations Director,138000,14000,2018-09-20,4.8
+EMP-225,Yennefer,Vengerberg,yennefer.v@company.com,Engineering,Software Architect,155000,17500,2019-06-10,4.9
+EMP-226,Zachary,Taylor,zachary.t@company.com,Finance,Treasury Manager,108000,8500,2021-05-05,4.4

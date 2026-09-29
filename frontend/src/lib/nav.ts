@@ -1,4 +1,5 @@
 export type ScreenId =
+  | "landing"
   | "projects"
   | "ingest"
   | "schema"
@@ -11,6 +12,7 @@ export type ScreenId =
   | "settings";
 
 export const SCREEN_TITLES: Record<ScreenId, string> = {
+  landing: "Landing Page",
   projects: "Projects",
   ingest: "New project",
   schema: "Schema",

@@ -1,17 +1,27 @@
-# One-click deploy on Render. Docker build, so it matches local exactly.
+# Render blueprint.
+#
+# Native Python rather than Docker: the built frontend is committed in web/, so
+# the image never needs a Node toolchain, and a plain pip install is far less
+# likely to fail on a first deploy than a multi stage build. The Dockerfile is
+# still there for anyone who wants a container.
 services:
   - type: web
     name: dataseed
-    runtime: docker
-    dockerfilePath: ./Dockerfile
-    plan: starter
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: |
+      pip install -r requirements.txt
+      python scripts/make_demo_data.py
+      python scripts/make_test_fixtures.py
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:
-      - key: PORT
-        value: 8000
-      - key: HOST
-        value: 0.0.0.0
-      # Optional. Without it the AI layer runs on heuristics and everything
-      # still works.
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Optional. Without a key the AI layer runs on deterministic heuristics
+      # and every feature still works.
       - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: MISTRAL_API_KEY
         sync: false

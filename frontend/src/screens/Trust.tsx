@@ -258,7 +258,7 @@ export function Trust() {
         icon={report.export_allowed ? <IconShield size={18} /> : <IconAlert size={18} />}
         title={
           report.export_allowed
-            ? "All gates passed — this dataset is cleared for export"
+            ? "All gates passed, this dataset is cleared for export"
             : `Export blocked: ${failed.map(([k]) => k.replace(/_/g, " ")).join(", ")}`
         }
         body={
@@ -276,7 +276,7 @@ export function Trust() {
       <div className="grid gap-4 lg:grid-cols-2">
         <motion.div variants={rise}>
           <Card className="p-5">
-            <SectionTitle hint={utility.metric}>Downstream utility — TSTR</SectionTitle>
+            <SectionTitle hint={utility.metric}>Downstream utility, TSTR</SectionTitle>
             {utility.available ? (
               <>
                 <UtilityChart
@@ -286,14 +286,14 @@ export function Trust() {
                 />
                 <div className="mt-4 space-y-1.5 rounded-xl bg-canvas px-4 py-3">
                   {[
-                    ["TRTR — trained on real", utility.trtr],
-                    ["TSTR — trained on synthetic", utility.tstr],
+                    ["TRTR, trained on real", utility.trtr],
+                    ["TSTR, trained on synthetic", utility.tstr],
                     ["Ratio", utility.ratio],
                   ].map(([label, value]) => (
                     <div key={String(label)} className="flex justify-between text-[12.5px]">
                       <span className="text-ink-mute">{label}</span>
                       <span className="tnum font-semibold text-ink">
-                        {typeof value === "number" ? value.toFixed(3) : "—"}
+                        {typeof value === "number" ? value.toFixed(3): " "}
                       </span>
                     </div>
                   ))}
@@ -307,7 +307,7 @@ export function Trust() {
                     <p className="text-[11.5px] leading-relaxed text-ink-mute">
                       The generator was conditioned on{" "}
                       <strong className="text-ink">{report.conditioned_on}</strong>, which is also
-                      the strongest target — so that score partly reflects the modelling choice.
+                      the strongest target, so that score partly reflects the modelling choice.
                       On{" "}
                       <strong className="text-ink">{utility.independent_check.target}</strong>, a
                       column it was <em>not</em> conditioned on, utility is{" "}
@@ -319,7 +319,7 @@ export function Trust() {
                 )}
                 {!!utility.excluded_as_leaked?.length && (
                   <p className="mt-2 rounded-lg bg-amber-wash px-3 py-2 text-[11.5px] leading-snug text-amber">
-                    Excluded {utility.excluded_as_leaked.join(", ")} as a target — another column
+                    Excluded {utility.excluded_as_leaked.join(", ")} as a target, another column
                     determines it outright, so the comparison would prove nothing.
                   </p>
                 )}
@@ -342,18 +342,18 @@ export function Trust() {
               />
               <PrivacyRow
                 label="Distance to closest record"
-                value={privacy.dcr?.toFixed(4) ?? "—"}
+                value={privacy.dcr?.toFixed(4) ?? " "}
                 meter={
                   privacy.dcr && privacy.dcr_baseline
                     ? Math.min(100, (privacy.dcr / privacy.dcr_baseline) * 70)
                     : 0
                 }
                 good={!!privacy.dcr && !!privacy.dcr_baseline && privacy.dcr >= privacy.dcr_baseline}
-                note={`Real-to-real baseline ${privacy.dcr_baseline?.toFixed(4) ?? "—"} — synthetic rows should sit no closer.`}
+                note={`Real-to-real baseline ${privacy.dcr_baseline?.toFixed(4) ?? " "}, synthetic rows should sit no closer.`}
               />
               <PrivacyRow
                 label="Membership inference"
-                value={privacy.membership_auc?.toFixed(3) ?? "—"}
+                value={privacy.membership_auc?.toFixed(3) ?? " "}
                 meter={
                   privacy.membership_auc
                     ? Math.max(0, 100 - Math.abs(privacy.membership_auc - 0.5) * 300)
@@ -438,7 +438,7 @@ export function Trust() {
                 <strong className="text-ink">
                   {fidelity.regenerated_columns.join(", ")}
                 </strong>{" "}
-                are regenerated from scratch and excluded from scoring by design — they are meant to
+                are regenerated from scratch and excluded from scoring by design, they are meant to
                 differ from the source, which is the privacy guarantee.
               </p>
             </div>

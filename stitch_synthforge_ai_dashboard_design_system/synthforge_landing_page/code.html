@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge — Real-looking data. Zero real records.</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#faf8ff",
+            "tertiary-fixed": "#ffdf90",
+            "on-secondary-fixed-variant": "#474457",
+            "surface-container-low": "#f4f3fa",
+            "inverse-on-surface": "#f2f0f7",
+            "primary-container": "#5b3fd0",
+            "secondary-fixed": "#e5dff7",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#656276",
+            "on-surface-variant": "#484554",
+            "on-surface": "#1a1b20",
+            "inverse-primary": "#c9beff",
+            "on-primary-container": "#d6ccff",
+            "tertiary": "#755b00",
+            "on-secondary": "#ffffff",
+            "surface": "#faf8ff",
+            "on-secondary-fixed": "#1c192a",
+            "on-background": "#1a1b20",
+            "surface-variant": "#e3e1e8",
+            "inverse-surface": "#2f3035",
+            "surface-dim": "#dbd9e0",
+            "primary": "#431fb8",
+            "outline": "#797586",
+            "on-tertiary-container": "#503d00",
+            "primary-fixed": "#e6deff",
+            "surface-container-lowest": "#ffffff",
+            "outline-variant": "#c9c4d7",
+            "on-tertiary-fixed": "#241a00",
+            "tertiary-fixed-dim": "#e9c254",
+            "on-primary-fixed": "#1b0063",
+            "tertiary-container": "#cca73c",
+            "surface-container-highest": "#e3e1e8",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#584400",
+            "surface-container-high": "#e9e7ee",
+            "primary-fixed-dim": "#c9beff",
+            "surface-bright": "#faf8ff",
+            "secondary-fixed-dim": "#c9c3da",
+            "secondary-container": "#e5dff7",
+            "on-error-container": "#93000a",
+            "secondary": "#5f5c70",
+            "on-primary": "#ffffff",
+            "surface-tint": "#5f43d4",
+            "on-primary-fixed-variant": "#4725bc",
+            "surface-container": "#efedf4"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "title-card": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-card": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-default": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "code-schema": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .bento-shadow {
+      box-shadow: 0 4px 20px -2px rgba(91, 63, 208, 0.04), 0 2px 6px -1px rgba(27, 23, 64, 0.02);
+    }
+    .float-card-shadow {
+      box-shadow: 0 12px 32px -4px rgba(91, 63, 208, 0.10), 0 4px 12px -2px rgba(27, 23, 64, 0.04);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 70% 30%, rgba(233, 223, 255, 0.7) 0%, rgba(248, 217, 240, 0.45) 50%, rgba(255, 243, 223, 0.3) 100%);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-default text-body-default min-h-screen selection:bg-secondary-container selection:text-primary">
+<!-- ================= NAVBAR ================= -->
+<header class="sticky top-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 transition-all">
+<div class="h-16 flex items-center justify-between px-gutter max-w-7xl mx-auto w-full">
+<!-- Left: Brand Logo -->
+<a class="flex items-center gap-space-sm group" href="#">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SynthForge</span>
+</a>
+<!-- Center navigation links (Desktop) -->
+<nav class="hidden md:flex items-center gap-space-lg">
+<a class="font-label-ui text-label-ui text-primary font-semibold hover:text-primary-container transition-colors duration-150" href="#home">Home</a>
+<a class="font-label-ui text-label-ui text-secondary font-normal hover:text-primary transition-colors duration-150" href="#features">Features</a>
+<a class="font-label-ui text-label-ui text-secondary font-normal hover:text-primary transition-colors duration-150" href="#how-it-works">How it works</a>
+<a class="font-label-ui text-label-ui text-secondary font-normal hover:text-primary transition-colors duration-150" href="#docs">Docs</a>
+</nav>
+<!-- Right actions -->
+<div class="flex items-center gap-space-sm">
+<a class="font-label-ui text-label-ui text-primary-container px-space-md py-2 rounded-full border border-primary-container/40 hover:bg-secondary-container hover:border-primary-container transition-all duration-150" href="#">
+          Sign in
+        </a>
+<a class="font-label-ui text-label-ui text-on-primary bg-primary-container hover:bg-primary px-space-lg py-2 rounded-full transition-all duration-150 active:scale-95 shadow-sm" href="#">
+          Try free
+        </a>
+</div>
+</div>
+</header>
+<!-- ================= HERO SECTION ================= -->
+<section class="pt-8 pb-16 px-gutter max-w-7xl mx-auto w-full" id="home">
+<div class="relative overflow-hidden rounded-[24px] border border-outline-variant/50 bg-gradient-to-br from-[#FFF3DF]/60 via-[#E9DFFF]/50 to-background p-space-lg md:p-space-2xl bento-shadow">
+<!-- Ambient light decorative elements -->
+<div class="absolute -top-32 -right-24 w-96 h-96 bg-primary-fixed/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-20 w-80 h-80 bg-tertiary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Column -->
+<div class="lg:col-span-6 space-y-6">
+<!-- AI Badge -->
+<div class="inline-flex items-center gap-1.5 bg-[#FFD666] text-[#1B1740] font-label-ui text-[11px] uppercase tracking-wider font-bold px-3 py-1 rounded-full shadow-xs">
+<span>✦</span>
+<span>AI-powered</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-hero text-display-hero-mobile md:font-display-hero md:text-display-hero text-on-surface tracking-tight">
+            Real-looking data. <span class="bg-primary-container text-on-primary px-3 py-0.5 rounded-full inline-block shadow-sm">Zero</span> real records.
+          </h1>
+<!-- Subtext -->
+<p class="font-body-default text-body-default text-secondary max-w-xl text-base leading-relaxed">
+            Generate privacy-safe tabular, relational and document data on demand — no code required.
+          </p>
+<!-- Email signup form -->
+<form class="flex flex-col sm:flex-row gap-2 max-w-lg pt-2" onsubmit="event.preventDefault()">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="mail">mail</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-on-surface placeholder:text-outline text-body-sm focus:border-primary-container focus:ring-2 focus:ring-primary-fixed focus:outline-none transition-all shadow-xs" placeholder="Enter your work email..." type="email"/>
+</div>
+<button class="h-11 px-6 rounded-full bg-primary-container text-on-primary font-label-ui text-label-ui hover:bg-primary transition-all duration-150 active:scale-95 shadow-sm flex items-center justify-center gap-2 whitespace-nowrap" type="submit">
+<span>Get started</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Trust checklist -->
+<div class="flex flex-wrap items-center gap-6 pt-2 text-secondary font-label-ui text-label-ui">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] font-bold" data-icon="check">check</span>
+</span>
+<span>No real data needed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] font-bold" data-icon="check">check</span>
+</span>
+<span>Export in seconds</span>
+</div>
+</div>
+</div>
+<!-- Right Column: App Mockup with Floating Bento Badges -->
+<div class="lg:col-span-6 relative flex justify-center items-center py-6">
+<!-- Monitor Frame with 3D tilt effect -->
+<div class="w-full max-w-lg bg-surface-container-lowest border border-outline-variant/70 rounded-2xl shadow-xl overflow-hidden transform md:rotate-1 hover:rotate-0 transition-transform duration-300">
+<!-- Window header -->
+<div class="h-8 bg-surface-container-low border-b border-outline-variant/40 px-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+</div>
+<div class="text-[11px] font-code-schema text-outline bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant/30">
+                synthforge.internal/workspace/v2
+              </div>
+<div class="w-8"></div>
+</div>
+<!-- Workspace Screen Preview -->
+<div class="p-4 bg-surface space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="schema">schema</span>
+</div>
+<div>
+<div class="text-[13px] font-title-card text-on-surface">production_replica_v4</div>
+<div class="text-[10px] text-outline font-label-ui">Synthesizing 5 relational tables</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#E5F7ED] text-[#1E7E4E] text-[11px] font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#22A06B]"></span> Validated
+                </span>
+</div>
+<!-- Micro data table in screen -->
+<div class="rounded-xl border border-outline-variant/40 bg-surface-container-lowest overflow-hidden text-[11px]">
+<div class="grid grid-cols-4 bg-surface-container-low p-2 font-code-schema text-secondary font-medium border-b border-outline-variant/30">
+<span>ID</span>
+<span>RECORD_TYPE</span>
+<span>STATUS</span>
+<span class="text-right">DISTRIBUTION</span>
+</div>
+<div class="p-2 space-y-1.5 font-code-schema text-on-surface-variant">
+<div class="grid grid-cols-4 items-center">
+<span class="text-primary font-semibold">SYN-8819</span>
+<span>cust_profile</span>
+<span class="text-[#22A06B]">synthesized</span>
+<span class="text-right text-outline">Gaussian</span>
+</div>
+<div class="grid grid-cols-4 items-center">
+<span class="text-primary font-semibold">SYN-8820</span>
+<span>txn_ledger</span>
+<span class="text-[#22A06B]">synthesized</span>
+<span class="text-right text-outline">Multivariate</span>
+</div>
+<div class="grid grid-cols-4 items-center">
+<span class="text-primary font-semibold">SYN-8821</span>
+<span>claim_event</span>
+<span class="text-[#755B00]">sampling</span>
+<span class="text-right text-outline">Poisson</span>
+</div>
+</div>
+</div>
+<!-- Interactive generation progress bar -->
+<div class="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between text-xs">
+<span class="text-secondary font-label-ui">Pipeline throughput</span>
+<span class="font-code-schema font-semibold text-primary">48,200 rows/sec</span>
+</div>
+</div>
+</div>
+<!-- Overlapping Floating Card 1: Row count metric -->
+<div class="absolute -top-4 -left-4 md:-left-6 bg-surface-container-lowest/95 backdrop-blur-md border border-outline-variant/60 rounded-2xl p-3.5 float-card-shadow flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+</div>
+<div>
+<div class="text-[11px] font-label-ui text-secondary">Rows generated</div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-card text-title-card text-on-surface font-bold">2.4M</span>
+<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-[#E5F7ED] text-[#1E7E4E]">+12%</span>
+</div>
+</div>
+</div>
+<!-- Overlapping Floating Card 2: Mini Bar chart card -->
+<div class="absolute -bottom-6 -left-2 md:left-4 bg-surface-container-lowest/95 backdrop-blur-md border border-outline-variant/60 rounded-2xl p-3 float-card-shadow w-44">
+<div class="text-[10px] font-label-ui text-secondary mb-1 flex items-center justify-between">
+<span>Entropy parity</span>
+<span class="text-[9px] font-code-schema text-primary font-bold">0.994</span>
+</div>
+<div class="h-10 flex items-end gap-1.5 pt-1">
+<div class="flex-1 bg-primary-fixed rounded-t-sm h-4"></div>
+<div class="flex-1 bg-secondary-container rounded-t-sm h-7"></div>
+<div class="flex-1 bg-primary-container rounded-t-sm h-10"></div>
+<div class="flex-1 bg-primary-container/80 rounded-t-sm h-8"></div>
+<div class="flex-1 bg-primary-fixed rounded-t-sm h-6"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-9"></div>
+</div>
+</div>
+<!-- Overlapping Floating Card 3: Donut fidelity card -->
+<div class="absolute -bottom-4 -right-2 md:-right-4 bg-surface-container-lowest/95 backdrop-blur-md border border-outline-variant/60 rounded-2xl p-3 float-card-shadow flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="w-10 h-10 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96.4, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="material-symbols-outlined absolute text-[14px] text-primary" data-icon="verified">verified</span>
+</div>
+<div>
+<div class="text-[10px] font-label-ui text-secondary">Fidelity score</div>
+<div class="font-title-card text-[15px] font-bold text-on-surface">96.4%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 2: THE PROBLEM ================= -->
+<section class="py-14 px-gutter max-w-7xl mx-auto w-full">
+<div class="text-center max-w-2xl mx-auto mb-10">
+<span class="font-label-ui text-label-ui text-primary uppercase tracking-wider font-semibold">Overcome Legacy Friction</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">The bottlenecks in modern data testing</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow hover:-translate-y-1 transition-transform duration-200 flex flex-col">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[24px]" data-icon="lock">lock</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface mb-2">Privacy &amp; compliance</h3>
+<p class="font-body-default text-body-default text-secondary leading-relaxed">
+          GDPR, HIPAA, and CCPA make production data sharing high-risk and legally fraught.
+        </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow hover:-translate-y-1 transition-transform duration-200 flex flex-col">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[24px]" data-icon="database">database</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface mb-2">Limited, messy datasets</h3>
+<p class="font-body-default text-body-default text-secondary leading-relaxed">
+          Staging environments starve on incomplete, skewed, or unrepresentative sample data.
+        </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow hover:-translate-y-1 transition-transform duration-200 flex flex-col">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-5">
+<span class="material-symbols-outlined text-[24px]" data-icon="hourglass_empty">hourglass_empty</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface mb-2">Slow procurement cycles</h3>
+<p class="font-body-default text-body-default text-secondary leading-relaxed">
+          Engineering and QA teams wait weeks for data approvals and sanitized dumps.
+        </p>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 3: HOW IT WORKS IN FOUR STEPS ================= -->
+<section class="py-14 px-gutter max-w-7xl mx-auto w-full" id="how-it-works">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="font-label-ui text-label-ui text-primary uppercase tracking-wider font-semibold">Workflow Engine</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">How it works in four steps</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-6 bento-shadow flex flex-col relative group">
+<div class="flex items-center justify-between mb-4">
+<span class="w-8 h-8 rounded-full bg-surface-container text-primary font-code-schema font-bold text-xs flex items-center justify-center border border-outline-variant/40">01</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="upload_file">upload_file</span>
+</div>
+<h3 class="font-title-card text-[16px] text-on-surface mb-2">Ingest schema</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          Upload DDL, JSON schema, or connect via read-only replica.
+        </p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-6 bento-shadow flex flex-col relative group">
+<div class="flex items-center justify-between mb-4">
+<span class="w-8 h-8 rounded-full bg-surface-container text-primary font-code-schema font-bold text-xs flex items-center justify-center border border-outline-variant/40">02</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="alt_route">alt_route</span>
+</div>
+<h3 class="font-title-card text-[16px] text-on-surface mb-2">Model relationships</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          Automatically map foreign keys, cardinality, and constraints.
+        </p>
+</div>
+<!-- Step 3: Special Lavender Card -->
+<div class="rounded-[20px] border border-primary-fixed bg-gradient-to-br from-[#E9DFFF] to-[#F8D9F0] p-6 bento-shadow flex flex-col relative group overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-4 relative z-10">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary font-code-schema font-bold text-xs flex items-center justify-center shadow-xs">03</span>
+<div class="flex items-center gap-1 bg-[#FFD666] text-[#1B1740] font-label-ui text-[10px] font-bold px-2 py-0.5 rounded-full">
+<span>✦</span> AI
+          </div>
+</div>
+<h3 class="font-title-card text-[16px] text-on-surface mb-2 relative z-10 font-bold">Generate with AI</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed relative z-10">
+          Neural generators synthesize deep multivariate distributions.
+        </p>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-6 bento-shadow flex flex-col relative group">
+<div class="flex items-center justify-between mb-4">
+<span class="w-8 h-8 rounded-full bg-surface-container text-primary font-code-schema font-bold text-xs flex items-center justify-center border border-outline-variant/40">04</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="cloud_download">cloud_download</span>
+</div>
+<h3 class="font-title-card text-[16px] text-on-surface mb-2">Validate &amp; export</h3>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          Check statistical fidelity benchmarks and export instantly to CSV, Parquet, or SQL.
+        </p>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 4: EVERYTHING YOU NEED BENTO GRID ================= -->
+<section class="py-14 px-gutter max-w-7xl mx-auto w-full" id="features">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="font-label-ui text-label-ui text-primary uppercase tracking-wider font-semibold">Full Synthesis Suite</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">Everything you need</h2>
+</div>
+<!-- Asymmetric Bento Grid (12 cols) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- 1. Tabular Data Card (Col 7) -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="table_chart">table_chart</span>
+</div>
+<div>
+<h3 class="font-title-card text-title-card text-on-surface">Tabular Data</h3>
+<p class="text-xs text-secondary font-label-ui">High-density multivariate synthesis</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+            Generates compliant tabular datasets with correlated attributes, edge cases, and zero leakage.
+          </p>
+</div>
+<!-- Realistic Mock Table -->
+<div class="rounded-xl border border-outline-variant/40 overflow-hidden bg-surface">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-code-schema text-[11px]">
+<thead class="bg-surface-container-low border-b border-outline-variant/30 text-secondary">
+<tr>
+<th class="py-2 px-3">Customer_ID</th>
+<th class="py-2 px-3">Name</th>
+<th class="py-2 px-3">Email</th>
+<th class="py-2 px-3 text-right">Balance</th>
+<th class="py-2 px-3">Country</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 text-on-surface-variant">
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-2 px-3 text-primary font-semibold">CUST-1049</td>
+<td class="py-2 px-3">Elena Rostova</td>
+<td class="py-2 px-3 text-secondary">elena.r@synmail.io</td>
+<td class="py-2 px-3 text-right font-medium">$14,290.40</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px]">DE</span></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-2 px-3 text-primary font-semibold">CUST-1050</td>
+<td class="py-2 px-3">Marcus Thorne</td>
+<td class="py-2 px-3 text-secondary">m.thorne@testlab.dev</td>
+<td class="py-2 px-3 text-right font-medium">$8,450.00</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px]">US</span></td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-2 px-3 text-primary font-semibold">CUST-1051</td>
+<td class="py-2 px-3">Amina Yusuf</td>
+<td class="py-2 px-3 text-secondary">amina.y@synthbox.org</td>
+<td class="py-2 px-3 text-right font-medium">$22,110.85</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[10px]">GB</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- 2. Relational Card (Col 5) -->
+<div class="md:col-span-5 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div>
+<h3 class="font-title-card text-title-card text-on-surface">Relational Architecture</h3>
+<p class="text-xs text-secondary font-label-ui">Strict Foreign-Key Integrity</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+            Preserves 1:1, 1:N, and N:M constraints automatically across cascading databases.
+          </p>
+</div>
+<!-- 3-Table diagram with connecting nodes -->
+<div class="flex flex-col gap-2.5 bg-surface p-3 rounded-xl border border-outline-variant/40">
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/30 text-xs">
+<span class="font-code-schema font-semibold text-primary">Customers (PK: id)</span>
+<span class="text-[10px] bg-secondary-container text-primary px-2 py-0.5 rounded-full font-medium">1 : N</span>
+</div>
+<div class="flex justify-center text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/30 text-xs">
+<span class="font-code-schema font-semibold text-primary">Orders (FK: cust_id)</span>
+<span class="text-[10px] bg-secondary-container text-primary px-2 py-0.5 rounded-full font-medium">1 : N</span>
+</div>
+<div class="flex justify-center text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/30 text-xs">
+<span class="font-code-schema font-semibold text-primary">Order_Items (FK: ord_id)</span>
+<span class="text-[10px] text-outline font-code-schema">Cascade sync</span>
+</div>
+</div>
+</div>
+<!-- 3. Documents Card (Col 4) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+</div>
+<div>
+<h3 class="font-title-card text-title-card text-on-surface">Unstructured Docs</h3>
+<p class="text-xs text-secondary font-label-ui">Realistic OCR &amp; PDF generation</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+            Generate synthetic billing statements, legal invoices, and clinical discharge summaries.
+          </p>
+</div>
+<!-- Mini Styled Invoice preview -->
+<div class="bg-surface rounded-xl p-3 border border-outline-variant/40 space-y-2 text-[11px]">
+<div class="flex justify-between items-center pb-1.5 border-b border-outline-variant/30">
+<div class="font-bold text-on-surface">INVOICE #SYN-9022</div>
+<div class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-primary-container text-on-primary font-bold">SYNTHETIC SEAL</div>
+</div>
+<div class="space-y-1 text-secondary">
+<div class="flex justify-between"><span>Enterprise Engine (Monthly)</span><span>$1,400.00</span></div>
+<div class="flex justify-between"><span>Differential Privacy Addon</span><span>$250.00</span></div>
+</div>
+<div class="pt-1.5 border-t border-outline-variant/30 flex justify-between font-bold text-on-surface">
+<span>Subtotal</span>
+<span class="text-primary">$1,650.00</span>
+</div>
+</div>
+</div>
+<!-- 4. AI Layer Card (Col 4) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface">AI Synthesis Layer</h3>
+</div>
+<span class="bg-[#FFD666] text-[#1B1740] font-label-ui text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+              ✦ AI
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+            Deep generative models that reason over complex business logic without exposing raw seed records.
+          </p>
+</div>
+<!-- 3 Key Bullets -->
+<ul class="space-y-2.5 text-xs text-on-surface-variant font-label-ui">
+<li class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px]" data-icon="check">check</span>
+</span>
+<span>Schema understanding &amp; constraint preservation</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px]" data-icon="check">check</span>
+</span>
+<span>Realistic contextual content generation</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[13px]" data-icon="check">check</span>
+</span>
+<span>Edge-case injection for stress testing</span>
+</li>
+</ul>
+</div>
+<!-- 5. Privacy Controls Card (Col 4) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[20px] border border-outline-variant/60 p-space-lg bento-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="security">security</span>
+</div>
+<div>
+<h3 class="font-title-card text-title-card text-on-surface">Privacy Controls</h3>
+<p class="text-xs text-secondary font-label-ui">Mathematical anonymity guarantees</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+            Configurable epsilon noise dials and irreversible zero-knowledge data transformations.
+          </p>
+</div>
+<!-- Privacy chips / toggles -->
+<div class="flex flex-col gap-2 font-label-ui">
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface border border-outline-variant/40">
+<span class="text-xs text-on-surface">Differential noise (ε=0.5)</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-[10px] font-semibold">Active</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface border border-outline-variant/40">
+<span class="text-xs text-on-surface">Cryptographic hashing</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-primary text-[10px] font-semibold">SHA-256</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface border border-outline-variant/40">
+<span class="text-xs text-on-surface">k-Anonymity masking</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary text-[10px] font-semibold">k = 5</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 5: FULL-WIDTH VIOLET GRADIENT CTA BAND ================= -->
+<section class="py-16 px-gutter max-w-7xl mx-auto w-full">
+<div class="rounded-3xl bg-gradient-to-r from-primary-container to-[#472EA6] text-on-primary p-space-xl md:p-space-2xl text-center relative overflow-hidden shadow-xl">
+<!-- Ambient light decorative rings -->
+<div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-black/10 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-4">
+<h2 class="font-display-hero text-display-hero-mobile md:font-display-hero md:text-[44px] md:leading-[52px] text-white tracking-tight">
+          Ship data, not delays.
+        </h2>
+<p class="font-body-default text-body-default text-on-primary-container max-w-lg mx-auto text-base">
+          Spin up millions of realistic, compliant rows in under 60 seconds.
+        </p>
+<div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+<a class="h-12 px-8 rounded-full bg-white text-primary-container font-label-ui text-label-ui hover:bg-surface-bright transition-all duration-150 active:scale-95 shadow-md flex items-center justify-center gap-2" href="#">
+<span>Start generating</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="h-12 px-6 rounded-full text-white hover:bg-white/10 font-label-ui text-label-ui transition-all duration-150 flex items-center justify-center" href="#docs">
+            Explore Documentation
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/40 mt-12">
+<div class="max-w-7xl mx-auto px-gutter py-12">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+<!-- Brand column -->
+<div class="col-span-2 space-y-3">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-xl bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="hub">hub</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SynthForge</span>
+</div>
+<p class="text-secondary font-body-sm text-body-sm max-w-sm">
+            Enterprise engine for generating statistical-fidelity synthetic datasets without legal or regulatory friction.
+          </p>
+</div>
+<!-- Col 1: Product -->
+<div class="space-y-3">
+<div class="font-label-ui text-label-ui text-on-surface font-bold uppercase tracking-wider">Product</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">Tabular Synthesizer</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Relational Linker</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Document Simulator</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Differential Privacy</a></li>
+</ul>
+</div>
+<!-- Col 2: Solutions -->
+<div class="space-y-3">
+<div class="font-label-ui text-label-ui text-on-surface font-bold uppercase tracking-wider">Solutions</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">FinTech Testing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Healthcare HIPAA</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">AI Model Pretraining</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Staging Environments</a></li>
+</ul>
+</div>
+<!-- Col 3: Developers -->
+<div class="space-y-3">
+<div class="font-label-ui text-label-ui text-on-surface font-bold uppercase tracking-wider">Developers</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-secondary">
+<li><a class="hover:text-primary transition-colors" href="#">API Docs</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">CLI Tool</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Python SDK</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security Architecture</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom separation -->
+<div class="pt-6 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-secondary font-body-sm text-body-sm">
+<p>© 2024 SynthForge AI Inc. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

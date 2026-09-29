@@ -56,7 +56,7 @@ function ScoreBar({ label, value }: { label: string; value: number | null }) {
           {label}
         </span>
         <span className="tnum text-[11.5px] font-semibold text-ink">
-          {value === null ? "—" : Math.round(value)}
+          {value === null ? " ": Math.round(value)}
         </span>
       </div>
       <Meter value={value ?? 0} tone={tone as "grass"} height={4} />
@@ -71,7 +71,7 @@ function ProjectCard({ p, onOpen }: { p: ProjectSummary; onOpen: () => void }) {
     { label: "Documents", tone: "iris" as const, show: p.has_output },
   ].filter((k) => k.show);
 
-  const totalRows = p.tables.reduce((n, t) => n + (t.generated_rows || t.source_rows), 0);
+  const totalRows = (p.tables ?? []).reduce((n, t) => n + (t.generated_rows || t.source_rows || 0), 0);
 
   return (
     <Card interactive className="flex flex-col p-5" onClick={onOpen}>
@@ -125,8 +125,8 @@ export function Projects() {
   const avgUtility = withReport.length
     ? withReport.reduce((n, p) => n + (p.scores?.utility ?? 0), 0) / withReport.length
     : 0;
-  const totalRows = projects.reduce(
-    (n, p) => n + p.tables.reduce((m, t) => m + (t.generated_rows || t.source_rows), 0),
+  const totalRows = (projects ?? []).reduce(
+    (n, p) => n + (p.tables ?? []).reduce((m, t) => m + (t.generated_rows || t.source_rows || 0), 0),
     0,
   );
 

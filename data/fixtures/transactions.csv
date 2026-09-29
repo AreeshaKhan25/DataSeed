@@ -1,0 +1,1201 @@
+txn_id,merchant,category,qty,unit_price,gross,placed_on,settled_on,status,currency
+900000,Smart-Austin,dining,3,45.43,136.29,2025-04-27,2025-05-01,settled,GBP
+900001,Price Inc,grocery,1,15.61,15.61,2025-07-19,,pending,GBP
+900002,"Cox, Manning and Goodwin",grocery,6,7.95,47.7,2025-09-01,2025-09-02,settled,GBP
+900003,"Watts, Mason and Moran",fuel,7,101.57,710.99,2025-02-28,2025-03-05,settled,GBP
+900004,Leach-Heath,dining,6,26.67,160.02,2025-07-11,2025-07-16,settled,GBP
+900005,Thompson LLC,fuel,4,29.62,118.48,2025-05-22,2025-05-25,settled,GBP
+900006,Parker-Ryan,travel,6,104.7,628.2,2025-02-10,,pending,GBP
+900007,Cooper Inc,utilities,8,10.34,82.72,2025-05-16,,pending,GBP
+900008,"Slater, O'Neill and Woodward",utilities,3,22.41,67.23,2025-04-18,2025-04-19,settled,GBP
+900009,Dean Inc,travel,4,4.79,19.16,2025-05-16,2025-05-19,settled,GBP
+900010,"Anderson, Green and Carter",dining,8,25.56,204.48,2025-02-17,,reversed,GBP
+900011,"Watson, Lee and Taylor",dining,7,23.87,167.09,2025-06-14,2025-06-19,settled,GBP
+900012,Evans-Lane,dining,4,10.45,41.8,2025-04-03,2025-04-08,settled,GBP
+900013,Hill-Ward,utilities,5,9.96,49.8,2025-03-03,2025-03-07,settled,GBP
+900014,Evans Ltd,travel,1,16.0,16.0,2025-05-09,2025-05-13,settled,GBP
+900015,Davies-Curtis,travel,1,15.39,15.39,2025-05-19,2025-05-20,settled,GBP
+900016,"Iqbal, Brown and Rowe",dining,8,54.89,439.12,2025-05-24,2025-05-28,settled,GBP
+900017,Townsend-Pearce,travel,3,15.25,45.75,2025-09-26,,reversed,GBP
+900018,Fowler-Arnold,utilities,2,16.19,32.38,2025-07-23,2025-07-28,settled,GBP
+900019,Bailey Group,fuel,5,15.99,79.95,2025-02-15,2025-02-20,settled,GBP
+900020,"Fisher, Holmes and Dawson",fuel,3,5.9,17.7,2025-02-28,,pending,GBP
+900021,Griffiths and Sons,grocery,7,12.86,90.02,2025-08-09,2025-08-13,settled,GBP
+900022,Connor and Sons,dining,7,7.01,49.07,2025-04-22,,pending,GBP
+900023,Richards Group,travel,1,19.77,19.77,2025-06-17,2025-06-22,settled,GBP
+900024,Connolly-Riley,fuel,5,3.89,19.45,2025-07-29,,pending,GBP
+900025,Martin-Mistry,dining,5,8.22,41.1,2025-03-17,2025-03-21,settled,GBP
+900026,Woods PLC,utilities,6,21.61,129.66,2025-06-12,2025-06-15,settled,GBP
+900027,"Butler, Wallis and Parkinson",utilities,7,4.15,29.05,2025-07-11,,reversed,GBP
+900028,"Wilson, Storey and Hill",travel,5,6.06,30.3,2025-08-29,2025-08-31,settled,GBP
+900029,Flynn-White,grocery,2,36.3,72.6,2025-04-23,2025-04-24,settled,GBP
+900030,Whitehead Inc,utilities,5,7.11,35.55,2025-02-18,2025-02-23,settled,GBP
+900031,"Khan, Elliott and Price",grocery,3,17.96,53.88,2025-05-27,2025-05-29,settled,GBP
+900032,Bowen-Clarke,fuel,7,22.42,156.94,2025-07-07,2025-07-08,settled,GBP
+900033,Evans-Rowe,fuel,3,8.59,25.77,2025-03-24,,pending,GBP
+900034,"Smith, Burton and Williams",utilities,3,5.53,16.59,2025-09-22,2025-09-25,settled,GBP
+900035,"Osborne, Johnson and Bailey",dining,6,52.71,316.26,2025-09-28,2025-09-30,settled,GBP
+900036,"Williams, Elliott and Ball",travel,5,12.22,61.1,2025-02-02,2025-02-05,settled,GBP
+900037,Dawson-Howard,dining,3,25.96,77.88,2025-09-12,2025-09-16,settled,GBP
+900038,Lucas Inc,grocery,7,10.61,74.27,2025-09-28,2025-10-03,settled,GBP
+900039,Burns Ltd,dining,8,23.33,186.64,2025-06-02,2025-06-07,settled,GBP
+900040,Wright LLC,fuel,8,7.2,57.6,2025-06-05,2025-06-06,settled,GBP
+900041,Ali Inc,fuel,7,6.89,48.23,2025-05-27,2025-06-01,settled,GBP
+900042,"Akhtar, Webb and Hayward",utilities,1,8.68,8.68,2025-06-14,,pending,GBP
+900043,Williams Inc,fuel,5,11.63,58.15,2025-05-06,,pending,GBP
+900044,"Wood, Wood and Kirk",dining,8,11.63,93.04,2025-02-16,2025-02-21,settled,GBP
+900045,Carter Inc,travel,8,14.33,114.64,2025-06-19,2025-06-24,settled,GBP
+900046,"Collins, Waters and Schofield",travel,8,24.47,195.76,2025-08-28,2025-08-30,settled,GBP
+900047,"Jackson, Taylor and Flynn",grocery,3,12.4,37.2,2025-07-02,2025-07-04,settled,GBP
+900048,Daniels Inc,grocery,4,34.78,139.12,2025-07-01,,reversed,GBP
+900049,"Morrison, Wright and Wong",grocery,1,11.35,11.35,2025-08-01,2025-08-02,settled,GBP
+900050,Ward LLC,utilities,6,28.74,172.44,2025-09-13,2025-09-18,settled,GBP
+900051,Reeves Inc,grocery,6,45.29,271.74,2025-03-07,2025-03-12,settled,GBP
+900052,Brown PLC,fuel,6,61.19,367.14,2025-07-19,2025-07-21,settled,GBP
+900053,Barber-Riley,utilities,7,4.48,31.36,2025-09-07,2025-09-09,settled,GBP
+900054,Watson Ltd,dining,4,60.54,242.16,2025-08-12,2025-08-15,settled,GBP
+900055,"Hughes, Barton and Williamson",utilities,8,5.24,41.92,2025-02-18,,pending,GBP
+900056,"Richards, Brown and Macdonald",utilities,3,48.84,146.52,2025-03-29,,reversed,GBP
+900057,Evans Ltd,fuel,2,17.9,35.8,2025-09-13,,pending,GBP
+900058,Moss Group,grocery,5,23.12,115.6,2025-03-05,2025-03-07,settled,GBP
+900059,"Robson, Bartlett and Glover",travel,1,9.31,9.31,2025-03-25,2025-03-30,settled,GBP
+900060,Francis PLC,dining,3,34.8,104.4,2025-07-26,2025-07-28,settled,GBP
+900061,"Pearce, Austin and John",utilities,5,29.23,146.15,2025-05-28,2025-05-30,settled,GBP
+900062,Jones Group,dining,5,12.26,61.3,2025-09-14,,pending,GBP
+900063,McLean-Jones,fuel,4,11.73,46.92,2025-08-21,2025-08-23,settled,GBP
+900064,"Fox, Ward and Faulkner",utilities,7,32.96,230.72,2025-03-08,2025-03-09,settled,GBP
+900065,"Doherty, Jackson and Watts",fuel,2,37.27,74.54,2025-04-26,,reversed,GBP
+900066,Carter-Gordon,dining,3,30.99,92.97,2025-05-30,,reversed,GBP
+900067,Hooper LLC,travel,6,13.85,83.1,2025-02-26,2025-02-27,settled,GBP
+900068,Smith Inc,fuel,1,18.12,18.12,2025-05-07,,pending,GBP
+900069,Fox Inc,fuel,5,34.91,174.55,2025-07-14,,pending,GBP
+900070,"Hunter, Stevenson and Wright",dining,5,32.53,162.65,2025-02-12,2025-02-16,settled,GBP
+900071,Freeman-Day,dining,5,39.89,199.45,2025-07-25,2025-07-28,settled,GBP
+900072,Wright-Robinson,dining,7,19.99,139.93,2025-07-26,2025-07-31,settled,GBP
+900073,"Rahman, Smith and Atkinson",dining,8,11.05,88.4,2025-05-09,2025-05-12,settled,GBP
+900074,O'Brien-Burgess,fuel,5,22.16,110.8,2025-09-04,2025-09-07,settled,GBP
+900075,"Lane, Thompson and Rogers",travel,7,24.85,173.95,2025-07-09,2025-07-10,settled,GBP
+900076,"Moore, Field and Clarke",travel,1,12.46,12.46,2025-04-22,,pending,GBP
+900077,Hobbs Ltd,travel,2,24.78,49.56,2025-08-21,2025-08-25,settled,GBP
+900078,"Brooks, Taylor and Edwards",travel,2,10.06,20.12,2025-09-02,2025-09-03,settled,GBP
+900079,Russell-Jones,utilities,1,21.67,21.67,2025-02-01,2025-02-02,settled,GBP
+900080,Brown-Ahmed,travel,7,11.85,82.95,2025-05-14,,pending,GBP
+900081,Wells Inc,dining,6,79.71,478.26,2025-07-06,2025-07-10,settled,GBP
+900082,"Reid, Robertson and Howells",dining,3,41.69,125.07,2025-07-25,2025-07-26,settled,GBP
+900083,Ball Ltd,fuel,1,21.75,21.75,2025-06-30,,reversed,GBP
+900084,"Read, Bull and Smith",utilities,5,7.21,36.05,2025-09-26,2025-09-30,settled,GBP
+900085,Abbott-Perry,grocery,2,7.65,15.3,2025-05-20,2025-05-22,settled,GBP
+900086,Ashton PLC,travel,4,29.51,118.04,2025-03-15,2025-03-16,settled,GBP
+900087,Kent-Lawrence,travel,8,16.28,130.24,2025-03-20,,reversed,GBP
+900088,Lamb Group,grocery,3,22.46,67.38,2025-08-20,,reversed,GBP
+900089,Burrows PLC,travel,4,6.0,24.0,2025-04-23,,reversed,GBP
+900090,Brown Group,grocery,3,6.31,18.93,2025-09-13,2025-09-14,settled,GBP
+900091,Foster-Whittaker,fuel,6,19.61,117.66,2025-05-09,2025-05-11,settled,GBP
+900092,Peacock LLC,grocery,5,15.64,78.2,2025-05-09,2025-05-14,settled,GBP
+900093,Gough-Parry,travel,6,7.11,42.66,2025-08-15,2025-08-20,settled,GBP
+900094,Hall and Sons,utilities,3,10.33,30.99,2025-06-02,,pending,GBP
+900095,Clark Ltd,dining,1,31.34,31.34,2025-07-28,2025-08-02,settled,GBP
+900096,Hayes-Slater,utilities,5,13.34,66.7,2025-08-07,2025-08-12,settled,GBP
+900097,Smith LLC,fuel,6,27.06,162.36,2025-06-03,,pending,GBP
+900098,"Burgess, Walsh and Smith",utilities,6,57.55,345.3,2025-09-19,2025-09-24,settled,GBP
+900099,Wheeler Ltd,travel,7,22.91,160.37,2025-04-14,,pending,GBP
+900100,Kelly-Lynch,fuel,4,19.8,79.2,2025-07-27,2025-07-28,settled,GBP
+900101,Ryan Inc,utilities,1,11.93,11.93,2025-08-29,,reversed,GBP
+900102,Davies Ltd,utilities,7,42.44,297.08,2025-05-08,2025-05-10,settled,GBP
+900103,"Parker, Morgan and Nicholls",fuel,8,6.58,52.64,2025-02-10,2025-02-15,settled,GBP
+900104,O'Connor-King,travel,3,8.38,25.14,2025-03-25,,reversed,GBP
+900105,Marshall LLC,dining,1,17.86,17.86,2025-04-28,,pending,GBP
+900106,"Storey, Byrne and Hughes",grocery,1,6.45,6.45,2025-04-18,,pending,GBP
+900107,Robinson-Williams,travel,4,35.95,143.8,2025-04-22,2025-04-27,settled,GBP
+900108,"Gibson, Rose and Mitchell",utilities,1,11.68,11.68,2025-07-13,2025-07-15,settled,GBP
+900109,Long-Reid,grocery,4,26.21,104.84,2025-05-28,2025-05-30,settled,GBP
+900110,"Metcalfe, Freeman and Franklin",fuel,5,14.57,72.85,2025-02-23,2025-02-24,settled,GBP
+900111,"Lowe, Evans and Rowe",travel,4,15.16,60.64,2025-02-11,,pending,GBP
+900112,Jones-Clark,fuel,2,18.26,36.52,2025-06-23,2025-06-27,settled,GBP
+900113,Armstrong-Evans,dining,8,4.58,36.64,2025-05-14,2025-05-19,settled,GBP
+900114,Brown-Shaw,utilities,5,8.44,42.2,2025-07-02,2025-07-05,settled,GBP
+900115,Cook Ltd,utilities,2,12.99,25.98,2025-03-07,,reversed,GBP
+900116,"Smith, Burgess and Murray",utilities,3,85.63,256.89,2025-09-24,,pending,GBP
+900117,Fletcher-Walker,grocery,7,31.98,223.86,2025-02-15,2025-02-18,settled,GBP
+900118,"Shah, Davies and Fuller",utilities,3,30.02,90.06,2025-03-31,2025-04-03,settled,GBP
+900119,"Khan, Lewis and King",travel,8,8.74,69.92,2025-09-27,2025-10-02,settled,GBP
+900120,Burton Ltd,dining,4,33.79,135.16,2025-07-05,2025-07-06,settled,GBP
+900121,White-Page,utilities,2,43.25,86.5,2025-08-20,2025-08-21,settled,GBP
+900122,"Smith, Hurst and Curtis",dining,1,30.63,30.63,2025-02-05,,pending,GBP
+900123,Godfrey and Sons,dining,1,113.58,113.58,2025-04-22,2025-04-24,settled,GBP
+900124,Williams-Barrett,fuel,6,7.04,42.24,2025-05-06,2025-05-11,settled,GBP
+900125,Roberts-Shaw,utilities,3,8.51,25.53,2025-07-07,2025-07-09,settled,GBP
+900126,Martin Ltd,fuel,3,15.04,45.12,2025-06-30,2025-07-01,settled,GBP
+900127,"Dodd, Fox and Roberts",utilities,1,9.13,9.13,2025-03-30,2025-04-04,settled,GBP
+900128,Marshall-Evans,utilities,5,18.75,93.75,2025-02-01,2025-02-02,settled,GBP
+900129,"Harris, Carr and Reed",travel,1,26.03,26.03,2025-09-01,,pending,GBP
+900130,"Baker, Porter and Mitchell",dining,8,17.91,143.28,2025-08-14,,pending,GBP
+900131,"Patel, Campbell and Jackson",fuel,7,19.4,135.8,2025-07-04,2025-07-05,settled,GBP
+900132,Long PLC,dining,2,24.01,48.02,2025-09-20,2025-09-24,settled,GBP
+900133,"Wade, Palmer and Clark",dining,1,31.09,31.09,2025-05-17,2025-05-19,settled,GBP
+900134,Holland-Thompson,dining,3,11.38,34.14,2025-04-05,2025-04-08,settled,GBP
+900135,Miller PLC,fuel,3,11.31,33.93,2025-04-11,,pending,GBP
+900136,Simpson-West,travel,2,41.65,83.3,2025-03-12,2025-03-15,settled,GBP
+900137,"Daly, Bennett and Brady",dining,1,14.24,14.24,2025-05-17,2025-05-19,settled,GBP
+900138,Dixon-Scott,grocery,5,10.08,50.4,2025-03-08,,pending,GBP
+900139,Davies Group,travel,2,22.03,44.06,2025-07-30,,reversed,GBP
+900140,"Hall, Turner and Chapman",dining,3,14.12,42.36,2025-05-24,,pending,GBP
+900141,"Lord, Evans and Clark",fuel,5,19.63,98.15,2025-08-06,2025-08-09,settled,GBP
+900142,Willis-Webb,fuel,1,17.27,17.27,2025-04-22,2025-04-24,settled,GBP
+900143,McCarthy PLC,travel,8,28.1,224.8,2025-02-14,2025-02-19,settled,GBP
+900144,Clayton-Shaw,dining,7,34.25,239.75,2025-03-02,,reversed,GBP
+900145,Gregory LLC,utilities,7,10.1,70.7,2025-09-22,2025-09-24,settled,GBP
+900146,"Porter, Jenkins and Turner",travel,7,7.71,53.97,2025-05-16,,pending,GBP
+900147,"Warren, Preston and Lee",fuel,1,55.17,55.17,2025-06-06,,pending,GBP
+900148,Hill Ltd,fuel,3,11.17,33.51,2025-06-15,,pending,GBP
+900149,"Fisher, Todd and Finch",utilities,7,6.09,42.63,2025-09-05,,pending,GBP
+900150,"King, Holden and Waters",dining,6,4.78,28.68,2025-07-28,2025-07-29,settled,GBP
+900151,Jones PLC,grocery,7,17.58,123.06,2025-02-14,,pending,GBP
+900152,Law-Daniels,fuel,1,11.49,11.49,2025-07-03,2025-07-04,settled,GBP
+900153,Hussain Inc,grocery,2,5.0,10.0,2025-08-26,,reversed,GBP
+900154,Barlow Group,utilities,1,9.29,9.29,2025-06-24,2025-06-29,settled,GBP
+900155,"Bevan, Thomas and Wells",dining,2,8.59,17.18,2025-06-22,,pending,GBP
+900156,Ward and Sons,travel,6,36.19,217.14,2025-07-12,2025-07-16,settled,GBP
+900157,"Brooks, Green and Price",travel,3,21.24,63.72,2025-02-23,2025-02-24,settled,GBP
+900158,Dunn Ltd,dining,8,17.86,142.88,2025-05-06,2025-05-10,settled,GBP
+900159,Roberts LLC,travel,7,7.4,51.8,2025-02-01,2025-02-03,settled,GBP
+900160,"Payne, Gibson and Owen",utilities,7,15.86,111.02,2025-06-05,2025-06-07,settled,GBP
+900161,Lloyd Group,fuel,8,28.62,228.96,2025-03-30,2025-04-02,settled,GBP
+900162,Burns-Carroll,utilities,5,20.11,100.55,2025-06-29,2025-07-03,settled,GBP
+900163,"Scott, Booth and Nicholson",grocery,5,37.68,188.4,2025-09-08,2025-09-11,settled,GBP
+900164,"Shaw, Parkin and Walsh",grocery,5,19.0,95.0,2025-07-02,2025-07-04,settled,GBP
+900165,"Scott, Ellis and Smith",grocery,4,29.2,116.8,2025-07-08,2025-07-12,settled,GBP
+900166,Barnes-Thompson,travel,8,24.77,198.16,2025-02-13,2025-02-17,settled,GBP
+900167,Taylor Ltd,fuel,3,12.09,36.27,2025-04-20,2025-04-23,settled,GBP
+900168,Howard Inc,travel,4,45.85,183.4,2025-06-22,2025-06-24,settled,GBP
+900169,"Jackson, Fisher and Hall",fuel,4,23.16,92.64,2025-04-14,2025-04-18,settled,GBP
+900170,Wright Group,utilities,4,32.02,128.08,2025-02-10,,pending,GBP
+900171,"Jones, Shah and Williams",utilities,2,8.53,17.06,2025-07-23,,pending,GBP
+900172,Lyons-Read,travel,6,8.41,50.46,2025-05-31,2025-06-04,settled,GBP
+900173,Williams Inc,fuel,6,15.85,95.1,2025-05-07,2025-05-08,settled,GBP
+900174,Freeman-Hawkins,dining,3,10.23,30.69,2025-09-08,2025-09-13,settled,GBP
+900175,Evans Ltd,dining,5,27.74,138.7,2025-02-22,2025-02-23,settled,GBP
+900176,Fuller-Ellis,dining,7,23.94,167.58,2025-03-22,2025-03-23,settled,GBP
+900177,"Jackson, Cross and Dunn",fuel,3,42.4,127.2,2025-07-04,2025-07-05,settled,GBP
+900178,Shaw and Sons,travel,8,27.14,217.12,2025-09-27,2025-09-30,settled,GBP
+900179,White Inc,fuel,6,8.15,48.9,2025-06-03,2025-06-06,settled,GBP
+900180,"Jackson, Collier and Harris",utilities,2,34.91,69.82,2025-07-21,2025-07-25,settled,GBP
+900181,Matthews-Ahmed,fuel,7,11.41,79.87,2025-08-29,2025-08-30,settled,GBP
+900182,Chapman-Brown,fuel,3,10.76,32.28,2025-02-22,2025-02-27,settled,GBP
+900183,Jones and Sons,fuel,2,18.77,37.54,2025-02-24,,pending,GBP
+900184,Williams Ltd,utilities,4,17.86,71.44,2025-06-24,2025-06-29,settled,GBP
+900185,Cox-Roberts,grocery,4,37.14,148.56,2025-07-09,,pending,GBP
+900186,"Williams, Price and Turner",dining,7,129.98,909.86,2025-08-04,,pending,GBP
+900187,Khan PLC,travel,5,24.18,120.9,2025-08-05,2025-08-08,settled,GBP
+900188,Gibbons-Bennett,travel,3,49.74,149.22,2025-03-01,2025-03-04,settled,GBP
+900189,Evans-Lees,fuel,6,15.5,93.0,2025-06-02,,reversed,GBP
+900190,"Baker, Roberts and Lawrence",fuel,1,22.75,22.75,2025-02-05,2025-02-07,settled,GBP
+900191,Connor-Turnbull,utilities,1,12.52,12.52,2025-08-11,2025-08-14,settled,GBP
+900192,"Davies, Norman and Field",dining,4,13.37,53.48,2025-09-27,,pending,GBP
+900193,"Lawson, Adams and Hill",dining,1,46.01,46.01,2025-09-01,2025-09-02,settled,GBP
+900194,Pope-Mitchell,dining,4,24.68,98.72,2025-09-28,2025-09-30,settled,GBP
+900195,"Moore, Owen and Pearce",travel,7,24.56,171.92,2025-07-27,2025-07-30,settled,GBP
+900196,Johnson Ltd,utilities,4,10.27,41.08,2025-02-26,2025-03-01,settled,GBP
+900197,Davies-Miller,dining,7,59.41,415.87,2025-03-20,,reversed,GBP
+900198,"Lewis, Dixon and Reynolds",travel,7,15.88,111.16,2025-03-21,,reversed,GBP
+900199,Brown-Hussain,travel,2,11.41,22.82,2025-03-02,2025-03-05,settled,GBP
+900200,Young-O'Neill,fuel,4,17.74,70.96,2025-02-16,2025-02-17,settled,GBP
+900201,"Austin, Barrett and Wheeler",travel,4,28.8,115.2,2025-06-12,2025-06-14,settled,GBP
+900202,Davies-Kelly,utilities,4,30.36,121.44,2025-07-07,2025-07-09,settled,GBP
+900203,"Pearson, Parkinson and Kennedy",travel,6,50.26,301.56,2025-09-24,2025-09-25,settled,GBP
+900204,Ellis-Green,fuel,5,8.57,42.85,2025-06-25,2025-06-29,settled,GBP
+900205,"Jenkins, King and Herbert",utilities,5,13.31,66.55,2025-09-18,2025-09-21,settled,GBP
+900206,Richards-Foster,dining,6,53.52,321.12,2025-07-22,2025-07-26,settled,GBP
+900207,Woods-Lewis,dining,7,88.12,616.84,2025-05-21,2025-05-24,settled,GBP
+900208,Hewitt-Evans,fuel,2,11.6,23.2,2025-06-17,,pending,GBP
+900209,Dixon PLC,fuel,2,16.82,33.64,2025-06-30,2025-07-05,settled,GBP
+900210,Hammond Ltd,travel,8,6.11,48.88,2025-06-18,2025-06-21,settled,GBP
+900211,Williams Group,fuel,4,10.12,40.48,2025-04-16,2025-04-19,settled,GBP
+900212,"Allan, Jackson and Stewart",travel,6,9.7,58.2,2025-07-01,,reversed,GBP
+900213,"Wood, Graham and Lambert",utilities,3,16.75,50.25,2025-07-03,2025-07-05,settled,GBP
+900214,Thomson-Walker,grocery,5,7.83,39.15,2025-07-03,2025-07-04,settled,GBP
+900215,Cross and Sons,utilities,7,34.49,241.43,2025-02-05,,pending,GBP
+900216,Davies PLC,fuel,5,17.29,86.45,2025-07-09,2025-07-12,settled,GBP
+900217,Hayes-Finch,travel,3,15.08,45.24,2025-09-04,,reversed,GBP
+900218,Shah-Baker,fuel,8,34.28,274.24,2025-05-24,2025-05-28,settled,GBP
+900219,Howarth-Robinson,utilities,6,14.94,89.64,2025-09-06,2025-09-11,settled,GBP
+900220,"Allen, Atkinson and White",dining,8,7.57,60.56,2025-06-01,,reversed,GBP
+900221,Wright LLC,grocery,4,18.36,73.44,2025-07-15,,pending,GBP
+900222,Pope-Murphy,utilities,7,82.04,574.28,2025-08-22,,pending,GBP
+900223,Green-Woods,dining,2,19.31,38.62,2025-03-07,2025-03-12,settled,GBP
+900224,"Kelly, Morgan and Knight",fuel,8,25.96,207.68,2025-04-19,2025-04-20,settled,GBP
+900225,Newman-Williams,travel,6,15.7,94.2,2025-04-09,,reversed,GBP
+900226,Fisher LLC,utilities,4,15.45,61.8,2025-08-12,2025-08-17,settled,GBP
+900227,"Harper, Lloyd and Fletcher",dining,2,25.63,51.26,2025-08-27,2025-08-28,settled,GBP
+900228,Robinson Group,grocery,3,2.84,8.52,2025-02-14,2025-02-15,settled,GBP
+900229,"Ward, Dickinson and Lewis",fuel,1,7.58,7.58,2025-04-14,,reversed,GBP
+900230,Riley-Stevens,dining,6,11.89,71.34,2025-04-08,2025-04-13,settled,GBP
+900231,Burton-Jackson,fuel,7,14.93,104.51,2025-08-10,2025-08-11,settled,GBP
+900232,Benson PLC,fuel,2,49.71,99.42,2025-03-21,2025-03-24,settled,GBP
+900233,"Barrett, Tucker and Bailey",travel,8,99.93,799.44,2025-08-26,,pending,GBP
+900234,Payne-Gray,utilities,3,27.98,83.94,2025-06-04,2025-06-05,settled,GBP
+900235,Black-Robinson,grocery,3,23.79,71.37,2025-07-21,2025-07-25,settled,GBP
+900236,"Jarvis, Hughes and Kerr",fuel,4,29.01,116.04,2025-03-18,2025-03-20,settled,GBP
+900237,Powell Inc,fuel,3,51.59,154.77,2025-04-14,2025-04-17,settled,GBP
+900238,Goddard LLC,grocery,6,9.06,54.36,2025-04-27,2025-04-29,settled,GBP
+900239,Edwards-Lewis,dining,5,12.78,63.9,2025-06-30,2025-07-04,settled,GBP
+900240,"Howell, Singh and Robinson",dining,7,20.08,140.56,2025-09-01,,reversed,GBP
+900241,Ball-Hilton,fuel,5,22.18,110.9,2025-08-25,,pending,GBP
+900242,"Moore, Oliver and Marsh",utilities,7,4.78,33.46,2025-08-28,2025-09-01,settled,GBP
+900243,"Simmons, Bell and Holmes",utilities,5,24.32,121.6,2025-07-23,2025-07-26,settled,GBP
+900244,"Cook, Blackburn and Walker",fuel,5,5.94,29.7,2025-04-07,2025-04-09,settled,GBP
+900245,Andrews-Lawrence,utilities,3,30.74,92.22,2025-08-16,,pending,GBP
+900246,Jones Ltd,grocery,1,32.52,32.52,2025-07-26,,pending,GBP
+900247,Morris-King,travel,7,3.71,25.97,2025-08-29,2025-09-02,settled,GBP
+900248,Tomlinson-Lee,grocery,6,25.58,153.48,2025-06-04,2025-06-05,settled,GBP
+900249,Briggs Ltd,travel,3,20.65,61.95,2025-06-08,2025-06-11,settled,GBP
+900250,Hart-Ross,fuel,6,11.7,70.2,2025-05-19,2025-05-20,settled,GBP
+900251,"Hussain, Heath and Mitchell",fuel,7,34.98,244.86,2025-07-12,2025-07-14,settled,GBP
+900252,"Pearce, Davis and Smith",utilities,5,72.88,364.4,2025-06-28,,reversed,GBP
+900253,Francis Group,travel,8,25.46,203.68,2025-06-16,2025-06-19,settled,GBP
+900254,Bradley-Thomas,grocery,8,8.39,67.12,2025-07-27,2025-07-30,settled,GBP
+900255,Moore-Allen,utilities,3,6.58,19.74,2025-09-24,,pending,GBP
+900256,"Vincent, Hope and Morris",fuel,6,7.96,47.76,2025-06-10,2025-06-12,settled,GBP
+900257,"Price, Andrews and Macdonald",fuel,5,8.84,44.2,2025-02-23,,pending,GBP
+900258,Perry Group,travel,2,39.41,78.82,2025-09-07,2025-09-12,settled,GBP
+900259,Moss-Rogers,fuel,6,21.99,131.94,2025-02-07,2025-02-10,settled,GBP
+900260,"Smith, Carroll and Morgan",fuel,4,17.65,70.6,2025-06-28,2025-07-03,settled,GBP
+900261,"Taylor, Khan and Clark",utilities,2,33.08,66.16,2025-08-11,2025-08-13,settled,GBP
+900262,"Rowley, Hayward and Connolly",fuel,3,18.22,54.66,2025-05-02,2025-05-07,settled,GBP
+900263,Gibson-Herbert,utilities,8,18.43,147.44,2025-08-05,2025-08-09,settled,GBP
+900264,"Cox, Jenkins and Thomas",travel,3,10.0,30.0,2025-09-09,2025-09-10,settled,GBP
+900265,Cook and Sons,grocery,4,11.65,46.6,2025-06-28,2025-06-30,settled,GBP
+900266,"Turner, Bell and Taylor",grocery,3,18.37,55.11,2025-09-18,2025-09-20,settled,GBP
+900267,Taylor Group,grocery,5,7.95,39.75,2025-02-03,2025-02-06,settled,GBP
+900268,Coates-Pearson,travel,8,57.3,458.4,2025-06-14,2025-06-17,settled,GBP
+900269,Fox-Anderson,grocery,3,19.6,58.8,2025-04-15,2025-04-20,settled,GBP
+900270,"Smith, Thomas and Watts",dining,1,12.26,12.26,2025-03-29,,pending,GBP
+900271,Moore Ltd,travel,4,35.52,142.08,2025-08-22,,pending,GBP
+900272,Grant Group,grocery,5,8.59,42.95,2025-09-02,,pending,GBP
+900273,"Cooper, Tomlinson and Chandler",dining,1,37.63,37.63,2025-03-09,,pending,GBP
+900274,Owen-Wilson,fuel,4,19.08,76.32,2025-05-26,,reversed,GBP
+900275,"Bond, Vincent and Heath",grocery,8,66.85,534.8,2025-02-07,2025-02-09,settled,GBP
+900276,Chamberlain-Collins,grocery,3,12.25,36.75,2025-04-26,2025-04-30,settled,GBP
+900277,"Jones, Bennett and Chamberlain",grocery,8,13.63,109.04,2025-09-23,2025-09-27,settled,GBP
+900278,"Tucker, Evans and Mason",utilities,6,9.98,59.88,2025-03-28,2025-03-29,settled,GBP
+900279,Davies Inc,utilities,7,7.53,52.71,2025-06-11,2025-06-16,settled,GBP
+900280,Griffin-Mills,travel,1,21.41,21.41,2025-04-16,,reversed,GBP
+900281,Foster-Hussain,dining,8,8.59,68.72,2025-03-01,2025-03-06,settled,GBP
+900282,"Read, Spencer and Fletcher",fuel,8,22.45,179.6,2025-06-15,,pending,GBP
+900283,Hale-Miah,dining,7,11.5,80.5,2025-04-30,,pending,GBP
+900284,"Turner, White and Nixon",utilities,6,37.49,224.94,2025-04-06,,pending,GBP
+900285,"Sykes, Johnson and Davies",grocery,5,3.03,15.15,2025-08-23,2025-08-27,settled,GBP
+900286,Murphy LLC,travel,8,24.02,192.16,2025-08-10,2025-08-11,settled,GBP
+900287,"Arnold, Miller and James",fuel,1,18.56,18.56,2025-08-23,2025-08-28,settled,GBP
+900288,"Payne, Davison and Wilson",dining,3,17.97,53.91,2025-06-05,,reversed,GBP
+900289,Cooke-Smith,travel,8,11.54,92.32,2025-04-03,2025-04-05,settled,GBP
+900290,Lewis Ltd,grocery,4,60.77,243.08,2025-09-28,2025-10-01,settled,GBP
+900291,Brown and Sons,dining,7,13.48,94.36,2025-08-04,2025-08-05,settled,GBP
+900292,"Powell, Gardiner and Marsh",travel,5,24.16,120.8,2025-03-06,,pending,GBP
+900293,Francis and Sons,dining,5,14.94,74.7,2025-04-23,,pending,GBP
+900294,Flynn-Stanley,fuel,8,13.96,111.68,2025-04-17,2025-04-22,settled,GBP
+900295,Franklin-Duffy,fuel,5,19.08,95.4,2025-03-17,2025-03-22,settled,GBP
+900296,"King, Collins and Evans",grocery,8,28.75,230.0,2025-02-06,,reversed,GBP
+900297,Price PLC,travel,6,8.24,49.44,2025-06-18,2025-06-21,settled,GBP
+900298,Brown LLC,utilities,2,12.92,25.84,2025-08-04,2025-08-08,settled,GBP
+900299,Thomas PLC,travel,6,6.71,40.26,2025-05-01,2025-05-03,settled,GBP
+900300,Green PLC,grocery,8,23.68,189.44,2025-05-21,2025-05-23,settled,GBP
+900301,Bentley Ltd,fuel,5,9.89,49.45,2025-08-06,2025-08-08,settled,GBP
+900302,Brown-Gray,grocery,4,10.66,42.64,2025-06-29,2025-07-04,settled,GBP
+900303,"Jones, Jenkins and Field",travel,3,28.24,84.72,2025-09-02,2025-09-03,settled,GBP
+900304,Edwards Inc,utilities,4,17.78,71.12,2025-04-02,2025-04-06,settled,GBP
+900305,"Benson, Thomas and Ali",grocery,1,23.77,23.77,2025-09-22,,reversed,GBP
+900306,"Leach, Talbot and Dixon",utilities,7,16.25,113.75,2025-07-06,2025-07-10,settled,GBP
+900307,Wood-Davies,travel,4,23.84,95.36,2025-07-31,,pending,GBP
+900308,James Group,fuel,1,19.04,19.04,2025-03-13,2025-03-16,settled,GBP
+900309,Clarke-Morris,fuel,1,8.23,8.23,2025-04-27,,pending,GBP
+900310,Bibi PLC,grocery,2,20.78,41.56,2025-06-15,,reversed,GBP
+900311,Francis Group,travel,4,14.09,56.36,2025-04-25,,pending,GBP
+900312,McLean-Talbot,utilities,7,15.16,106.12,2025-03-05,2025-03-07,settled,GBP
+900313,Hardy PLC,travel,7,21.78,152.46,2025-03-18,2025-03-21,settled,GBP
+900314,Edwards-Giles,dining,6,12.2,73.2,2025-03-29,2025-03-30,settled,GBP
+900315,Barber Group,grocery,7,8.55,59.85,2025-05-24,,reversed,GBP
+900316,Waters PLC,grocery,1,40.9,40.9,2025-04-28,,pending,GBP
+900317,Green-Wood,utilities,5,64.7,323.5,2025-07-29,2025-08-03,settled,GBP
+900318,Pritchard-Coleman,dining,5,14.09,70.45,2025-06-18,,pending,GBP
+900319,McDonald-Walters,dining,6,39.91,239.46,2025-02-12,2025-02-17,settled,GBP
+900320,"Burns, Blake and Collier",dining,8,23.45,187.6,2025-05-21,2025-05-23,settled,GBP
+900321,Dyer Ltd,travel,4,11.44,45.76,2025-02-28,2025-03-04,settled,GBP
+900322,Thompson Inc,travel,1,10.0,10.0,2025-05-27,2025-05-28,settled,GBP
+900323,"Harper, Andrews and Carter",utilities,5,14.73,73.65,2025-07-17,2025-07-18,settled,GBP
+900324,"Phillips, Khan and Warren",grocery,7,13.27,92.89,2025-07-26,,pending,GBP
+900325,Smith Ltd,grocery,8,14.2,113.6,2025-04-03,2025-04-05,settled,GBP
+900326,Houghton-Thomas,travel,2,16.43,32.86,2025-05-04,2025-05-05,settled,GBP
+900327,Todd Ltd,grocery,8,8.14,65.12,2025-06-13,2025-06-15,settled,GBP
+900328,Stokes-Thomson,fuel,6,32.75,196.5,2025-07-26,2025-07-30,settled,GBP
+900329,Clarke-White,utilities,3,8.14,24.42,2025-06-07,,reversed,GBP
+900330,Anderson-Lewis,fuel,4,8.49,33.96,2025-08-24,,reversed,GBP
+900331,West-Parkinson,travel,7,34.14,238.98,2025-03-13,2025-03-14,settled,GBP
+900332,"Martin, Bradley and Jones",utilities,3,30.46,91.38,2025-02-10,2025-02-15,settled,GBP
+900333,"Noble, Murray and Miller",dining,4,49.47,197.88,2025-08-31,,pending,GBP
+900334,"Cooper, Clark and Gough",dining,1,19.7,19.7,2025-05-21,2025-05-26,settled,GBP
+900335,"Adams, Francis and O'Sullivan",dining,4,11.43,45.72,2025-05-23,2025-05-24,settled,GBP
+900336,Holmes-Stone,travel,7,39.86,279.02,2025-08-17,2025-08-21,settled,GBP
+900337,"Taylor, May and Hayward",travel,4,16.76,67.04,2025-02-09,,reversed,GBP
+900338,Stevens-Francis,grocery,5,16.43,82.15,2025-04-29,2025-05-04,settled,GBP
+900339,"Coles, Hammond and Hodgson",dining,2,9.91,19.82,2025-08-30,,reversed,GBP
+900340,Leonard-Long,utilities,6,23.74,142.44,2025-07-06,2025-07-08,settled,GBP
+900341,Burton and Sons,utilities,2,3.43,6.86,2025-07-26,,reversed,GBP
+900342,"Davis, Summers and Roberts",dining,2,25.87,51.74,2025-02-05,2025-02-10,settled,GBP
+900343,"Payne, Daly and Khan",utilities,8,4.43,35.44,2025-03-12,2025-03-14,settled,GBP
+900344,Howells-Patel,grocery,1,32.96,32.96,2025-06-30,2025-07-05,settled,GBP
+900345,"Jones, Freeman and Faulkner",dining,5,6.04,30.2,2025-08-11,2025-08-16,settled,GBP
+900346,Wall-Hill,fuel,5,28.82,144.1,2025-07-23,2025-07-25,settled,GBP
+900347,Leach-Fisher,travel,2,100.76,201.52,2025-03-01,2025-03-02,settled,GBP
+900348,Ryan-Hall,utilities,4,14.75,59.0,2025-04-07,2025-04-12,settled,GBP
+900349,"Clarke, Williams and Wilson",dining,8,7.93,63.44,2025-05-28,2025-06-01,settled,GBP
+900350,Young-Taylor,grocery,6,69.66,417.96,2025-05-18,,reversed,GBP
+900351,Jones Group,fuel,7,13.16,92.12,2025-07-11,2025-07-14,settled,GBP
+900352,Ford-Morgan,travel,2,8.23,16.46,2025-09-18,2025-09-23,settled,GBP
+900353,Burke-Holt,utilities,7,43.07,301.49,2025-09-27,2025-09-29,settled,GBP
+900354,"Reid, Adams and Lloyd",utilities,6,2.45,14.7,2025-04-22,2025-04-24,settled,GBP
+900355,Gordon and Sons,grocery,5,6.35,31.75,2025-09-17,2025-09-18,settled,GBP
+900356,Powell Ltd,fuel,5,7.14,35.7,2025-06-19,,pending,GBP
+900357,Middleton-Dean,dining,5,11.02,55.1,2025-09-01,2025-09-03,settled,GBP
+900358,"Robinson, Fowler and Jones",dining,2,4.35,8.7,2025-06-22,,pending,GBP
+900359,"Francis, Burrows and Gould",fuel,2,31.85,63.7,2025-09-12,,reversed,GBP
+900360,"Morley, Turner and Cooper",utilities,6,36.64,219.84,2025-06-15,,pending,GBP
+900361,Wilkinson PLC,travel,2,17.23,34.46,2025-02-28,2025-03-04,settled,GBP
+900362,Harrison Inc,travel,3,13.41,40.23,2025-09-05,2025-09-07,settled,GBP
+900363,"Harrison, Booth and Oliver",grocery,6,6.0,36.0,2025-02-12,2025-02-13,settled,GBP
+900364,"Edwards, Morris and Morgan",travel,2,24.85,49.7,2025-03-12,2025-03-15,settled,GBP
+900365,Jones-Boyle,fuel,6,10.97,65.82,2025-02-27,2025-02-28,settled,GBP
+900366,"Smith, Sharpe and Smith",grocery,7,27.55,192.85,2025-07-22,2025-07-24,settled,GBP
+900367,"Lewis, Carpenter and Phillips",grocery,4,36.56,146.24,2025-07-14,2025-07-17,settled,GBP
+900368,Thomas-Summers,utilities,2,18.5,37.0,2025-02-12,2025-02-16,settled,GBP
+900369,Morris-Read,fuel,7,4.08,28.56,2025-02-11,,pending,GBP
+900370,Read-Taylor,grocery,1,9.3,9.3,2025-02-04,,pending,GBP
+900371,Williams Group,travel,2,46.56,93.12,2025-03-21,2025-03-26,settled,GBP
+900372,Green-Bailey,utilities,8,21.72,173.76,2025-04-05,2025-04-09,settled,GBP
+900373,Turner-Roberts,utilities,2,48.44,96.88,2025-02-12,2025-02-17,settled,GBP
+900374,Holden-Payne,fuel,8,3.75,30.0,2025-04-27,2025-04-28,settled,GBP
+900375,"Quinn, Smith and Stevens",grocery,1,16.57,16.57,2025-07-01,2025-07-06,settled,GBP
+900376,Stevens-Miller,utilities,2,15.85,31.7,2025-07-19,2025-07-21,settled,GBP
+900377,Clark LLC,utilities,8,5.75,46.0,2025-07-13,2025-07-14,settled,GBP
+900378,"Young, Wood and Grant",dining,7,11.42,79.94,2025-05-18,2025-05-22,settled,GBP
+900379,O'Neill Group,grocery,5,35.55,177.75,2025-03-28,2025-03-31,settled,GBP
+900380,Weston-Ali,travel,8,26.2,209.6,2025-08-23,2025-08-25,settled,GBP
+900381,Wood-Wood,utilities,5,12.33,61.65,2025-04-01,,reversed,GBP
+900382,"Slater, Anderson and Wade",fuel,1,22.54,22.54,2025-02-21,2025-02-25,settled,GBP
+900383,Walker Group,travel,6,41.32,247.92,2025-09-23,2025-09-27,settled,GBP
+900384,Blackburn-Hunter,utilities,7,8.43,59.01,2025-07-11,2025-07-16,settled,GBP
+900385,"Barker, Davies and Murray",utilities,1,22.02,22.02,2025-05-15,2025-05-17,settled,GBP
+900386,"Hill, McLean and Dixon",fuel,7,37.25,260.75,2025-06-23,2025-06-27,settled,GBP
+900387,Clarke and Sons,fuel,8,11.08,88.64,2025-04-06,2025-04-09,settled,GBP
+900388,Jones-Griffiths,fuel,8,44.65,357.2,2025-08-01,2025-08-06,settled,GBP
+900389,Butler PLC,travel,8,16.85,134.8,2025-07-12,2025-07-17,settled,GBP
+900390,Williams-Kelly,grocery,8,39.03,312.24,2025-08-18,2025-08-23,settled,GBP
+900391,"Bull, Miles and Woods",utilities,2,34.27,68.54,2025-07-23,,reversed,GBP
+900392,"Williams, Ferguson and Campbell",grocery,3,21.61,64.83,2025-05-17,2025-05-19,settled,GBP
+900393,Rahman-Briggs,fuel,2,14.64,29.28,2025-06-06,,pending,GBP
+900394,Hutchinson-Wilkins,fuel,7,11.35,79.45,2025-07-15,2025-07-20,settled,GBP
+900395,Owens LLC,fuel,7,20.23,141.61,2025-02-22,2025-02-26,settled,GBP
+900396,Bell-Barber,grocery,3,20.82,62.46,2025-03-30,2025-03-31,settled,GBP
+900397,Smith-Jackson,travel,5,48.02,240.1,2025-04-04,2025-04-06,settled,GBP
+900398,Watson Group,fuel,5,16.92,84.6,2025-07-09,,reversed,GBP
+900399,Wells-Smith,travel,2,23.01,46.02,2025-08-12,2025-08-16,settled,GBP
+900400,Anderson-Lloyd,grocery,1,58.49,58.49,2025-06-03,,reversed,GBP
+900401,"Lewis, Dyer and Taylor",travel,8,22.55,180.4,2025-04-08,,reversed,GBP
+900402,Whitehouse and Sons,utilities,7,24.76,173.32,2025-07-21,2025-07-23,settled,GBP
+900403,Coleman PLC,grocery,7,55.47,388.29,2025-03-11,2025-03-13,settled,GBP
+900404,"Parkes, Pearce and Allen",fuel,8,19.17,153.36,2025-05-15,2025-05-18,settled,GBP
+900405,O'Neill-Kaur,dining,3,23.79,71.37,2025-04-08,,pending,GBP
+900406,Jones-Stewart,travel,1,30.53,30.53,2025-06-03,2025-06-06,settled,GBP
+900407,Gill and Sons,dining,6,16.57,99.42,2025-07-30,2025-08-03,settled,GBP
+900408,Patterson Inc,utilities,2,8.25,16.5,2025-02-07,2025-02-12,settled,GBP
+900409,Duffy-Jennings,grocery,6,6.46,38.76,2025-09-07,2025-09-10,settled,GBP
+900410,Elliott-Abbott,grocery,2,15.61,31.22,2025-03-02,2025-03-06,settled,GBP
+900411,Miah-Burrows,travel,3,39.53,118.59,2025-08-29,2025-09-02,settled,GBP
+900412,Miles Inc,utilities,7,36.12,252.84,2025-09-21,,pending,GBP
+900413,McDonald-Smith,fuel,5,56.28,281.4,2025-09-02,2025-09-07,settled,GBP
+900414,Moore-Brown,grocery,3,33.92,101.76,2025-07-15,,pending,GBP
+900415,Warren-Ward,dining,4,11.42,45.68,2025-09-03,2025-09-06,settled,GBP
+900416,Harrison Inc,travel,3,6.5,19.5,2025-02-16,2025-02-20,settled,GBP
+900417,Matthews Ltd,utilities,7,12.53,87.71,2025-09-21,2025-09-25,settled,GBP
+900418,"Reed, Ross and Walker",fuel,4,14.94,59.76,2025-06-03,,pending,GBP
+900419,Dale-Matthews,travel,2,10.69,21.38,2025-08-23,2025-08-26,settled,GBP
+900420,Watson-Brown,dining,4,34.29,137.16,2025-09-10,2025-09-14,settled,GBP
+900421,"Thomas, Roberts and Walker",travel,4,10.33,41.32,2025-07-01,2025-07-04,settled,GBP
+900422,Jones-Steele,dining,1,26.99,26.99,2025-08-16,,reversed,GBP
+900423,Wood and Sons,travel,1,31.08,31.08,2025-04-13,2025-04-15,settled,GBP
+900424,Kaur-Field,fuel,6,5.32,31.92,2025-04-27,2025-04-30,settled,GBP
+900425,Hill-White,travel,5,13.37,66.85,2025-09-28,2025-09-30,settled,GBP
+900426,Smith-Hammond,fuel,1,43.31,43.31,2025-06-18,2025-06-20,settled,GBP
+900427,Sutton-Hughes,travel,1,32.45,32.45,2025-03-25,,pending,GBP
+900428,Martin Inc,dining,2,19.58,39.16,2025-03-28,2025-04-02,settled,GBP
+900429,Schofield-Jones,utilities,3,8.28,24.84,2025-04-18,2025-04-20,settled,GBP
+900430,Curtis-Lowe,dining,2,11.0,22.0,2025-07-14,,pending,GBP
+900431,Cooper Group,utilities,7,19.11,133.77,2025-08-03,2025-08-06,settled,GBP
+900432,Richards-Winter,travel,8,43.45,347.6,2025-04-12,,reversed,GBP
+900433,Clark-Leonard,grocery,5,25.38,126.9,2025-05-17,2025-05-19,settled,GBP
+900434,Brooks Inc,travel,6,16.91,101.46,2025-05-31,2025-06-01,settled,GBP
+900435,"Holmes, Ward and Reynolds",travel,3,21.16,63.48,2025-02-11,2025-02-14,settled,GBP
+900436,"Green, Khan and Stevens",fuel,5,30.98,154.9,2025-02-13,2025-02-16,settled,GBP
+900437,Allen-Moore,fuel,4,5.27,21.08,2025-06-12,2025-06-13,settled,GBP
+900438,"Singh, Robinson and Smith",utilities,3,8.99,26.97,2025-04-19,,pending,GBP
+900439,Turner Group,grocery,1,18.36,18.36,2025-08-30,2025-08-31,settled,GBP
+900440,Clarke LLC,fuel,8,41.88,335.04,2025-04-13,,pending,GBP
+900441,Baker Ltd,travel,3,38.24,114.72,2025-06-06,2025-06-08,settled,GBP
+900442,"Harvey, Parker and Carr",dining,7,10.41,72.87,2025-02-02,2025-02-03,settled,GBP
+900443,Watts-Freeman,travel,8,18.27,146.16,2025-08-04,2025-08-06,settled,GBP
+900444,Gibson-Smith,travel,6,10.7,64.2,2025-02-09,2025-02-13,settled,GBP
+900445,"Robinson, O'Donnell and Hutchinson",fuel,2,13.67,27.34,2025-03-20,2025-03-25,settled,GBP
+900446,"Hopkins, Chan and Wong",dining,8,19.86,158.88,2025-06-09,,pending,GBP
+900447,"Hughes, Francis and Lane",travel,7,13.94,97.58,2025-08-07,2025-08-11,settled,GBP
+900448,Walsh Inc,utilities,4,12.15,48.6,2025-07-29,2025-08-03,settled,GBP
+900449,"Jones, Sutton and Hewitt",dining,6,7.95,47.7,2025-04-21,,pending,GBP
+900450,"White, Wilkinson and Parry",grocery,7,5.92,41.44,2025-02-25,,pending,GBP
+900451,Mahmood LLC,grocery,6,15.69,94.14,2025-04-27,,reversed,GBP
+900452,"Turner, Roberts and Summers",utilities,2,20.52,41.04,2025-05-17,2025-05-20,settled,GBP
+900453,"Wong, Wright and Lane",travel,7,27.63,193.41,2025-07-28,2025-08-01,settled,GBP
+900454,Marshall Group,grocery,5,10.13,50.65,2025-06-07,,pending,GBP
+900455,Ward LLC,dining,2,10.82,21.64,2025-06-15,2025-06-19,settled,GBP
+900456,"Nicholson, Palmer and Turner",dining,8,43.36,346.88,2025-07-11,2025-07-16,settled,GBP
+900457,Stephenson-Carr,grocery,3,23.99,71.97,2025-05-15,2025-05-17,settled,GBP
+900458,Bennett-Bull,fuel,3,33.29,99.87,2025-05-22,2025-05-27,settled,GBP
+900459,"Russell, Booth and Hughes",fuel,3,12.05,36.15,2025-04-27,,reversed,GBP
+900460,White LLC,dining,2,10.88,21.76,2025-04-22,2025-04-25,settled,GBP
+900461,"Whitehouse, Sharp and Smith",fuel,2,8.02,16.04,2025-04-16,2025-04-21,settled,GBP
+900462,Stevens-Horton,utilities,3,35.84,107.52,2025-08-21,2025-08-24,settled,GBP
+900463,Foster Ltd,dining,2,8.11,16.22,2025-08-30,2025-09-04,settled,GBP
+900464,"Barnes, Jones and Fleming",dining,7,5.35,37.45,2025-02-06,2025-02-09,settled,GBP
+900465,Richardson-Wallace,grocery,3,10.62,31.86,2025-06-19,2025-06-20,settled,GBP
+900466,"Hudson, Marsden and Gilbert",travel,4,43.42,173.68,2025-04-06,2025-04-10,settled,GBP
+900467,Wright PLC,utilities,8,18.27,146.16,2025-08-04,2025-08-05,settled,GBP
+900468,Crawford-Chadwick,fuel,2,21.11,42.22,2025-04-14,,reversed,GBP
+900469,"Morris, Hobbs and Griffin",fuel,4,19.45,77.8,2025-09-18,,reversed,GBP
+900470,McDonald Ltd,utilities,5,17.36,86.8,2025-04-15,,pending,GBP
+900471,"Sheppard, Jones and Francis",grocery,7,15.94,111.58,2025-05-20,2025-05-24,settled,GBP
+900472,Hughes-Lowe,travel,6,6.73,40.38,2025-04-27,2025-04-30,settled,GBP
+900473,"Bradley, Bruce and Ali",grocery,6,57.3,343.8,2025-07-22,,pending,GBP
+900474,Pearce-Jackson,grocery,3,16.11,48.33,2025-06-19,,pending,GBP
+900475,"Jackson, Young and Read",utilities,6,41.81,250.86,2025-02-18,,reversed,GBP
+900476,"Sutton, Cross and Wright",utilities,4,6.02,24.08,2025-05-28,2025-05-29,settled,GBP
+900477,Hooper LLC,fuel,4,26.16,104.64,2025-05-31,2025-06-02,settled,GBP
+900478,"Winter, Rose and Hudson",dining,5,7.86,39.3,2025-06-10,2025-06-15,settled,GBP
+900479,Whitehead-Brown,fuel,5,7.27,36.35,2025-07-14,2025-07-15,settled,GBP
+900480,Long-Shaw,fuel,8,21.58,172.64,2025-05-04,,reversed,GBP
+900481,Butler PLC,travel,2,36.81,73.62,2025-08-01,2025-08-06,settled,GBP
+900482,"Hunt, Brown and Brown",utilities,3,46.58,139.74,2025-03-28,2025-03-31,settled,GBP
+900483,Pugh-Fletcher,utilities,8,45.4,363.2,2025-06-29,2025-07-02,settled,GBP
+900484,Ali PLC,travel,4,14.82,59.28,2025-03-04,2025-03-09,settled,GBP
+900485,Reed-Curtis,fuel,3,31.0,93.0,2025-05-25,2025-05-28,settled,GBP
+900486,Jones-O'Neill,travel,7,11.8,82.6,2025-08-07,,pending,GBP
+900487,Miles Inc,utilities,6,12.29,73.74,2025-09-12,2025-09-16,settled,GBP
+900488,Moore-Patel,fuel,6,21.24,127.44,2025-07-08,2025-07-13,settled,GBP
+900489,"Knight, Jennings and Brooks",utilities,7,16.5,115.5,2025-03-15,2025-03-19,settled,GBP
+900490,"Allen, Arnold and Fleming",grocery,1,32.42,32.42,2025-07-14,2025-07-16,settled,GBP
+900491,Lawrence-Morgan,travel,5,4.99,24.95,2025-07-16,2025-07-18,settled,GBP
+900492,"Schofield, Bishop and Wilson",dining,7,39.63,277.41,2025-04-17,2025-04-22,settled,GBP
+900493,Hussain PLC,travel,3,11.94,35.82,2025-05-05,,pending,GBP
+900494,Patel Inc,utilities,6,50.28,301.68,2025-08-17,2025-08-21,settled,GBP
+900495,"Walker, Smith and Thomas",utilities,7,39.85,278.95,2025-02-04,2025-02-09,settled,GBP
+900496,Bowen and Sons,travel,3,8.02,24.06,2025-06-24,2025-06-29,settled,GBP
+900497,"Griffin, Phillips and Cooper",dining,1,17.32,17.32,2025-09-28,2025-09-29,settled,GBP
+900498,Jones-Burke,grocery,7,28.79,201.53,2025-08-18,,pending,GBP
+900499,"Morris, Williams and Holden",dining,7,10.32,72.24,2025-08-05,,reversed,GBP
+900500,Pickering-Evans,travel,4,10.69,42.76,2025-04-07,,pending,GBP
+900501,"Robinson, Hunter and Evans",travel,3,14.5,43.5,2025-08-23,2025-08-26,settled,GBP
+900502,"Evans, Marsden and Wilson",dining,8,30.18,241.44,2025-02-12,2025-02-17,settled,GBP
+900503,King LLC,dining,6,33.82,202.92,2025-02-27,,pending,GBP
+900504,"Wood, Henderson and Foster",travel,3,13.37,40.11,2025-06-24,2025-06-26,settled,GBP
+900505,Parsons-O'Brien,grocery,2,32.0,64.0,2025-08-17,2025-08-22,settled,GBP
+900506,Turnbull-Scott,grocery,5,50.19,250.95,2025-08-25,2025-08-27,settled,GBP
+900507,"Collins, Law and Pugh",dining,8,34.12,272.96,2025-05-18,2025-05-22,settled,GBP
+900508,"Thompson, Fisher and Walker",dining,3,10.78,32.34,2025-02-15,2025-02-19,settled,GBP
+900509,Stone-Kelly,dining,4,9.99,39.96,2025-04-09,2025-04-13,settled,GBP
+900510,"Watson, Johnson and Hayes",fuel,5,21.92,109.6,2025-09-21,2025-09-24,settled,GBP
+900511,"Mitchell, Gill and Davies",utilities,1,31.87,31.87,2025-06-14,2025-06-16,settled,GBP
+900512,"Smith, Simpson and Horton",grocery,3,24.24,72.72,2025-09-24,2025-09-29,settled,GBP
+900513,"Parker, Rowley and Hayes",fuel,7,13.75,96.25,2025-08-23,2025-08-27,settled,GBP
+900514,"Read, Morris and Tucker",fuel,4,9.42,37.68,2025-06-18,,pending,GBP
+900515,"Herbert, White and Clarke",utilities,3,43.57,130.71,2025-09-15,2025-09-17,settled,GBP
+900516,Jennings Inc,utilities,5,16.21,81.05,2025-08-12,,reversed,GBP
+900517,Foster-Smith,travel,1,66.01,66.01,2025-06-02,2025-06-06,settled,GBP
+900518,"Smith, Palmer and Randall",dining,1,8.1,8.1,2025-03-23,2025-03-24,settled,GBP
+900519,"Richardson, Stevens and Jones",utilities,7,14.3,100.1,2025-07-31,2025-08-05,settled,GBP
+900520,"Jenkins, Nelson and Parkinson",fuel,1,11.52,11.52,2025-05-19,,pending,GBP
+900521,Winter-Palmer,utilities,1,65.02,65.02,2025-08-20,,reversed,GBP
+900522,Jones Group,fuel,3,42.63,127.89,2025-07-17,2025-07-21,settled,GBP
+900523,Harris-Wood,fuel,2,12.77,25.54,2025-07-05,2025-07-10,settled,GBP
+900524,"Price, Mills and Johnson",grocery,7,4.71,32.97,2025-09-01,2025-09-04,settled,GBP
+900525,Kennedy PLC,travel,2,40.24,80.48,2025-09-25,2025-09-27,settled,GBP
+900526,"Kay, Francis and O'Connor",travel,4,19.75,79.0,2025-05-03,2025-05-08,settled,GBP
+900527,Taylor Ltd,travel,4,8.23,32.92,2025-05-22,2025-05-23,settled,GBP
+900528,Taylor PLC,dining,6,6.34,38.04,2025-07-12,2025-07-14,settled,GBP
+900529,"Rahman, Harrison and Saunders",dining,8,23.85,190.8,2025-02-25,2025-03-01,settled,GBP
+900530,"Thompson, Watson and Hall",dining,1,15.65,15.65,2025-07-12,,pending,GBP
+900531,Newton Group,fuel,1,19.96,19.96,2025-05-19,2025-05-24,settled,GBP
+900532,Price Inc,grocery,1,23.77,23.77,2025-03-18,,pending,GBP
+900533,"Powell, Ross and Brown",dining,8,13.96,111.68,2025-06-07,,pending,GBP
+900534,"Wong, Robinson and Palmer",travel,7,14.94,104.58,2025-08-02,2025-08-05,settled,GBP
+900535,"Hawkins, Marshall and Booth",travel,3,28.59,85.77,2025-08-02,2025-08-06,settled,GBP
+900536,"Matthews, Turner and Grant",dining,3,16.74,50.22,2025-09-20,,reversed,GBP
+900537,James-Griffin,fuel,4,14.9,59.6,2025-08-19,2025-08-23,settled,GBP
+900538,Shaw and Sons,dining,2,28.2,56.4,2025-05-14,,reversed,GBP
+900539,Miller-Newman,dining,7,4.57,31.99,2025-02-11,2025-02-14,settled,GBP
+900540,"Hart, Parry and Clark",dining,4,42.91,171.64,2025-08-08,2025-08-12,settled,GBP
+900541,Price-Smith,fuel,7,24.65,172.55,2025-03-29,,pending,GBP
+900542,"Lewis, Stephenson and Ward",dining,6,10.63,63.78,2025-02-11,,pending,GBP
+900543,Miller-Clarke,grocery,2,16.0,32.0,2025-03-10,2025-03-14,settled,GBP
+900544,"Brown, Lewis and Palmer",travel,1,42.52,42.52,2025-09-18,,reversed,GBP
+900545,Scott Ltd,travel,6,26.6,159.6,2025-09-07,2025-09-10,settled,GBP
+900546,Jennings PLC,fuel,6,5.25,31.5,2025-06-27,2025-07-02,settled,GBP
+900547,Owen Group,dining,4,8.94,35.76,2025-02-25,2025-03-02,settled,GBP
+900548,"Freeman, Cox and Harding",fuel,2,20.57,41.14,2025-05-26,,pending,GBP
+900549,Owens LLC,fuel,1,62.68,62.68,2025-08-28,2025-08-29,settled,GBP
+900550,Thomas Ltd,dining,8,30.82,246.56,2025-06-15,2025-06-18,settled,GBP
+900551,Gould-Newman,utilities,8,15.8,126.4,2025-03-19,2025-03-23,settled,GBP
+900552,"Williams, Moore and Whitehead",utilities,5,27.11,135.55,2025-06-17,2025-06-21,settled,GBP
+900553,Cook LLC,fuel,4,18.34,73.36,2025-08-28,2025-09-01,settled,GBP
+900554,"Brown, Clarke and Patterson",travel,3,14.7,44.1,2025-07-16,,pending,GBP
+900555,Khan-Daniels,travel,6,23.65,141.9,2025-06-02,2025-06-06,settled,GBP
+900556,"Barton, Waters and Shaw",travel,5,4.11,20.55,2025-08-13,2025-08-17,settled,GBP
+900557,"Leonard, Howard and Harris",dining,6,36.64,219.84,2025-08-12,2025-08-16,settled,GBP
+900558,Brooks and Sons,dining,6,26.36,158.16,2025-08-12,2025-08-14,settled,GBP
+900559,"Adams, Hawkins and Gray",dining,2,13.37,26.74,2025-09-17,2025-09-20,settled,GBP
+900560,"Lawrence, Brennan and Ashton",dining,2,10.02,20.04,2025-07-01,2025-07-03,settled,GBP
+900561,King Inc,travel,3,7.85,23.55,2025-09-25,2025-09-26,settled,GBP
+900562,Thomson PLC,fuel,2,21.94,43.88,2025-04-29,,pending,GBP
+900563,McDonald LLC,travel,4,20.14,80.56,2025-02-20,2025-02-24,settled,GBP
+900564,Walker-Whitehead,grocery,1,20.54,20.54,2025-07-17,2025-07-19,settled,GBP
+900565,Cole-Doherty,fuel,8,59.64,477.12,2025-08-31,2025-09-01,settled,GBP
+900566,Turner and Sons,fuel,5,3.94,19.7,2025-05-01,2025-05-06,settled,GBP
+900567,"King, Sharpe and Smith",utilities,7,11.01,77.07,2025-07-29,2025-08-03,settled,GBP
+900568,Curtis LLC,dining,3,10.62,31.86,2025-02-16,,pending,GBP
+900569,Martin LLC,grocery,6,35.09,210.54,2025-04-27,2025-05-01,settled,GBP
+900570,Barker Ltd,travel,5,15.26,76.3,2025-04-29,2025-05-03,settled,GBP
+900571,Marshall and Sons,grocery,3,9.44,28.32,2025-03-22,2025-03-23,settled,GBP
+900572,Hall-Saunders,dining,5,20.99,104.95,2025-03-19,2025-03-20,settled,GBP
+900573,"Bull, Johnson and Archer",fuel,3,24.1,72.3,2025-07-07,2025-07-11,settled,GBP
+900574,"King, Lee and Thompson",dining,4,55.66,222.64,2025-09-19,2025-09-24,settled,GBP
+900575,Richards LLC,travel,3,21.69,65.07,2025-07-18,,reversed,GBP
+900576,Griffiths-Wells,fuel,4,13.39,53.56,2025-02-02,2025-02-04,settled,GBP
+900577,Clarke Inc,travel,4,12.82,51.28,2025-03-05,2025-03-09,settled,GBP
+900578,"Smith, Hill and Bailey",utilities,2,10.34,20.68,2025-05-23,2025-05-28,settled,GBP
+900579,"Stevens, Chambers and Walters",grocery,4,25.51,102.04,2025-07-25,2025-07-26,settled,GBP
+900580,Morley and Sons,utilities,3,32.06,96.18,2025-04-09,2025-04-12,settled,GBP
+900581,"White, Roberts and Young",fuel,4,15.53,62.12,2025-06-13,2025-06-14,settled,GBP
+900582,Brown-Richards,fuel,8,16.55,132.4,2025-08-09,2025-08-14,settled,GBP
+900583,"Rose, Marsh and Campbell",travel,3,47.35,142.05,2025-07-14,2025-07-16,settled,GBP
+900584,Gibbons PLC,grocery,6,19.5,117.0,2025-02-20,2025-02-21,settled,GBP
+900585,"Smith, Stevens and Smith",dining,7,25.69,179.83,2025-08-19,2025-08-22,settled,GBP
+900586,"Wright, McLean and Cooper",grocery,3,8.56,25.68,2025-05-10,,pending,GBP
+900587,Scott-Robson,travel,8,11.94,95.52,2025-05-22,2025-05-25,settled,GBP
+900588,"Thompson, Mitchell and Morgan",utilities,1,4.12,4.12,2025-05-26,2025-05-31,settled,GBP
+900589,Harvey Inc,utilities,7,7.04,49.28,2025-09-10,2025-09-11,settled,GBP
+900590,"Newton, Reynolds and Wall",travel,2,23.48,46.96,2025-08-10,2025-08-11,settled,GBP
+900591,Kent and Sons,grocery,2,43.2,86.4,2025-06-18,,pending,GBP
+900592,"Jones, Smith and Scott",travel,2,15.11,30.22,2025-02-01,2025-02-02,settled,GBP
+900593,Yates LLC,utilities,5,7.94,39.7,2025-04-06,2025-04-09,settled,GBP
+900594,French-Anderson,dining,5,19.39,96.95,2025-03-25,,reversed,GBP
+900595,Shah-Peters,dining,2,40.24,80.48,2025-04-30,,reversed,GBP
+900596,"Sinclair, Williams and Price",utilities,6,16.23,97.38,2025-04-20,2025-04-22,settled,GBP
+900597,Jones-Dennis,grocery,8,34.42,275.36,2025-04-13,2025-04-18,settled,GBP
+900598,Bennett Ltd,utilities,4,17.4,69.6,2025-08-21,2025-08-25,settled,GBP
+900599,Frost Inc,fuel,5,7.74,38.7,2025-09-15,2025-09-19,settled,GBP
+900600,Davies LLC,grocery,8,9.69,77.52,2025-06-27,2025-06-29,settled,GBP
+900601,"Turner, Turner and Hargreaves",dining,1,15.22,15.22,2025-07-08,2025-07-10,settled,GBP
+900602,Ali-Cox,travel,2,88.64,177.28,2025-04-19,2025-04-23,settled,GBP
+900603,"Hall, Byrne and Price",travel,7,27.29,191.03,2025-06-10,,reversed,GBP
+900604,"Whittaker, Bird and Williams",dining,6,15.41,92.46,2025-09-05,2025-09-06,settled,GBP
+900605,"Barker, Smith and Graham",dining,6,22.25,133.5,2025-09-08,2025-09-12,settled,GBP
+900606,Horton-Hill,utilities,3,21.08,63.24,2025-03-25,2025-03-29,settled,GBP
+900607,"Roberts, Vaughan and Dobson",utilities,1,13.38,13.38,2025-06-26,2025-06-28,settled,GBP
+900608,"Lee, Richardson and Long",grocery,2,16.91,33.82,2025-06-11,,reversed,GBP
+900609,Mills-Murray,grocery,7,15.25,106.75,2025-06-03,2025-06-07,settled,GBP
+900610,Woods-King,dining,6,30.45,182.7,2025-04-21,2025-04-25,settled,GBP
+900611,"Smith, Pugh and Marshall",travel,1,53.71,53.71,2025-05-19,2025-05-21,settled,GBP
+900612,Robinson-Phillips,travel,2,45.73,91.46,2025-05-16,,pending,GBP
+900613,"Edwards, Patel and Howard",dining,8,14.58,116.64,2025-08-28,2025-09-01,settled,GBP
+900614,Scott LLC,travel,4,26.72,106.88,2025-08-07,2025-08-11,settled,GBP
+900615,"Hammond, Price and Manning",utilities,8,11.0,88.0,2025-06-05,2025-06-07,settled,GBP
+900616,"Parsons, Farrell and Berry",dining,3,8.52,25.56,2025-05-02,,pending,GBP
+900617,"Kaur, Carter and Patel",fuel,4,19.18,76.72,2025-04-30,2025-05-01,settled,GBP
+900618,Ali-Fuller,dining,5,27.77,138.85,2025-05-24,,pending,GBP
+900619,Edwards-Marshall,grocery,5,17.42,87.1,2025-03-21,,reversed,GBP
+900620,Moore-Mistry,grocery,6,32.33,193.98,2025-05-28,2025-05-31,settled,GBP
+900621,"Stevens, Harding and Smith",fuel,4,32.34,129.36,2025-04-12,,pending,GBP
+900622,Turner Ltd,utilities,6,30.79,184.74,2025-06-02,2025-06-03,settled,GBP
+900623,Richardson-Smith,utilities,4,16.36,65.44,2025-08-06,2025-08-09,settled,GBP
+900624,Patterson-John,utilities,5,7.08,35.4,2025-02-14,,reversed,GBP
+900625,Andrews-Rice,travel,7,63.55,444.85,2025-03-22,2025-03-24,settled,GBP
+900626,Davis Ltd,dining,1,13.08,13.08,2025-07-01,,pending,GBP
+900627,"Jones, Smith and Marsh",grocery,7,30.26,211.82,2025-08-24,2025-08-26,settled,GBP
+900628,"Shaw, Alexander and Jones",fuel,6,25.51,153.06,2025-09-12,2025-09-17,settled,GBP
+900629,Rhodes-Griffin,utilities,4,14.31,57.24,2025-08-14,2025-08-18,settled,GBP
+900630,Wall LLC,grocery,5,64.69,323.45,2025-04-30,2025-05-03,settled,GBP
+900631,Turner Group,grocery,7,29.07,203.49,2025-03-30,2025-04-03,settled,GBP
+900632,Parry-Grant,grocery,4,18.03,72.12,2025-05-11,,reversed,GBP
+900633,Knight LLC,utilities,3,13.63,40.89,2025-02-28,2025-03-01,settled,GBP
+900634,Ryan Inc,travel,8,9.3,74.4,2025-08-30,2025-09-03,settled,GBP
+900635,Anderson-Townsend,utilities,7,7.57,52.99,2025-08-22,2025-08-25,settled,GBP
+900636,"Singh, Lees and Power",dining,2,27.06,54.12,2025-02-01,2025-02-02,settled,GBP
+900637,"Gray, Lawrence and Davies",utilities,3,13.41,40.23,2025-06-20,2025-06-24,settled,GBP
+900638,Walsh-Turner,dining,5,13.3,66.5,2025-02-16,,reversed,GBP
+900639,"Harris, Sinclair and Ingram",fuel,7,25.85,180.95,2025-08-22,2025-08-23,settled,GBP
+900640,Ali-Connolly,utilities,7,14.3,100.1,2025-06-04,2025-06-06,settled,GBP
+900641,Hughes Inc,grocery,3,28.61,85.83,2025-09-14,2025-09-17,settled,GBP
+900642,Hayes Group,travel,6,11.68,70.08,2025-03-30,2025-04-04,settled,GBP
+900643,Byrne LLC,dining,5,12.7,63.5,2025-03-16,2025-03-17,settled,GBP
+900644,Brown-Bentley,utilities,4,34.4,137.6,2025-05-03,2025-05-06,settled,GBP
+900645,Lawson Ltd,dining,2,11.35,22.7,2025-07-07,2025-07-10,settled,GBP
+900646,Owen-Harrison,travel,6,27.8,166.8,2025-05-18,2025-05-23,settled,GBP
+900647,Evans-Farmer,utilities,1,25.85,25.85,2025-04-02,,pending,GBP
+900648,"Curtis, Reynolds and Marsden",dining,3,18.3,54.9,2025-03-26,2025-03-28,settled,GBP
+900649,Archer LLC,dining,4,5.79,23.16,2025-05-31,2025-06-04,settled,GBP
+900650,Morris-Edwards,travel,1,7.35,7.35,2025-08-29,2025-09-03,settled,GBP
+900651,"King, Bentley and McCarthy",fuel,1,8.53,8.53,2025-03-02,2025-03-06,settled,GBP
+900652,"Williams, Nash and Wood",travel,1,7.46,7.46,2025-03-10,2025-03-11,settled,GBP
+900653,Phillips LLC,fuel,2,33.06,66.12,2025-08-11,2025-08-12,settled,GBP
+900654,Duffy PLC,travel,3,9.96,29.88,2025-02-24,2025-02-28,settled,GBP
+900655,"Powell, Saunders and Mason",fuel,4,7.71,30.84,2025-05-05,2025-05-07,settled,GBP
+900656,Bailey-Cooke,travel,6,12.81,76.86,2025-05-07,2025-05-09,settled,GBP
+900657,Cook-White,grocery,7,17.0,119.0,2025-03-08,,pending,GBP
+900658,Gray Ltd,travel,5,5.73,28.65,2025-03-19,,pending,GBP
+900659,Wong LLC,fuel,3,27.64,82.92,2025-03-01,2025-03-06,settled,GBP
+900660,"Holmes, Humphries and Watkins",travel,1,29.99,29.99,2025-04-29,,pending,GBP
+900661,Oliver PLC,utilities,1,12.04,12.04,2025-05-12,2025-05-13,settled,GBP
+900662,Smith-Osborne,utilities,8,31.79,254.32,2025-02-11,2025-02-16,settled,GBP
+900663,"Shaw, Brown and Davies",travel,4,6.2,24.8,2025-04-15,2025-04-16,settled,GBP
+900664,Jones Ltd,travel,5,12.41,62.05,2025-07-09,,pending,GBP
+900665,"Smith, Doyle and Russell",fuel,4,16.23,64.92,2025-07-19,2025-07-20,settled,GBP
+900666,Willis-Chapman,dining,2,19.08,38.16,2025-03-09,,pending,GBP
+900667,Atkins-Pritchard,fuel,2,40.19,80.38,2025-03-14,2025-03-15,settled,GBP
+900668,Bates-Roberts,dining,6,14.47,86.82,2025-06-17,2025-06-18,settled,GBP
+900669,West-Yates,travel,3,9.04,27.12,2025-04-15,2025-04-18,settled,GBP
+900670,Johnson Inc,fuel,2,21.08,42.16,2025-06-08,2025-06-13,settled,GBP
+900671,Sharpe Inc,utilities,4,20.23,80.92,2025-09-11,2025-09-13,settled,GBP
+900672,"Hewitt, Thomas and Bell",dining,4,24.75,99.0,2025-09-24,2025-09-25,settled,GBP
+900673,Bailey-Butler,travel,5,14.43,72.15,2025-04-25,2025-04-29,settled,GBP
+900674,"Cooke, Dean and James",utilities,1,20.47,20.47,2025-07-31,2025-08-01,settled,GBP
+900675,Barker-Dyer,utilities,5,12.25,61.25,2025-03-03,2025-03-08,settled,GBP
+900676,"Bryant, Leonard and Khan",fuel,6,26.79,160.74,2025-05-15,2025-05-16,settled,GBP
+900677,"Price, Peacock and Wilson",grocery,8,11.5,92.0,2025-03-18,2025-03-23,settled,GBP
+900678,"Butler, Turner and Jones",grocery,5,11.84,59.2,2025-09-03,2025-09-07,settled,GBP
+900679,McCarthy-Thomson,utilities,8,40.61,324.88,2025-09-05,,reversed,GBP
+900680,"Butler, Noble and Smith",dining,7,10.75,75.25,2025-03-13,2025-03-14,settled,GBP
+900681,Pritchard LLC,utilities,6,18.2,109.2,2025-03-11,2025-03-13,settled,GBP
+900682,Cole and Sons,grocery,5,26.86,134.3,2025-05-20,2025-05-21,settled,GBP
+900683,"Davies, Kelly and Brown",dining,3,14.58,43.74,2025-03-23,2025-03-24,settled,GBP
+900684,Jones LLC,grocery,3,33.88,101.64,2025-09-17,2025-09-22,settled,GBP
+900685,"Thompson, Williams and Roberts",fuel,1,12.17,12.17,2025-06-20,,pending,GBP
+900686,Sutton-Blake,travel,7,36.7,256.9,2025-08-15,2025-08-19,settled,GBP
+900687,Smith-Morrison,grocery,4,6.21,24.84,2025-04-29,2025-04-30,settled,GBP
+900688,Phillips Group,grocery,7,7.15,50.05,2025-04-23,2025-04-26,settled,GBP
+900689,Evans Inc,grocery,3,19.01,57.03,2025-02-11,,reversed,GBP
+900690,"Walker, Shepherd and Jackson",fuel,2,48.61,97.22,2025-07-18,2025-07-23,settled,GBP
+900691,"Mistry, Warren and Patel",dining,5,55.13,275.65,2025-05-11,2025-05-16,settled,GBP
+900692,Hall-Mason,fuel,6,10.04,60.24,2025-03-24,,pending,GBP
+900693,Newton-Lloyd,travel,2,17.78,35.56,2025-03-24,,reversed,GBP
+900694,Stevens-Jones,dining,3,12.93,38.79,2025-04-23,2025-04-24,settled,GBP
+900695,Chapman Ltd,dining,5,4.15,20.75,2025-05-10,,pending,GBP
+900696,Moore Inc,fuel,4,29.89,119.56,2025-06-20,2025-06-22,settled,GBP
+900697,Walker Inc,dining,3,14.01,42.03,2025-06-18,2025-06-19,settled,GBP
+900698,Allen-Parker,utilities,3,46.62,139.86,2025-09-17,2025-09-21,settled,GBP
+900699,Evans Inc,utilities,2,21.98,43.96,2025-05-30,2025-05-31,settled,GBP
+900700,"Reynolds, Farmer and Grant",utilities,4,12.59,50.36,2025-03-16,2025-03-21,settled,GBP
+900701,"Matthews, Ward and Begum",fuel,1,11.27,11.27,2025-03-02,2025-03-05,settled,GBP
+900702,Morgan-Wilkinson,utilities,5,15.94,79.7,2025-05-17,,pending,GBP
+900703,Marshall LLC,utilities,4,24.81,99.24,2025-07-12,,pending,GBP
+900704,Ferguson Group,utilities,8,12.95,103.6,2025-05-21,2025-05-25,settled,GBP
+900705,"Harrison, Wilson and Hill",grocery,1,125.17,125.17,2025-03-23,,pending,GBP
+900706,Patel and Sons,utilities,2,20.94,41.88,2025-02-09,2025-02-10,settled,GBP
+900707,Austin-Jones,utilities,2,8.3,16.6,2025-08-14,,pending,GBP
+900708,"Mason, Richardson and Waters",travel,6,19.19,115.14,2025-04-06,2025-04-08,settled,GBP
+900709,Schofield-Moore,dining,3,39.92,119.76,2025-06-01,2025-06-02,settled,GBP
+900710,"Graham, Collier and Saunders",dining,5,24.39,121.95,2025-07-26,2025-07-30,settled,GBP
+900711,"Harrison, Stewart and Owens",utilities,2,14.45,28.9,2025-02-10,,pending,GBP
+900712,Stewart Group,fuel,5,11.5,57.5,2025-03-18,2025-03-19,settled,GBP
+900713,Lewis LLC,utilities,1,10.54,10.54,2025-09-27,2025-09-28,settled,GBP
+900714,"Kelly, James and Adams",grocery,8,8.03,64.24,2025-02-12,2025-02-15,settled,GBP
+900715,"Marsh, O'Brien and Goodwin",fuel,1,12.72,12.72,2025-03-31,2025-04-04,settled,GBP
+900716,Brown-O'Brien,travel,6,21.74,130.44,2025-06-11,2025-06-13,settled,GBP
+900717,Davies PLC,dining,6,12.29,73.74,2025-02-02,2025-02-06,settled,GBP
+900718,"Cook, Davidson and Holloway",dining,6,55.63,333.78,2025-07-08,,pending,GBP
+900719,Walton Ltd,dining,4,23.53,94.12,2025-08-23,,pending,GBP
+900720,McLean-Lloyd,grocery,4,13.37,53.48,2025-09-25,2025-09-26,settled,GBP
+900721,Cooke Ltd,utilities,6,17.74,106.44,2025-05-14,2025-05-17,settled,GBP
+900722,Clarke and Sons,fuel,3,49.81,149.43,2025-08-19,2025-08-20,settled,GBP
+900723,"Gibbons, Mason and Thompson",utilities,6,5.61,33.66,2025-05-01,2025-05-02,settled,GBP
+900724,Watkins PLC,grocery,8,21.36,170.88,2025-02-28,2025-03-01,settled,GBP
+900725,Summers-Sanders,grocery,5,114.79,573.95,2025-08-02,2025-08-06,settled,GBP
+900726,"Brooks, Fletcher and Yates",travel,4,36.18,144.72,2025-04-13,2025-04-14,settled,GBP
+900727,Dawson-Craig,travel,5,9.73,48.65,2025-09-28,2025-10-01,settled,GBP
+900728,Bryant-Fox,grocery,4,19.78,79.12,2025-06-21,2025-06-26,settled,GBP
+900729,"Pearson, Shaw and Burke",grocery,7,15.43,108.01,2025-03-06,2025-03-07,settled,GBP
+900730,Bond-Allen,dining,6,123.36,740.16,2025-04-14,2025-04-16,settled,GBP
+900731,"Kelly, Knowles and Mann",fuel,1,11.42,11.42,2025-08-10,2025-08-11,settled,GBP
+900732,Moore-Barry,utilities,8,15.04,120.32,2025-02-10,2025-02-13,settled,GBP
+900733,"Ellis, Hawkins and Cooper",fuel,3,14.45,43.35,2025-09-24,2025-09-26,settled,GBP
+900734,Walker-Lee,travel,7,6.8,47.6,2025-08-29,,pending,GBP
+900735,"Miller, Woods and West",fuel,1,1.87,1.87,2025-09-13,2025-09-17,settled,GBP
+900736,"Hussain, Patel and Marsh",grocery,2,15.41,30.82,2025-06-18,2025-06-21,settled,GBP
+900737,"Harris, Spencer and Simpson",travel,4,25.87,103.48,2025-04-15,2025-04-18,settled,GBP
+900738,Hope Inc,utilities,1,13.47,13.47,2025-08-10,2025-08-15,settled,GBP
+900739,"Frost, Rogers and Yates",travel,7,25.51,178.57,2025-02-13,2025-02-16,settled,GBP
+900740,Barlow Inc,utilities,2,30.48,60.96,2025-03-28,2025-03-29,settled,GBP
+900741,"Walsh, Kaur and King",dining,5,29.35,146.75,2025-06-02,,pending,GBP
+900742,Lee-Conway,dining,6,5.63,33.78,2025-07-17,,pending,GBP
+900743,Hughes and Sons,travel,7,51.29,359.03,2025-06-29,,pending,GBP
+900744,Brookes-Ward,utilities,1,32.8,32.8,2025-06-30,2025-07-05,settled,GBP
+900745,"Payne, Sutton and Ryan",dining,5,31.55,157.75,2025-03-29,2025-04-03,settled,GBP
+900746,Chadwick-Goodwin,utilities,8,18.27,146.16,2025-06-06,2025-06-11,settled,GBP
+900747,Campbell Inc,fuel,1,18.11,18.11,2025-06-24,2025-06-25,settled,GBP
+900748,Lamb Group,dining,2,12.49,24.98,2025-08-21,2025-08-26,settled,GBP
+900749,"Palmer, Perry and Hill",utilities,1,24.24,24.24,2025-02-08,2025-02-12,settled,GBP
+900750,Roberts PLC,travel,6,34.28,205.68,2025-03-20,2025-03-25,settled,GBP
+900751,Carter-Booth,dining,6,12.25,73.5,2025-08-26,2025-08-27,settled,GBP
+900752,Hurst-Smith,utilities,8,31.89,255.12,2025-05-25,2025-05-30,settled,GBP
+900753,Harper PLC,utilities,8,13.16,105.28,2025-04-27,2025-05-01,settled,GBP
+900754,Martin-Wright,grocery,2,27.31,54.62,2025-03-10,2025-03-15,settled,GBP
+900755,"Harris, Hughes and Ward",fuel,2,16.42,32.84,2025-02-12,2025-02-15,settled,GBP
+900756,"Hall, Harper and Winter",fuel,4,32.81,131.24,2025-03-18,2025-03-20,settled,GBP
+900757,Burke-Newton,travel,8,68.51,548.08,2025-04-06,2025-04-10,settled,GBP
+900758,"Shepherd, Robson and Hill",grocery,3,21.22,63.66,2025-04-13,,pending,GBP
+900759,"Cook, Garner and Jennings",fuel,6,12.94,77.64,2025-09-02,2025-09-06,settled,GBP
+900760,Dyer-Steele,fuel,6,13.53,81.18,2025-08-20,2025-08-22,settled,GBP
+900761,Parkes-Hyde,travel,2,27.9,55.8,2025-03-19,2025-03-21,settled,GBP
+900762,Burton and Sons,dining,3,12.91,38.73,2025-02-25,,pending,GBP
+900763,"Kelly, Smith and Anderson",dining,3,35.65,106.95,2025-04-03,2025-04-08,settled,GBP
+900764,Roberts PLC,dining,7,22.3,156.1,2025-03-12,2025-03-16,settled,GBP
+900765,Glover Group,utilities,7,33.9,237.3,2025-04-23,2025-04-26,settled,GBP
+900766,Morris PLC,fuel,3,12.42,37.26,2025-08-07,2025-08-08,settled,GBP
+900767,Brown Inc,utilities,7,9.4,65.8,2025-05-16,,pending,GBP
+900768,Howells Ltd,grocery,5,10.87,54.35,2025-03-12,2025-03-17,settled,GBP
+900769,Barnes-Richardson,utilities,6,23.9,143.4,2025-03-17,2025-03-21,settled,GBP
+900770,Taylor-Williams,fuel,6,10.57,63.42,2025-05-24,2025-05-27,settled,GBP
+900771,Smith Group,travel,8,29.33,234.64,2025-03-27,2025-03-28,settled,GBP
+900772,"Taylor, Ford and Adams",dining,2,4.4,8.8,2025-04-09,2025-04-11,settled,GBP
+900773,"Reed, Carr and O'Brien",dining,7,11.48,80.36,2025-08-10,2025-08-14,settled,GBP
+900774,Patel-Carroll,travel,5,16.23,81.15,2025-02-15,,pending,GBP
+900775,Bibi-Baker,utilities,8,5.16,41.28,2025-06-25,,reversed,GBP
+900776,"Ball, Cook and Gray",grocery,2,11.93,23.86,2025-03-05,2025-03-07,settled,GBP
+900777,Kelly PLC,travel,4,6.48,25.92,2025-03-24,2025-03-29,settled,GBP
+900778,"Dickinson, Roberts and Stevens",travel,6,17.32,103.92,2025-08-14,2025-08-15,settled,GBP
+900779,"Howard, Davies and Jones",travel,4,15.39,61.56,2025-09-24,2025-09-27,settled,GBP
+900780,Francis-Pearson,grocery,2,30.34,60.68,2025-08-03,,pending,GBP
+900781,"Robson, Robson and Jones",travel,3,10.18,30.54,2025-04-23,,reversed,GBP
+900782,"Green, Archer and King",grocery,1,5.92,5.92,2025-05-10,,pending,GBP
+900783,"Pickering, Brooks and Hutchinson",grocery,2,12.5,25.0,2025-06-12,2025-06-16,settled,GBP
+900784,Bell and Sons,fuel,1,19.9,19.9,2025-02-12,2025-02-13,settled,GBP
+900785,Bates PLC,utilities,3,19.42,58.26,2025-07-04,2025-07-06,settled,GBP
+900786,Wright Ltd,grocery,1,20.44,20.44,2025-03-19,2025-03-24,settled,GBP
+900787,Shaw Inc,grocery,2,42.22,84.44,2025-09-24,2025-09-27,settled,GBP
+900788,Saunders-Wright,fuel,5,14.25,71.25,2025-02-08,2025-02-13,settled,GBP
+900789,"Marshall, Watson and Hall",grocery,8,15.73,125.84,2025-07-17,,pending,GBP
+900790,Owen PLC,fuel,5,10.17,50.85,2025-08-24,2025-08-29,settled,GBP
+900791,Marsden and Sons,grocery,5,12.1,60.5,2025-08-25,,pending,GBP
+900792,Tyler and Sons,fuel,8,37.42,299.36,2025-05-05,2025-05-07,settled,GBP
+900793,"Boyle, Mills and Smith",dining,8,23.37,186.96,2025-05-08,2025-05-10,settled,GBP
+900794,Simpson Ltd,fuel,2,3.0,6.0,2025-06-05,2025-06-07,settled,GBP
+900795,"James, Payne and Begum",travel,2,41.87,83.74,2025-04-14,,pending,GBP
+900796,Craig-Cunningham,utilities,8,4.62,36.96,2025-02-02,2025-02-03,settled,GBP
+900797,Rogers-Brooks,travel,6,13.73,82.38,2025-08-02,2025-08-07,settled,GBP
+900798,"Cooper, Hutchinson and Cartwright",travel,6,35.63,213.78,2025-05-08,2025-05-11,settled,GBP
+900799,Martin-Ball,utilities,4,19.95,79.8,2025-06-27,2025-06-28,settled,GBP
+900800,"Robertson, Davison and Greenwood",fuel,2,26.8,53.6,2025-04-28,2025-05-01,settled,GBP
+900801,"Brown, Howard and Jackson",travel,8,33.2,265.6,2025-05-18,2025-05-20,settled,GBP
+900802,Bentley Inc,utilities,5,22.41,112.05,2025-06-17,2025-06-19,settled,GBP
+900803,"Edwards, Johnson and Perry",fuel,1,7.67,7.67,2025-02-25,2025-03-01,settled,GBP
+900804,Smith PLC,dining,2,23.53,47.06,2025-09-03,2025-09-04,settled,GBP
+900805,Holmes-Smith,travel,5,11.28,56.4,2025-05-20,,reversed,GBP
+900806,"Blake, Bird and Williams",travel,5,3.44,17.2,2025-03-18,,reversed,GBP
+900807,Hayward Inc,fuel,5,14.92,74.6,2025-02-19,2025-02-21,settled,GBP
+900808,Ball-Carroll,grocery,8,26.64,213.12,2025-03-28,2025-03-29,settled,GBP
+900809,Morgan-Willis,utilities,1,19.82,19.82,2025-07-25,2025-07-26,settled,GBP
+900810,"Harrison, Johnson and Pickering",utilities,8,18.36,146.88,2025-07-20,2025-07-22,settled,GBP
+900811,"Pearson, Wright and Khan",utilities,4,60.54,242.16,2025-03-27,2025-03-28,settled,GBP
+900812,Long LLC,grocery,8,22.04,176.32,2025-09-07,,reversed,GBP
+900813,Khan-Lord,utilities,3,34.3,102.9,2025-06-07,2025-06-12,settled,GBP
+900814,Wright and Sons,utilities,6,22.9,137.4,2025-03-02,,pending,GBP
+900815,"Law, White and Faulkner",grocery,3,56.82,170.46,2025-05-25,2025-05-30,settled,GBP
+900816,Miller-Edwards,dining,4,14.17,56.68,2025-02-15,2025-02-18,settled,GBP
+900817,Briggs-Porter,utilities,1,41.23,41.23,2025-02-02,2025-02-03,settled,GBP
+900818,Kelly-Lowe,dining,2,64.18,128.36,2025-08-15,,pending,GBP
+900819,Lewis and Sons,fuel,7,14.14,98.98,2025-09-20,2025-09-22,settled,GBP
+900820,"Forster, Gibson and Richardson",travel,6,37.66,225.96,2025-07-29,2025-07-30,settled,GBP
+900821,"Robinson, Johnson and Thompson",grocery,2,7.18,14.36,2025-03-21,2025-03-23,settled,GBP
+900822,Bishop-Lewis,fuel,4,22.77,91.08,2025-07-11,2025-07-12,settled,GBP
+900823,Wright PLC,travel,8,30.42,243.36,2025-07-27,2025-07-30,settled,GBP
+900824,Smith-Adams,utilities,8,10.32,82.56,2025-03-08,,reversed,GBP
+900825,Wood-Hughes,grocery,2,5.32,10.64,2025-09-10,2025-09-13,settled,GBP
+900826,"Owen, Watson and Palmer",utilities,1,18.96,18.96,2025-05-27,2025-06-01,settled,GBP
+900827,Middleton-Morley,dining,8,14.62,116.96,2025-05-25,,pending,GBP
+900828,"Dyer, Saunders and Jordan",grocery,1,20.85,20.85,2025-06-23,,pending,GBP
+900829,Baker Group,utilities,8,22.46,179.68,2025-04-20,2025-04-23,settled,GBP
+900830,"Foster, Kirk and Jones",fuel,8,32.61,260.88,2025-05-10,2025-05-15,settled,GBP
+900831,Thompson LLC,fuel,4,53.99,215.96,2025-02-20,2025-02-23,settled,GBP
+900832,Hughes Group,fuel,7,24.75,173.25,2025-08-24,2025-08-27,settled,GBP
+900833,Patel PLC,grocery,7,6.4,44.8,2025-04-13,,pending,GBP
+900834,Cole LLC,travel,8,29.25,234.0,2025-04-19,2025-04-20,settled,GBP
+900835,"Smith, Bailey and Mitchell",grocery,3,24.06,72.18,2025-05-21,2025-05-26,settled,GBP
+900836,Potter LLC,grocery,7,20.35,142.45,2025-07-27,2025-07-29,settled,GBP
+900837,Knight-Pollard,travel,2,54.91,109.82,2025-05-07,2025-05-09,settled,GBP
+900838,George-Cameron,travel,4,22.1,88.4,2025-04-18,2025-04-22,settled,GBP
+900839,Burgess-Rowley,travel,6,14.4,86.4,2025-03-25,2025-03-26,settled,GBP
+900840,"Waters, Macdonald and Hill",dining,4,25.4,101.6,2025-09-06,2025-09-09,settled,GBP
+900841,Butcher Inc,fuel,5,6.12,30.6,2025-06-28,2025-07-03,settled,GBP
+900842,Palmer Inc,dining,5,35.7,178.5,2025-02-18,,pending,GBP
+900843,Ross Inc,dining,7,19.25,134.75,2025-08-06,,reversed,GBP
+900844,"Rose, Matthews and Lynch",grocery,2,59.23,118.46,2025-09-11,2025-09-15,settled,GBP
+900845,"Moore, Warren and Stevens",fuel,5,29.63,148.15,2025-05-06,2025-05-07,settled,GBP
+900846,Hilton Group,travel,5,23.94,119.7,2025-08-21,2025-08-25,settled,GBP
+900847,Barnett-Hughes,utilities,8,21.04,168.32,2025-03-28,,reversed,GBP
+900848,Baker LLC,utilities,7,8.19,57.33,2025-05-09,2025-05-14,settled,GBP
+900849,Williams Inc,grocery,4,17.51,70.04,2025-04-13,2025-04-16,settled,GBP
+900850,Taylor Inc,utilities,6,22.75,136.5,2025-05-24,2025-05-25,settled,GBP
+900851,"Barton, Armstrong and Parker",fuel,4,36.54,146.16,2025-03-20,,pending,GBP
+900852,Andrews-Murphy,travel,1,24.96,24.96,2025-09-06,2025-09-10,settled,GBP
+900853,Chan LLC,travel,7,29.94,209.58,2025-09-19,2025-09-21,settled,GBP
+900854,"Evans, Matthews and Griffin",travel,3,29.78,89.34,2025-06-20,2025-06-23,settled,GBP
+900855,"Edwards, Cook and Short",utilities,8,12.9,103.2,2025-08-27,2025-09-01,settled,GBP
+900856,McDonald and Sons,utilities,6,22.89,137.34,2025-04-05,2025-04-09,settled,GBP
+900857,"Baxter, Smith and Watson",fuel,3,16.0,48.0,2025-02-19,,pending,GBP
+900858,Lambert-Lyons,utilities,2,7.84,15.68,2025-06-14,2025-06-15,settled,GBP
+900859,Knowles-Berry,utilities,2,6.56,13.12,2025-03-02,2025-03-07,settled,GBP
+900860,Parsons-Curtis,travel,8,32.89,263.12,2025-09-07,2025-09-10,settled,GBP
+900861,"Morgan, Davey and Cooper",dining,7,50.0,350.0,2025-08-17,,reversed,GBP
+900862,Davis Inc,dining,6,49.59,297.54,2025-02-01,2025-02-04,settled,GBP
+900863,"Bruce, Stone and Harris",utilities,3,10.36,31.08,2025-05-28,2025-06-02,settled,GBP
+900864,"Parker, Carr and Smith",grocery,6,52.37,314.22,2025-05-26,2025-05-29,settled,GBP
+900865,Jones Group,fuel,2,54.55,109.1,2025-04-18,2025-04-23,settled,GBP
+900866,"Carey, Brady and Roberts",travel,2,11.03,22.06,2025-06-06,,reversed,GBP
+900867,Harding-Walsh,dining,5,26.07,130.35,2025-09-11,2025-09-15,settled,GBP
+900868,Williams-Scott,grocery,6,60.51,363.06,2025-07-07,2025-07-12,settled,GBP
+900869,Cole Inc,grocery,3,19.87,59.61,2025-05-09,2025-05-13,settled,GBP
+900870,"Jones, Jones and Naylor",fuel,6,42.19,253.14,2025-04-17,,pending,GBP
+900871,"Wood, Ali and Phillips",travel,1,12.17,12.17,2025-05-14,2025-05-18,settled,GBP
+900872,"Humphreys, Potter and Brooks",utilities,7,14.78,103.46,2025-05-01,,pending,GBP
+900873,"Griffiths, Barker and Williams",utilities,5,34.19,170.95,2025-08-28,,reversed,GBP
+900874,Stevens and Sons,dining,2,16.66,33.32,2025-09-05,2025-09-06,settled,GBP
+900875,Gardner-Wilson,utilities,4,20.39,81.56,2025-07-28,2025-08-01,settled,GBP
+900876,Johnson LLC,grocery,3,19.91,59.73,2025-03-27,2025-03-31,settled,GBP
+900877,Lane-Jones,fuel,1,9.23,9.23,2025-06-10,,pending,GBP
+900878,Freeman PLC,dining,8,52.24,417.92,2025-03-07,2025-03-09,settled,GBP
+900879,Barton Group,fuel,3,17.0,51.0,2025-02-06,2025-02-08,settled,GBP
+900880,"Bryant, Moore and Thomas",fuel,7,14.9,104.3,2025-05-10,2025-05-12,settled,GBP
+900881,Briggs Group,grocery,4,13.73,54.92,2025-06-03,,pending,GBP
+900882,Hill-Hamilton,fuel,4,19.52,78.08,2025-03-08,2025-03-12,settled,GBP
+900883,Potts-Perry,utilities,2,9.83,19.66,2025-08-18,2025-08-19,settled,GBP
+900884,Hunt Inc,fuel,7,33.92,237.44,2025-06-13,2025-06-14,settled,GBP
+900885,"Walsh, Marsh and Vaughan",travel,6,14.76,88.56,2025-06-07,2025-06-08,settled,GBP
+900886,Dickinson-Lewis,fuel,8,32.22,257.76,2025-09-16,2025-09-20,settled,GBP
+900887,Smith-Mason,grocery,1,10.2,10.2,2025-03-13,2025-03-18,settled,GBP
+900888,"Thomson, Wheeler and Johnson",travel,3,9.25,27.75,2025-08-12,2025-08-16,settled,GBP
+900889,Clark Group,fuel,4,9.89,39.56,2025-06-29,2025-07-04,settled,GBP
+900890,Cox-Bennett,utilities,8,21.85,174.8,2025-02-01,2025-02-06,settled,GBP
+900891,Jones Inc,utilities,3,7.5,22.5,2025-08-05,2025-08-09,settled,GBP
+900892,Jones-Davey,fuel,8,33.3,266.4,2025-02-14,2025-02-17,settled,GBP
+900893,"Lewis, Green and Campbell",dining,8,14.85,118.8,2025-06-05,2025-06-09,settled,GBP
+900894,"Lawrence, Walker and Perkins",travel,8,34.59,276.72,2025-07-19,2025-07-23,settled,GBP
+900895,Henderson PLC,utilities,1,14.32,14.32,2025-05-30,2025-06-02,settled,GBP
+900896,"Ball, King and Rogers",utilities,4,32.6,130.4,2025-02-02,2025-02-06,settled,GBP
+900897,Hardy Inc,utilities,1,9.18,9.18,2025-08-09,2025-08-11,settled,GBP
+900898,"Akhtar, Bennett and Jackson",travel,6,8.73,52.38,2025-07-30,2025-08-03,settled,GBP
+900899,"Allen, Davis and Taylor",utilities,3,28.01,84.03,2025-04-22,2025-04-24,settled,GBP
+900900,Potter-Howell,dining,6,12.73,76.38,2025-09-17,,pending,GBP
+900901,Harding Ltd,grocery,8,38.61,308.88,2025-04-11,2025-04-13,settled,GBP
+900902,"Kaur, Jones and Webster",travel,1,11.53,11.53,2025-02-08,2025-02-11,settled,GBP
+900903,"Hunt, Kaur and Rowley",utilities,4,26.44,105.76,2025-05-09,2025-05-12,settled,GBP
+900904,Pearce LLC,travel,8,10.57,84.56,2025-03-28,2025-03-31,settled,GBP
+900905,"Page, Woodward and Smith",grocery,7,5.59,39.13,2025-04-25,2025-04-29,settled,GBP
+900906,"Baker, Scott and Andrews",grocery,2,49.89,99.78,2025-05-25,2025-05-29,settled,GBP
+900907,Robinson-Baker,travel,1,16.09,16.09,2025-07-10,2025-07-13,settled,GBP
+900908,Gardner-Smith,grocery,8,36.28,290.24,2025-07-21,2025-07-24,settled,GBP
+900909,Barnes-Bates,travel,7,20.98,146.86,2025-08-02,,reversed,GBP
+900910,"Rogers, Hughes and Pearce",utilities,4,5.69,22.76,2025-02-12,2025-02-17,settled,GBP
+900911,Leonard and Sons,travel,6,24.37,146.22,2025-06-04,2025-06-09,settled,GBP
+900912,Andrews-Hart,utilities,4,39.12,156.48,2025-02-17,2025-02-22,settled,GBP
+900913,"Bartlett, Watson and Gould",fuel,8,45.23,361.84,2025-09-11,2025-09-14,settled,GBP
+900914,Mason PLC,utilities,6,57.44,344.64,2025-09-07,2025-09-08,settled,GBP
+900915,Hanson Group,utilities,2,24.3,48.6,2025-08-27,2025-08-28,settled,GBP
+900916,Jennings-Hughes,grocery,5,17.27,86.35,2025-09-03,2025-09-08,settled,GBP
+900917,Lewis-Daly,grocery,1,19.45,19.45,2025-08-24,2025-08-26,settled,GBP
+900918,"Jackson, Price and Stevens",dining,4,8.3,33.2,2025-07-04,2025-07-08,settled,GBP
+900919,Humphreys and Sons,utilities,8,30.78,246.24,2025-07-26,2025-07-27,settled,GBP
+900920,Jackson and Sons,utilities,3,30.53,91.59,2025-05-06,2025-05-08,settled,GBP
+900921,Dawson Group,fuel,8,23.56,188.48,2025-09-16,2025-09-17,settled,GBP
+900922,Webb and Sons,dining,1,10.86,10.86,2025-04-18,2025-04-19,settled,GBP
+900923,Wood-Duncan,dining,5,28.87,144.35,2025-04-11,2025-04-13,settled,GBP
+900924,"Kirby, Davis and Wall",dining,7,12.65,88.55,2025-05-12,2025-05-16,settled,GBP
+900925,Roberts and Sons,utilities,8,43.76,350.08,2025-07-17,2025-07-18,settled,GBP
+900926,"Singh, Barnes and Richardson",travel,5,12.17,60.85,2025-05-07,,reversed,GBP
+900927,"Donnelly, Griffiths and Taylor",fuel,7,12.85,89.95,2025-05-08,2025-05-09,settled,GBP
+900928,Davies PLC,travel,7,14.83,103.81,2025-09-20,2025-09-23,settled,GBP
+900929,"Holloway, Hodgson and Ross",utilities,5,9.07,45.35,2025-05-15,2025-05-20,settled,GBP
+900930,Harris and Sons,grocery,6,9.96,59.76,2025-09-11,2025-09-16,settled,GBP
+900931,Davies Group,utilities,4,15.2,60.8,2025-09-22,2025-09-25,settled,GBP
+900932,Wilson Inc,grocery,2,3.38,6.76,2025-04-20,,pending,GBP
+900933,Thomas Inc,travel,1,73.47,73.47,2025-06-08,2025-06-09,settled,GBP
+900934,Hunt-Stewart,grocery,3,23.88,71.64,2025-02-17,2025-02-19,settled,GBP
+900935,Butler-Griffiths,dining,6,22.57,135.42,2025-06-21,2025-06-26,settled,GBP
+900936,Chan-Stone,travel,8,10.03,80.24,2025-02-19,2025-02-20,settled,GBP
+900937,Williams-Macdonald,grocery,6,21.05,126.3,2025-02-28,2025-03-03,settled,GBP
+900938,Clayton Inc,dining,1,18.32,18.32,2025-08-15,2025-08-17,settled,GBP
+900939,"Gallagher, Andrews and Parker",fuel,5,19.7,98.5,2025-08-08,2025-08-13,settled,GBP
+900940,Mason-Allen,grocery,8,6.62,52.96,2025-06-14,,reversed,GBP
+900941,"Rowe, Young and Smith",dining,7,16.98,118.86,2025-04-09,2025-04-13,settled,GBP
+900942,Farrell-Atkinson,dining,5,4.99,24.95,2025-03-12,2025-03-14,settled,GBP
+900943,Foster-Baker,grocery,4,16.04,64.16,2025-05-17,2025-05-21,settled,GBP
+900944,Bell-Brown,travel,3,9.96,29.88,2025-09-23,,reversed,GBP
+900945,Thompson-Parker,utilities,2,12.08,24.16,2025-04-01,,reversed,GBP
+900946,"Wilson, Smith and Gray",utilities,7,14.68,102.76,2025-08-01,,reversed,GBP
+900947,"Sutton, O'Sullivan and Henry",dining,8,32.86,262.88,2025-07-08,2025-07-09,settled,GBP
+900948,"Smith, Hughes and Hartley",grocery,5,42.75,213.75,2025-06-29,,pending,GBP
+900949,"Walker, Rees and Brooks",fuel,1,18.75,18.75,2025-03-27,2025-03-30,settled,GBP
+900950,Carter and Sons,travel,7,8.71,60.97,2025-06-03,,pending,GBP
+900951,Holden-Dobson,dining,3,51.35,154.05,2025-06-18,2025-06-23,settled,GBP
+900952,Gibson-Taylor,fuel,4,6.95,27.8,2025-09-28,2025-09-30,settled,GBP
+900953,Warren-Barker,fuel,2,12.53,25.06,2025-05-14,2025-05-15,settled,GBP
+900954,"Hutchinson, Walsh and Payne",fuel,5,15.81,79.05,2025-03-24,2025-03-25,settled,GBP
+900955,Wilson-Yates,utilities,5,11.0,55.0,2025-06-20,2025-06-24,settled,GBP
+900956,Webb Ltd,grocery,1,46.14,46.14,2025-03-25,2025-03-30,settled,GBP
+900957,Young Ltd,travel,4,24.23,96.92,2025-08-30,2025-09-02,settled,GBP
+900958,Fisher-Cunningham,travel,6,38.64,231.84,2025-09-27,2025-10-01,settled,GBP
+900959,Lambert-Barlow,grocery,5,14.92,74.6,2025-05-27,2025-05-29,settled,GBP
+900960,"Parsons, Law and Holland",dining,1,33.45,33.45,2025-02-13,2025-02-18,settled,GBP
+900961,Davis Group,dining,4,16.48,65.92,2025-06-26,2025-06-28,settled,GBP
+900962,"Woodward, Davis and Jones",grocery,7,16.54,115.78,2025-09-03,2025-09-07,settled,GBP
+900963,"Evans, Rogers and Humphries",dining,5,22.52,112.6,2025-06-22,2025-06-27,settled,GBP
+900964,Wilkinson Group,grocery,3,24.0,72.0,2025-03-19,2025-03-21,settled,GBP
+900965,"Booth, Goddard and Preston",grocery,1,27.19,27.19,2025-03-20,2025-03-25,settled,GBP
+900966,"Gray, Lane and Williams",grocery,6,15.77,94.62,2025-05-29,2025-05-31,settled,GBP
+900967,"Faulkner, Robinson and Sutton",utilities,3,6.46,19.38,2025-08-20,2025-08-25,settled,GBP
+900968,Griffiths-Jennings,utilities,6,14.66,87.96,2025-08-09,2025-08-10,settled,GBP
+900969,Wall LLC,dining,5,2.85,14.25,2025-06-05,,pending,GBP
+900970,Booth Ltd,travel,8,14.97,119.76,2025-09-02,2025-09-06,settled,GBP
+900971,"Butler, Matthews and Owens",fuel,5,10.39,51.95,2025-08-22,2025-08-26,settled,GBP
+900972,Robinson-Pearce,fuel,4,32.22,128.88,2025-08-30,2025-09-04,settled,GBP
+900973,Parker-Akhtar,utilities,4,2.78,11.12,2025-02-14,2025-02-17,settled,GBP
+900974,Williams-Wright,dining,6,73.08,438.48,2025-02-24,,reversed,GBP
+900975,Jones-Adams,fuel,1,14.37,14.37,2025-06-03,2025-06-04,settled,GBP
+900976,Curtis-Warren,grocery,1,6.03,6.03,2025-09-21,2025-09-23,settled,GBP
+900977,Abbott Ltd,grocery,6,24.43,146.58,2025-04-17,2025-04-21,settled,GBP
+900978,"Reid, Adams and Thompson",grocery,5,25.54,127.7,2025-05-23,2025-05-28,settled,GBP
+900979,Alexander and Sons,grocery,5,24.46,122.3,2025-02-20,2025-02-21,settled,GBP
+900980,Roberts Ltd,fuel,8,82.53,660.24,2025-05-23,2025-05-27,settled,GBP
+900981,"Harrison, Lyons and Howard",travel,8,10.23,81.84,2025-09-18,2025-09-22,settled,GBP
+900982,"Waters, Harvey and Carter",utilities,7,22.32,156.24,2025-08-19,2025-08-23,settled,GBP
+900983,"Harding, Ellis and Miller",fuel,3,20.19,60.57,2025-07-12,,pending,GBP
+900984,Reeves-Atkins,travel,1,11.35,11.35,2025-06-29,2025-07-04,settled,GBP
+900985,Morris-Quinn,dining,6,22.25,133.5,2025-08-31,2025-09-05,settled,GBP
+900986,"Parker, Foster and Jarvis",grocery,7,43.59,305.13,2025-04-12,2025-04-17,settled,GBP
+900987,Roberts-Flynn,dining,1,10.08,10.08,2025-06-23,2025-06-27,settled,GBP
+900988,"Reid, Nash and Turner",grocery,6,24.87,149.22,2025-04-23,2025-04-27,settled,GBP
+900989,Robson PLC,travel,6,36.57,219.42,2025-04-24,2025-04-27,settled,GBP
+900990,"Bryan, Potts and Shah",dining,7,28.62,200.34,2025-09-24,2025-09-26,settled,GBP
+900991,"Hudson, Holden and Walsh",utilities,1,6.0,6.0,2025-05-28,2025-05-31,settled,GBP
+900992,"Robinson, O'Donnell and Wood",travel,3,22.14,66.42,2025-05-09,,reversed,GBP
+900993,Lamb Group,travel,5,13.91,69.55,2025-02-27,2025-03-02,settled,GBP
+900994,"Gibbons, Howell and Barker",dining,7,42.58,298.06,2025-02-04,2025-02-08,settled,GBP
+900995,"Wright, Forster and Adams",grocery,6,16.66,99.96,2025-06-29,2025-06-30,settled,GBP
+900996,Nolan-Gibson,utilities,1,71.03,71.03,2025-05-26,2025-05-28,settled,GBP
+900997,"Roberts, Hutchinson and Walker",dining,6,7.74,46.44,2025-07-11,,reversed,GBP
+900998,Carter-Smith,travel,8,25.73,205.84,2025-04-05,2025-04-08,settled,GBP
+900999,Connor-Hurst,dining,5,9.91,49.55,2025-06-12,2025-06-16,settled,GBP
+901000,Pritchard-Humphries,travel,8,62.29,498.32,2025-09-06,2025-09-11,settled,GBP
+901001,Hamilton Group,utilities,4,54.12,216.48,2025-08-01,,pending,GBP
+901002,Brookes-Price,travel,5,9.58,47.9,2025-08-05,,pending,GBP
+901003,Gibbons-Goodwin,utilities,1,30.69,30.69,2025-04-14,2025-04-19,settled,GBP
+901004,Lynch PLC,utilities,5,17.67,88.35,2025-02-01,2025-02-03,settled,GBP
+901005,Burke-Flynn,travel,3,5.89,17.67,2025-09-04,2025-09-08,settled,GBP
+901006,Adams and Sons,travel,5,8.82,44.1,2025-02-06,2025-02-11,settled,GBP
+901007,Morrison-Wood,grocery,7,19.49,136.43,2025-07-12,2025-07-16,settled,GBP
+901008,Edwards Group,fuel,8,26.02,208.16,2025-04-15,2025-04-19,settled,GBP
+901009,"James, Robson and Roberts",travel,8,14.03,112.24,2025-03-29,2025-04-02,settled,GBP
+901010,"Davies, Hanson and Davis",fuel,2,22.32,44.64,2025-04-19,,reversed,GBP
+901011,Davidson PLC,fuel,3,22.61,67.83,2025-07-13,2025-07-15,settled,GBP
+901012,West LLC,dining,6,22.21,133.26,2025-04-28,,pending,GBP
+901013,Booth Group,grocery,5,8.0,40.0,2025-07-18,,reversed,GBP
+901014,Lewis-Roberts,grocery,6,20.02,120.12,2025-07-02,2025-07-07,settled,GBP
+901015,Hale and Sons,utilities,3,26.32,78.96,2025-09-07,,pending,GBP
+901016,Davies-Allan,travel,8,6.46,51.68,2025-07-06,2025-07-10,settled,GBP
+901017,"Bailey, Johnson and Gardner",dining,3,52.96,158.88,2025-05-27,2025-05-31,settled,GBP
+901018,Chadwick Inc,utilities,2,50.05,100.1,2025-07-14,2025-07-18,settled,GBP
+901019,McDonald-Ross,utilities,7,20.37,142.59,2025-03-29,2025-04-01,settled,GBP
+901020,"Francis, Heath and Jackson",dining,1,77.54,77.54,2025-05-25,2025-05-28,settled,GBP
+901021,"Wilkins, Carey and Stone",fuel,7,10.42,72.94,2025-03-06,2025-03-11,settled,GBP
+901022,Stewart-Wallis,fuel,5,9.44,47.2,2025-07-03,2025-07-08,settled,GBP
+901023,Lamb Ltd,utilities,5,11.81,59.05,2025-04-21,,reversed,GBP
+901024,Harrison Inc,grocery,4,11.07,44.28,2025-06-12,,pending,GBP
+901025,Richardson PLC,dining,7,65.53,458.71,2025-05-13,2025-05-15,settled,GBP
+901026,Parker-Gill,dining,5,18.82,94.1,2025-03-14,2025-03-18,settled,GBP
+901027,Lowe Inc,grocery,1,17.5,17.5,2025-07-30,2025-08-02,settled,GBP
+901028,Harris-Foster,grocery,3,23.44,70.32,2025-02-10,2025-02-14,settled,GBP
+901029,"Slater, Davies and Campbell",dining,8,54.91,439.28,2025-02-15,2025-02-17,settled,GBP
+901030,"Holt, Walton and Young",utilities,3,20.46,61.38,2025-06-11,2025-06-13,settled,GBP
+901031,Hargreaves Group,grocery,1,14.02,14.02,2025-02-27,2025-03-01,settled,GBP
+901032,Evans Group,fuel,2,21.99,43.98,2025-04-06,2025-04-07,settled,GBP
+901033,Wood-Palmer,grocery,1,43.64,43.64,2025-07-29,,reversed,GBP
+901034,Lee-Brown,fuel,8,15.82,126.56,2025-07-04,2025-07-06,settled,GBP
+901035,"Harris, Evans and Cartwright",grocery,1,48.54,48.54,2025-03-20,2025-03-24,settled,GBP
+901036,Bond Group,utilities,4,22.53,90.12,2025-03-05,2025-03-10,settled,GBP
+901037,Graham Inc,dining,3,16.12,48.36,2025-02-06,2025-02-10,settled,GBP
+901038,"Brown, Chambers and Cartwright",dining,1,25.65,25.65,2025-09-06,2025-09-08,settled,GBP
+901039,Brooks Group,travel,5,71.77,358.85,2025-02-22,,pending,GBP
+901040,McDonald LLC,dining,1,15.39,15.39,2025-04-03,2025-04-06,settled,GBP
+901041,Tomlinson-Wood,travel,1,47.37,47.37,2025-07-07,2025-07-12,settled,GBP
+901042,"Martin, Goodwin and Daly",fuel,1,26.97,26.97,2025-09-05,,pending,GBP
+901043,Morris-Knight,utilities,8,20.34,162.72,2025-06-22,,pending,GBP
+901044,Young-Lucas,grocery,3,18.89,56.67,2025-05-19,2025-05-21,settled,GBP
+901045,Evans Ltd,grocery,4,32.2,128.8,2025-09-12,,pending,GBP
+901046,Henderson Ltd,grocery,4,27.94,111.76,2025-02-20,2025-02-24,settled,GBP
+901047,Schofield Ltd,fuel,8,23.6,188.8,2025-03-07,2025-03-09,settled,GBP
+901048,Dennis LLC,dining,8,28.78,230.24,2025-04-06,2025-04-09,settled,GBP
+901049,Allen-Hyde,grocery,6,10.04,60.24,2025-07-10,2025-07-13,settled,GBP
+901050,"Pearson, Ellis and Humphreys",travel,7,11.61,81.27,2025-03-03,,reversed,GBP
+901051,"Willis, Harrison and Sheppard",utilities,3,9.12,27.36,2025-02-17,2025-02-21,settled,GBP
+901052,"Davies, Joyce and Farmer",utilities,2,14.37,28.74,2025-04-18,2025-04-20,settled,GBP
+901053,Waters-Moore,travel,2,15.76,31.52,2025-08-15,2025-08-17,settled,GBP
+901054,"Houghton, Smith and Reid",travel,1,14.13,14.13,2025-06-24,2025-06-29,settled,GBP
+901055,"Ball, Jones and Austin",utilities,7,26.39,184.73,2025-06-02,,pending,GBP
+901056,Hammond Inc,utilities,3,9.47,28.41,2025-05-21,,pending,GBP
+901057,"Kerr, Archer and Powell",fuel,5,15.42,77.1,2025-02-13,2025-02-18,settled,GBP
+901058,Singh Inc,fuel,3,33.21,99.63,2025-06-13,2025-06-16,settled,GBP
+901059,"Fraser, Allan and Hughes",fuel,1,58.48,58.48,2025-02-01,2025-02-04,settled,GBP
+901060,Powell and Sons,dining,1,18.93,18.93,2025-09-16,2025-09-17,settled,GBP
+901061,Higgins PLC,travel,3,41.84,125.52,2025-09-17,,reversed,GBP
+901062,"O'Donnell, Foster and Parsons",travel,7,47.08,329.56,2025-02-05,2025-02-06,settled,GBP
+901063,Martin Group,grocery,1,9.03,9.03,2025-05-26,2025-05-28,settled,GBP
+901064,Shah Inc,dining,8,21.56,172.48,2025-04-02,,reversed,GBP
+901065,"Roberts, Ahmed and Glover",dining,5,8.84,44.2,2025-09-09,,pending,GBP
+901066,"Richardson, Parker and Howarth",utilities,7,13.95,97.65,2025-03-10,2025-03-12,settled,GBP
+901067,Coles-Bryant,utilities,8,24.17,193.36,2025-03-04,2025-03-08,settled,GBP
+901068,"Hall, King and Phillips",fuel,3,7.6,22.8,2025-02-05,2025-02-08,settled,GBP
+901069,"Collins, Adams and Cook",utilities,3,26.34,79.02,2025-05-25,2025-05-28,settled,GBP
+901070,Bailey Group,utilities,5,16.56,82.8,2025-05-18,,pending,GBP
+901071,Hyde-Wilson,dining,1,15.43,15.43,2025-07-17,,pending,GBP
+901072,Lambert-Douglas,fuel,1,26.38,26.38,2025-02-15,2025-02-18,settled,GBP
+901073,"Reed, Ford and White",grocery,8,10.33,82.64,2025-02-15,,pending,GBP
+901074,Roberts-Thomas,dining,2,5.66,11.32,2025-07-11,,pending,GBP
+901075,Williams PLC,dining,7,18.59,130.13,2025-06-15,2025-06-17,settled,GBP
+901076,"Rahman, Cole and Cook",fuel,8,11.09,88.72,2025-06-02,,reversed,GBP
+901077,"Vincent, Jones and Mitchell",dining,1,15.88,15.88,2025-09-20,2025-09-23,settled,GBP
+901078,Day-Reynolds,utilities,1,8.53,8.53,2025-03-22,2025-03-27,settled,GBP
+901079,Williams-Parsons,fuel,3,9.54,28.62,2025-04-02,2025-04-06,settled,GBP
+901080,Edwards PLC,utilities,1,8.95,8.95,2025-05-31,2025-06-05,settled,GBP
+901081,Welch-Bailey,grocery,4,7.52,30.08,2025-04-03,2025-04-07,settled,GBP
+901082,"Smith, Williams and O'Brien",grocery,7,10.37,72.59,2025-06-12,2025-06-13,settled,GBP
+901083,"Williams, Pearce and Young",travel,8,10.58,84.64,2025-04-02,,pending,GBP
+901084,Bray-Quinn,grocery,4,18.51,74.04,2025-02-25,2025-02-26,settled,GBP
+901085,Jones LLC,grocery,1,160.69,160.69,2025-06-06,2025-06-08,settled,GBP
+901086,Fisher-Marshall,travel,7,11.86,83.02,2025-05-09,2025-05-12,settled,GBP
+901087,"Patel, Thompson and Hughes",travel,8,6.07,48.56,2025-04-22,2025-04-25,settled,GBP
+901088,Martin-Taylor,travel,8,27.02,216.16,2025-04-21,,pending,GBP
+901089,Harvey-Jennings,travel,5,7.75,38.75,2025-06-22,,pending,GBP
+901090,"Smith, Wells and Green",dining,1,9.81,9.81,2025-02-28,2025-03-03,settled,GBP
+901091,Howe Inc,grocery,4,14.3,57.2,2025-09-21,2025-09-22,settled,GBP
+901092,Payne-Banks,dining,8,18.63,149.04,2025-02-18,2025-02-20,settled,GBP
+901093,Burke and Sons,grocery,4,18.99,75.96,2025-02-21,,pending,GBP
+901094,Hopkins LLC,dining,7,21.39,149.73,2025-09-02,,reversed,GBP
+901095,Bishop-Kirk,grocery,6,16.68,100.08,2025-09-14,2025-09-18,settled,GBP
+901096,"Lee, Moss and Walker",fuel,3,38.7,116.1,2025-05-18,2025-05-22,settled,GBP
+901097,Rees-Hall,travel,3,32.19,96.57,2025-08-07,2025-08-12,settled,GBP
+901098,Smith-White,travel,6,12.43,74.58,2025-05-21,,reversed,GBP
+901099,Mason Ltd,utilities,3,15.59,46.77,2025-07-02,2025-07-07,settled,GBP
+901100,Begum Inc,utilities,5,7.11,35.55,2025-05-12,2025-05-13,settled,GBP
+901101,"May, Dennis and Doherty",dining,7,28.41,198.87,2025-04-30,,pending,GBP
+901102,Atkinson-Mistry,fuel,1,15.65,15.65,2025-04-06,2025-04-09,settled,GBP
+901103,Ahmed Ltd,grocery,3,66.77,200.31,2025-08-03,2025-08-08,settled,GBP
+901104,Wilkinson-Stevens,utilities,5,11.31,56.55,2025-08-19,2025-08-22,settled,GBP
+901105,"Williams, Moore and Wallace",dining,7,51.13,357.91,2025-03-06,,reversed,GBP
+901106,Roberts-Storey,utilities,1,9.6,9.6,2025-06-21,2025-06-25,settled,GBP
+901107,Conway LLC,dining,3,5.68,17.04,2025-02-05,2025-02-09,settled,GBP
+901108,Murray-Cooper,dining,3,10.0,30.0,2025-05-18,,reversed,GBP
+901109,"Thomas, Young and Brown",fuel,6,22.79,136.74,2025-06-18,,reversed,GBP
+901110,"Anderson, Bowen and Davis",dining,6,36.21,217.26,2025-08-18,,pending,GBP
+901111,Smith Group,grocery,1,9.88,9.88,2025-03-23,2025-03-24,settled,GBP
+901112,Quinn-Roberts,dining,6,34.97,209.82,2025-02-02,2025-02-05,settled,GBP
+901113,"Brown, McCarthy and Armstrong",dining,5,12.58,62.9,2025-04-07,2025-04-09,settled,GBP
+901114,Connolly-Jones,grocery,1,12.65,12.65,2025-03-04,2025-03-07,settled,GBP
+901115,Begum Group,travel,4,14.63,58.52,2025-04-15,,pending,GBP
+901116,"Harris, Singh and Thorpe",grocery,5,55.85,279.25,2025-09-10,2025-09-15,settled,GBP
+901117,"Watson, Tomlinson and Daniels",travel,7,20.38,142.66,2025-04-22,2025-04-24,settled,GBP
+901118,Jenkins-Jones,travel,8,22.17,177.36,2025-09-24,2025-09-26,settled,GBP
+901119,Harding-Brown,grocery,5,6.38,31.9,2025-06-17,2025-06-18,settled,GBP
+901120,Robertson-Hooper,travel,7,20.15,141.05,2025-09-17,2025-09-22,settled,GBP
+901121,"Barnes, Slater and Holt",grocery,6,21.76,130.56,2025-08-28,2025-08-31,settled,GBP
+901122,Quinn PLC,grocery,1,54.99,54.99,2025-03-05,2025-03-06,settled,GBP
+901123,Wood and Sons,fuel,2,9.9,19.8,2025-09-05,2025-09-07,settled,GBP
+901124,Richards and Sons,travel,7,11.08,77.56,2025-03-06,2025-03-09,settled,GBP
+901125,Perry-Perkins,dining,7,9.58,67.06,2025-06-05,,pending,GBP
+901126,Edwards-Richards,dining,1,11.5,11.5,2025-08-06,,reversed,GBP
+901127,"Edwards, Green and McKenzie",grocery,7,28.44,199.08,2025-03-09,2025-03-10,settled,GBP
+901128,Holloway-Mann,travel,7,10.4,72.8,2025-07-03,2025-07-06,settled,GBP
+901129,Cooper LLC,dining,5,43.02,215.1,2025-04-26,2025-04-30,settled,GBP
+901130,"Jones, Griffiths and Phillips",fuel,4,18.35,73.4,2025-05-04,2025-05-09,settled,GBP
+901131,"Lee, Chapman and Shepherd",grocery,6,9.6,57.6,2025-09-21,2025-09-23,settled,GBP
+901132,Nicholls-Mills,fuel,1,11.48,11.48,2025-06-23,2025-06-27,settled,GBP
+901133,Webb Group,fuel,3,7.0,21.0,2025-03-02,,reversed,GBP
+901134,Stevens Inc,dining,4,6.63,26.52,2025-03-04,2025-03-09,settled,GBP
+901135,"Lucas, Williams and Jackson",utilities,3,39.41,118.23,2025-08-12,2025-08-15,settled,GBP
+901136,Chan-Hopkins,dining,3,32.71,98.13,2025-04-25,2025-04-29,settled,GBP
+901137,Wallace and Sons,dining,5,9.13,45.65,2025-06-18,2025-06-19,settled,GBP
+901138,Jackson Group,fuel,2,13.13,26.26,2025-07-29,2025-07-31,settled,GBP
+901139,"Holland, Phillips and Hughes",utilities,4,53.65,214.6,2025-08-05,2025-08-09,settled,GBP
+901140,Smith Group,travel,6,10.88,65.28,2025-09-19,2025-09-20,settled,GBP
+901141,Wright Ltd,utilities,2,20.8,41.6,2025-08-11,2025-08-14,settled,GBP
+901142,Foster-Davies,dining,1,25.29,25.29,2025-03-08,2025-03-12,settled,GBP
+901143,Turner Group,travel,8,15.57,124.56,2025-06-16,2025-06-18,settled,GBP
+901144,"Gibson, Clayton and Willis",grocery,6,15.69,94.14,2025-04-01,2025-04-06,settled,GBP
+901145,Smith-Wilson,travel,6,14.15,84.9,2025-08-16,2025-08-20,settled,GBP
+901146,"Young, Duffy and Richards",dining,3,19.34,58.02,2025-03-08,2025-03-10,settled,GBP
+901147,John Group,dining,2,6.11,12.22,2025-08-13,2025-08-16,settled,GBP
+901148,Nicholson-Mitchell,fuel,2,18.41,36.82,2025-09-26,2025-09-28,settled,GBP
+901149,Gill Inc,fuel,8,20.18,161.44,2025-08-21,2025-08-23,settled,GBP
+901150,Hill Group,utilities,4,7.18,28.72,2025-05-02,2025-05-03,settled,GBP
+901151,"Dawson, White and Ryan",dining,5,24.26,121.3,2025-08-30,2025-09-02,settled,GBP
+901152,Hudson-Daniels,fuel,2,9.4,18.8,2025-03-16,2025-03-19,settled,GBP
+901153,Dawson-Booth,dining,4,2.95,11.8,2025-03-08,2025-03-13,settled,GBP
+901154,"Clarke, Mitchell and Hall",fuel,3,4.71,14.13,2025-07-01,2025-07-03,settled,GBP
+901155,Clark-Parker,travel,7,18.99,132.93,2025-05-27,2025-05-28,settled,GBP
+901156,"Miah, Daly and Bailey",grocery,3,26.1,78.3,2025-02-02,2025-02-06,settled,GBP
+901157,Bell-Murray,grocery,1,13.24,13.24,2025-09-26,,pending,GBP
+901158,Bond-Peacock,travel,6,6.55,39.3,2025-07-03,2025-07-04,settled,GBP
+901159,"Smith, James and Hurst",fuel,1,15.87,15.87,2025-04-10,2025-04-12,settled,GBP
+901160,Hall and Sons,grocery,2,33.25,66.5,2025-06-12,2025-06-17,settled,GBP
+901161,Hewitt-Roberts,travel,8,17.18,137.44,2025-04-21,2025-04-23,settled,GBP
+901162,Robertson LLC,dining,6,6.47,38.82,2025-09-06,2025-09-08,settled,GBP
+901163,"White, Horton and Chandler",fuel,1,24.4,24.4,2025-08-23,2025-08-26,settled,GBP
+901164,"Lewis, Williams and Watkins",fuel,6,15.43,92.58,2025-04-28,2025-05-02,settled,GBP
+901165,Harris LLC,utilities,4,15.71,62.84,2025-08-05,2025-08-09,settled,GBP
+901166,Pearce-Gallagher,grocery,7,18.46,129.22,2025-08-07,2025-08-09,settled,GBP
+901167,"Carter, Akhtar and Slater",fuel,8,25.99,207.92,2025-08-12,2025-08-15,settled,GBP
+901168,"Hall, Skinner and Parker",grocery,1,16.42,16.42,2025-08-29,2025-08-31,settled,GBP
+901169,Hughes-Martin,grocery,3,9.14,27.42,2025-08-23,2025-08-25,settled,GBP
+901170,Davis-Lewis,dining,8,16.4,131.2,2025-09-28,2025-10-03,settled,GBP
+901171,Wade LLC,utilities,8,19.38,155.04,2025-09-28,2025-10-02,settled,GBP
+901172,Jones-Lee,utilities,3,39.7,119.1,2025-06-02,2025-06-03,settled,GBP
+901173,"Archer, Dodd and Smith",fuel,2,7.64,15.28,2025-03-10,,reversed,GBP
+901174,"Marshall, Grant and Parkin",dining,8,16.07,128.56,2025-08-18,2025-08-23,settled,GBP
+901175,Wilkinson LLC,dining,8,9.69,77.52,2025-06-08,2025-06-13,settled,GBP
+901176,Carr PLC,grocery,2,21.25,42.5,2025-09-18,2025-09-20,settled,GBP
+901177,"Coles, Duffy and Wood",grocery,1,12.16,12.16,2025-05-10,2025-05-14,settled,GBP
+901178,Jackson and Sons,fuel,5,2.14,10.7,2025-04-21,2025-04-24,settled,GBP
+901179,"Morris, McLean and Smith",dining,5,33.93,169.65,2025-05-08,2025-05-13,settled,GBP
+901180,Smith-Frost,travel,2,11.22,22.44,2025-05-19,2025-05-22,settled,GBP
+901181,"Miller, Lee and McCarthy",fuel,8,8.35,66.8,2025-08-23,2025-08-24,settled,GBP
+901182,Donnelly-Cook,utilities,8,6.28,50.24,2025-06-19,,reversed,GBP
+901183,"Thomas, Todd and Pearce",travel,7,8.49,59.43,2025-09-26,2025-09-30,settled,GBP
+901184,"James, Taylor and Parker",fuel,1,7.26,7.26,2025-05-23,2025-05-24,settled,GBP
+901185,"Singh, Hamilton and Stone",fuel,6,15.97,95.82,2025-07-18,2025-07-19,settled,GBP
+901186,Connolly PLC,dining,1,19.49,19.49,2025-09-03,2025-09-07,settled,GBP
+901187,Thomas-Vincent,grocery,4,16.72,66.88,2025-02-06,,pending,GBP
+901188,Nash and Sons,dining,7,22.55,157.85,2025-08-12,,reversed,GBP
+901189,Williams Inc,grocery,7,9.97,69.79,2025-05-11,2025-05-16,settled,GBP
+901190,"Jones, Barnes and Talbot",utilities,5,26.67,133.35,2025-05-03,,pending,GBP
+901191,Harris Ltd,fuel,6,16.42,98.52,2025-09-16,2025-09-21,settled,GBP
+901192,"Smith, Marshall and Ward",utilities,2,23.9,47.8,2025-07-04,2025-07-05,settled,GBP
+901193,Young LLC,fuel,2,26.87,53.74,2025-06-06,2025-06-08,settled,GBP
+901194,Warren-Hurst,fuel,6,13.71,82.26,2025-05-23,2025-05-27,settled,GBP
+901195,Day-Roberts,travel,6,41.25,247.5,2025-03-26,2025-03-31,settled,GBP
+901196,Miller Group,travel,7,30.51,213.57,2025-02-24,2025-02-25,settled,GBP
+901197,Smith-Smart,travel,7,13.34,93.38,2025-03-02,2025-03-05,settled,GBP
+901198,"Oliver, Patel and Harrison",grocery,2,58.9,117.8,2025-05-25,2025-05-27,settled,GBP
+901199,Robinson-Bartlett,dining,6,55.23,331.38,2025-03-19,,pending,GBP

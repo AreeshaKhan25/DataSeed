@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SynthForge - Relational Data Workspace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#431fb8",
+            "primary-container": "#5b3fd0",
+            "on-surface-variant": "#484554",
+            "tertiary-container": "#cca73c",
+            "secondary-fixed": "#e5dff7",
+            "inverse-surface": "#2f3035",
+            "on-surface": "#1a1b20",
+            "surface-bright": "#faf8ff",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#503d00",
+            "secondary-fixed-dim": "#c9c3da",
+            "surface-container-low": "#f4f3fa",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#ffdf90",
+            "outline-variant": "#c9c4d7",
+            "on-tertiary-fixed-variant": "#584400",
+            "inverse-on-surface": "#f2f0f7",
+            "tertiary": "#755b00",
+            "on-secondary-fixed": "#1c192a",
+            "on-secondary-fixed-variant": "#474457",
+            "secondary": "#5f5c70",
+            "surface-container-highest": "#e3e1e8",
+            "on-secondary-container": "#656276",
+            "inverse-primary": "#c9beff",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "background": "#faf8ff",
+            "tertiary-fixed-dim": "#e9c254",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "outline": "#797586",
+            "on-primary-fixed": "#1b0063",
+            "surface": "#faf8ff",
+            "on-primary-fixed-variant": "#4725bc",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#e5dff7",
+            "surface-container-high": "#e9e7ee",
+            "on-primary-container": "#d6ccff",
+            "primary-fixed": "#e6deff",
+            "surface-dim": "#dbd9e0",
+            "surface-variant": "#e3e1e8",
+            "surface-tint": "#5f43d4",
+            "surface-container": "#efedf4",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#c9beff",
+            "on-background": "#1a1b20",
+            "on-tertiary-fixed": "#241a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "gutter-sm": "1rem",
+            "space-2xl": "3rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "code-schema": ["JetBrains Mono"],
+            "title-card": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-default": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "code-schema": ["13px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "title-card": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 19px;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+    }
+    .grid-dot-pattern {
+      background-image: radial-gradient(rgba(91, 63, 208, 0.12) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .soft-shadow-bento {
+      box-shadow: 0 4px 20px -2px rgba(91, 63, 208, 0.04), 0 2px 6px -1px rgba(27, 23, 64, 0.02);
+    }
+    .soft-shadow-elevated {
+      box-shadow: 0 12px 32px -4px rgba(91, 63, 208, 0.09), 0 4px 12px -2px rgba(27, 23, 64, 0.03);
+    }
+    .slider-thumb::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background: #5B3FD0;
+      cursor: pointer;
+      box-shadow: 0 0 0 4px #EDE7FF;
+      transition: all 0.15s ease;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-default text-body-default min-h-screen overflow-x-hidden antialiased flex">
+<!-- ========================================================================= -->
+<!-- 1. APP SHELL: SIDEBAR (240px wide, docked, conforming to Shared Components) -->
+<!-- ========================================================================= -->
+<aside class="w-60 h-screen fixed left-0 top-0 bg-surface border-r border-outline-variant/50 flex flex-col justify-between p-space-md z-30 select-none">
+<div class="flex flex-col gap-y-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-space-sm px-space-xs py-space-xs">
+<div class="w-9 h-9 rounded-2xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm shadow-primary-container/30">
+<span class="material-symbols-outlined text-xl">dataset</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-card text-title-card font-bold text-primary tracking-tight">SynthForge AI</span>
+<span class="font-body-sm text-body-sm text-secondary text-xs">Enterprise Engine</span>
+</div>
+</div>
+<!-- Navigation Tabs (8 tabs from Shared Components JSON) -->
+<nav aria-label="Main Navigation" class="flex flex-col gap-1.5">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-ui text-label-ui">Dashboard</span>
+</a>
+<!-- Projects -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#projects">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-label-ui text-label-ui">Projects</span>
+</a>
+<!-- Tabular -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#tabular">
+<span class="material-symbols-outlined">table_chart</span>
+<span class="font-label-ui text-label-ui">Tabular</span>
+</a>
+<!-- Relational (ACTIVE per JSON instructions) -->
+<a class="flex items-center gap-space-sm bg-secondary-container text-primary rounded-full px-space-md py-space-sm font-semibold active:scale-95 transition-transform duration-100 shadow-sm" href="#relational">
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="font-label-ui text-label-ui">Relational</span>
+</a>
+<!-- Documents -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#documents">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-ui text-label-ui">Documents</span>
+</a>
+<!-- Validation -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#validation">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-ui text-label-ui">Validation</span>
+</a>
+<!-- Exports -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#exports">
+<span class="material-symbols-outlined">cloud_download</span>
+<span class="font-label-ui text-label-ui">Exports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-space-sm font-normal hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150 active:scale-95" href="#settings">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-ui text-label-ui">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Sidebar Section -->
+<div class="flex flex-col gap-3">
+<!-- AI Assistant Promo Card (from Shared JSON CTA) -->
+<div class="bg-gradient-to-br from-primary-fixed/50 to-secondary-container/40 p-3.5 rounded-2xl border border-primary-fixed flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-ui text-label-ui text-primary text-xs">AI Assistant</span>
+<span class="bg-[#FFD666] text-[#1B1740] font-bold text-[9px] px-1.5 py-0.5 rounded-full uppercase tracking-wider">PRO</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary text-[11px] leading-tight">Neural synthesis ready</p>
+</div>
+</div>
+</div>
+<!-- Footer Tab Links (from Shared JSON) -->
+<div class="border-t border-outline-variant/40 pt-2 flex flex-col gap-1">
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-1.5 font-normal hover:bg-surface-container-low hover:text-on-surface text-xs transition-colors" href="#docs">
+<span class="material-symbols-outlined text-base">auto_stories</span>
+<span class="font-label-ui text-label-ui text-xs">Documentation</span>
+</a>
+<a class="flex items-center gap-space-sm text-secondary rounded-full px-space-md py-1.5 font-normal hover:bg-surface-container-low hover:text-on-surface text-xs transition-colors" href="#account">
+<span class="material-symbols-outlined text-base">manage_accounts</span>
+<span class="font-label-ui text-label-ui text-xs">Account</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTENT CONTAINER (Offset by 240px Sidebar)               -->
+<!-- ========================================================================= -->
+<div class="ml-60 flex-1 flex flex-col h-screen min-w-0">
+<!-- Top Header Bar (from App Shell specs & TopNavBar guidelines) -->
+<header class="h-16 bg-surface-container-lowest border-b border-outline-variant/50 px-gutter flex items-center justify-between z-20 shrink-0">
+<!-- Breadcrumb Navigation -->
+<div class="flex items-center gap-2 text-sm">
+<span class="font-label-ui text-label-ui text-secondary hover:text-on-surface cursor-pointer">Projects</span>
+<span class="text-outline-variant">/</span>
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>E-Commerce Core</span>
+</div>
+<span class="text-outline-variant">/</span>
+<span class="font-label-ui text-label-ui text-primary font-semibold">Relational Graph</span>
+</div>
+<!-- Search & Trailing Actions -->
+<div class="flex items-center gap-3">
+<!-- Global Search Input (⌘K) -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-secondary pointer-events-none text-base">search</span>
+<input class="w-full h-9 pl-9 pr-8 bg-surface-container-low border border-outline-variant/40 rounded-full font-body-sm text-body-sm placeholder:text-secondary focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-all text-xs" placeholder="Search tables, fields... (⌘K)" type="text"/>
+<kbd class="absolute right-3 top-2 px-1.5 py-0.5 text-[10px] font-code-schema bg-surface-container-highest text-secondary rounded">⌘K</kbd>
+</div>
+<!-- + New project Primary Violet Pill Button -->
+<button class="h-9 px-4 rounded-full bg-primary-container hover:bg-primary text-on-primary font-label-ui text-label-ui flex items-center gap-1.5 shadow-sm active:scale-95 transition-all text-xs">
+<span class="material-symbols-outlined text-base">add</span>
+<span>Generate Data</span>
+</button>
+<div class="h-5 w-px bg-outline-variant/40"></div>
+<!-- Icon Actions -->
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container-low transition-colors" title="Help">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+</button>
+<!-- User Avatar -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-primary-fixed border border-primary/20 flex items-center justify-center font-bold text-xs text-primary">
+            AK
+          </div>
+<span class="font-label-ui text-label-ui text-xs text-on-surface hidden lg:inline">Areesha K.</span>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- THREE-PANE STUDIO LAYOUT BODY                                             -->
+<!-- ========================================================================= -->
+<div class="flex-1 flex overflow-hidden">
+<!-- --------------------------------------------------------------------- -->
+<!-- PANE 1: LEFT WORKSPACE PANE (220px, Dark Navy #171F3A)               -->
+<!-- --------------------------------------------------------------------- -->
+<section class="w-[220px] bg-[#171F3A] text-white flex flex-col justify-between p-4 shrink-0 select-none z-10">
+<div class="flex flex-col gap-6">
+<!-- Modality Switcher Section -->
+<div>
+<div class="font-code-schema text-[11px] text-[#8E97BD] tracking-wider uppercase mb-2.5 font-semibold">
+              MODALITY
+            </div>
+<div class="flex flex-col gap-1">
+<button class="w-full text-left px-3 py-2 rounded-full font-label-ui text-xs text-[#9DA7CE] hover:text-white hover:bg-white/5 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base">table_chart</span>
+<span>Tabular</span>
+</button>
+<button class="w-full text-left px-3 py-2 rounded-full font-label-ui text-xs bg-primary-container text-white font-semibold flex items-center justify-between shadow-md shadow-primary-container/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base">hub</span>
+<span>Relational</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+</button>
+<button class="w-full text-left px-3 py-2 rounded-full font-label-ui text-xs text-[#9DA7CE] hover:text-white hover:bg-white/5 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base">description</span>
+<span>Documents</span>
+</button>
+</div>
+</div>
+<!-- Schemas & Graphs List -->
+<div>
+<div class="flex items-center justify-between mb-2.5">
+<span class="font-code-schema text-[11px] text-[#8E97BD] tracking-wider uppercase font-semibold">SCHEMAS &amp; GRAPHS</span>
+<span class="material-symbols-outlined text-xs text-[#8E97BD] hover:text-white cursor-pointer">add</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<!-- Active Item: E-Commerce Core -->
+<div class="p-2.5 rounded-xl bg-white/10 border border-white/10 cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-xs text-white font-semibold">E-Commerce Core</span>
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+</div>
+<div class="font-code-schema text-[10px] text-[#A5B2E0] mt-0.5 flex items-center gap-1.5">
+<span>v3.1</span>
+<span>•</span>
+<span>3 tables</span>
+</div>
+</div>
+<!-- Other Schemas -->
+<div class="p-2.5 rounded-xl hover:bg-white/5 cursor-pointer text-[#9DA7CE] hover:text-white transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-xs font-medium">Healthcare FHIR</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+</div>
+<div class="font-code-schema text-[10px] text-[#717A9E] mt-0.5">v1.4 • 9 tables</div>
+</div>
+<div class="p-2.5 rounded-xl hover:bg-white/5 cursor-pointer text-[#9DA7CE] hover:text-white transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-xs font-medium">SaaS Multi-tenant</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+</div>
+<div class="font-code-schema text-[10px] text-[#717A9E] mt-0.5">v2.0 • 6 tables</div>
+</div>
+<div class="p-2.5 rounded-xl hover:bg-white/5 cursor-pointer text-[#9DA7CE] hover:text-white transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-xs font-medium">Financial Ledger</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+</div>
+<div class="font-code-schema text-[10px] text-[#717A9E] mt-0.5">v4.2 • 11 tables</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Left Pane Footer AI Action -->
+<div class="pt-4 border-t border-white/10">
+<button class="w-full py-2.5 px-3 rounded-full bg-gradient-to-r from-primary to-primary-container hover:from-primary-container hover:to-primary text-white font-label-ui text-xs font-medium flex items-center justify-center gap-1.5 shadow-md shadow-primary/30 active:scale-95 transition-all">
+<span class="text-tertiary-fixed text-sm">✦</span>
+<span>AI Infer Graph</span>
+</button>
+</div>
+</section>
+<!-- --------------------------------------------------------------------- -->
+<!-- PANE 2: CENTER PANE — RELATIONSHIP CANVAS + PREVIEW DRAWER           -->
+<!-- --------------------------------------------------------------------- -->
+<section class="flex-1 flex flex-col min-w-0 bg-[#F8F7FD] relative overflow-hidden">
+<!-- Canvas Toolbar -->
+<div class="h-12 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/40 px-4 flex items-center justify-between shrink-0 z-10">
+<!-- Left Controls -->
+<div class="flex items-center gap-2">
+<button class="h-8 px-3 rounded-full bg-primary-container hover:bg-primary text-on-primary font-label-ui text-xs font-semibold flex items-center gap-1 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add table</span>
+</button>
+<div class="h-4 w-px bg-outline-variant/40 mx-1"></div>
+<!-- Tool Switcher -->
+<div class="bg-surface-container-low p-0.5 rounded-full border border-outline-variant/40 flex items-center">
+<button class="px-2.5 py-1 rounded-full text-xs font-label-ui bg-surface-container-lowest text-primary shadow-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">arrow_selector_tool</span>
+<span>Select</span>
+</button>
+<button class="px-2.5 py-1 rounded-full text-xs font-label-ui text-secondary hover:text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">cable</span>
+<span>Connect</span>
+</button>
+<button class="px-2.5 py-1 rounded-full text-xs font-label-ui text-secondary hover:text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">pan_tool</span>
+<span>Pan</span>
+</button>
+</div>
+</div>
+<!-- Right Controls -->
+<div class="flex items-center gap-2">
+<!-- Layout / Sync buttons -->
+<button class="h-8 px-3 rounded-full border border-outline-variant/60 bg-surface-container-lowest hover:bg-surface-container-low text-secondary hover:text-on-surface font-label-ui text-xs flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">reorder</span>
+<span>Auto-layout</span>
+</button>
+<button class="h-8 px-3 rounded-full border border-primary-container/30 bg-secondary-container/40 text-primary hover:bg-secondary-container font-label-ui text-xs font-semibold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span>Regenerate Mock Records</span>
+</button>
+<div class="h-4 w-px bg-outline-variant/40"></div>
+<span class="font-code-schema text-xs text-secondary bg-surface-container-low px-2 py-1 rounded-md">100%</span>
+<button class="w-8 h-8 rounded-full border border-outline-variant/50 hover:bg-surface-container-low text-secondary flex items-center justify-center" title="Fit Graph">
+<span class="material-symbols-outlined text-base">fit_screen</span>
+</button>
+</div>
+</div>
+<!-- Canvas Body (Graph Area) -->
+<div class="flex-1 relative overflow-auto grid-dot-pattern p-8">
+<!-- SVG CONNECTOR LAYER -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="connectorGradient1" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#5B3FD0"></stop>
+<stop offset="100%" stop-color="#797586"></stop>
+</lineargradient>
+<lineargradient id="connectorGradient2" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#5B3FD0"></stop>
+<stop offset="100%" stop-color="#5B3FD0"></stop>
+</lineargradient>
+<filter height="140%" id="badgeShadow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="2" flood-color="#431fb8" flood-opacity="0.15" stddeviation="3"></fedropshadow>
+</filter>
+</defs>
+<!-- Connector Line 1: Customers (customer_id at ~250px, 145px) to Orders (customer_id at ~340px, 180px) -->
+<!-- Path starts from card 1 right edge (x=272, y=142) to card 2 left edge (x=336, y=182) -->
+<path d="M 272 142 C 304 142, 304 182, 336 182" fill="none" stroke="#5B3FD0" stroke-dasharray="4 2" stroke-width="2.5"></path>
+<!-- Centered badge 1 -->
+<g filter="url(#badgeShadow)" transform="translate(292, 150)">
+<rect fill="#EDE7FF" height="18" rx="9" stroke="#5B3FD0" stroke-width="1" width="24" x="0" y="0"></rect>
+<text fill="#5B3FD0" font-family="'JetBrains Mono'" font-size="9" font-weight="700" text-anchor="middle" x="12" y="13">1:N</text>
+</g>
+<!-- Connector Line 2: Orders (order_id at ~592px, 142px) to Order items (order_id at ~656px, 182px) -->
+<path d="M 592 142 C 624 142, 624 182, 656 182" fill="none" stroke="#5B3FD0" stroke-width="2.5"></path>
+<!-- Centered badge 2 -->
+<g filter="url(#badgeShadow)" transform="translate(612, 150)">
+<rect fill="#5B3FD0" height="18" rx="9" width="24" x="0" y="0"></rect>
+<text fill="#FFFFFF" font-family="'JetBrains Mono'" font-size="9" font-weight="700" text-anchor="middle" x="12" y="13">1:N</text>
+</g>
+</svg>
+<!-- Graph Table Cards Grid Container -->
+<div class="relative z-10 flex gap-16 items-start pt-2">
+<!-- TABLE CARD 1: Customers -->
+<div class="w-64 bg-surface-container-lowest rounded-2xl border border-outline-variant/60 soft-shadow-bento hover:soft-shadow-elevated transition-shadow duration-200">
+<!-- Header -->
+<div class="p-3.5 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low/40 rounded-t-2xl">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">group</span>
+</div>
+<span class="font-title-card text-title-card text-sm font-bold text-on-surface">Customers</span>
+</div>
+<span class="font-code-schema text-[11px] bg-secondary-container text-primary font-semibold px-2 py-0.5 rounded-full">1,000 rec</span>
+</div>
+<!-- Schema Fields -->
+<div class="p-2 font-code-schema text-xs flex flex-col divide-y divide-outline-variant/20">
+<!-- Field: PK -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-secondary-container/20 rounded-lg group">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-xs">vpn_key</span>
+<span class="font-semibold text-primary">customer_id</span>
+</div>
+<span class="text-[10px] text-secondary">PK, UUID</span>
+</div>
+<!-- Field: Name -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">name</span>
+<span class="text-[10px] text-secondary">String, Full</span>
+</div>
+<!-- Field: Email -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">email</span>
+<span class="text-[10px] text-secondary">Masked PII</span>
+</div>
+<!-- Field: Signup Date -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">signup_date</span>
+<span class="text-[10px] text-secondary">Timestamp</span>
+</div>
+</div>
+</div>
+<!-- TABLE CARD 2: Orders (Currently focused in relationship) -->
+<div class="w-64 bg-surface-container-lowest rounded-2xl border-2 border-primary-container soft-shadow-elevated transition-shadow duration-200 ring-4 ring-primary-fixed/50">
+<!-- Header -->
+<div class="p-3.5 border-b border-outline-variant/30 flex items-center justify-between bg-primary-fixed/20 rounded-t-xl">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-xl bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+</div>
+<span class="font-title-card text-title-card text-sm font-bold text-on-surface">Orders</span>
+</div>
+<span class="font-code-schema text-[11px] bg-secondary-container text-primary font-semibold px-2 py-0.5 rounded-full">4,000 rec</span>
+</div>
+<!-- Schema Fields -->
+<div class="p-2 font-code-schema text-xs flex flex-col divide-y divide-outline-variant/20">
+<!-- Field: PK -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-xs">vpn_key</span>
+<span class="font-semibold text-primary">order_id</span>
+</div>
+<span class="text-[10px] text-secondary">PK, Int</span>
+</div>
+<!-- Field: FK -->
+<div class="py-2 px-2 flex items-center justify-between bg-secondary-container/30 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xs">link</span>
+<span class="font-semibold text-primary">customer_id</span>
+</div>
+<span class="text-[10px] text-primary font-medium">FK → Customers</span>
+</div>
+<!-- Field: Order Date -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">order_date</span>
+<span class="text-[10px] text-secondary">Date</span>
+</div>
+<!-- Field: Status -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">status</span>
+<span class="text-[10px] text-secondary">Enum (3)</span>
+</div>
+<!-- Field: Total -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">order_total</span>
+<span class="text-[10px] text-secondary">Decimal, USD</span>
+</div>
+</div>
+</div>
+<!-- TABLE CARD 3: Order items -->
+<div class="w-64 bg-surface-container-lowest rounded-2xl border border-outline-variant/60 soft-shadow-bento hover:soft-shadow-elevated transition-shadow duration-200">
+<!-- Header -->
+<div class="p-3.5 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low/40 rounded-t-2xl">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<span class="font-title-card text-title-card text-sm font-bold text-on-surface">Order items</span>
+</div>
+<span class="font-code-schema text-[11px] bg-secondary-container text-primary font-semibold px-2 py-0.5 rounded-full">12,000 rec</span>
+</div>
+<!-- Schema Fields -->
+<div class="p-2 font-code-schema text-xs flex flex-col divide-y divide-outline-variant/20">
+<!-- Field: PK -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-xs">vpn_key</span>
+<span class="font-semibold text-primary">item_id</span>
+</div>
+<span class="text-[10px] text-secondary">PK, Int</span>
+</div>
+<!-- Field: FK -->
+<div class="py-2 px-2 flex items-center justify-between bg-secondary-container/30 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xs">link</span>
+<span class="font-semibold text-primary">order_id</span>
+</div>
+<span class="text-[10px] text-primary font-medium">FK → Orders</span>
+</div>
+<!-- Field: SKU -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">sku</span>
+<span class="text-[10px] text-secondary">String, Code</span>
+</div>
+<!-- Field: Qty -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">qty</span>
+<span class="text-[10px] text-secondary">Int (1-10)</span>
+</div>
+<!-- Field: Unit Price -->
+<div class="py-2 px-2 flex items-center justify-between hover:bg-surface-container-low rounded-lg">
+<span class="text-on-surface">unit_price</span>
+<span class="text-[10px] text-secondary">Decimal, USD</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom-Left Floating Zoom Widget -->
+<div class="absolute left-6 bottom-4 bg-surface-container-lowest/90 backdrop-blur-md rounded-full border border-outline-variant/60 shadow-lg flex items-center p-1 gap-1 z-20">
+<button class="w-7 h-7 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Zoom in">
+<span class="material-symbols-outlined text-base">add</span>
+</button>
+<span class="font-code-schema text-[11px] px-1 text-secondary font-medium">100%</span>
+<button class="w-7 h-7 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Zoom out">
+<span class="material-symbols-outlined text-base">remove</span>
+</button>
+<div class="h-3 w-px bg-outline-variant/40"></div>
+<button class="w-7 h-7 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Reset View">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+</div>
+<!-- Bottom-Right Interactive Mini-Map Overview -->
+<div class="absolute right-6 bottom-4 w-32 h-20 bg-surface-container-lowest/95 backdrop-blur-md rounded-xl border border-outline-variant/60 shadow-md p-1.5 flex flex-col justify-between z-20">
+<div class="flex items-center justify-between text-[10px] text-secondary font-label-ui px-0.5">
+<span>Canvas Map</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="w-full h-12 bg-surface-container-low rounded border border-outline-variant/30 relative overflow-hidden flex items-center justify-center">
+<div class="w-5 h-3 bg-secondary-fixed rounded-sm absolute left-2 top-4"></div>
+<div class="w-5 h-4 bg-primary-fixed border border-primary rounded-sm absolute left-10 top-3"></div>
+<div class="w-5 h-3 bg-secondary-fixed rounded-sm absolute right-2 top-4"></div>
+<!-- Viewport Box -->
+<div class="absolute inset-1 border border-primary-container rounded bg-primary-container/10"></div>
+</div>
+</div>
+</div>
+<!-- ================================================================= -->
+<!-- BOTTOM DRAWER: COLLAPSIBLE 'DATA PREVIEW' (DOCKED)                 -->
+<!-- ================================================================= -->
+<div class="h-60 bg-surface-container-lowest border-t border-outline-variant/60 flex flex-col shrink-0 z-20 shadow-lg">
+<!-- Drawer Header -->
+<div class="h-10 px-4 border-b border-outline-variant/30 flex items-center justify-between bg-surface-bright select-none">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base">preview</span>
+<span class="font-label-ui text-label-ui text-xs font-bold text-on-surface">Data Preview (Synchronized Relational Mock)</span>
+</div>
+<div class="h-3 w-px bg-outline-variant/40"></div>
+<!-- Preview Pill Tabs -->
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-0.5 rounded-full text-xs font-label-ui bg-secondary-container text-primary font-semibold shadow-xs">
+                  Customers (1,000)
+                </button>
+<button class="px-2.5 py-0.5 rounded-full text-xs font-label-ui text-secondary hover:text-on-surface hover:bg-surface-container-low">
+                  Orders (4,000)
+                </button>
+<button class="px-2.5 py-0.5 rounded-full text-xs font-label-ui text-secondary hover:text-on-surface hover:bg-surface-container-low">
+                  Order items (12,000)
+                </button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-code-schema text-secondary">Showing 5 of 1,000 rows</span>
+<button class="w-6 h-6 rounded-full hover:bg-surface-container-low text-secondary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</button>
+<button class="w-6 h-6 rounded-full hover:bg-surface-container-low text-secondary flex items-center justify-center transition-colors" title="Collapse Drawer">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<!-- Drawer Table Content -->
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left font-code-schema text-xs border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary text-[11px] font-semibold border-b border-outline-variant/30">
+<th class="py-2 px-4">#</th>
+<th class="py-2 px-4 text-primary">customer_id (PK)</th>
+<th class="py-2 px-4">name</th>
+<th class="py-2 px-4">email</th>
+<th class="py-2 px-4">signup_date</th>
+<th class="py-2 px-4 text-right">status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-2 px-4 text-secondary">1</td>
+<td class="py-2 px-4 text-primary font-medium">c8a14d59-3f0a</td>
+<td class="py-2 px-4 text-on-surface font-body-default text-xs">Maria Chen</td>
+<td class="py-2 px-4 text-secondary">m****n@domain.com</td>
+<td class="py-2 px-4 text-secondary">2024-03-12T10:14:22Z</td>
+<td class="py-2 px-4 text-right"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-semibold">Active</span></td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-2 px-4 text-secondary">2</td>
+<td class="py-2 px-4 text-primary font-medium">9f32e18b-71c4</td>
+<td class="py-2 px-4 text-on-surface font-body-default text-xs">Ahmed Raza</td>
+<td class="py-2 px-4 text-secondary">a****a@cloud.net</td>
+<td class="py-2 px-4 text-secondary">2024-03-14T08:29:05Z</td>
+<td class="py-2 px-4 text-right"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-semibold">Active</span></td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-2 px-4 text-secondary">3</td>
+<td class="py-2 px-4 text-primary font-medium">4b882f01-e5d2</td>
+<td class="py-2 px-4 text-on-surface font-body-default text-xs">Sofia Ivanova</td>
+<td class="py-2 px-4 text-secondary">s****a@techhub.io</td>
+<td class="py-2 px-4 text-secondary">2024-03-15T19:40:11Z</td>
+<td class="py-2 px-4 text-right"><span class="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 text-amber-800 font-semibold">Pending</span></td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-2 px-4 text-secondary">4</td>
+<td class="py-2 px-4 text-primary font-medium">21d09e84-18aa</td>
+<td class="py-2 px-4 text-on-surface font-body-default text-xs">David Kim</td>
+<td class="py-2 px-4 text-secondary">d****m@enterprise.org</td>
+<td class="py-2 px-4 text-secondary">2024-03-18T14:02:49Z</td>
+<td class="py-2 px-4 text-right"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-semibold">Active</span></td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-2 px-4 text-secondary">5</td>
+<td class="py-2 px-4 text-primary font-medium">7e55bc30-a94f</td>
+<td class="py-2 px-4 text-on-surface font-body-default text-xs">Elena Rostova</td>
+<td class="py-2 px-4 text-secondary">e****a@quantum.dev</td>
+<td class="py-2 px-4 text-secondary">2024-03-20T04:12:33Z</td>
+<td class="py-2 px-4 text-right"><span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-semibold">Active</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- --------------------------------------------------------------------- -->
+<!-- PANE 3: RIGHT PANE — CONFIGURATION (340px, Clean White Surface)      -->
+<!-- --------------------------------------------------------------------- -->
+<aside class="w-[340px] bg-surface-container-lowest border-l border-outline-variant/60 flex flex-col justify-between shrink-0 overflow-y-auto z-10">
+<div class="p-5 flex flex-col gap-5">
+<!-- Header -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+<div>
+<h2 class="font-title-card text-title-card font-bold text-on-surface">Relationship Settings</h2>
+<p class="font-code-schema text-[11px] text-primary font-medium mt-0.5">Orders ↔ Order items selected</p>
+</div>
+<button class="w-7 h-7 rounded-full hover:bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-base">more_horiz</span>
+</button>
+</div>
+<!-- Cardinality Segmented Control -->
+<div>
+<label class="block font-label-ui text-label-ui text-xs text-secondary mb-2">Cardinality Rule</label>
+<div class="bg-surface-container-low p-1 rounded-full border border-outline-variant/40 flex items-center justify-between text-xs font-label-ui">
+<button class="flex-1 py-1.5 text-center text-secondary hover:text-on-surface rounded-full transition-all">1:1</button>
+<button class="flex-1 py-1.5 text-center bg-primary-container text-on-primary font-semibold rounded-full shadow-sm">1:N</button>
+<button class="flex-1 py-1.5 text-center text-secondary hover:text-on-surface rounded-full transition-all">N:N</button>
+</div>
+</div>
+<!-- Avg Children per Parent Slider -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="font-label-ui text-label-ui text-xs text-on-surface font-medium">Avg. children per parent</label>
+<div class="flex items-center gap-1.5">
+<span class="font-code-schema text-xs font-bold text-primary bg-secondary-container px-2 py-0.5 rounded-full">3.2</span>
+<span class="text-[10px] font-label-ui text-secondary bg-surface-container-low px-1.5 py-0.5 rounded">±0.4 stoch</span>
+</div>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer slider-thumb accent-primary-container" max="10" min="1" step="0.1" type="range" value="3.2"/>
+<div class="flex justify-between text-[10px] font-code-schema text-secondary px-0.5">
+<span>1</span>
+<span>5</span>
+<span>10 items</span>
+</div>
+</div>
+<!-- Rows per Table Inputs -->
+<div class="space-y-2.5 pt-1">
+<label class="block font-label-ui text-label-ui text-xs text-secondary">Rows per Table Target</label>
+<div class="space-y-2">
+<!-- Customers -->
+<div class="flex items-center justify-between bg-surface-container-low/60 p-2 rounded-xl border border-outline-variant/30">
+<span class="font-label-ui text-xs text-on-surface font-medium">Customers</span>
+<input class="w-20 h-7 text-right bg-surface-container-lowest border border-outline-variant/50 rounded-lg font-code-schema text-xs font-semibold px-2 text-primary focus:outline-none focus:border-primary-container" type="text" value="1,000"/>
+</div>
+<!-- Orders -->
+<div class="flex items-center justify-between bg-surface-container-low/60 p-2 rounded-xl border border-outline-variant/30">
+<span class="font-label-ui text-xs text-on-surface font-medium">Orders</span>
+<input class="w-20 h-7 text-right bg-surface-container-lowest border border-outline-variant/50 rounded-lg font-code-schema text-xs font-semibold px-2 text-primary focus:outline-none focus:border-primary-container" type="text" value="4,000"/>
+</div>
+<!-- Items -->
+<div class="flex items-center justify-between bg-surface-container-low/60 p-2 rounded-xl border border-outline-variant/30">
+<span class="font-label-ui text-xs text-on-surface font-medium">Items</span>
+<input class="w-20 h-7 text-right bg-surface-container-lowest border border-outline-variant/50 rounded-lg font-code-schema text-xs font-semibold px-2 text-primary focus:outline-none focus:border-primary-container" type="text" value="12,000"/>
+</div>
+</div>
+</div>
+<!-- Random Seed Input -->
+<div class="space-y-1.5">
+<label class="block font-label-ui text-label-ui text-xs text-secondary">Random Seed Generation</label>
+<div class="flex items-center gap-2">
+<input class="flex-1 h-9 px-3 bg-surface-container-low border border-outline-variant/40 rounded-xl font-code-schema text-xs text-on-surface focus:outline-none focus:border-primary-container" type="text" value="0x9e3779b97f4a7c15"/>
+<button class="w-9 h-9 rounded-xl border border-outline-variant/40 bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-secondary hover:text-primary transition-colors" title="Reseed">
+<span class="material-symbols-outlined text-base">casino</span>
+</button>
+</div>
+</div>
+<!-- Referential Integrity & Logic Toggles -->
+<div class="space-y-3 pt-2 border-t border-outline-variant/30">
+<div class="font-label-ui text-xs text-secondary">Referential Integrity &amp; Logic</div>
+<!-- Toggle 1: Enforce referential integrity (Locked ON) -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-ui text-xs text-on-surface font-medium">Enforce referential integrity</span>
+<span class="font-code-schema text-[10px] text-emerald-600 font-medium">Zero orphan FKs guaranteed</span>
+</div>
+<div class="w-10 h-6 bg-primary-container rounded-full p-0.5 flex items-center justify-end cursor-not-allowed">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[11px] font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Toggle 2: Orders total reconciles with line items -->
+<div class="flex items-center justify-between">
+<span class="font-label-ui text-xs text-on-surface font-medium">Orders total reconciles with line items</span>
+<div class="w-10 h-6 bg-primary-container rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+<!-- Toggle 3: AI realistic content -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="bg-[#FFD666] text-[#1B1740] font-bold text-[9px] px-1.5 py-0.5 rounded-full uppercase tracking-wider">✦ AI</span>
+<span class="font-label-ui text-xs text-on-surface font-medium">Realistic content</span>
+</div>
+<div class="w-10 h-6 bg-primary-container rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-5 h-5 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+<!-- Integrity Status Card -->
+<div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-lg mt-0.5">verified</span>
+<div class="text-xs">
+<p class="font-label-ui font-semibold text-emerald-900 leading-tight">Referential integrity guaranteed</p>
+<p class="font-body-sm text-[11px] text-emerald-700 mt-1 leading-snug">0 orphan foreign keys · Mathematical totals parity locked across schemas.</p>
+</div>
+</div>
+</div>
+<!-- Right Pane Sticky Action Footer -->
+<div class="p-5 border-t border-outline-variant/40 bg-surface-container-lowest flex flex-col gap-2 shrink-0">
+<button class="w-full h-11 rounded-full bg-primary-container hover:bg-primary text-on-primary font-label-ui text-sm font-semibold flex flex-col items-center justify-center shadow-md shadow-primary-container/20 active:scale-95 transition-all">
+<span>Export DB dump (.sql / zip)</span>
+<span class="font-code-schema text-[10px] text-on-primary-container opacity-90 leading-tight">Postgres &amp; MySQL ready</span>
+</button>
+<button class="w-full h-9 rounded-full border border-outline-variant/60 hover:bg-surface-container-low text-secondary hover:text-on-surface font-label-ui text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">troubleshoot</span>
+<span>Run Schema Diagnostics</span>
+</button>
+</div>
+</aside>
+</div>
+<!-- ========================================================================= -->
+<!-- FOOTER (docked full-width bottom, matching Shared Components JSON)        -->
+<!-- ========================================================================= -->
+<footer class="h-10 bg-surface-container-lowest border-t border-outline-variant/40 px-gutter flex items-center justify-between text-xs text-secondary shrink-0 z-20">
+<div class="font-body-sm text-body-sm text-secondary text-xs">
+        © 2024 SynthForge AI Inc. All rights reserved.
+      </div>
+<div class="flex items-center gap-4">
+<a class="hover:text-primary transition-colors duration-150" href="#privacy">Privacy Policy</a>
+<a class="hover:text-primary transition-colors duration-150" href="#terms">Terms of Service</a>
+<a class="hover:text-primary transition-colors duration-150" href="#security">Security</a>
+<a class="hover:text-primary transition-colors duration-150 flex items-center gap-1" href="#status">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>Status</span>
+</a>
+<a class="hover:text-primary transition-colors duration-150" href="#api">API Docs</a>
+</div>
+</footer>
+</div>
+</body></html>

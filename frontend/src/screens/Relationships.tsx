@@ -184,8 +184,9 @@ export function Relationships() {
     [...byDepth.keys()].sort((a, b) => a - b).forEach((d) => {
       let y = 0;
       (byDepth.get(d) ?? []).forEach((name) => {
-        const table = schema.tables.find((t) => t.name === name)!;
-        const fields = table.columns.slice(0, 8).map((c) => ({
+        const table = schema.tables.find((t) => t.name === name);
+        if (!table) return;
+        const fields = (table.columns ?? []).slice(0, 8).map((c) => ({
           name: c.name,
           dtype: c.dtype,
           pk: c.name === table.primary_key,
@@ -356,22 +357,26 @@ export function Relationships() {
                   </div>
                 </div>
 
-                {selectedFk.count_values.length > 0 && (
+                {(selectedFk.count_values?.length ?? 0) > 0 && (
                   <div>
                     <div className="label mb-2 uppercase">Children per parent</div>
                     <div className="flex h-16 items-end gap-[3px]">
-                      {selectedFk.count_values.slice(0, 16).map((v, i) => (
-                        <motion.div
-                          key={v}
-                          initial={{ height: 0 }}
-                          animate={{
-                            height: `${Math.max(4, (selectedFk.count_probs[i] / Math.max(...selectedFk.count_probs)) * 100)}%`,
-                          }}
-                          transition={{ delay: i * 0.02, ...spring }}
-                          className="flex-1 rounded-t-sm bg-navy/70"
-                          title={`${v} children: ${(selectedFk.count_probs[i] * 100).toFixed(1)}%`}
-                        />
-                      ))}
+                      {selectedFk.count_values.slice(0, 16).map((v, i) => {
+                        const prob = selectedFk.count_probs?.[i] ?? 0;
+                        const maxProb = Math.max(...(selectedFk.count_probs ?? [1]));
+                        return (
+                          <motion.div
+                            key={`${v}-${i}`}
+                            initial={{ height: 0 }}
+                            animate={{
+                              height: `${Math.max(4, (prob / (maxProb || 1)) * 100)}%`,
+                            }}
+                            transition={{ delay: i * 0.02, ...spring }}
+                            className="flex-1 rounded-t-sm bg-navy/70"
+                            title={`${v} children: ${(prob * 100).toFixed(1)}%`}
+                          />
+                        );
+                      })}
                     </div>
                     <div className="tnum mt-1.5 flex justify-between text-[10.5px] text-ink-mute">
                       <span>{Math.min(...selectedFk.count_values)}</span>
@@ -379,7 +384,7 @@ export function Relationships() {
                         avg{" "}
                         {(
                           selectedFk.count_values.reduce(
-                            (n, v, i) => n + v * selectedFk.count_probs[i],
+                            (n, v, i) => n + v * (selectedFk.count_probs?.[i] ?? 0),
                             0,
                           )
                         ).toFixed(1)}
@@ -403,7 +408,7 @@ export function Relationships() {
               checked
               locked
               label="Compute parent totals from children"
-              hint="Always enforced. Order totals are summed from their line items after generation, never invented — which is why they reconcile exactly."
+              hint="Always enforced. Order totals are summed from their line items after generation, never invented, which is why they reconcile exactly."
             />
           </Card>
         </motion.div>

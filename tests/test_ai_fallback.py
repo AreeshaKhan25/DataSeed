@@ -47,11 +47,11 @@ def main() -> int:
     check("reports heuristic mode without a key", status["mode"] == "heuristic", str(status["mode"]))
     check("no provider is selected", status["provider"] == "none", status["provider"])
     check("it does not name a model it cannot call",
-          status["reasoning_model"] == "—", status["reasoning_model"])
+          status["reasoning_model"] == " ", status["reasoning_model"])
 
     pid = client.post("/api/projects/demo").json()["project"]["id"]
 
-    print("\nJob 1 — semantic types")
+    print("\nJob 1, semantic types")
     r = client.post(f"/api/projects/{pid}/ai/infer-types?table=customers")
     body = r.json()
     check("returns proposals", r.status_code == 200 and len(body["proposals"]) == 10,
@@ -65,14 +65,14 @@ def main() -> int:
           all(p.get("privacy") for p in body["proposals"]))
     check("marked as heuristic", all(p["source"] == "heuristic" for p in body["proposals"]))
 
-    print("\nJob 2 — relationships")
+    print("\nJob 2, relationships")
     r = client.post(f"/api/projects/{pid}/ai/infer-relations")
     body = r.json()
     check("returns relationships", r.status_code == 200 and len(body["proposals"]) == 4,
           str(len(body.get("proposals", []))))
     check("marks already-applied edges", all(p["already_applied"] for p in body["proposals"]))
 
-    print("\nJob 4 — edge cases")
+    print("\nJob 4, edge cases")
     r = client.post(f"/api/projects/{pid}/ai/edge-cases")
     body = r.json()
     check("returns edge cases", r.status_code == 200 and len(body["edge_cases"]) >= 6,

@@ -1,4 +1,4 @@
-"""Tabular generation — a Gaussian copula fitted per table.
+"""Tabular generation, a Gaussian copula fitted per table.
 
 Why a copula rather than a GAN: it is deterministic under a seed, fits in
 milliseconds, needs no GPU, and cannot silently fail to converge. Every step is
@@ -317,7 +317,19 @@ def fit_table(
             cm.constant = non_null.iloc[0] if len(non_null) else None
 
         elif cm.mode in ("faker", "faker_text"):
-            cm.faker_provider = _FAKER_MAP.get(column.semantic, "word")
+            cm.faker_provider = _FAKER_MAP.get(column.semantic, "")
+            if not cm.faker_provider:
+                # No known semantic, so match the shape of what is there. A
+                # product title of three words should not come back as a single
+                # dictionary word, which is what a fixed fallback produces.
+                words = non_null.astype(str).str.split().str.len()
+                typical = float(words.median()) if len(words) else 1.0
+                if typical >= 5:
+                    cm.faker_provider = "sentence"
+                elif typical >= 2:
+                    cm.faker_provider = "catch_phrase"
+                else:
+                    cm.faker_provider = "word"
             cm.forbidden = {_fingerprint(v) for v in non_null.astype(str)}
 
         elif cm.mode == "numeric":
@@ -446,6 +458,8 @@ def _faker_values_safe(
 
 
 def _faker_values(provider: str, n: int, faker: Faker) -> list[Any]:
+    if provider == "catch_phrase":
+        return [faker.catch_phrase() for _ in range(n)]
     if provider == "sentence":
         return [faker.sentence(nb_words=8) for _ in range(n)]
     if provider == "sku":
@@ -585,8 +599,45 @@ def sample_table(
     else:
         df = _sample_core(model, rows, rng, faker, pk_start)
 
+    df = _enforce_unique(df, table, model)
     df = _inject_outliers(df, table, model, rng, outlier_rate)
     df = _inject_nulls(df, table, model, rng, null_rate)
+    return df
+
+
+def _enforce_unique(
+    df: pd.DataFrame, table: Table, model: TableModel
+) -> pd.DataFrame:
+    """Make columns the profiler found to be unique actually unique.
+
+    Faker draws from a finite pool and a categorical resamples by definition, so
+    a column that held a distinct value on every source row will otherwise come
+    back with duplicates. A reference or code column that repeats breaks any
+    downstream join that assumed it was a key.
+    """
+    for column in table.columns:
+        if not column.unique or column.name not in df.columns:
+            continue
+        mode = getattr(model.models.get(column.name), "mode", None)
+        if mode in ("sequence", "foreign_key", "null", "constant"):
+            continue
+
+        series = df[column.name]
+        duplicated = series.duplicated(keep="first") & series.notna()
+        if not duplicated.any():
+            continue
+
+        if pd.api.types.is_numeric_dtype(series):
+            numeric = pd.to_numeric(series, errors="coerce")
+            highest = numeric.max()
+            start = int(highest) + 1 if pd.notna(highest) else 1
+            df.loc[duplicated, column.name] = np.arange(start, start + int(duplicated.sum()))
+        else:
+            # Suffix rather than regenerate, so the value keeps its shape and
+            # stays recognisable as the same kind of code.
+            df.loc[duplicated, column.name] = [
+                f"{value}-{i + 1}" for i, value in enumerate(series[duplicated].astype(str))
+            ]
     return df
 
 

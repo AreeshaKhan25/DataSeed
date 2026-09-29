@@ -1,4 +1,4 @@
-"""Document generation — invoices and bank statements.
+"""Document generation, invoices and bank statements.
 
 Documents are a *rendering* of relational data, not a fourth engine. The same
 generated tables that feed the CSV export feed these templates.
@@ -47,7 +47,7 @@ REGIONS: dict[str, Region] = {
 }
 
 _ITEM_CATALOGUE = [
-    ("API access — Pro tier", 1100.00), ("Onboarding support", 140.00),
+    ("API access, Pro tier", 1100.00), ("Onboarding support", 140.00),
     ("Priority SLA", 320.00), ("Additional seat", 45.00),
     ("Data egress (per TB)", 88.50), ("Sandbox environment", 210.00),
     ("Audit log retention", 65.00), ("Custom connector", 480.00),
@@ -59,7 +59,7 @@ _MERCHANTS = [
     "Metro Transit", "Blue Fig Cafe", "Orchard Pharmacy", "Summit Insurance",
     "Lakeside Gym", "Harbour Books", "Vantage Mobile", "Corner Bakery",
 ]
-_CREDIT_SOURCES = ["Payroll deposit", "Refund — Orchard Pharmacy", "Transfer in", "Interest"]
+_CREDIT_SOURCES = ["Payroll deposit", "Refund, Orchard Pharmacy", "Transfer in", "Interest"]
 
 
 def _environment() -> Environment:
@@ -164,42 +164,64 @@ def _plain(value: Any) -> Any:
 def find_invoice_source(
     frames: dict[str, pd.DataFrame], foreign_keys: list[Any]
 ) -> tuple[str, str, str, dict[str, str]] | None:
-    """Locate a parent/child pair that looks like orders and line items.
+    """Locate a parent/child pair that can act as a document and its line items.
 
-    Returns (parent, child, fk_column, column_map) or None. Being explicit about
-    "we could not find one" is what lets the caller fall back cleanly instead of
-    rendering an invoice full of blanks.
+    An invoice is a header with lines beneath it, which is the same shape as any
+    parent row with children: an order and its items, a shop and its products, an
+    account and its charges. The only thing genuinely required is a price on the
+    child. A quantity is used when one exists and treated as 1 when it does not,
+    because plenty of real line item tables simply do not carry one.
+
+    Returns (parent, child, fk_column, column_map) or None.
     """
+    PRICE_HINTS = ("price", "rate", "cost", "amount", "value", "fee", "charge")
+
+    best: tuple[int, tuple[str, str, str, dict[str, str]]] | None = None
+
     for fk in foreign_keys:
         child_name, parent_name = fk.child_table, fk.parent_table
         if child_name not in frames or parent_name not in frames:
             continue
         child = frames[child_name]
+        if child.empty or fk.child_column not in child.columns:
+            continue
+
+        price = next(
+            (c for c in child.columns
+             if any(k in str(c).lower() for k in PRICE_HINTS)
+             and "total" not in str(c).lower()
+             and pd.api.types.is_numeric_dtype(child[c])),
+            None,
+        )
+        if price is None:
+            continue
 
         quantity = next(
             (c for c in child.columns
-             if str(c).lower() in ("qty", "quantity", "units", "count")), None
+             if str(c).lower() in ("qty", "quantity", "units", "count", "pieces")
+             and pd.api.types.is_numeric_dtype(child[c])),
+            None,
         )
-        price = next(
-            (c for c in child.columns
-             if any(k in str(c).lower() for k in ("price", "rate", "cost", "amount"))
-             and "total" not in str(c).lower()), None
-        )
-        if quantity is None or price is None:
-            continue
-        if not pd.api.types.is_numeric_dtype(child[quantity]):
-            continue
 
         label = next(
             (c for c in child.columns
-             if str(c).lower() in ("sku", "product", "description", "item", "name", "category")),
+             if str(c).lower() in ("sku", "product", "description", "item", "name",
+                                   "title", "category", "label")),
             None,
         )
-        return parent_name, child_name, fk.child_column, {
-            "quantity": str(quantity), "price": str(price),
+
+        # Prefer a child that has everything, so orders/order_items still wins
+        # over a looser match elsewhere in the schema.
+        score = (2 if quantity is not None else 0) + (1 if label is not None else 0)
+        candidate = (parent_name, child_name, fk.child_column, {
+            "quantity": str(quantity) if quantity is not None else "",
+            "price": str(price),
             "label": str(label) if label else "",
-        }
-    return None
+        })
+        if best is None or score > best[0]:
+            best = (score, candidate)
+
+    return best[1] if best else None
 
 
 def build_invoices(
@@ -242,7 +264,7 @@ def build_invoices(
                 rows = grouped.get_group(key)
                 lines: list[InvoiceLine] = []
                 for row in rows.head(8).itertuples(index=False):
-                    raw_qty = getattr(row, columns["quantity"], 1)
+                    raw_qty = getattr(row, columns["quantity"], 1) if columns["quantity"] else 1
                     raw_price = getattr(row, columns["price"], 0.0)
                     if pd.isna(raw_qty) or pd.isna(raw_price):
                         continue

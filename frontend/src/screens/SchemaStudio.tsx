@@ -3,23 +3,23 @@ import { useMemo, useState } from "react";
 import { api, type AiProposal, type Column, type Privacy } from "../lib/api";
 import { rise, row } from "../lib/motion";
 import { useStore } from "../lib/store";
-import { IconKey, IconLink, IconSpark } from "../components/Icons";
+import { IconKey, IconLink, IconSearch, IconSpark } from "../components/Icons";
 import { Banner, Button, Card, EmptyState, PageTitle, Pill } from "../components/ui";
 
 const PRIVACY_MODES: Privacy[] = ["synthesize", "hash", "mask", "noise", "passthrough"];
 
 const PRIVACY_HELP: Record<Privacy, string> = {
   synthesize: "Generate a fresh, realistic value",
-  hash: "One-way hash — joins still work, the value does not",
+  hash: "One-way hash, joins still work, the value does not",
   mask: "Partially redact, keeping the shape",
   noise: "Add calibrated noise (numeric only)",
   passthrough: "Keep the generated value as-is",
 };
 
-function PiiChip({ level }: { level: Column["pii"] }) {
-  if (level === "direct") return <Pill tone="rose">Direct</Pill>;
-  if (level === "quasi") return <Pill tone="amber">Quasi</Pill>;
-  return <span className="text-[12px] text-ink-faint">—</span>;
+function PiiChip({ level }: { level?: Column["pii"] }) {
+  if (level === "direct") return <Pill tone="rose">Direct PII</Pill>;
+  if (level === "quasi") return <Pill tone="amber">Quasi PII</Pill>;
+  return <span className="text-[12px] text-secondary font-medium">None</span>;
 }
 
 export function SchemaStudio() {
@@ -28,13 +28,17 @@ export function SchemaStudio() {
   const [proposals, setProposals] = useState<AiProposal[] | null>(null);
   const [mode, setMode] = useState<string>("");
   const [thinking, setThinking] = useState(false);
+  const [colSearch, setColSearch] = useState("");
 
-  const table = schema?.tables[active];
+  const tableCount = schema?.tables?.length ?? 0;
+  const safeActive = Math.min(Math.max(0, active), Math.max(0, tableCount - 1));
+  const table = schema?.tables?.[safeActive];
 
   const fkColumns = useMemo(() => {
     const set = new Set<string>();
-    schema?.foreign_keys.forEach((fk) => {
-      if (fk.child_table === table?.name) set.add(fk.child_column);
+    if (!schema?.foreign_keys || !table?.name) return set;
+    schema.foreign_keys.forEach((fk) => {
+      if (fk.child_table === table.name) set.add(fk.child_column);
     });
     return set;
   }, [schema, table]);
@@ -48,6 +52,11 @@ export function SchemaStudio() {
       />
     );
   }
+
+  const handleSelectTable = (index: number) => {
+    setActive(index);
+    setProposals(null); // Reset proposals when table switches to prevent stale mismatch
+  };
 
   const infer = async () => {
     setThinking(true);
@@ -74,22 +83,29 @@ export function SchemaStudio() {
   };
 
   const proposalFor = (name: string) => proposals?.find((p) => p.column === name);
-  const piiCount = table.columns.filter((c) => c.pii === "direct").length;
+  const piiCount = (table.columns ?? []).filter((c) => c.pii === "direct").length;
+  const totalColumns = (schema.tables ?? []).reduce((n, t) => n + (t.columns?.length ?? 0), 0);
+
+  const filteredColumns = (table.columns ?? []).filter((c) =>
+    c.name.toLowerCase().includes(colSearch.toLowerCase()) ||
+    c.dtype.toLowerCase().includes(colSearch.toLowerCase()) ||
+    c.semantic.toLowerCase().includes(colSearch.toLowerCase())
+  );
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <motion.div variants={rise} className="flex flex-wrap items-end justify-between gap-4">
         <PageTitle
-          sub={`${schema.tables.length} tables · ${schema.tables.reduce((n, t) => n + t.columns.length, 0)} columns · ${schema.foreign_keys.length} relationships`}
+          sub={`${schema.tables.length} tables · ${totalColumns} columns · ${schema.foreign_keys?.length ?? 0} relationships`}
         >
-          Schema
+          Schema Studio
         </PageTitle>
         <div className="flex gap-2">
           <Button icon={<IconSpark size={15} />} loading={thinking} onClick={infer}>
-            Infer types
+            Infer types with AI
           </Button>
           <Button variant="primary" onClick={() => go("workspace")}>
-            Generate
+            Synthesize dataset
           </Button>
         </div>
       </motion.div>
@@ -97,13 +113,13 @@ export function SchemaStudio() {
       {proposals && (
         <Banner
           tone="iris"
-          icon={<IconSpark size={17} />}
+          icon={<IconSpark size={18} />}
           title={
             mode === "live"
               ? `AI reviewed ${proposals.length} columns and flagged ${proposals.filter((p) => p.pii === "direct").length} as direct PII`
-              : `Heuristics classified ${proposals.length} columns — no API key set, so no model was called`
+              : `Heuristics classified ${proposals.length} columns (no API key set)`
           }
-          body="Nothing has changed yet. Review the suggestions below, or accept them all."
+          body="Review the suggestions below, or accept them all to update column attributes."
           actions={
             <>
               <Button size="sm" onClick={() => setProposals(null)}>
@@ -117,59 +133,83 @@ export function SchemaStudio() {
         />
       )}
 
-      <div className="grid gap-4 lg:grid-cols-[210px_1fr]">
-        <motion.div variants={rise} className="min-w-0">
-          <Card className="overflow-hidden p-2">
-            {schema.tables.map((t, i) => (
-              <button
-                key={t.name}
-                type="button"
-                onClick={() => setActive(i)}
-                className={`relative flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left transition-colors
-                            ${i === active ? "bg-navy-wash" : "hover:bg-canvas"}`}
-              >
-                {i === active && (
-                  <motion.span
-                    layoutId="table-active"
-                    className="absolute inset-y-1 left-0 w-[3px] rounded-full bg-navy"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                  />
-                )}
-                <span
-                  className={`truncate text-[13px] font-medium ${i === active ? "text-navy" : "text-ink"}`}
+      <div className="grid gap-5 lg:grid-cols-[240px_1fr]">
+        {/* Table Selector List */}
+        <motion.div variants={rise} className="min-w-0 space-y-3">
+          <Card className="overflow-hidden p-2.5">
+            <div className="px-2 py-1.5 text-[11px] font-bold text-secondary uppercase tracking-wider">
+              Tables ({schema.tables.length})
+            </div>
+            <div className="space-y-1 mt-1">
+              {schema.tables.map((t, i) => (
+                <button
+                  key={t.name}
+                  type="button"
+                  onClick={() => handleSelectTable(i)}
+                  className={`relative flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-left transition-all duration-150 ${
+                    i === safeActive
+                      ? "bg-secondary-container text-primary font-semibold shadow-xs"
+                      : "text-on-surface hover:bg-surface-container-low"
+                  }`}
                 >
-                  {t.name}
-                </span>
-                <span className="tnum shrink-0 text-[11px] text-ink-mute">
-                  {t.row_count.toLocaleString()}
-                </span>
-              </button>
-            ))}
+                  <span className="truncate text-[13px]">{t.name}</span>
+                  <span className="tnum shrink-0 text-[11px] font-medium text-secondary">
+                    {(t.row_count ?? 0).toLocaleString()}
+                  </span>
+                </button>
+              ))}
+            </div>
           </Card>
 
           {piiCount > 0 && (
-            <div className="mt-3 rounded-2xl border border-rose/18 bg-rose-wash px-3.5 py-3">
-              <div className="text-[12px] font-semibold text-rose">
-                {piiCount} direct PII {piiCount === 1 ? "column" : "columns"}
+            <div className="rounded-2xl border border-rose/20 bg-rose-wash px-4 py-3">
+              <div className="text-[12px] font-bold text-rose flex items-center gap-1.5">
+                <span>{piiCount} Direct PII {piiCount === 1 ? "column" : "columns"}</span>
               </div>
               <div className="mt-1 text-[11.5px] leading-snug text-rose/85">
-                These are regenerated from scratch, never resampled from your data.
+                Privacy-safe synthetic values will be generated from scratch.
               </div>
             </div>
           )}
         </motion.div>
 
+        {/* Table Columns Matrix */}
         <motion.div variants={rise} className="min-w-0">
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden p-0">
+            {/* Table Header Bar */}
+            <div className="flex flex-wrap items-center justify-between border-b border-outline-variant/30 bg-surface-container-low px-5 py-3.5 gap-3">
+              <div className="flex items-center gap-2">
+                <span className="font-sans text-[17px] font-bold text-on-surface">{table.name}</span>
+                <span className="rounded-full bg-primary-fixed text-primary text-[11px] font-bold px-2.5 py-0.5">
+                  {(table.row_count ?? 0).toLocaleString()} rows
+                </span>
+                {table.primary_key && (
+                  <span className="flex items-center gap-1 text-[11px] font-semibold text-secondary">
+                    <IconKey size={12} className="text-primary" /> PK: {table.primary_key}
+                  </span>
+                )}
+              </div>
+              <div className="relative w-56">
+                <IconSearch size={14} className="absolute left-3 top-2.5 text-secondary" />
+                <input
+                  type="text"
+                  value={colSearch}
+                  onChange={(e) => setColSearch(e.target.value)}
+                  placeholder="Filter columns..."
+                  className="w-full pl-8 pr-3 py-1 bg-white border border-outline-variant/40 rounded-full text-[12px] placeholder:text-secondary/50 focus:outline-none focus:border-primary text-on-surface"
+                />
+              </div>
+            </div>
+
+            {/* Matrix Table */}
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-canvas/60">
+                  <tr className="bg-surface-container-lowest border-b border-outline-variant/30">
                     {["Column", "Type", "Semantic", "PII", "Privacy", "Nulls", "Sample"].map((h) => (
                       <th
                         key={h}
-                        className="whitespace-nowrap border-b border-line px-4 py-2.5 text-left text-[11px]
-                                   font-semibold uppercase tracking-[0.05em] text-ink-mute"
+                        className="whitespace-nowrap px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-secondary"
                       >
                         {h}
                       </th>
@@ -177,10 +217,10 @@ export function SchemaStudio() {
                   </tr>
                 </thead>
                 <tbody>
-                  {table.columns.map((c, i) => {
+                  {filteredColumns.map((c, i) => {
                     const p = proposalFor(c.name);
                     const changed =
-                      p && (p.semantic !== c.semantic || p.pii !== c.pii || p.privacy !== c.privacy);
+                      Boolean(p) && (p?.semantic !== c.semantic || p?.pii !== c.pii || p?.privacy !== c.privacy);
                     const isKey = c.name === table.primary_key;
                     const isFk = fkColumns.has(c.name);
                     return (
@@ -190,56 +230,44 @@ export function SchemaStudio() {
                         variants={row}
                         initial="hidden"
                         animate="show"
-                        className={`border-b border-line-soft last:border-0 transition-colors
-                                    ${changed ? "bg-iris-wash/50" : "hover:bg-canvas/60"}`}
+                        className={`border-b border-outline-variant/20 last:border-0 transition-colors ${
+                          changed ? "bg-secondary-container/40" : "hover:bg-surface-container-low/50"
+                        }`}
                       >
                         <td className="whitespace-nowrap px-4 py-3">
-                          <span className="flex items-center gap-1.5 text-[13px] font-medium text-ink">
-                            {isKey && <IconKey size={13} className="text-navy" />}
-                            {isFk && <IconLink size={13} className="text-teal" />}
+                          <span className="flex items-center gap-1.5 text-[13px] font-semibold text-on-surface font-sans">
+                            {isKey && <IconKey size={14} className="text-primary" />}
+                            {isFk && <IconLink size={14} className="text-teal" />}
                             {c.name}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-[12.5px] text-ink-mute">{c.dtype}</td>
-                        <td className="px-4 py-3">
-                          <span className="flex items-center gap-1.5 text-[12.5px] text-ink">
-                            {changed ? (
-                              <>
-                                <span className="text-ink-faint line-through">{c.semantic}</span>
-                                <span className="font-semibold text-iris">{p!.semantic}</span>
-                                <IconSpark size={12} className="text-iris" />
-                              </>
-                            ) : (
-                              <>
-                                {c.semantic}
-                                {c.ai_inferred && <IconSpark size={12} className="text-iris" />}
-                              </>
-                            )}
-                          </span>
+                        <td className="whitespace-nowrap px-4 py-3 font-mono text-[12px] text-secondary">
+                          {c.dtype}
                         </td>
-                        <td className="px-4 py-3">
-                          <PiiChip level={changed ? p!.pii : c.pii} />
+                        <td className="whitespace-nowrap px-4 py-3 text-[12.5px] font-medium text-on-surface">
+                          {p?.semantic ?? c.semantic}
                         </td>
-                        <td className="px-4 py-3">
+                        <td className="whitespace-nowrap px-4 py-3">
+                          <PiiChip level={p?.pii ?? c.pii} />
+                        </td>
+                        <td className="whitespace-nowrap px-4 py-3">
                           <select
-                            value={c.privacy}
-                            onChange={(e) => void setPrivacy(c.name, e.target.value as Privacy)}
-                            title={PRIVACY_HELP[c.privacy]}
-                            disabled={isKey || isFk}
-                            className="rounded-lg border border-line bg-canvas-raised px-2 py-1 text-[12px]
-                                       text-ink outline-none focus:border-navy-light disabled:opacity-45"
+                            value={p?.privacy ?? c.privacy}
+                            onChange={(e) => setPrivacy(c.name, e.target.value as Privacy)}
+                            title={PRIVACY_HELP[p?.privacy ?? c.privacy]}
+                            className="rounded-full border border-outline-variant/40 bg-white px-2.5 py-1 text-[11.5px] font-medium text-on-surface focus:border-primary focus:outline-none"
                           >
-                            {PRIVACY_MODES.map((m) => (
-                              <option key={m} value={m}>
-                                {m}
+                            {PRIVACY_MODES.map((pm) => (
+                              <option key={pm} value={pm}>
+                                {pm}
                               </option>
                             ))}
                           </select>
                         </td>
-                        <td className="tnum px-4 py-3 text-[12.5px] text-ink-mute">
-                          {(c.null_rate * 100).toFixed(1)}%
+                        <td className="whitespace-nowrap px-4 py-3 text-[12px] font-mono text-secondary">
+                          {((c.null_rate ?? 0) * 100).toFixed(0)}%
                         </td>
-                        <td className="max-w-[18ch] truncate px-4 py-3 text-[12.5px] text-ink-mute">
+                        <td className="whitespace-nowrap px-4 py-3 font-mono text-[12px] text-secondary max-w-[180px] truncate">
                           {c.sample ?? "—"}
                         </td>
                       </motion.tr>
@@ -249,22 +277,6 @@ export function SchemaStudio() {
               </table>
             </div>
           </Card>
-
-          {table.derived.length > 0 && (
-            <div className="mt-3 rounded-2xl border border-grass/18 bg-grass-wash px-4 py-3">
-              <div className="text-[12.5px] font-semibold text-grass">
-                {table.derived.length} computed {table.derived.length === 1 ? "field" : "fields"}
-              </div>
-              <div className="mt-1 space-y-0.5 text-[11.5px] text-grass/85">
-                {table.derived.map((d) => (
-                  <div key={d.column}>
-                    <span className="font-semibold">{d.column}</span> = {d.agg.toUpperCase()}(
-                    {d.expr ?? "rows"}) over {d.child_table} — computed after generation, never invented
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </motion.div>
       </div>
     </div>

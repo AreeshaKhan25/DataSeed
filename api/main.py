@@ -47,7 +47,7 @@ MAX_PREVIEW_ROWS = 100
 MAX_GENERATE_ROWS = 1_000_000
 MAX_DOCUMENTS = 500
 
-app = FastAPI(title="DataSeed — Synthetic Data Platform", version="1.0.0")
+app = FastAPI(title="DataSeed, Synthetic Data Platform", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -108,6 +108,20 @@ def _project_or_404(project_id: str) -> Project:
                        f"No project with id '{project_id}'.",
                        "Reload the project list, or create a new project.")
     return project
+
+
+def _get_source_dataframe(project: Project, table_name: str) -> pd.DataFrame | None:
+    if not project.sources:
+        return None
+    if table_name in project.sources:
+        return project.sources[table_name]
+    norm = table_name.lower().replace(" ", "_")
+    for k, df in project.sources.items():
+        if k.lower().replace(" ", "_") == norm:
+            return df
+    if len(project.sources) == 1:
+        return next(iter(project.sources.values()))
+    return None
 
 
 # --------------------------------------------------------------------------
@@ -411,7 +425,8 @@ def ai_infer_types(project_id: str, table: str | None = None) -> dict[str, Any]:
                        f"No table '{table}' in this project.",
                        "Pick a table from the schema.")
 
-    sample = project.sources.get(target.name, pd.DataFrame())
+    src_df = _get_source_dataframe(project, target.name)
+    sample = src_df if src_df is not None else pd.DataFrame()
     proposals = ai.infer_semantic_types(target, sample)
     return {
         "table": target.name,
@@ -489,7 +504,7 @@ def ai_business_rules(project_id: str) -> dict[str, Any]:
         "mode": "live" if ai.ai_available() else "heuristic",
         "proposals": proposals,
         "note": (
-            "Proposals only — add the ones you want. Rules inferred directly "
+            "Proposals only, add the ones you want. Rules inferred directly "
             "from your sample data are already active."
             if proposals else
             "No API key set, so no rules were proposed. The rules inferred from "
@@ -513,7 +528,7 @@ def _ensure_models(project: Project, seeds: SeedFactory) -> None:
     for table in project.schema.tables:
         if table.name in project.models:
             continue
-        source = project.sources.get(table.name)
+        source = _get_source_dataframe(project, table.name)
         if source is None:
             continue
         project.models[table.name] = fit_table(table, source, seeds)
@@ -593,11 +608,14 @@ def _run_generation(job_id: str, project_id: str, request: GenerateRequest) -> N
         if request.validate_output:
             job.advance("Building trust report", 88, "Fidelity, utility and privacy")
             primary = project.schema.tables[0]
-            source = project.sources.get(primary.name)
+            source = _get_source_dataframe(project, primary.name)
             if source is not None:
                 report = build_trust_report(
                     source, primary, SeedFactory(seed),
                     target=request.target_column, integrity=integrity,
+                    # Score the data as it will be exported, after the business
+                    # rules have run, not the raw sample nobody receives.
+                    constraints=project.schema.constraints,
                 )
             if report is None or not report.get("available"):
                 report = {
@@ -706,7 +724,7 @@ def revalidate(project_id: str, target_column: str | None = None) -> dict[str, A
         raise ApiError(400, "no_tables", "This project has no tables.", "Ingest a CSV first.")
 
     primary = project.schema.tables[0]
-    source = project.sources.get(primary.name)
+    source = _get_source_dataframe(project, primary.name)
     if source is None:
         raise ApiError(400, "no_source",
                        "The original data is no longer in memory.",
@@ -719,6 +737,7 @@ def revalidate(project_id: str, target_column: str | None = None) -> dict[str, A
     report = build_trust_report(
         source, primary, SeedFactory(project.schema.seed),
         target=target_column, integrity=integrity,
+        constraints=project.schema.constraints,
     )
     project.report = report
     project.touch()

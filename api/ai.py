@@ -1,4 +1,4 @@
-"""The AI layer — four scoped jobs, none of them in the critical path.
+"""The AI layer, four scoped jobs, none of them in the critical path.
 
 The rule that makes this safe to ship:
 
@@ -45,7 +45,7 @@ T = TypeVar("T", bound=BaseModel)
 
 
 # --------------------------------------------------------------------------
-# Response schemas — the contract the model must satisfy
+# Response schemas, the contract the model must satisfy
 # --------------------------------------------------------------------------
 
 SEMANTIC_TYPES = [
@@ -199,7 +199,7 @@ def _get_client() -> Any:
             except Exception as exc:  # noqa: BLE001
                 log.warning("Mistral client unavailable (%s).", exc)
 
-        log.info("No AI credential set — running on deterministic heuristics.")
+        log.info("No AI credential set, running on deterministic heuristics.")
         _client = None
         _provider = "none"
         return None
@@ -227,7 +227,7 @@ def ai_status() -> dict[str, Any]:
         mode, note = "live", f"{_calls_ok} successful call(s) on {provider}."
     elif _calls_failed:
         mode, note = "degraded", (
-            f"{provider} is configured but the last {_calls_failed} call(s) failed — "
+            f"{provider} is configured but the last {_calls_failed} call(s) failed, "
             "falling back to heuristics. Check the key's quota."
         )
     else:
@@ -251,7 +251,7 @@ def _models_for(provider: str) -> tuple[str, str]:
         return MISTRAL_REASONING_MODEL, MISTRAL_BULK_MODEL
     if provider == "anthropic":
         return REASONING_MODEL, BULK_MODEL
-    return "—", "—"
+    return " ", " "
 
 
 # --------------------------------------------------------------------------
@@ -298,8 +298,8 @@ def _ask(
     """One structured request. Returns None on any failure, never raises.
 
     `messages.parse` constrains the response to the Pydantic schema, so a
-    malformed payload cannot reach the caller. Everything else — auth, network,
-    rate limits, validation — collapses to None so the caller takes its
+    malformed payload cannot reach the caller. Everything else, auth, network,
+    rate limits, validation, collapses to None so the caller takes its
     deterministic path.
     """
     client = _get_client()
@@ -314,9 +314,9 @@ def _ask(
         _record(result is not None)
         return result
     except ValidationError as exc:
-        log.warning("AI response failed validation (%s) — using heuristics.", exc)
+        log.warning("AI response failed validation (%s), using heuristics.", exc)
     except Exception as exc:  # noqa: BLE001 - deliberately broad; see docstring
-        log.warning("AI call failed (%s: %s) — using heuristics.", type(exc).__name__, exc)
+        log.warning("AI call failed (%s: %s), using heuristics.", type(exc).__name__, exc)
     _record(False)
     return None
 
@@ -403,7 +403,7 @@ def _ask_mistral(
         log.warning("Mistral returned %s: %s", response.status_code, response.text[:200])
         return None
 
-    log.warning("Mistral rate limit did not clear — using heuristics.")
+    log.warning("Mistral rate limit did not clear, using heuristics.")
     return None
 
 
@@ -444,24 +444,24 @@ def _strict_schema(model: type[BaseModel]) -> dict[str, Any]:
 
 
 # --------------------------------------------------------------------------
-# Job 1 — semantic type and PII inference
+# Job 1, semantic type and PII inference
 # --------------------------------------------------------------------------
 
 _JOB1_SYSTEM = """You classify database columns for a synthetic data platform.
 
 For each column decide three things:
 
-1. `semantic` — what the values MEAN, from this list only:
+1. `semantic`, what the values MEAN, from this list only:
    person_name, email, phone, address, city, country, postcode, company, iban,
    national_id, sku, identifier, currency, category, free_text, date, numeric,
    url, boolean, unknown
 
-2. `pii` — "direct" if a value identifies one person on its own (name, email,
+2. `pii`, "direct" if a value identifies one person on its own (name, email,
    phone, address, national id, bank account). "quasi" if it narrows someone
    down in combination with other columns (city, postcode, employer, birth date,
    free text). "none" otherwise.
 
-3. `privacy` — how the platform should treat it:
+3. `privacy`, how the platform should treat it:
    - "synthesize" (default) regenerate a realistic value
    - "hash" one-way hash, when downstream systems only join on it
    - "mask" partially redact, when the shape matters but the value does not
@@ -469,7 +469,7 @@ For each column decide three things:
    - "passthrough" keep as generated; correct for keys and non-sensitive values
 
 Be conservative about PII: a false "direct" costs a little fidelity, a missed
-one leaks a real person. Column names can lie — weigh the sample values more.
+one leaks a real person. Column names can lie, weigh the sample values more.
 Return one entry per column given, using the exact column names supplied."""
 
 
@@ -535,7 +535,7 @@ def _heuristic_types(table: Table) -> list[dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
-# Job 2 — relationship inference
+# Job 2, relationship inference
 # --------------------------------------------------------------------------
 
 _JOB2_SYSTEM = """You infer foreign-key relationships between database tables.
@@ -647,14 +647,14 @@ def _heuristic_relations(schema: SchemaIR) -> list[dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
-# Job 3 — free-text synthesis
+# Job 3, free-text synthesis
 # --------------------------------------------------------------------------
 
 _JOB3_SYSTEM = """You write realistic free-text values for a synthetic dataset.
 
 You are given a column, a few real examples for tone and length, and the row
 context for each value to produce. Match the register, length and vocabulary of
-the examples. Vary the output — repetitive filler is worse than plain Faker text.
+the examples. Vary the output, repetitive filler is worse than plain Faker text.
 
 Never reuse an example verbatim, and never invent a real person, company or
 brand name. Return exactly as many values as rows requested, in order."""
@@ -699,20 +699,20 @@ def synthesize_text(
 
 
 # --------------------------------------------------------------------------
-# Job 4 — edge-case proposal
+# Job 4, edge-case proposal
 # --------------------------------------------------------------------------
 
 _JOB4_SYSTEM = """You propose edge cases for a synthetic dataset.
 
 Engineers use synthetic data mainly to test paths real data never exercises.
-Given a schema, propose 6 to 10 edge cases worth injecting — each one a concrete,
+Given a schema, propose 6 to 10 edge cases worth injecting, each one a concrete,
 checkable condition tied to a real column.
 
 Good: "Unicode and apostrophes in customer names", "Order dated 29 February",
 "Zero-quantity line item", "Balance at exactly the overdraft limit".
 Bad: "Bad data", "Invalid input", "Test the system".
 
-`rate` is the fraction of rows to affect — keep it between 0.005 and 0.05 so the
+`rate` is the fraction of rows to affect, keep it between 0.005 and 0.05 so the
 dataset stays realistic. Use exact column names from the schema."""
 
 
@@ -771,7 +771,7 @@ def propose_edge_cases(schema: SchemaIR) -> list[dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
-# Job 5 — business rules
+# Job 5, business rules
 # --------------------------------------------------------------------------
 
 _JOB5_SYSTEM = """You propose business rules for a synthetic data generator.
@@ -869,7 +869,7 @@ def propose_business_rules(schema: SchemaIR) -> list[dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
-# Bonus — natural-language statement queries
+# Bonus, natural-language statement queries
 # --------------------------------------------------------------------------
 
 _QUERY_SYSTEM = """You turn a plain-English bank statement request into filters.

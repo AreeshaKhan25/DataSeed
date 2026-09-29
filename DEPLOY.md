@@ -3,7 +3,7 @@
 The whole platform is one process: FastAPI serves the API and the built frontend from the same
 origin. There is no database, no queue and no second service, so there is nothing to orchestrate.
 
-## Docker — the shortest path
+## Docker, the shortest path
 
 ```bash
 docker compose up --build
@@ -11,7 +11,7 @@ docker compose up --build
 ```
 
 That builds the frontend, installs the Python dependencies, generates the demo dataset, and starts
-the server. A judge needs Docker and nothing else — no Python, no Node, no build step.
+the server. A judge needs Docker and nothing else, no Python, no Node, no build step.
 
 To run without compose:
 
@@ -22,10 +22,10 @@ docker run -p 8000:8000 dataseed
 
 ## Hosted
 
-**Render** — `render.yaml` is a blueprint. Point Render at the repo; it builds from the Dockerfile
+**Render**, `render.yaml` is a blueprint. Point Render at the repo; it builds from the Dockerfile
 and health-checks `/api/health`.
 
-**Fly.io** —
+**Fly.io**
 
 ```bash
 fly launch --no-deploy   # reads fly.toml
@@ -36,7 +36,7 @@ fly deploy
 memory-hungry; the default 256 MB machine will be killed mid-generation.
 
 Either way, set `ANTHROPIC_API_KEY` as a secret if you want the AI layer live. Without it every AI
-job falls back to a deterministic heuristic and the product is fully functional — the UI says
+job falls back to a deterministic heuristic and the product is fully functional, the UI says
 "Heuristics" rather than implying a model is at work.
 
 ## Without Docker
@@ -62,7 +62,7 @@ command after the two installs.
 | `MISTRAL_API_KEY` | unset | Optional. Used when no Anthropic key is set. |
 
 With neither set, every AI job falls back to a deterministic heuristic and the platform is fully
-functional — the UI reports "Heuristics" rather than implying a model is at work.
+functional, the UI reports "Heuristics" rather than implying a model is at work.
 
 Copy `.env.example` to `.env` and fill in what you need. `.env` is excluded from the image.
 
@@ -70,14 +70,14 @@ Copy `.env.example` to `.env` and fill in what you need. `.env` is excluded from
 
 - Python 3.12 slim, the API, and the compiled frontend in `web/`
 - The demo dataset, generated at build time so a fresh container has a working project immediately
-- No Node, no frontend source, no docs, no source PDF — those are dropped by `.dockerignore`
+- No Node, no frontend source, no docs, no source PDF, those are dropped by `.dockerignore`
 - A non-root user (`uid 10001`) and a `HEALTHCHECK` against `/api/health`
 
 ## Persistence
 
 State is deliberately in memory: projects, fitted models and generated output all live in the
 process and are lost on restart, which reseeds the demo project. That is a considered choice for a
-demo — fewer moving parts, nothing to migrate — but it means **this is not multi-instance safe.**
+demo, fewer moving parts, nothing to migrate, but it means **this is not multi-instance safe.**
 Run one instance. Scaling horizontally needs the store in `api/store.py` moved to Postgres or Redis
 first, because a second replica would not see the first one's projects.
 
@@ -92,7 +92,7 @@ named volume so a demo never waits on a cold model call.
   credential set)
 - a frontend typecheck and production build
 - a Docker build, then a smoke test that the container actually serves a healthy app and a demo
-  project — the image is proven to work, not just to compile
+  project, the image is proven to work, not just to compile
 
 ## Verifying a deployment
 
