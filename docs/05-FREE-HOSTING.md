@@ -67,6 +67,24 @@ running, and it is a different URL each time. Your machine is the server, so it
 has to stay awake and online. Start it before you present and it just works;
 close the laptop and the link dies.
 
+### It is slower than localhost, so plan the demo around that
+
+Measured against the live tunnel, same machine, same project:
+
+| Call | Size | Over the tunnel |
+|---|---|---|
+| Invoice HTML | 5.6 KB | 22s |
+| Invoice bundle | 47 KB | 24s |
+| Export, CSV | 1.0 MB | 26s |
+| Export, Parquet | 1.0 MB | 26s |
+| Export, JSON | 15 MB | 63s |
+
+All of these are close to instant on `localhost`, so the time is the tunnel, not
+the engine. Note that JSON is fifteen times the size of the others because it is
+the one format that is not zipped, and it is the only call that takes over a
+minute. If you are showing exports live, click CSV or Parquet and describe JSON
+rather than waiting on it.
+
 ### What a new push means here
 
 There is no build step in the middle, so a push does not reach this URL by
