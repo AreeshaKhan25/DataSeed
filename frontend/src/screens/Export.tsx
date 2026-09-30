@@ -20,6 +20,54 @@ export function ExportScreen() {
   const [chosen, setChosen] = useState("csv");
   const [includeSchema, setIncludeSchema] = useState(true);
   const [includeReport, setIncludeReport] = useState(true);
+  const [downloading, setDownloading] = useState(false);
+  const [failure, setFailure] = useState<string | null>(null);
+
+  /**
+   * Fetch the file rather than letting the browser follow a link to it.
+   *
+   * A plain download link cannot tell success from failure: when the API
+   * answers 400 or 409 the browser saves the JSON error body as the file, so a
+   * refused export arrives on disk looking like a broken dataset. Reading the
+   * response first means an error is shown on screen, and only real bytes are
+   * ever saved.
+   */
+  const download = async (url: string, fallbackName: string) => {
+    setDownloading(true);
+    setFailure(null);
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        let message = `The export failed with status ${response.status}.`;
+        try {
+          const body = await response.json();
+          const detail = body?.detail ?? body;
+          message = [detail?.message, detail?.remedy].filter(Boolean).join(" ") || message;
+        } catch {
+          /* a non JSON error body leaves the status message above */
+        }
+        setFailure(message);
+        return;
+      }
+      const blob = await response.blob();
+      const name =
+        response.headers
+          .get("content-disposition")
+          ?.match(/filename="?([^"]+)"?/)?.[1] ?? fallbackName;
+      const href = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = name;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(href);
+    } catch (error) {
+      setFailure(error instanceof Error ? error.message : "The export could not be downloaded.");
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   useEffect(() => {
     void run(async () => {
@@ -55,6 +103,11 @@ export function ExportScreen() {
   const url =
     api.exportUrl(project.id, chosen) +
     `&include_schema=${includeSchema}&include_report=${includeReport}`;
+
+  // The snippet said 127.0.0.1:8000 whoever was reading it, which is wrong on
+  // every deployed instance. Quote the host this page is actually served from.
+  const origin =
+    typeof window === "undefined" ? "http://127.0.0.1:8000" : window.location.origin;
 
   return (
     <div className="mx-auto max-w-[840px] space-y-5">
@@ -147,7 +200,7 @@ export function ExportScreen() {
         <Card className="p-5">
           <div className="label mb-2.5 uppercase">Reproduce this exact dataset</div>
           <pre className="overflow-x-auto rounded-xl bg-ink px-4 py-3.5 text-[11.5px] leading-relaxed text-white/90">
-{`curl -X POST http://127.0.0.1:8000/api/projects/${project.id}/generate \
+{`curl -X POST ${origin}/api/projects/${project.id}/generate \
   -H "Content-Type: application/json" \
   -d '{"rows": ${totalRows || 10000}, "seed": ${project.seed}}'`}
           </pre>
@@ -157,14 +210,28 @@ export function ExportScreen() {
         </Card>
       </motion.div>
 
+      {failure && (
+        <motion.div variants={rise}>
+          <Banner
+            tone="rose"
+            icon={<IconAlert size={17} />}
+            title="That export did not complete"
+            body={failure}
+          />
+        </motion.div>
+      )}
+
       <motion.div variants={rise} className="flex justify-end gap-2">
         <Button onClick={() => go("trust")}>Back to report</Button>
         {allowed ? (
-          <a href={url} download>
-            <Button variant="primary" icon={<IconDownload size={16} />}>
-              Download
-            </Button>
-          </a>
+          <Button
+            variant="primary"
+            icon={<IconDownload size={16} />}
+            loading={downloading}
+            onClick={() => void download(url, `${project.name}-${chosen}`)}
+          >
+            Download
+          </Button>
         ) : (
           <Button variant="primary" disabled icon={<IconAlert size={16} />}>
             Download blocked

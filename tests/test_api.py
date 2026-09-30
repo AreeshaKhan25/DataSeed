@@ -290,6 +290,43 @@ def main() -> int:
     check("unknown format rejected with remedy",
           r.status_code == 400 and "remedy" in r.json()["detail"], str(r.status_code))
 
+    # The interface builds its format list from /api/formats, so anything listed
+    # there has to actually export. Excel was advertised unconditionally while
+    # only Parquet checked for its package, so a deployment without openpyxl
+    # offered a choice that answered 400, and because the download was an
+    # ordinary link the browser saved that error as the file.
+    advertised = [f["id"] for f in client.get("/api/formats").json()["formats"]]
+    check("at least the three dependency free formats are offered",
+          {"csv", "json", "sql"}.issubset(set(advertised)), str(advertised))
+
+    unusable: list[str] = []
+    for fmt in advertised:
+        response = client.get(f"/api/projects/{project_id}/export?fmt={fmt}")
+        if response.status_code != 200 or not response.content:
+            unusable.append(f"{fmt}:{response.status_code}")
+    check("every advertised format actually exports", not unusable,
+          str(unusable) if unusable else f"{len(advertised)} formats")
+
+    # And the reverse: a format whose package is absent must not be offered.
+    import builtins
+
+    import api.exporters as exporters
+
+    real_import = builtins.__import__
+
+    def without_optional(name: str, *args: object, **kwargs: object) -> object:
+        if name in ("pyarrow", "openpyxl"):
+            raise ImportError(f"{name} is not installed")
+        return real_import(name, *args, **kwargs)  # type: ignore[arg-type]
+
+    builtins.__import__ = without_optional  # type: ignore[assignment]
+    try:
+        stripped = [f["id"] for f in exporters.available_formats()]
+    finally:
+        builtins.__import__ = real_import  # type: ignore[assignment]
+    check("formats needing a missing package are not advertised",
+          "excel" not in stripped and "parquet" not in stripped, str(stripped))
+
     print("\n8. The integrity gate")
     project = None
     from api.store import STORE

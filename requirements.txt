@@ -20,10 +20,13 @@ Faker>=24.0
 Jinja2>=3.1
 anthropic>=1.9      # AI layer; the platform runs fully without a key
 
-# Optional. Each unlocks one extra export format and is degraded gracefully
-# with a typed error if absent.
-# pyarrow>=15.0     # Parquet export
-# openpyxl>=3.1     # Excel export
+# Export formats. These were commented out as "optional", which was true of
+# the code and false of the product: the interface offers every format the API
+# advertises, so on a deployment without them two of the five choices answered
+# with an error that the browser then saved as the downloaded file. They are
+# installed, and the code still degrades gracefully if someone strips them.
+pyarrow>=15.0,<23.0     # Parquet export
+openpyxl>=3.1,<4.0      # Excel export
 
 # Optional, hosting only. PythonAnywhere's free tier serves WSGI and this app
 # speaks ASGI, so that one host needs a bridge. See docs/05-FREE-HOSTING.md.

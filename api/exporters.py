@@ -31,15 +31,31 @@ class ExportError(RuntimeError):
 
 
 def available_formats() -> list[dict[str, Any]]:
+    """The formats this installation can actually produce, right now.
+
+    Parquet was guarded by an import check and Excel was not, so a deployment
+    without openpyxl still advertised "Excel workbook". The interface builds its
+    format list from this, so it offered a choice that answered with an error,
+    and because the download is an ordinary link the browser saved that error as
+    the file. Never advertise what cannot be delivered.
+    """
     formats = [
         {"id": "csv", "label": "CSV (zip)", "media": "application/zip"},
         {"id": "json", "label": "JSON", "media": "application/json"},
         {"id": "sql", "label": "SQL dump", "media": "application/sql"},
-        {"id": "excel", "label": "Excel workbook", "media": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
     ]
     try:
         import pyarrow  # noqa: F401
         formats.insert(2, {"id": "parquet", "label": "Parquet (zip)", "media": "application/zip"})
+    except ImportError:
+        pass
+    try:
+        import openpyxl  # noqa: F401
+        formats.append({
+            "id": "excel",
+            "label": "Excel workbook",
+            "media": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        })
     except ImportError:
         pass
     return formats
