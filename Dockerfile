@@ -5,6 +5,13 @@
 FROM node:22-alpine AS web
 WORKDIR /build/frontend
 
+# The lockfile is resolved by npm 11, and the npm 10 that ships inside
+# node:22-alpine reads the same file differently: it rejects it with
+# "lock file's picomatch@2.3.2 does not satisfy picomatch@4.0.7" and the build
+# dies here. Pinning the client makes the install depend on the lockfile rather
+# than on whichever npm happens to be bundled with the base image.
+RUN npm install --global npm@11
+
 # Manifests first, so `npm ci` stays cached until a dependency actually changes.
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
