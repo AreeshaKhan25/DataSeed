@@ -11,6 +11,7 @@ python tests/test_api.py;          if ($LASTEXITCODE -ne 0) { exit 1 }   # every
 python tests/test_ai_fallback.py;  if ($LASTEXITCODE -ne 0) { exit 1 }   # AI with no credential
 python tests/test_provider.py;     if ($LASTEXITCODE -ne 0) { exit 1 }   # the Mistral adapter
 python tests/test_fixtures.py;     if ($LASTEXITCODE -ne 0) { exit 1 }   # data it has never seen
+python tests/test_e2e_upload.py;   if ($LASTEXITCODE -ne 0) { exit 1 }   # the path a real user takes
 
 Push-Location frontend
 npx tsc -b --pretty false; if ($LASTEXITCODE -ne 0) { Pop-Location; exit 1 }
