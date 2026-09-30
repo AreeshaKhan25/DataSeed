@@ -1,12 +1,21 @@
 # Core, everything the platform needs to run.
+#
+# The upper bounds are not decoration. A deploy built from this file with only
+# lower bounds resolved pandas 3.0, and the trust report came back with a
+# detection AUC of 1.00 against 0.55 on the verified set: a classifier could
+# separate real from synthetic perfectly. pandas 3.0 changes copy on write
+# semantics, so the constraint repairs that rebuild computed columns and date
+# offsets stop landing, and losing those is exactly what breaks the joint
+# structure the detector looks at. Raise a bound only after rerunning
+# tests/test_engine.py and checking the detection score.
 fastapi>=0.110
 uvicorn[standard]>=0.27
 pydantic>=2.6
 python-multipart>=0.0.9
-pandas>=2.2
-numpy>=1.26
-scipy>=1.12
-scikit-learn>=1.4
+pandas>=2.2,<3.0
+numpy>=1.26,<2.4
+scipy>=1.12,<1.17
+scikit-learn>=1.4,<1.8
 Faker>=24.0
 Jinja2>=3.1
 anthropic>=1.9      # AI layer; the platform runs fully without a key

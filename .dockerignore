@@ -6,7 +6,9 @@
 .venv
 .env
 # The frontend is compiled inside the image; a local build would only shadow it.
-web
+# web/ holds the COMPILED frontend and is committed on purpose, so it must
+# reach the image. Excluding it here made Dockerfile.spaces fail on its
+# COPY web/ step, which is how the first server deploy broke.
 frontend/dist
 frontend/tsconfig.tsbuildinfo
 # Local run output and cached model responses.
