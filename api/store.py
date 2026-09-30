@@ -37,6 +37,14 @@ class Project:
     report: dict[str, Any] | None = None
     warnings: list[str] = field(default_factory=list)
     rule_results: dict[str, list[dict[str, Any]]] = field(default_factory=dict)
+    # Documents are rendered once, when they are requested, and kept here,
+    # keyed by kind so invoices and statements can both be held at once.
+    # Previously each endpoint rebuilt its own set with its own default count,
+    # so the preview showed one set, opening a document showed a second, and the
+    # download produced a third. Holding the rendered set is what makes the
+    # three agree. Each entry is {"filename": str, "html": str}.
+    documents: dict[str, list[dict[str, str]]] = field(default_factory=dict)
+    document_meta: dict[str, dict[str, Any]] = field(default_factory=dict)
     created_at: str = field(default_factory=_now)
     updated_at: str = field(default_factory=_now)
 

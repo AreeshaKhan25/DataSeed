@@ -787,6 +787,10 @@ def render_documents(project_id: str, request: DocumentRequest) -> dict[str, Any
         payload = [i.to_dict() for i in built]
         reconciled = sum(1 for i in built if i.reconciles())
         source_used = docs.find_invoice_source(frames, project.schema.foreign_keys) is not None
+        rendered = [
+            {"filename": f"{i.number}.html", "html": docs.render_invoice(i)}
+            for i in built
+        ]
     else:
         query = _statement_filter(request.query)
         if request.query:
@@ -799,6 +803,20 @@ def render_documents(project_id: str, request: DocumentRequest) -> dict[str, Any
         payload = [s.to_dict() for s in built]
         reconciled = sum(1 for s in built if s.reconciles())
         source_used = False
+        rendered = [
+            {"filename": f"statement-{i + 1:03d}-{s.account_number.replace('-', '')}.html",
+             "html": docs.render_statement(s)}
+            for i, s in enumerate(built)
+        ]
+
+    # Keep exactly what was built, so opening a document and downloading the
+    # bundle both serve this set rather than rebuilding a different one. Keyed
+    # by kind, so generating statements does not discard the invoices.
+    project.documents[request.kind] = rendered
+    project.document_meta[request.kind] = {
+        "kind": request.kind, "region": request.region, "query": request.query,
+    }
+    project.touch()
 
     return {
         "kind": request.kind,
@@ -818,73 +836,82 @@ def render_document_html(
     project_id: str,
     index: int,
     kind: Literal["invoice", "statement"] = "invoice",
-    region: str = "EU",
-    count: int = Query(default=10, ge=1, le=MAX_DOCUMENTS),
-    query: str | None = None,
 ) -> HTMLResponse:
-    """One rendered document, ready to print to PDF from the browser."""
+    """One rendered document, ready to print to PDF from the browser.
+
+    Serves the set stored by the last POST to /documents, so what opens here is
+    the same document shown in the preview list at that index.
+    """
     project = _project_or_404(project_id)
-    seeds = SeedFactory(project.schema.seed)
-    frames = project.generated or project.sources
-
-    if kind == "invoice":
-        built = docs.build_invoices(
-            count, seeds, region_code=region,
-            frames=frames, foreign_keys=project.schema.foreign_keys,
-        )
-        if not 0 <= index < len(built):
-            raise ApiError(404, "document_not_found",
-                           f"Document {index} does not exist (generated {len(built)}).",
-                           "Request an index within range.")
-        return HTMLResponse(docs.render_invoice(built[index]))
-
-    parsed = _statement_filter(query)
-    statements = docs.build_statements(
-        count, seeds, region_code=region, query=parsed, frames=frames
-    )
-    if not 0 <= index < len(statements):
+    held = project.documents.get(kind, [])
+    if not held:
+        raise ApiError(409, "no_documents", f"This project has no {kind}s yet.",
+                       f"Generate {kind}s first, then open one.")
+    if not 0 <= index < len(held):
         raise ApiError(404, "document_not_found",
-                       f"Document {index} does not exist (generated {len(statements)}).",
-                       "Widen the query filter or request a lower index.")
-    return HTMLResponse(docs.render_statement(statements[index]))
+                       f"{kind.title()} {index} does not exist "
+                       f"(this project has {len(held)}).",
+                       "Request an index within range, or generate more documents.")
+    return HTMLResponse(held[index]["html"])
 
 
 @app.get("/api/projects/{project_id}/documents/bundle")
 def download_documents(
     project_id: str,
     kind: Literal["invoice", "statement"] = "invoice",
-    region: str = "EU",
-    count: int = Query(default=25, ge=1, le=MAX_DOCUMENTS),
-    query: str | None = None,
 ) -> Response:
-    """All documents as a zip of printable HTML files."""
+    """The documents you generated, as a zip of printable HTML files.
+
+    This used to build its own set of 25 regardless of what had been generated,
+    so the download never matched the documents on screen. It now serves the
+    stored set, and the zip contains exactly the documents in the preview.
+    """
     import zipfile
 
     project = _project_or_404(project_id)
-    seeds = SeedFactory(project.schema.seed)
-    frames = project.generated or project.sources
+    held = project.documents.get(kind, [])
+    if not held:
+        raise ApiError(409, "no_documents", f"This project has no {kind}s yet.",
+                       f"Generate {kind}s first, then download them.")
+
+    region = project.document_meta.get(kind, {}).get("region", "EU")
 
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
-        if kind == "invoice":
-            for invoice in docs.build_invoices(
-                count, seeds, region_code=region,
-                frames=frames, foreign_keys=project.schema.foreign_keys,
-            ):
-                archive.writestr(f"{invoice.number}.html", docs.render_invoice(invoice))
-        else:
-            parsed = _statement_filter(query)
-            for i, statement in enumerate(docs.build_statements(
-                count, seeds, region_code=region, query=parsed, frames=frames
-            )):
-                name = statement.account_number.replace("-", "")
-                archive.writestr(f"statement-{i + 1:03d}-{name}.html",
-                                 docs.render_statement(statement))
+        # A short index so the zip explains itself once it is unpacked, rather
+        # than being a pile of files whose origin is not obvious.
+        archive.writestr("index.html", _documents_index_html(project, held, kind, region))
+        for doc in held:
+            archive.writestr(doc["filename"], doc["html"])
 
+    filename = f"{kind}s-{region}-{len(held)}.zip"
     return Response(
         content=buffer.getvalue(),
         media_type="application/zip",
-        headers={"Content-Disposition": f'attachment; filename="{kind}s-{region}.zip"'},
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+def _documents_index_html(
+    project: Any, held: list[dict[str, str]], kind: str, region: str,
+) -> str:
+    """A contents page for the downloaded zip."""
+    links = "\n".join(
+        f'<li><a href="{doc["filename"]}">{doc["filename"]}</a></li>'
+        for doc in held
+    )
+    return (
+        "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+        f"<title>{kind.title()}s from {project.name}</title>\n"
+        "<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:3rem auto;"
+        "padding:0 1rem;color:#1a1c1f}h1{font-size:1.25rem}li{margin:.25rem 0}"
+        "a{color:#1f4e79}p{color:#646464;font-size:.9rem;line-height:1.6}</style>\n"
+        "</head>\n<body>\n"
+        f"<h1>{len(held)} {kind}s, {region} format</h1>\n"
+        f"<p>Generated from the project <strong>{project.name}</strong> using synthetic "
+        "data. Open any file to view it, then print to PDF from your browser if you "
+        "need a PDF copy.</p>\n"
+        f"<ul>\n{links}\n</ul>\n</body>\n</html>\n"
     )
 
 

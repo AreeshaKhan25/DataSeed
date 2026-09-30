@@ -214,6 +214,9 @@ export function Documents() {
 
   const safeIndex = Math.min(Math.max(0, index), Math.max(0, (docs?.length ?? 1) - 1));
   const current = docs[safeIndex];
+  // The server serves the set it holds, which only exists once a build has
+  // finished. Linking to it before then produces a 409 in a downloaded file.
+  const ready = !busy && docs.length > 0;
 
   const build = useCallback(async () => {
     if (!project) return;
@@ -255,17 +258,28 @@ export function Documents() {
         <PageTitle sub="Documents are a rendering of the generated tables, the same data, laid out.">
           Documents
         </PageTitle>
+        {/* Both links hit the server directly, so they are only rendered once
+            documents exist. Before that the server answers 409, and a browser
+            would save that error as the downloaded file. */}
         <div className="flex gap-2">
-          <a href={api.documentBundleUrl(project.id, t.kind, t.region, count, t.kind === "statement" ? query : undefined)} download>
-            <Button icon={<IconDownload size={15} />}>Download all</Button>
-          </a>
-          <a
-            href={api.documentHtmlUrl(project.id, index, t.kind, t.region, count, t.kind === "statement" ? query : undefined)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button variant="primary">Open printable</Button>
-          </a>
+          {ready ? (
+            <a href={api.documentBundleUrl(project.id, t.kind)} download>
+              <Button icon={<IconDownload size={15} />}>Download all {docs.length}</Button>
+            </a>
+          ) : (
+            <Button icon={<IconDownload size={15} />} disabled>Download all</Button>
+          )}
+          {ready ? (
+            <a
+              href={api.documentHtmlUrl(project.id, safeIndex, t.kind)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="primary">Open printable</Button>
+            </a>
+          ) : (
+            <Button variant="primary" disabled>Open printable</Button>
+          )}
         </div>
       </motion.div>
 

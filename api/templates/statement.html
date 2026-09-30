@@ -72,10 +72,16 @@
   .badge.bad { background: rgba(192,57,43,.10); color: var(--debit); }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
+  /* A statement is usually longer than one page, so the header row has to
+     repeat and rows must not be split. */
+  @page { size: A4; margin: 14mm; }
+
   @media print {
     body { background: #fff; padding: 0; }
     .page { border: none; box-shadow: none; border-radius: 0; max-width: none; }
     footer .badge { display: none; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+    thead { display: table-header-group; }
   }
 </style>
 </head>

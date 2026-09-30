@@ -421,18 +421,15 @@ export const api = {
       documents: (InvoiceDoc | StatementDoc)[];
     }>(`/api/projects/${id}/documents`, body),
 
-  // The query must ride along, or the printable document silently ignores the
-  // filter the user just applied on screen.
-  documentHtmlUrl: (
-    id: string, index: number, kind: string, region: string, count: number, query?: string,
-  ) =>
-    `/api/projects/${id}/documents/${index}/html?kind=${kind}&region=${region}&count=${count}` +
-    (query ? `&query=${encodeURIComponent(query)}` : ""),
-  documentBundleUrl: (
-    id: string, kind: string, region: string, count: number, query?: string,
-  ) =>
-    `/api/projects/${id}/documents/bundle?kind=${kind}&region=${region}&count=${count}` +
-    (query ? `&query=${encodeURIComponent(query)}` : ""),
+  // Both of these serve the set the server rendered for the last POST to
+  // /documents of that kind. Region, count and the statement query were
+  // parameters here once, and passing them meant the printable view and the
+  // download each rebuilt a different set from the one on screen. The kind is
+  // all that is needed now, to pick between invoices and statements.
+  documentHtmlUrl: (id: string, index: number, kind: string) =>
+    `/api/projects/${id}/documents/${index}/html?kind=${kind}`,
+  documentBundleUrl: (id: string, kind: string) =>
+    `/api/projects/${id}/documents/bundle?kind=${kind}`,
   exportUrl: (id: string, fmt: string) => `/api/projects/${id}/export?fmt=${fmt}`,
 };
 

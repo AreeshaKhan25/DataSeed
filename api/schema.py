@@ -29,7 +29,16 @@ _NAME_PATTERNS: list[tuple[str, str]] = [
     (r"(phone|mobile|tel)", "phone"),
     (r"(ssn|nin|national_?id|nationalid|tax_?id|passport|nhs_?number)", "national_id"),
     (r"(iban|account_?no|account_?number|sort_?code|card_?number)", "iban"),
-    (r"(first_?name|last_?name|full_?name|customer_?name|^name$)", "person_name"),
+    # People are called many things in a header. The exact-match branch catches
+    # a bare "Customer" or "Staff"; the "<role>_name" branch catches
+    # "Employee Name" once separators are normalised. Neither branch matches
+    # "customer_id" or "employee_code", which must stay identifiers, which is
+    # why the roles are anchored rather than searched for loosely.
+    (r"(first_?name|last_?name|full_?name|given_?name|sur_?name|middle_?name"
+     r"|(?:customer|client|employee|staff|patient|student|owner|person|contact"
+     r"|member|applicant|tenant|guest|author|driver|supplier|vendor|agent)_?name"
+     r"|^(?:name|customer|client|employee|staff|patient|student|owner|person"
+     r"|contact|applicant|tenant|guest|author)$)", "person_name"),
     (r"(address|street|addr)", "address"),
     (r"(city|town)", "city"),
     (r"(country|nationality)", "country"),
@@ -209,8 +218,47 @@ class SchemaIR(BaseModel):
 # Profiling
 # --------------------------------------------------------------------------
 
+def _normalise_column_name(name: str) -> str:
+    """Fold the separators people actually use into underscores.
+
+    Headers arrive as "Full Name", "full-name", "Full.Name" and "FullName" at
+    least as often as "full_name". Matching the raw lowercased string meant
+    "full_name" was recognised as a person and "Full Name" was not, and an
+    unrecognised name column keeps its real values, so this was the difference
+    between synthesising a name and copying a real one into the output.
+    """
+    # Split camelCase and PascalCase first, while the original casing still
+    # marks the word boundaries, then fold the remaining separators.
+    split = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "_", name.strip())
+    folded = re.sub(r"[\s\-.]+", "_", split).lower()
+    return re.sub(r"_+", "_", folded).strip("_")
+
+
+def _looks_like_person_names(series: pd.Series) -> bool:
+    """True when the VALUES look like human names, whatever the column is called.
+
+    No list of header names is ever complete: columns get called "col_3", or
+    named in another language, or something no one anticipated. Since failing to
+    recognise a name column means real names are copied verbatim into the
+    output, there has to be a check that does not depend on the header at all.
+
+    Two conditions together, because either alone is wrong. The shape test
+    ("Ayesha Khan", "Mary-Jane O'Neill") also matches multi word place names, so
+    it is paired with a distinctness test: a column of 5 cities repeated across
+    200 rows is a category, while a column where a large share of values are
+    distinct is a population of people.
+    """
+    values = series.dropna().astype(str)
+    if len(values) < 20:
+        return False
+    sample = values.head(200)
+    shaped = sample.str.match(r"^[A-Z][\w'’\-]+(?: [A-Z][\w'’\-]+){1,2}$").mean()
+    distinctness = values.nunique() / len(values)
+    return bool(shaped > 0.8 and distinctness > 0.15)
+
+
 def _infer_semantic(name: str, series: pd.Series, dtype: DType) -> str:
-    lowered = name.lower()
+    lowered = _normalise_column_name(name)
     for pattern, semantic in _NAME_PATTERNS:
         if re.search(pattern, lowered):
             # a name-based "currency" guess only holds for numerics
@@ -225,6 +273,11 @@ def _infer_semantic(name: str, series: pd.Series, dtype: DType) -> str:
         for pattern, semantic in _VALUE_PATTERNS:
             if len(sample) and sample.str.match(pattern, case=False).mean() > 0.8:
                 return semantic
+        # Before deciding this is a category or an unknown string, check whether
+        # it is a column of people. Getting this wrong leaks real identities, so
+        # it is checked ahead of the cheaper structural guesses below.
+        if _looks_like_person_names(series):
+            return "person_name"
         if series.nunique(dropna=True) <= max(20, int(0.05 * max(len(series), 1))):
             return "category"
         if sample.str.len().mean() > 40 if len(sample) else False:

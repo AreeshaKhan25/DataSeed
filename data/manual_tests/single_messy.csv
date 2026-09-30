@@ -1,0 +1,251 @@
+ref,client_name,notes,price_text,discount_pct,country,recorded_at
+REF-0000,,Réclamation reçue,"PKR 74,438",,Pakistan,2025-04-12
+REF-0001,Sadia Qureshi,,"PKR 80,477",10,Pakistan,2025-04-19
+REF-0002,Areeba Hussain,,"PKR 51,433",15,Pakistan,2025-03-28
+REF-0003,Danish Butt,—,"PKR 2,197",5,Pakistan,2024-11-08
+REF-0004,Rabia Javed,Customer asked for a refund,"PKR 14,924",15,Pakistan,2024-04-23
+REF-0005,Bilquis Ahmed,Delivered on time,"PKR 78,830",,Pakistan,2024-04-15
+REF-0006,Hina Qureshi,تم التسليم,"PKR 56,323",10,Pakistan,2025-04-06
+REF-0007,Laiba Khan,Customer asked for a refund,"PKR 33,243",15,Pakistan,2024-03-22
+REF-0008,Danish Ahmed,Réclamation reçue,PKR 803,,Pakistan,2024-10-27
+REF-0009,Bilal Malik,,"PKR 68,946",5,Pakistan,2024-02-09
+REF-0010,,—,"PKR 22,537",5,Pakistan,2025-07-13
+REF-0011,Hamza Hussain,Réclamation reçue,"PKR 17,471",0,Pakistan,2025-01-13
+REF-0012,Bilal Siddiqui,Delivered on time,"PKR 17,828",5,Pakistan,2025-04-25
+REF-0013,Faisal Javed,,"PKR 24,903",15,Pakistan,2025-06-29
+REF-0014,,Réclamation reçue,"PKR 69,720",10,Pakistan,2025-04-09
+REF-0015,Rabia Siddiqui,Delivered on time,"PKR 51,395",,Pakistan,2024-02-28
+REF-0016,Shahid Farooq,تم التسليم,"PKR 22,708",0,Pakistan,2024-12-22
+REF-0017,Imran Hussain,—,"PKR 56,512",0,Pakistan,2024-11-17
+REF-0018,Rizwan Nawaz,Réclamation reçue,"PKR 47,107",0,Pakistan,2024-03-06
+REF-0019,Sana Khan,Customer asked for a refund,"PKR 27,733",0,Pakistan,2024-11-11
+REF-0020,,تم التسليم,"PKR 38,091",0,Pakistan,2024-05-18
+REF-0021,,تم التسليم,"PKR 17,604",,Pakistan,2024-03-26
+REF-0022,Kashif Raza,—,"PKR 49,172",5,Pakistan,2024-05-24
+REF-0023,Bilquis Sheikh,—,"PKR 87,379",,Pakistan,2025-05-10
+REF-0024,Rabia Sheikh,,"PKR 82,996",,Pakistan,2024-10-28
+REF-0025,Kashif Raza,—,"PKR 87,986",5,Pakistan,2025-08-23
+REF-0026,Danish Iqbal,,"PKR 11,806",10,Pakistan,2025-04-23
+REF-0027,Noor Butt,Delivered on time,"PKR 73,474",10,Pakistan,2024-04-28
+REF-0028,Maryam Farooq,Delivered on time,"PKR 9,944",,Pakistan,2024-01-26
+REF-0029,Danish Nawaz,,"PKR 74,670",,Pakistan,2024-02-10
+REF-0030,Maryam Chaudhry,Delivered on time,"PKR 72,438",5,Pakistan,2025-05-05
+REF-0031,Tariq Khan,—,"PKR 58,286",,Pakistan,2024-05-26
+REF-0032,Noor Khan,Delivered on time,"PKR 61,096",,Pakistan,2025-01-01
+REF-0033,Ayesha Chaudhry,—,"PKR 10,991",15,Pakistan,2024-12-02
+REF-0034,Bilal Nawaz,,"PKR 40,927",0,Pakistan,2024-04-16
+REF-0035,Tariq Farooq,Réclamation reçue,"PKR 38,825",10,Pakistan,2024-11-01
+REF-0036,,Delivered on time,"PKR 86,758",0,Pakistan,2024-10-07
+REF-0037,Noor Raza,Customer asked for a refund,"PKR 47,057",0,Pakistan,2024-07-13
+REF-0038,Iqra Butt,,"PKR 60,706",,Pakistan,2024-08-20
+REF-0039,,,"PKR 84,016",15,Pakistan,2024-11-11
+REF-0040,Areeba Farooq,,"PKR 19,399",0,Pakistan,2025-07-14
+REF-0041,Tariq Khan,Réclamation reçue,"PKR 48,602",10,Pakistan,2024-07-02
+REF-0042,Bilquis Raza,Customer asked for a refund,"PKR 72,706",,Pakistan,2024-11-25
+REF-0043,Iqra Nawaz,,"PKR 35,088",5,Pakistan,2025-04-30
+REF-0044,Areeba Malik,Delivered on time,"PKR 82,272",15,Pakistan,2024-10-10
+REF-0045,Sana Farooq,تم التسليم,"PKR 63,991",,Pakistan,2024-03-31
+REF-0046,Hamza Malik,—,"PKR 31,517",10,Pakistan,2024-12-26
+REF-0047,Yasir Raza,تم التسليم,"PKR 22,751",10,Pakistan,2024-02-15
+REF-0048,Maryam Siddiqui,Customer asked for a refund,"PKR 74,050",10,Pakistan,2025-07-10
+REF-0049,Ayesha Qureshi,Customer asked for a refund,"PKR 48,336",5,Pakistan,2024-05-29
+REF-0050,Areeba Qureshi,Customer asked for a refund,"PKR 75,902",10,Pakistan,2024-05-09
+REF-0051,Ayesha Raza,,"PKR 46,935",10,Pakistan,2024-05-15
+REF-0052,Rizwan Hussain,—,"PKR 49,925",10,Pakistan,2024-06-17
+REF-0053,,Delivered on time,"PKR 67,374",0,Pakistan,2024-10-21
+REF-0054,Usman Butt,Customer asked for a refund,"PKR 39,937",,Pakistan,2025-01-31
+REF-0055,Maryam Nawaz,,"PKR 70,093",,Pakistan,2025-03-23
+REF-0056,,—,"PKR 73,395",15,Pakistan,2025-02-28
+REF-0057,Junaid Qureshi,Delivered on time,"PKR 34,141",0,Pakistan,2024-08-09
+REF-0058,Sana Javed,,"PKR 76,126",10,Pakistan,2025-03-17
+REF-0059,,—,"PKR 5,223",5,Pakistan,2025-08-07
+REF-0060,Rizwan Qureshi,تم التسليم,"PKR 24,714",15,Pakistan,2025-07-02
+REF-0061,Rabia Ahmed,Customer asked for a refund,"PKR 58,718",,Pakistan,2024-04-05
+REF-0062,Areeba Iqbal,Réclamation reçue,"PKR 19,530",0,Pakistan,2024-07-10
+REF-0063,Mehwish Chaudhry,Customer asked for a refund,"PKR 17,452",0,Pakistan,2025-04-18
+REF-0064,,Delivered on time,"PKR 59,241",5,Pakistan,2024-01-16
+REF-0065,Usman Siddiqui,Customer asked for a refund,"PKR 72,774",5,Pakistan,2024-07-05
+REF-0066,Zara Nawaz,Réclamation reçue,"PKR 72,421",0,Pakistan,2025-01-02
+REF-0067,Bilal Chaudhry,Delivered on time,"PKR 75,951",,Pakistan,2025-01-26
+REF-0068,,Customer asked for a refund,"PKR 57,246",,Pakistan,2024-12-28
+REF-0069,Bilal Malik,Delivered on time,"PKR 48,346",15,Pakistan,2024-03-04
+REF-0070,Hamza Khan,,"PKR 62,261",0,Pakistan,2024-06-08
+REF-0071,Maryam Iqbal,Customer asked for a refund,"PKR 16,046",10,Pakistan,2024-02-19
+REF-0072,Usman Qureshi,Customer asked for a refund,"PKR 63,033",0,Pakistan,2024-09-25
+REF-0073,Junaid Khan,—,"PKR 9,912",0,Pakistan,2025-07-04
+REF-0074,Faisal Ahmed,تم التسليم,"PKR 2,957",,Pakistan,2024-10-05
+REF-0075,Bilquis Raza,,"PKR 73,137",,Pakistan,2024-04-19
+REF-0076,Laiba Nawaz,Delivered on time,"PKR 10,553",5,Pakistan,2025-07-25
+REF-0077,Shahid Malik,Delivered on time,"PKR 37,195",,Pakistan,2025-08-04
+REF-0078,Danish Javed,,"PKR 11,878",5,Pakistan,2024-01-02
+REF-0079,Bilquis Raza,Delivered on time,"PKR 75,178",10,Pakistan,2025-04-16
+REF-0080,Maryam Chaudhry,تم التسليم,"PKR 83,000",0,Pakistan,2025-02-02
+REF-0081,Noor Qureshi,—,"PKR 31,918",10,Pakistan,2024-05-12
+REF-0082,Tariq Hussain,تم التسليم,"PKR 67,477",15,Pakistan,2024-10-08
+REF-0083,Hamza Ahmed,Delivered on time,"PKR 6,647",0,Pakistan,2025-03-07
+REF-0084,Rizwan Chaudhry,,"PKR 14,490",15,Pakistan,2025-06-25
+REF-0085,Hamza Farooq,تم التسليم,"PKR 65,495",15,Pakistan,2024-01-29
+REF-0086,Saad Ahmed,Réclamation reçue,"PKR 57,057",10,Pakistan,2024-06-29
+REF-0087,Iqra Hussain,,"PKR 21,998",,Pakistan,2025-02-12
+REF-0088,Omar Javed,Customer asked for a refund,"PKR 42,579",0,Pakistan,2025-01-16
+REF-0089,Zara Butt,,"PKR 43,338",15,Pakistan,2025-03-08
+REF-0090,Sadia Raza,—,"PKR 61,344",10,Pakistan,2025-07-14
+REF-0091,Junaid Chaudhry,Réclamation reçue,"PKR 75,105",10,Pakistan,2024-09-09
+REF-0092,Iqra Sheikh,Réclamation reçue,"PKR 16,369",0,Pakistan,2025-03-25
+REF-0093,Yasir Qureshi,Delivered on time,"PKR 5,969",0,Pakistan,2024-01-16
+REF-0094,Maryam Qureshi,Delivered on time,"PKR 23,541",10,Pakistan,2024-02-17
+REF-0095,Imran Javed,Customer asked for a refund,"PKR 57,028",5,Pakistan,2025-07-06
+REF-0096,Bilquis Raza,,"PKR 41,831",10,Pakistan,2024-08-07
+REF-0097,Bilquis Raza,Réclamation reçue,"PKR 64,111",15,Pakistan,2025-01-16
+REF-0098,Yasir Hussain,—,"PKR 55,728",10,Pakistan,2025-05-16
+REF-0099,Danish Iqbal,Customer asked for a refund,"PKR 10,268",,Pakistan,2024-01-17
+REF-0100,Ayesha Chaudhry,Delivered on time,"PKR 7,321",5,Pakistan,2025-03-22
+REF-0101,Hamza Khan,Réclamation reçue,"PKR 78,400",0,Pakistan,2025-04-27
+REF-0102,Rizwan Hussain,Customer asked for a refund,"PKR 66,296",10,Pakistan,2024-10-31
+REF-0103,Rizwan Butt,Customer asked for a refund,"PKR 35,848",0,Pakistan,2024-08-11
+REF-0104,Saad Raza,—,"PKR 22,942",5,Pakistan,2025-01-01
+REF-0105,Sadia Butt,Customer asked for a refund,"PKR 23,611",5,Pakistan,2025-04-20
+REF-0106,Hina Hussain,,"PKR 36,158",10,Pakistan,2024-05-24
+REF-0107,,—,"PKR 73,316",15,Pakistan,2024-07-26
+REF-0108,Bilquis Qureshi,,"PKR 73,301",0,Pakistan,2024-10-13
+REF-0109,Tariq Khan,Delivered on time,"PKR 39,942",5,Pakistan,2024-09-16
+REF-0110,,,"PKR 66,396",,Pakistan,2025-01-15
+REF-0111,,Delivered on time,"PKR 19,443",0,Pakistan,2024-03-15
+REF-0112,Faisal Raza,Customer asked for a refund,"PKR 48,139",10,Pakistan,2024-04-15
+REF-0113,Rabia Farooq,تم التسليم,"PKR 87,499",15,Pakistan,2025-03-12
+REF-0114,Omar Raza,Customer asked for a refund,"PKR 86,035",10,Pakistan,2025-03-22
+REF-0115,Iqra Ahmed,Delivered on time,"PKR 87,966",0,Pakistan,2024-04-29
+REF-0116,Shahid Siddiqui,تم التسليم,"PKR 61,550",10,Pakistan,2024-02-18
+REF-0117,Rizwan Nawaz,Réclamation reçue,"PKR 76,445",0,Pakistan,2024-02-24
+REF-0118,Maryam Sheikh,تم التسليم,"PKR 9,061",0,Pakistan,2024-06-18
+REF-0119,,تم التسليم,"PKR 77,361",0,Pakistan,2024-04-16
+REF-0120,Shahid Javed,Réclamation reçue,"PKR 61,464",10,Pakistan,2024-07-08
+REF-0121,Mehwish Sheikh,Réclamation reçue,"PKR 9,804",,Pakistan,2025-04-08
+REF-0122,Hamza Chaudhry,Réclamation reçue,"PKR 20,498",0,Pakistan,2024-07-08
+REF-0123,Usman Qureshi,Customer asked for a refund,PKR 963,15,Pakistan,2024-06-16
+REF-0124,Mehwish Iqbal,,"PKR 87,496",10,Pakistan,2025-06-30
+REF-0125,,,"PKR 14,351",,Pakistan,2025-08-14
+REF-0126,,تم التسليم,"PKR 1,901",10,Pakistan,2024-07-22
+REF-0127,Danish Farooq,تم التسليم,PKR 769,0,Pakistan,2024-03-10
+REF-0128,Usman Farooq,,"PKR 18,771",15,Pakistan,2024-10-04
+REF-0129,Shahid Malik,تم التسليم,"PKR 2,142",10,Pakistan,2024-01-15
+REF-0130,Omar Ahmed,,"PKR 13,224",5,Pakistan,2025-05-29
+REF-0131,Danish Siddiqui,Delivered on time,"PKR 78,264",5,Pakistan,2024-06-30
+REF-0132,Usman Iqbal,,"PKR 11,328",0,Pakistan,2025-08-02
+REF-0133,Usman Khan,Customer asked for a refund,"PKR 57,283",5,Pakistan,2025-06-21
+REF-0134,Tariq Siddiqui,تم التسليم,"PKR 76,945",5,Pakistan,2025-08-07
+REF-0135,Iqra Farooq,Customer asked for a refund,"PKR 1,330",15,Pakistan,2024-10-21
+REF-0136,Yasir Javed,Réclamation reçue,"PKR 61,846",5,Pakistan,2024-02-13
+REF-0137,Omar Javed,,"PKR 36,982",,Pakistan,2025-02-27
+REF-0138,Shahid Farooq,—,"PKR 26,453",0,Pakistan,2025-03-05
+REF-0139,Maryam Sheikh,Customer asked for a refund,"PKR 21,020",0,Pakistan,2025-06-16
+REF-0140,,Delivered on time,"PKR 52,092",5,Pakistan,2024-02-14
+REF-0141,Sana Malik,—,"PKR 30,538",15,Pakistan,2025-02-05
+REF-0142,Adnan Butt,Réclamation reçue,"PKR 34,547",5,Pakistan,2024-11-13
+REF-0143,Yasir Farooq,,"PKR 69,964",15,Pakistan,2024-11-13
+REF-0144,,Customer asked for a refund,"PKR 20,216",15,Pakistan,2024-05-05
+REF-0145,Tariq Iqbal,,"PKR 69,906",0,Pakistan,2025-05-16
+REF-0146,Rabia Khan,Réclamation reçue,"PKR 64,190",,Pakistan,2024-12-08
+REF-0147,Rabia Farooq,Delivered on time,"PKR 88,344",0,Pakistan,2025-07-24
+REF-0148,Shahid Javed,Delivered on time,"PKR 74,239",,Pakistan,2024-08-29
+REF-0149,Omar Farooq,—,"PKR 19,186",10,Pakistan,2024-01-08
+REF-0150,Sadia Butt,—,"PKR 49,906",,Pakistan,2024-04-12
+REF-0151,Sadia Sheikh,Réclamation reçue,"PKR 88,316",15,Pakistan,2025-04-25
+REF-0152,Adnan Nawaz,Customer asked for a refund,"PKR 76,816",5,Pakistan,2024-04-11
+REF-0153,Ayesha Siddiqui,Customer asked for a refund,"PKR 22,454",5,Pakistan,2025-06-07
+REF-0154,Junaid Raza,Customer asked for a refund,"PKR 17,183",5,Pakistan,2025-01-11
+REF-0155,Amna Raza,Réclamation reçue,"PKR 16,064",15,Pakistan,2024-10-02
+REF-0156,,Delivered on time,"PKR 53,412",5,Pakistan,2024-05-28
+REF-0157,Areeba Malik,,"PKR 10,844",15,Pakistan,2025-03-22
+REF-0158,Rizwan Ahmed,Réclamation reçue,"PKR 15,910",5,Pakistan,2024-05-25
+REF-0159,,—,"PKR 53,615",,Pakistan,2024-06-21
+REF-0160,Hamza Sheikh,Delivered on time,"PKR 29,759",15,Pakistan,2024-03-22
+REF-0161,Laiba Chaudhry,Réclamation reçue,"PKR 75,848",15,Pakistan,2025-01-07
+REF-0162,Hina Iqbal,—,"PKR 88,391",10,Pakistan,2024-02-14
+REF-0163,Nadia Malik,,"PKR 18,448",,Pakistan,2025-07-28
+REF-0164,Hina Chaudhry,—,"PKR 49,045",0,Pakistan,2025-01-16
+REF-0165,Rabia Ahmed,,"PKR 13,984",10,Pakistan,2025-05-13
+REF-0166,Maryam Malik,Delivered on time,"PKR 50,398",0,Pakistan,2025-01-24
+REF-0167,Maryam Javed,Réclamation reçue,"PKR 46,301",0,Pakistan,2024-01-20
+REF-0168,Hamza Siddiqui,—,"PKR 13,752",5,Pakistan,2025-05-29
+REF-0169,Amna Khan,Delivered on time,"PKR 73,237",,Pakistan,2025-04-08
+REF-0170,Iqra Qureshi,—,"PKR 5,402",10,Pakistan,2025-01-04
+REF-0171,Iqra Malik,,"PKR 9,479",0,Pakistan,2025-05-16
+REF-0172,Zara Butt,تم التسليم,"PKR 82,061",0,Pakistan,2025-03-30
+REF-0173,Hina Farooq,—,"PKR 3,072",15,Pakistan,2024-06-01
+REF-0174,Sadia Sheikh,—,"PKR 6,644",,Pakistan,2024-07-15
+REF-0175,Danish Iqbal,Customer asked for a refund,"PKR 61,883",,Pakistan,2025-05-30
+REF-0176,Omar Iqbal,Customer asked for a refund,"PKR 51,095",0,Pakistan,2024-09-16
+REF-0177,,Delivered on time,"PKR 18,757",15,Pakistan,2025-04-17
+REF-0178,Ayesha Hussain,Delivered on time,"PKR 42,699",,Pakistan,2024-07-04
+REF-0179,Saad Chaudhry,,"PKR 49,006",5,Pakistan,2024-02-27
+REF-0180,Shahid Siddiqui,Delivered on time,"PKR 66,204",10,Pakistan,2025-03-01
+REF-0181,Hamza Chaudhry,,"PKR 29,941",0,Pakistan,2025-02-18
+REF-0182,Faisal Nawaz,Customer asked for a refund,"PKR 56,376",0,Pakistan,2024-09-07
+REF-0183,Iqra Farooq,تم التسليم,"PKR 35,172",10,Pakistan,2025-01-23
+REF-0184,,تم التسليم,"PKR 49,550",10,Pakistan,2024-05-02
+REF-0185,Usman Farooq,Customer asked for a refund,"PKR 68,726",5,Pakistan,2024-02-08
+REF-0186,Bilquis Qureshi,Réclamation reçue,"PKR 30,271",,Pakistan,2024-04-19
+REF-0187,,Delivered on time,"PKR 33,122",0,Pakistan,2024-11-02
+REF-0188,Faisal Raza,Réclamation reçue,"PKR 54,294",0,Pakistan,2024-08-04
+REF-0189,Mehwish Ahmed,Delivered on time,"PKR 12,556",0,Pakistan,2025-04-07
+REF-0190,Rizwan Javed,Réclamation reçue,"PKR 35,542",,Pakistan,2024-05-30
+REF-0191,,Réclamation reçue,"PKR 52,544",,Pakistan,2025-05-19
+REF-0192,Imran Hussain,Customer asked for a refund,"PKR 84,880",5,Pakistan,2024-04-01
+REF-0193,,,"PKR 54,892",15,Pakistan,2024-09-16
+REF-0194,Zara Chaudhry,,"PKR 85,459",10,Pakistan,2024-11-02
+REF-0195,,Réclamation reçue,"PKR 89,022",5,Pakistan,2024-06-15
+REF-0196,,,"PKR 22,041",5,Pakistan,2024-10-10
+REF-0197,Kashif Farooq,Réclamation reçue,"PKR 73,020",5,Pakistan,2025-05-28
+REF-0198,,Delivered on time,"PKR 51,434",10,Pakistan,2025-08-02
+REF-0199,Laiba Nawaz,Customer asked for a refund,"PKR 78,252",5,Pakistan,2024-11-25
+REF-0200,,Réclamation reçue,"PKR 59,002",0,Pakistan,2024-10-15
+REF-0201,Mehwish Farooq,Customer asked for a refund,"PKR 79,675",5,Pakistan,2025-07-09
+REF-0202,Bilquis Butt,تم التسليم,"PKR 46,514",5,Pakistan,2025-01-27
+REF-0203,Imran Butt,Réclamation reçue,"PKR 51,166",0,Pakistan,2025-03-12
+REF-0204,Zara Raza,Réclamation reçue,"PKR 62,227",5,Pakistan,2024-10-15
+REF-0205,,Delivered on time,"PKR 27,973",,Pakistan,2025-04-26
+REF-0206,Iqra Ahmed,—,"PKR 84,691",15,Pakistan,2025-03-02
+REF-0207,Hamza Siddiqui,Customer asked for a refund,"PKR 53,013",10,Pakistan,2024-04-11
+REF-0208,Danish Khan,تم التسليم,"PKR 19,572",5,Pakistan,2025-04-20
+REF-0209,Iqra Qureshi,Delivered on time,"PKR 10,075",5,Pakistan,2025-01-20
+REF-0210,,,PKR 926,15,Pakistan,2024-08-01
+REF-0211,Shahid Qureshi,,"PKR 83,157",10,Pakistan,2024-06-30
+REF-0212,Sana Butt,Delivered on time,"PKR 64,433",5,Pakistan,2024-02-20
+REF-0213,,Delivered on time,"PKR 29,001",5,Pakistan,2024-09-16
+REF-0214,Omar Khan,Delivered on time,"PKR 66,948",10,Pakistan,2024-10-14
+REF-0215,Rizwan Qureshi,Customer asked for a refund,"PKR 62,046",15,Pakistan,2024-04-07
+REF-0216,Omar Ahmed,تم التسليم,"PKR 88,211",,Pakistan,2024-05-14
+REF-0217,Noor Raza,,"PKR 85,605",5,Pakistan,2025-03-10
+REF-0218,Yasir Siddiqui,Réclamation reçue,"PKR 32,473",10,Pakistan,2024-06-01
+REF-0219,Shahid Siddiqui,تم التسليم,"PKR 72,776",5,Pakistan,2024-01-20
+REF-0220,Hina Sheikh,Customer asked for a refund,"PKR 32,779",,Pakistan,2024-01-05
+REF-0221,,Customer asked for a refund,"PKR 86,124",,Pakistan,2025-07-25
+REF-0222,,Delivered on time,"PKR 79,062",15,Pakistan,2025-06-01
+REF-0223,,,"PKR 28,695",,Pakistan,2024-03-30
+REF-0224,Amna Butt,تم التسليم,"PKR 17,911",0,Pakistan,2024-02-13
+REF-0225,,—,"PKR 20,914",10,Pakistan,2024-08-06
+REF-0226,Zara Ahmed,—,"PKR 78,016",5,Pakistan,2024-04-10
+REF-0227,Saad Butt,,"PKR 85,818",0,Pakistan,2024-02-05
+REF-0228,Noor Qureshi,—,"PKR 27,957",10,Pakistan,2024-01-31
+REF-0229,Yasir Malik,Réclamation reçue,"PKR 15,769",15,Pakistan,2025-04-08
+REF-0230,Areeba Qureshi,تم التسليم,"PKR 71,179",10,Pakistan,2025-02-22
+REF-0231,Omar Chaudhry,تم التسليم,"PKR 25,494",5,Pakistan,2024-02-04
+REF-0232,,,"PKR 69,987",15,Pakistan,2024-06-23
+REF-0233,Maryam Siddiqui,Réclamation reçue,"PKR 79,270",5,Pakistan,2024-07-07
+REF-0234,Saad Siddiqui,تم التسليم,"PKR 80,047",,Pakistan,2025-01-19
+REF-0235,,Réclamation reçue,"PKR 15,146",10,Pakistan,2025-03-09
+REF-0236,Faisal Nawaz,Réclamation reçue,"PKR 71,384",0,Pakistan,2024-04-29
+REF-0237,Sadia Malik,—,"PKR 54,741",5,Pakistan,2025-06-18
+REF-0238,,—,"PKR 54,785",,Pakistan,2025-02-28
+REF-0239,,,"PKR 23,107",15,Pakistan,2024-09-26
+REF-0240,,Delivered on time,"PKR 86,252",10,Pakistan,2025-07-25
+REF-0241,Ayesha Javed,—,"PKR 53,529",5,Pakistan,2024-02-15
+REF-0242,,Delivered on time,"PKR 1,041",5,Pakistan,2025-07-13
+REF-0243,,تم التسليم,"PKR 70,419",10,Pakistan,2025-02-23
+REF-0244,Bilal Hussain,Réclamation reçue,"PKR 10,366",,Pakistan,2024-09-01
+REF-0245,Hina Farooq,Réclamation reçue,"PKR 53,588",,Pakistan,2024-07-14
+REF-0246,Noor Khan,Réclamation reçue,"PKR 61,557",0,Pakistan,2024-01-20
+REF-0247,Bilal Khan,تم التسليم,"PKR 68,374",5,Pakistan,2024-03-07
+REF-0248,Noor Ahmed,Réclamation reçue,"PKR 88,252",15,Pakistan,2024-07-26
+REF-0249,Kashif Qureshi,Réclamation reçue,"PKR 6,142",,Pakistan,2024-09-24

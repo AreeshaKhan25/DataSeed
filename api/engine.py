@@ -13,6 +13,7 @@ Sigma carries the cross-column correlation.
 """
 from __future__ import annotations
 
+import re
 from typing import Any
 
 import numpy as np
@@ -112,7 +113,7 @@ class ColumnModel:
 
     __slots__ = (
         "column", "mode", "sorted_values", "categories", "cum_bounds",
-        "constant", "faker_provider", "forbidden", "decimals",
+        "constant", "faker_provider", "forbidden", "decimals", "key_format",
     )
 
     def __init__(self, column: Column) -> None:
@@ -131,6 +132,12 @@ class ColumnModel:
         # emitting 44.665593 breaks every downstream sum and is visible the
         # moment anyone opens the CSV in a spreadsheet.
         self.decimals: int | None = None
+        # How a text primary key is shaped, as (prefix, digit width, suffix),
+        # learned from the source. Keys are regenerated as a clean sequence, and
+        # without this a source of "C00001" or "INV-2024-0007" came back as the
+        # bare integer 1, which changes the column's type and breaks any
+        # downstream system that parses the format.
+        self.key_format: tuple[str, int, str] | None = None
 
     @property
     def in_copula(self) -> bool:
@@ -162,6 +169,48 @@ class TableModel:
         self.condition_probs: list[float] = []
         self.groups: dict[Any, "TableModel"] = {}
         self.condition_strength: float = 0.0
+
+
+def _learn_key_format(series: pd.Series) -> tuple[str, int, str] | None:
+    """Learn the shape of a text key, as (prefix, digit width, suffix).
+
+    Identifiers in real exports almost always carry a format: "C00001",
+    "INV-2024-0007", "ORD_88". The generator replaces keys with a fresh
+    sequence, so without learning the shape the replacement is a bare integer
+    and the column silently changes type between the input and the output.
+
+    Only a format shared by every value is used. Anything less consistent is
+    left alone, because guessing a format from a minority of rows would produce
+    keys that match neither the source nor each other.
+    """
+    values = series.dropna().astype(str)
+    if values.empty:
+        return None
+    # Anchor on the LAST run of digits, so "INV-2024-0007" is understood as the
+    # prefix "INV-2024-" plus a four digit counter rather than splitting at the
+    # year. The prefix is forced to end on a non digit to make that the case.
+    match = re.match(r"^(.*[^0-9])?([0-9]+)([^0-9]*)$", values.iloc[0])
+    if match is None:
+        return None
+    prefix, digits, suffix = match.group(1) or "", match.group(2), match.group(3)
+    width = len(digits)
+    pattern = re.compile(
+        rf"^{re.escape(prefix)}\d{{{width}}}{re.escape(suffix)}$"
+    )
+    if not values.map(lambda v: bool(pattern.match(v))).all():
+        return None
+    if not prefix and not suffix:
+        # Purely numeric text, e.g. "00042": worth keeping only for the padding.
+        return (prefix, width, suffix) if width > 1 else None
+    return prefix, width, suffix
+
+
+def _format_keys(values: np.ndarray, fmt: tuple[str, int, str] | None) -> Any:
+    """Render a key sequence, applying a learned text format when there is one."""
+    if fmt is None:
+        return values
+    prefix, width, suffix = fmt
+    return [f"{prefix}{int(v):0{width}d}{suffix}" for v in values]
 
 
 def _resolve_mode(column: Column, series: pd.Series) -> str:
@@ -313,7 +362,13 @@ def fit_table(
         cm.mode = _resolve_mode(column, series)
         non_null = series.dropna()
 
-        if cm.mode == "constant":
+        if cm.mode == "sequence":
+            # Keys are replaced with a fresh sequence, so keep the shape the
+            # source used or the column changes type on the way out.
+            if column.dtype == "str":
+                cm.key_format = _learn_key_format(series)
+
+        elif cm.mode == "constant":
             cm.constant = non_null.iloc[0] if len(non_null) else None
 
         elif cm.mode in ("faker", "faker_text"):
@@ -500,7 +555,7 @@ def _sample_core(
         name = column.name
 
         if cm.mode == "sequence":
-            out[name] = np.arange(pk_start, pk_start + rows)
+            out[name] = _format_keys(np.arange(pk_start, pk_start + rows), cm.key_format)
 
         elif cm.mode == "foreign_key":
             # Filled in by the relational engine. Kept as a typed placeholder so
@@ -593,7 +648,10 @@ def sample_table(
             # each group would restart the counter and duplicate keys.
             for column in table.columns:
                 if model.models[column.name].mode == "sequence":
-                    df[column.name] = np.arange(pk_start, pk_start + len(df))
+                    df[column.name] = _format_keys(
+                        np.arange(pk_start, pk_start + len(df)),
+                        model.models[column.name].key_format,
+                    )
         else:
             df = _sample_core(model, rows, rng, faker, pk_start)
     else:

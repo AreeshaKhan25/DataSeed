@@ -83,10 +83,18 @@
   .badge.bad { background: rgba(192,57,43,.10); color: #C0392B; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
+  /* Printing to PDF is the intended route to a PDF invoice, so the paper size
+     and margins are set here rather than left to each browser's defaults. */
+  @page { size: A4; margin: 14mm; }
+
   @media print {
     body { background: #fff; padding: 0; }
     .page { border: none; box-shadow: none; border-radius: 0; max-width: none; }
     footer .badge { display: none; }
+    /* A line item split across two pages is the usual way a printed invoice
+       goes wrong, and the totals belong with the table they total. */
+    tr, .totals, .meta { break-inside: avoid; page-break-inside: avoid; }
+    thead { display: table-header-group; }
   }
 </style>
 </head>

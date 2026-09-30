@@ -155,12 +155,39 @@ def main() -> int:
     check("statement renders as HTML",
           r.status_code == 200 and "Account statement" in r.text)
 
-    r = client.get(f"/api/projects/{project_id}/documents/bundle?kind=invoice&count=10")
+    # The download must contain the documents that were generated, not a set
+    # the endpoint invents for itself. It used to build its own 25 regardless,
+    # so the zip never matched what the user had on screen.
+    r = client.post(f"/api/projects/{project_id}/documents",
+                    json={"kind": "invoice", "count": 7, "region": "EU"})
+    generated = [d["number"] for d in r.json()["documents"]]
+
+    r = client.get(f"/api/projects/{project_id}/documents/bundle?kind=invoice")
     ok = r.status_code == 200
+    names: list[str] = []
     if ok:
         with zipfile.ZipFile(io.BytesIO(r.content)) as archive:
-            ok = len(archive.namelist()) == 10
-    check("document bundle zips 10 files", ok)
+            names = archive.namelist()
+    # 7 invoices plus the contents page the zip ships with
+    check("document bundle zips exactly what was generated",
+          ok and len(names) == 8 and "index.html" in names, f"{len(names)} entries")
+    check("bundle holds those same invoices",
+          all(f"{number}.html" in names for number in generated),
+          f"{len(generated)} generated")
+
+    # Asking for statements must not discard the invoices already held.
+    r = client.post(f"/api/projects/{project_id}/documents",
+                    json={"kind": "statement", "count": 3, "region": "UK"})
+    r = client.get(f"/api/projects/{project_id}/documents/bundle?kind=invoice")
+    still_there = False
+    if r.status_code == 200:
+        with zipfile.ZipFile(io.BytesIO(r.content)) as archive:
+            still_there = len(archive.namelist()) == 8
+    check("generating one kind keeps the other", still_there)
+
+    r = client.get(f"/api/projects/{project_id}/documents/bundle?kind=invoice&count=99")
+    check("a stale count parameter cannot change the download",
+          r.status_code == 200 and len(zipfile.ZipFile(io.BytesIO(r.content)).namelist()) == 8)
 
     print("\n6b. N:N relationships")
     nn = [fk for fk in schema["foreign_keys"] if fk["cardinality"] == "N:N"]

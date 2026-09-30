@@ -1,0 +1,25 @@
+product_id,product_name,category,unit_price
+1,Kettle Basic,Furniture,6723.08
+2,Kettle Pro,Furniture,13144.75
+3,Toaster Basic,Travel,19635.94
+4,Toaster Pro,Furniture,5512.03
+5,Blender Basic,Furniture,15130.15
+6,Blender Pro,Furniture,10296.61
+7,Lamp Basic,Kitchen,14409.58
+8,Lamp Pro,Computing,21450.21
+9,Chair Basic,Kitchen,8765.39
+10,Chair Pro,Computing,1428.14
+11,Desk Basic,Kitchen,682.86
+12,Desk Pro,Computing,24711.94
+13,Monitor Basic,Furniture,13003.68
+14,Monitor Pro,Computing,21547.32
+15,Keyboard Basic,Kitchen,8587.75
+16,Keyboard Pro,Computing,12320.2
+17,Mouse Basic,Computing,9415.74
+18,Mouse Pro,Kitchen,13892.49
+19,Headset Basic,Travel,16898.94
+20,Headset Pro,Furniture,17653.36
+21,Backpack Basic,Kitchen,20073.69
+22,Backpack Pro,Furniture,11556.84
+23,Bottle Basic,Computing,19600.85
+24,Bottle Pro,Travel,10522.36
