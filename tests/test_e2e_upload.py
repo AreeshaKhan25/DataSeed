@@ -188,6 +188,70 @@ def main() -> int:
         check("national_id flagged as direct PII", cols.get("national_id") == "direct",
               str(cols.get("national_id")))
 
+    print("\n8b. The report does not depend on which file was selected first")
+    # The report used to be built from schema.tables[0], which is whichever CSV
+    # the user happened to pick first. Uploading a small lookup table first
+    # meant no report at all, while the same files in another order scored
+    # fine, so from the outside the feature looked intermittent.
+    orders = {
+        "big first": ["shops", "labels", "products", "product_labels", "shop_settings"],
+        "8 row lookup first": ["labels", "shops", "products", "product_labels", "shop_settings"],
+    }
+    outcomes: dict[str, tuple[bool, str | None]] = {}
+    for label, files in orders.items():
+        oid = upload(client, label.replace(" ", "_"), files)
+        if oid is None:
+            continue
+        gen = client.post(f"/api/projects/{oid}/generate",
+                          json={"rows": 200, "seed": 5, "validate_output": True})
+        wait_for_job(client, gen.json()["job"]["id"])
+        body = client.get(f"/api/projects/{oid}/report")
+        payload = body.json() if body.status_code == 200 else {}
+        outcomes[label] = (bool(payload.get("available")), payload.get("table"))
+
+    check("a report appears whichever file is first",
+          all(available for available, _ in outcomes.values()),
+          str({k: v[0] for k, v in outcomes.items()}))
+    scored = {table for _, table in outcomes.values()}
+    check("and it scores the same table either way", len(scored) == 1, str(scored))
+
+    print("\n8c. A self referencing foreign key")
+    # manager_id points at employee_id in the same table. Self references were
+    # skipped by the detector, so the column fell through to ordinary string
+    # generation and came back as unrelated words, every value dangling.
+    people = ["employee_id,employee_name,manager_id,salary"]
+    for i in range(160):
+        manager = "" if i < 3 else f"E{(i - 1) // 2:04d}"
+        people.append(f"E{i:04d},Person {i},{manager},{50000 + (i * 137) % 90000}")
+    payload_csv = "\n".join(people).encode()
+    response = client.post("/api/projects/ingest?name=SelfRef",
+                           files=[("files", ("staff.csv", payload_csv, "text/csv"))])
+    if check("self referencing table ingests", response.status_code == 200,
+             response.text[:120]):
+        sid = response.json()["project"]["id"]
+        fks = response.json()["schema"]["foreign_keys"]
+        self_fks = [f for f in fks if f["parent_table"] == f["child_table"]]
+        check("the self reference is detected", len(self_fks) == 1, str(len(fks)))
+
+        gen = client.post(f"/api/projects/{sid}/generate", json={"rows": 300, "seed": 4})
+        job = wait_for_job(client, gen.json()["job"]["id"])
+        check("it generates", job.get("status") == "done", str(job.get("error")))
+
+        rows = client.get(f"/api/projects/{sid}/data/staff?limit=400").json().get("rows", [])
+        ids = {r["employee_id"] for r in rows}
+        pointers = [r.get("manager_id") for r in rows
+                    if r.get("manager_id") not in (None, "", "nan")]
+        dangling = [p for p in pointers if p not in ids]
+        check("every manager points at a real employee", not dangling,
+              f"{len(dangling)} dangling of {len(pointers)}")
+        check("nobody manages themselves",
+              not [r for r in rows if r.get("manager_id") == r["employee_id"]])
+        position = {r["employee_id"]: i for i, r in enumerate(rows)}
+        forward = [r for r in rows
+                   if r.get("manager_id") in position
+                   and position[r["manager_id"]] >= position[r["employee_id"]]]
+        check("the hierarchy has no cycles", not forward, f"{len(forward)} forward edges")
+
     print("\n9. A table too small to validate")
     tid = upload(client, "Tiny", ["tiny"])
     if tid:

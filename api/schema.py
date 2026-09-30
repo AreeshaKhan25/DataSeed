@@ -402,6 +402,37 @@ def profile_table(name: str, df: pd.DataFrame) -> Table:
     return Table(name=name, columns=columns, primary_key=primary_key, row_count=len(df))
 
 
+def _is_self_reference(column: str, primary_key: str, frame: pd.DataFrame) -> bool:
+    """Is this column a pointer at another row of its own table?
+
+    Held to a stricter standard than an ordinary foreign key, because a self
+    reference cannot lean on the name matching the parent key: `manager_id`
+    never equals `employee_id`. Three things have to hold together.
+
+    The column is not the key itself, and is named like a reference. Its values
+    are almost entirely found among the table's own keys, at a higher bar than
+    the 0.9 used across tables, since two integer columns in one table can
+    overlap by coincidence. And it repeats: a pointer to a parent row is shared
+    by the rows that point at the same parent, while a column of distinct values
+    is more likely to be a second identifier.
+    """
+    if column == primary_key or primary_key not in frame.columns:
+        return False
+    if not re.search(r"(_id|_key|_ref|_code)$", column.lower()):
+        return False
+
+    values = frame[column].dropna()
+    values = values[values.astype(str).str.strip() != ""]
+    if len(values) < 10:
+        return False
+
+    keys = set(frame[primary_key].dropna().tolist())
+    if not keys or float(values.isin(keys).mean()) < 0.95:
+        return False
+
+    return values.nunique() < len(values)
+
+
 def detect_foreign_keys(
     tables: dict[str, pd.DataFrame], schema: SchemaIR
 ) -> list[ForeignKey]:
@@ -418,13 +449,31 @@ def detect_foreign_keys(
         if t.primary_key is not None
     }
 
+    # Names claimed by some table's primary key. A column called shop_id belongs
+    # to shops, and must never be considered a pointer inside its own table,
+    # however well its values happen to fit. Integer keys make that a real risk:
+    # every shop_id from 1 to 120 is also a valid product_id, so containment
+    # alone cannot tell a cross table reference from a self reference.
+    claimed = {pk for pk in pks.values() if pk}
+
     for child_name, child_df in tables.items():
         for col in child_df.columns:
             col_str = str(col)
             for parent_name, parent_pk in pks.items():
-                if parent_name == child_name or parent_pk is None:
+                if parent_pk is None:
                     continue
-                if col_str != parent_pk:
+                if parent_name == child_name:
+                    # A self reference: manager_id pointing at employee_id in
+                    # the same table. These were skipped outright, so a column
+                    # like manager_id fell through to ordinary string
+                    # generation and came back as unrelated words, every value
+                    # dangling. Hierarchies are common enough (manager, parent
+                    # category, replied to, referred by) to be worth detecting.
+                    if col_str in claimed:
+                        continue
+                    if not _is_self_reference(col_str, parent_pk, child_df):
+                        continue
+                elif col_str != parent_pk:
                     continue
                 if parent_pk not in tables[parent_name].columns:
                     continue

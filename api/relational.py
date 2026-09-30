@@ -20,7 +20,7 @@ import pandas as pd
 
 from .constraints import ConstraintResult, apply_constraints, check_constraints
 from .engine import TableModel, apply_privacy, sample_table
-from .schema import ForeignKey, SchemaIR
+from .schema import ForeignKey, SchemaIR, Table
 from .seeds import SeedFactory
 
 
@@ -183,6 +183,45 @@ def _generate_junction(
     return frame
 
 
+def _fill_self_references(
+    frame: pd.DataFrame,
+    table: Table,
+    self_fks: list[ForeignKey],
+    rng: np.random.Generator,
+) -> pd.DataFrame:
+    """Point a self referencing column at another row of the same frame.
+
+    Each row draws its pointer from the rows before it. That single rule gives
+    three properties for free: the target always exists, no row points at
+    itself, and no cycle can form, because every edge runs backwards through the
+    frame. A hierarchy generated this way is a forest, which is what a manager
+    or parent category column is in practice.
+
+    The first row has nothing before it, so it is a root, and further roots
+    appear at the rate nulls appeared in the source.
+    """
+    for fk in self_fks:
+        if fk.parent_column not in frame.columns or fk.child_column not in frame.columns:
+            continue
+        keys = frame[fk.parent_column].to_numpy()
+        n = len(keys)
+        if n == 0:
+            continue
+
+        column = table.column(fk.child_column)
+        null_rate = float(column.stats.null_rate) if column and column.stats else 0.0
+        null_rate = min(max(null_rate, 0.0), 0.95)
+
+        # Row i picks uniformly from rows 0..i-1. Row 0 is always a root.
+        picks = np.floor(rng.random(n) * np.arange(n)).astype(int)
+        values = keys[np.clip(picks, 0, max(n - 1, 0))].astype(object)
+        roots = rng.random(n) < null_rate
+        roots[0] = True
+        values[roots] = None
+        frame[fk.child_column] = values
+    return frame
+
+
 def generate_relational(
     schema: SchemaIR,
     models: dict[str, TableModel],
@@ -220,7 +259,13 @@ def generate_relational(
             continue
 
         rng = seeds.stream(f"rel:{name}")
-        parent_fks = fks_by_child.get(name, [])
+        # A self reference is not a parent relationship for sizing or ordering.
+        # Treating it as one would make the table a child of itself, find its
+        # own frame missing, and skip it entirely. It is filled afterwards, from
+        # the keys this table just generated.
+        all_fks = fks_by_child.get(name, [])
+        parent_fks = [fk for fk in all_fks if fk.parent_table != name]
+        self_fks = [fk for fk in all_fks if fk.parent_table == name]
 
         if table.is_junction and len(parent_fks) == 2:
             left, right = parent_fks[0], parent_fks[1]
@@ -288,6 +333,14 @@ def generate_relational(
                 pool = extra_parent[extra.parent_column].to_numpy()
                 extra_rng = seeds.stream(f"rel:{name}:{extra.child_column}")
                 frame[extra.child_column] = extra_rng.choice(pool, size=n_rows, replace=True)
+
+        # Self references are filled once the table's own keys exist, and
+        # before the rules run, so a not null or uniqueness rule sees the real
+        # values rather than the placeholder the sampler produced.
+        if self_fks:
+            frame = _fill_self_references(
+                frame, table, self_fks, seeds.stream(f"rel:{name}:self")
+            )
 
         frame = apply_privacy(frame, table, seeds)
 

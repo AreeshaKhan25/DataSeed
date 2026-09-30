@@ -30,6 +30,7 @@ from .relational import check_integrity, generate_relational
 from .schema import (
     Constraint,
     SchemaIR,
+    Table,
     build_schema,
     coerce_to_schema,
     frame_to_records,
@@ -37,7 +38,7 @@ from .schema import (
 )
 from .seeds import SeedFactory
 from .store import STORE, Job, Project
-from .trust import build_trust_report
+from .trust import MIN_ROWS_TO_VALIDATE, build_trust_report
 
 ROOT = Path(__file__).resolve().parents[1]
 DEMO_DIR = ROOT / "data" / "demo"
@@ -578,6 +579,66 @@ def preview(project_id: str, request: PreviewRequest) -> dict[str, Any]:
     }
 
 
+def _table_to_validate(project: Project) -> tuple[Table | None, pd.DataFrame | None]:
+    """Pick the table the trust report scores, and its source rows.
+
+    This used to be `schema.tables[0]`, which is whichever CSV the user happened
+    to select first. On a multi table upload that made the report appear or not
+    appear depending on file order alone: dropping a 24 row lookup table first
+    produced no report at all, while the very same four files in a different
+    order scored 93.6. From the outside that looks like the report works only
+    sometimes.
+
+    The largest eligible table is used instead. It is the most statistically
+    meaningful table to score, it is almost always the one the user came for,
+    and it does not change when the same files arrive in a different order.
+    """
+    fk_columns: dict[str, set[str]] = {}
+    for fk in project.schema.foreign_keys:
+        fk_columns.setdefault(fk.child_table, set()).add(fk.child_column)
+
+    candidates: list[tuple[int, int, int, Table, pd.DataFrame]] = []
+    for position, table in enumerate(project.schema.tables):
+        source = _get_source_dataframe(project, table.name)
+        if source is None or len(source) < MIN_ROWS_TO_VALIDATE:
+            continue
+
+        # Count the columns worth scoring, which means neither the primary key
+        # nor a foreign key. A junction table has none of them: it is two keys
+        # and nothing else, so its fidelity is a measure of how well the
+        # generator reproduced a pair of identifiers, which is not a fact about
+        # the data anyone cares about. Picking one scored 25, failed the
+        # fidelity gate, and blocked the export on an otherwise healthy project.
+        keys = set(fk_columns.get(table.name, set()))
+        if table.primary_key:
+            keys.add(table.primary_key)
+        substantive = sum(1 for column in table.columns if column.name not in keys)
+        if substantive == 0:
+            continue
+
+        # Most real columns first, then most rows. Position is the final tie
+        # breaker so the choice is stable rather than depending on file order.
+        candidates.append((substantive, len(source), -position, table, source))
+
+    if not candidates:
+        return None, None
+    _, _, _, table, source = max(candidates, key=lambda c: (c[0], c[1], c[2]))
+    return table, source
+
+
+def _no_report_reason(project: Project) -> str:
+    """Say why no table could be scored, naming what was actually there."""
+    if not project.sources:
+        return "No source data to validate against."
+    sizes = ", ".join(
+        f"{name} has {len(frame)}" for name, frame in project.sources.items()
+    )
+    return (
+        f"No table has the {MIN_ROWS_TO_VALIDATE} rows needed to validate "
+        f"({sizes}). Scores from a sample this small would not mean anything."
+    )
+
+
 def _run_generation(job_id: str, project_id: str, request: GenerateRequest) -> None:
     """Background worker. Never raises -- failures land on the job."""
     job = STORE.get_job(job_id)
@@ -607,9 +668,8 @@ def _run_generation(job_id: str, project_id: str, request: GenerateRequest) -> N
         report: dict[str, Any] | None = None
         if request.validate_output:
             job.advance("Building trust report", 88, "Fidelity, utility and privacy")
-            primary = project.schema.tables[0]
-            source = _get_source_dataframe(project, primary.name)
-            if source is not None:
+            primary, source = _table_to_validate(project)
+            if primary is not None and source is not None:
                 report = build_trust_report(
                     source, primary, SeedFactory(seed),
                     target=request.target_column, integrity=integrity,
@@ -620,7 +680,7 @@ def _run_generation(job_id: str, project_id: str, request: GenerateRequest) -> N
             if report is None or not report.get("available"):
                 report = {
                     "available": False,
-                    "reason": (report or {}).get("reason", "No source data to validate against."),
+                    "reason": (report or {}).get("reason") or _no_report_reason(project),
                     "integrity": integrity,
                     "export_allowed": bool(integrity.get("passed")),
                 }

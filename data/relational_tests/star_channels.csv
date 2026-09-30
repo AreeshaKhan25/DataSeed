@@ -1,0 +1,6 @@
+channel_id,channel_name,commission_pct
+1,Storefront,0.0
+2,Marketplace,12.5
+3,Reseller,8.0
+4,Direct,2.0
+5,Affiliate,15.0
